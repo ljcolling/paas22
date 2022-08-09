@@ -1,0 +1,18 @@
+title: Sussex Lecture Slide Template
+author: Lincoln Colling
+version: 0.0.1
+contributes:
+  formats: 
+    revealjs:
+      theme: sussex.scss
+      center-title-slide: false
+      slide-number: c/t
+      show-slide-number: all
+      title-slide-attributes:
+        data-background-color: "#003b49"
+      transition: slide
+      transition-speed: fast
+      height: 720
+      width: 1280
+      controls: true
+      touch: true

@@ -1,0 +1,17 @@
+<style>
+.cell-output-display:not(.no-overflow-x) {
+overflow-x: visible
+}
+</style>
+<style>
+.cell-output-display:not(.no-overflow-x) {
+overflow-x: visible
+}
+</style>
+---
+listing:
+  template: materials.ejs
+content: lectures/**/*.qmd
+---
+
+Course materials for Psychology as a Science

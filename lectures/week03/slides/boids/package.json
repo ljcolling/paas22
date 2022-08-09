@@ -1,0 +1,14 @@
+{
+  "name": "@ljcolling/boids",
+  "main": "734040a8f4dd0b2a@794.js",
+  "version": "794.0.0",
+  "homepage": "https://observablehq.com/@ljcolling/boids",
+  "author": {
+    "name": "Lincoln",
+    "url": "https://observablehq.com/@ljcolling"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}

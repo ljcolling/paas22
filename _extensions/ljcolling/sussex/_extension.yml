@@ -1,0 +1,17 @@
+title: Sussex Lecture Slide Template
+author: Lincoln Colling
+version: 0.0.1
+contributes:
+  formats: 
+    revealjs:
+      theme: sussex.scss
+      self-contained: true
+      center-title-slide: false
+      slide-number: c/t
+      show-slide-number: all
+      transition: slide
+      transition-speed: fast
+      height: 720
+      width: 1280
+      include-before-body: meta.html
+      fig-cap-location: bottom

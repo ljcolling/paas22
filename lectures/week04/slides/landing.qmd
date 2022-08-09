@@ -1,0 +1,23 @@
+---
+author:
+  - name: "Dr Lincoln Colling"
+    url: mailto:l.colling@sussex.ac.uk
+    affiliation: School of Psychology, University of Sussex
+    affiliation-url: https://profiles.sussex.ac.uk/p488921-lincoln-colling
+title: Introduction to study design
+subtitle: Lecture 4
+week: 4
+navbar: true
+page-layout: full
+date: 17 Oct 2022
+date-format: "D MMMM, YYYY"
+toc: true
+type: landing
+---
+
+```{r}
+#| echo: false
+#| out.width: 100%
+#| column: screen
+knitr::include_url("./index.html")
+```
