@@ -1,0 +1,5 @@
+_site/
+print-slides.r
+render.sh
+.DS_Store
+.quarto
