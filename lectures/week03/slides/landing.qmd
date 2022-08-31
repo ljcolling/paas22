@@ -15,11 +15,7 @@ toc: true
 type: landing
 ---
 
-```{r}
-#| echo: false
-#| out.width: 100%
-#| column: page
-knitr::include_url({"http://localhost:3000/lectures/week03/slides/index.html"})
+```{r echo=FALSE, out.width="853px", out.height="480px"}
+#| fig-align: center
+knitr::include_url("./index.html")
 ```
-
-

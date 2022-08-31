@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>content</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="_content_files/libs/clipboard/clipboard.min.js"></script>
+<script src="_content_files/libs/quarto-html/quarto.js"></script>
+<script src="_content_files/libs/quarto-html/popper.min.js"></script>
+<script src="_content_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="_content_files/libs/quarto-html/anchor.min.js"></script>
+<link href="_content_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="_content_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="_content_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="_content_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="_content_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script type="module" src="_content_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="_content_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<script src="_content_files/libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="_content_files/libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="_content_files/libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="_content_files/libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="_content_files/libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="_content_files/libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="_content_files/libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="_content_files/libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content page-columns page-full" id="quarto-document-content">
+
+
+
+<p>In <a href="">Lecture 4</a> we started talking about how quantitative methods deal with <strong>measurement</strong>—that is, putting numbers to things. In today’s lecture we’re going to start talking about what we actually do with these numbers. The first thing we’ll want to do is to describe these numbers, and today we’ll cover two main ways for describing your set of numbers.</p>
+<section id="describing-numbers-with-numbers" class="level2">
+<h2 class="anchored" data-anchor-id="describing-numbers-with-numbers">Describing numbers with numbers</h2>
+<p>Let’s say we’re interested in how well people perform at</p>
+<!-- fill something in here -->
+<p>We’ve taken a bunch of measurements, and our measurements are as follows: 163, 167, 190, 171, 172, 192, 176, 154, 161, 164. The first thing we’ll want to do before we can do anything useful with these numbers is to come up with a way for succinctly describing them, or <strong>summarising</strong> them.</p>
+<p>The first kind of summary that we might want is to describe the <strong>typical value</strong>. There’s a few different things that we could mean by the <strong>typical value</strong>, so we go through each of them in turn.</p>
+</section>
+<section id="measures-of-central-tendency" class="level2">
+<h2 class="anchored" data-anchor-id="measures-of-central-tendency">Measures of central tendency</h2>
+<p>What we mean by the <strong>typical value</strong> is not always clear. For example, in <a href="#fig-income">Figure&nbsp;1</a> we can see the average annual salary (in US dollars) for a set of 78 countries. Each bar of the plot represents the number of countries in the given salary bracket ($0–$10k, $10-$20k, …).</p>
+<div class="cell" data-layout-align="center">
+<div id="fig-income" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div id="htmlwidget-b85bf888dc62471906a9" style="width:100%;height:278px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b85bf888dc62471906a9">{"x":{"data":[{"orientation":"v","width":[10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[5000,15000,25000,35000,45000,55000,65000,75000,85000,95000,105000,115000,125000,135000,145000,155000,165000,175000,185000],"y":[33,11,4,3,10,6,3,3,2,0,1,1,0,0,0,0,0,0,1],"text":["count: 33","count: 11","count:  4","count:  3","count: 10","count:  6","count:  3","count:  3","count:  2","count:  0","count:  1","count:  1","count:  0","count:  0","count:  0","count:  0","count:  0","count:  0","count:  1"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(255,255,255,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":37.6964162169642,"r":9.29846409298464,"b":60.882800608828,"l":48.4848484848485},"font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-9500,199500],"tickmode":"array","ticktext":["0","50000","100000","150000"],"tickvals":[0,50000,100000,150000],"categoryorder":"array","categoryarray":["0","50000","100000","150000"],"nticks":null,"ticks":"outside","tickcolor":"rgba(0,0,0,1)","ticklen":4.64923204649232,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":15.9402241594022},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Annual salary in USD","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.65,34.65],"tickmode":"array","ticktext":["0","10","20","30"],"tickvals":[0,10,20,30],"categoryorder":"array","categoryarray":["0","10","20","30"],"nticks":null,"ticks":"outside","tickcolor":"rgba(0,0,0,1)","ticklen":4.64923204649232,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":15.9402241594022},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Count","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":15.9402241594022}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"source":"A","attrs":{"67f513886f62":{"x":{},"type":"bar"}},"cur_data":"67f513886f62","visdat":{"67f513886f62":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p></p><figcaption class="figure-caption">Figure 1: National average annual salary [source: https://www.worlddata.info/average-income.php]</figcaption><p></p>
+</figure>
+</div>
+</div>
+<p>From the plot we can see that there are a lot of countries where the average annual salary is less than $30,000 USD. There are also a handful of countries where the average annual salary is more than $100,000 USD. What would you consider the <em>most typical</em> annual salary? The bracket with the most countries in it? If so, that would mean the most typical salary on the planet is between $0 and $10,000 USD per year. Or maybe we should pick the value where half the countries have a lower average salary and half the countries have a higher one? Choosing this option leads to an estimate of the most typical salary for $12,855 USD per year.</p>
+<p>As you can see, depending on how we define <em>the most typical value</em>, we get different answers. We’ll cover the three main ways of defining the <em>typical value</em> or <em>average</em>.</p>
+<!-- make sure I use average as synonym -->
+<section id="mode" class="level3">
+<h3 class="anchored" data-anchor-id="mode">Mode</h3>
+<p>The <strong>mode</strong> is a term that refers to the <strong>most frequent value</strong> in a set of measurements. This is the kind of <em>average</em> we discussed above when we said the most typical salary on the planet is between $0 and $10,000 USD a year. The easiest way to spot the <strong>mode</strong> is just to draw a plot like the one we did in <a href="#fig-income">Figure&nbsp;1</a> and then just look for the tallest bar.</p>
+<p>A set of numbers can have one or more modes. If it only has one mode, then it is said to be <strong>unimodal</strong>. <strong>Bimodal</strong> means it has two modes. If it has three or more modes, then it is usually called <strong>multimodal</strong>.</p>
+<!-- Maybe include some plot here -->
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The mode is the only definition of <em>typical value</em> that works for data that is measured at the <strong>nominal</strong>/<strong>categorical</strong> level.</p>
+<p>When it comes to truly <strong>continuous</strong> variables, such as height, a set of measurements is likely to be multimodal. Why? Because no two people are exactly the same height, so each person’s height is the mode of the distribution because there’s only measurement that has exactly that value. For this reason, the mode is rarely used for continuous variables measured at the <strong>interval</strong> or <strong>ratio</strong> levels.</p>
+<p>Average salary is continuous variable, but we turned it into a discrete variable placing countries into discrete categories.</p>
+</div>
+</div>
+</section>
+<section id="median" class="level3">
+<h3 class="anchored" data-anchor-id="median">Median</h3>
+<p>The <strong>median</strong> is the second kind of average we talked about <a href="">above</a>; the middle value where half the measurements are above that value and half the measurements are below. To find the median, we first need to sort our data.</p>
+<p><a href="#fig-sorted">Figure&nbsp;2</a></p>
+<div class="cell">
+<div id="fig-sorted" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div id="htmlwidget-88fdd2a34d502a66744b" style="width:100%;height:464px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-88fdd2a34d502a66744b">{"x":{"data":[{"orientation":"v","width":[0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.900000000000002,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78],"y":[520,540,590,850,1480,1500,1530,1750,1940,2030,2130,2540,2570,2690,3190,3370,3530,3850,4050,5240,5420,6040,6080,6280,6460,6510,6740,7020,7260,9130,9410,9430,9610,10410,11200,11200,11260,11700,14910,15010,15200,16140,20320,22000,22850,23080,30390,33720,34460,41690,42370,42400,42670,43290,43470,46370,47350,48520,49580,50840,51300,53200,54910,55840,59590,62210,63240,65760,72850,73910,78640,82500,85500,106140,116430,186080],"text":["Democratic Republic of the Congo ($0.52k)","Afghanistan ($0.54k)","Sudan ($0.59k)","Ethiopia ($0.85k)","Cambodia ($1.48k)","Cameroon ($1.5k)","Pakistan ($1.53k)","Kenya ($1.75k)","Bangladesh ($1.94k)","Nigeria ($2.03k)","India ($2.13k)","Vietnam ($2.54k)","Laos ($2.57k)","Egypt ($2.69k)","Morocco ($3.19k)","Ukraine ($3.37k)","Bolivia ($3.53k)","Philippines ($3.85k)","Indonesia ($4.05k)","Albania ($5.24k)","Iran ($5.42k)","South Africa ($6.04k)","Ecuador ($6.08k)","Belarus ($6.28k)","Equatorial Guinea ($6.46k)","Colombia ($6.51k)","Peru ($6.74k)","Serbia ($7.02k)","Thailand ($7.26k)","Brazil ($9.13k)","Bulgaria ($9.41k)","Mexico ($9.43k)","Turkey ($9.61k)","China ($10.41k)","Malaysia ($11.2k)","Argentina ($11.2k)","Russia ($11.26k)","Costa Rica ($11.7k)","Croatia ($14.91k)","Chile ($15.01k)","Poland ($15.2k)","Hungary ($16.14k)","Greece ($20.32k)","Czechia ($22k)","Saudi Arabia ($22.85k)","Portugal ($23.08k)","Spain ($30.39k)","South Korea ($33.72k)","Italy ($34.46k)","Japan ($41.69k)","United Kingdom ($42.37k)","France ($42.4k)","New Zealand ($42.67k)","Israel ($43.29k)","United Arab Emirates ($43.47k)","Canada ($46.37k)","Belgium ($47.35k)","Germany ($48.52k)","Finland ($49.58k)","Hong Kong ($50.84k)","Austria ($51.3k)","Netherlands ($53.2k)","Australia ($54.91k)","Sweden ($55.84k)","Singapore ($59.59k)","Ireland ($62.21k)","Denmark ($63.24k)","United States of America ($65.76k)","Iceland ($72.85k)","Luxembourg ($73.91k)","Macao ($78.64k)","Norway ($82.5k)","Switzerland ($85.5k)","Bermuda ($106.14k)","Liechtenstein ($116.43k)","Monaco ($186.08k)"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(69,74,96,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":" grey","legendgroup":" grey","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.900000000000006,0.900000000000006],"base":[0,0],"x":[39,40],"y":[12630,13080],"text":["Romania ($12.63k)","Venezuela ($13.08k)"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(255,69,0,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"red","legendgroup":"red","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":29.0178497301785,"r":9.29846409298464,"b":36.2640099626401,"l":64.4250726442507},"font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-3.345,82.345],"tickmode":"array","ticktext":[null],"categoryorder":"array","categoryarray":[null],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.64923204649232,"tickwidth":0,"showticklabels":false,"tickfont":{"color":null,"family":null,"size":0},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Country","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-9304,195384],"tickmode":"array","ticktext":["0k","50k","100k","150k"],"tickvals":[0,50000,100000,150000],"categoryorder":"array","categoryarray":["0k","50k","100k","150k"],"nticks":null,"ticks":"outside","tickcolor":"rgba(0,0,0,1)","ticklen":4.64923204649232,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":15.9402241594022},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(153,153,153,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Annual salary in USD","font":{"color":"rgba(0,0,0,1)","family":"","size":18.5969281859693}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":15.9402241594022}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"source":"A","attrs":{"67f516da5155":{"x":{},"y":{},"text":{},"fill":{},"type":"bar"}},"cur_data":"67f516da5155","visdat":{"67f516da5155":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p></p><figcaption class="figure-caption">Figure 2: Average national salary per country sorted from lowest to highest (Hover over the bars to see the name of the country and the value).</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To be able to calculate a meaningful median, the variable must be measured on <strong>at least the ordinal level</strong>.</p>
+</div>
+</div>
+</section>
+<section id="mean" class="level3">
+<h3 class="anchored" data-anchor-id="mean">Mean</h3>
+<!-- Here I will need to put a quick distinction between samples -->
+<!-- and populations -->
+<!-- But I'll have to make a not that we this distinction might not -->
+<!-- seem super important for now, but it'll become more important -->
+<!-- when we talk about spread -->
+</section>
+<section id="mean-vs-median" class="level3">
+<h3 class="anchored" data-anchor-id="mean-vs-median">Mean vs Median</h3>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="179" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 178;"><span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {viewof clear<span class="op">,</span> viewof ave_select<span class="op">,</span> box<span class="op">,</span> mutable inputArray} <span class="im">from</span> <span class="st">"@ljcolling/samples"</span></span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>(inputArray)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell panel-input card bg-light p-2">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="187" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 186;"><span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a>viewof clear</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="188" data-source-offset="-13"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 187;"><span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a>viewof ave_select</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" data-startfrom="191" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 190;"><span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { box2 } <span class="im">from</span> <span class="st">"./samples.qmd"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" data-startfrom="195" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 194;"><span id="cb5-195"><a href="#cb5-195" aria-hidden="true" tabindex="-1"></a><span class="fu">box2</span>(inputArray)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="measures-of-spread" class="level2">
+<h2 class="anchored" data-anchor-id="measures-of-spread">Measures of spread</h2>
+<p>If you look at <a href="#fig-hist-width">Figure&nbsp;3</a> you’ll see two data sets that are centred at the same value but have very different amounts of variability. Both sets of data have a mean of 0. But, as you can see, the values of one are spread out much more widely than the values of the other.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-hist-width" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="_content_files/figure-html/fig-hist-width-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 3: Histogram of two distributions with equal means but different spreads. <em>N = 10,000</em> in each case.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This is why, in addition to measures of central tendency, we also need measures that tell us about the spread, or <em>dispersion</em> of a variable. Once again, there are several measures of spread available, and we’ll talk about five of them:</p>
+<ol type="1">
+<li>Range</li>
+<li>Interquartile range</li>
+<li>Deviation</li>
+<li>Variance</li>
+<li>Standard deviation</li>
+</ol>
+<!-- Add in a new visualisation here and a preview paragraph -->
+<section id="range" class="level3">
+<h3 class="anchored" data-anchor-id="range">Range</h3>
+<p>The <strong>range</strong> of a variable is simply the distance between its smallest and largest values. For example, if we gather a sample of 100 participants and the youngest one is 17 years old, and the oldest one is 67 years old, then the range of our age variable in this sample if 67 - 15 = 50 years.</p>
+<p>Checking the range of a variable can tell us something about whether our data makes sense. Let’s say that we’ve run a study examining reading ability in primary school age children. In this study, we’ve also measured the ages of the children. If the range of our age variable is, for example, 50 years, then that tells us that we’ve measured <em>at least</em> one person that is not school age.</p>
+<p>Beyond that, the range doesn’t tell us much of the information we’d usually like to know. This is because the range is <em>extremely</em> <strong>sensitive to outliers</strong>. What this means is that it only takes one extreme value to inflate the range. In our school example, it might be that all but one of the people measured is actually in the correct age range. But the range alone cannot tell us if this is the case.</p>
+</section>
+<section id="interquartile-range" class="level3">
+<h3 class="anchored" data-anchor-id="interquartile-range">Interquartile range</h3>
+<p>A slightly more useful measure than the range is the <strong>interquartile range</strong> or IQR. The IQR is the distance between the 1st and 3rd quartiles of the data. Quartiles, like the name suggests, are created by splitting the data into four chunks where each chunk has the same number of observations. Or put another way, the median splits the data into two where half the observations are higher than the median and half the observations are lower than the median. Quartiles are created by taking each of these halves and splitting them in half again. The range covered by the middle two 25% chunks is the IQR. It is the range that covers the middle 50% of the data.</p>
+<p>The benefit of the IQR over a simple range is that the IQR is not sensitive to occasional extreme values. This is because the bottom 25% and the top 25% are discarded. However, by discarding these data, the IQR provides no information about how spread these outer areas are.</p>
+<!-- give some information about the visualisation. -->
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>values <span class="ot">&lt;-</span> salary<span class="sc">$</span>yearly</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>qs <span class="ot">&lt;-</span> <span class="fu">quantile</span>(values, <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="deviation" class="level3">
+<h3 class="anchored" data-anchor-id="deviation">Deviation</h3>
+<p>Both the range and the IQR work by looking at the distance between only two observations in the entire data. For the range, it’s the distance between the minimum point and the maximum. For the IQR, it’s the distance between the midpoint of the upper half and the midpoint of the lower half.</p>
+<p>As a result, both these measures tend to be fairly course-grained. To get a more fine-grained measure of the spread we could look at each data point and calculate how far it is away from the typical value. Usually, this is done by looking at how far away each data point is from the <strong>mean</strong> of the dataset. This is known as the deviation.</p>
+<p>This is shown in <a href="#eq-dev">Equation&nbsp;1</a>, below:</p>
+<p><span id="eq-dev"><span class="math display">\[ \definecolor{point}{RGB}{114,0,172} \definecolor{every}{RGB}{46,139,87}
+\definecolor{average}{RGB}{0,0,206} \color{point} x_{\color{every} i}
+\color{black} - \color{average} \bar{x}  \tag{1}\]</span></span></p>
+<p>Take the <font color="#7300ac">value</font> of <font color="#2E8b57">a particular point</font> and <font color="black">subtract</font> it from <font color="#0000ce">the average</font>.</p>
+<p>Because we are calculating this for every data point there will be as many deviations as we have values for our variable. To get a <em>single measure</em>, we’ll have to perform another step.</p>
+<p>One thing we could try doing is just to add up the numbers. But this won’t work. To see why, try adding a few points below. Add you add the points take a look at the table below. The table has a column with all the points, and all the deviations from the mean. Below the table you can see what happens when you add up all those deviation values. What do you notice?</p>
+<p>As you can see, they add up to zero. Because the mean is our midpoint, the distances for all the points higher than the mean cancel out the distances for all the points lower than the mean.</p>
+<p>We can get around this problem by taking the square of the deviations before adding them up. Squaring a number will turn a negative number into a positive number, so when we add up all the numbers they’ll no longer add up to 0.</p>
+<!-- Why squaring and no absolute values -->
+<!-- Mathematically blah blah -->
+<p>$$ </p>
+<p> SS=(x - x)^2 $$</p>
+<p><span class="math display">\[ \color{black} \mathrm{SS} \color{=}= \color{sum} \sum^{\color{every}
+N}_{\color{every} i=1}{\color{dev} (x_{\color{every} i} \color{dev} -
+\bar{x})\color{sq}^2} \]</span></p>
+<p><span class="math display">\[x^2\]</span></p>
+<p><font color="#2e17ff">Take the square</font> of the <font color="#3ace00">deviation from the mean</font> for <font color="#8f00ac">every value</font> and <font color="#ce4500">add them up</font>.</p>
+<p>Adding up all the numbers, however, leaves us with another problem.</p>
+<p>The sum of the squared deviations gets bigger with bigger samples. That’s not good because even big samples can have small amount of variation, while smaller samples can vary a lot. We want our measure of spread to be able to capture this. Get around this, we’ll move on to our next measure of spread.</p>
+</section>
+<section id="variance" class="level3">
+<h3 class="anchored" data-anchor-id="variance">Variance</h3>
+<p>You next measure of spread is the <strong>variance</strong>. The <strong>variance</strong> gets around the problem of the measure of spread just getting bigger when we have bigger datasets. And it gets around this problem by just working out the <em>average squared deviation</em>.</p>
+<!-- A note here about population vs sample -->
+</section>
+<section id="standard-deviation" class="level3">
+<h3 class="anchored" data-anchor-id="standard-deviation">Standard deviation</h3>
+<p>Variance is a good measure of dispersion and it is widely used. In fact, most of the statistical tests we will be using are based around variance. However, there is one minor inconvenience about this measure when it comes to interpretability: it’s measured in <em>squared units</em>! For example, if salary is measured in US dollars, <em>s<sup>2</sup></em><sub>salary</sub> is expressed in USD<sup>2</sup>, whatever those may be.</p>
+<p>Fortunately, the solution to this problem is easy: we can simply take the square root of variance. This is called the <strong>standard deviation</strong>.</p>
+<p>Just like with variance, there is <strong>population</strong> standard deviation, <span class="math inline">\(\sigma\)</span> and the <strong>sample</strong> standard deviation, <span class="math inline">\(s\)</span> or <span class="math inline">\(SD\)</span>.</p>
+<!-- show the calculations -->
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can think of <em>SD</em> as a measure of the differences of a set of scores from their mean. If variance is the mean <em>squared</em> deviation in the variable, standard deviation is the <strong>mean deviation</strong>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="samples-and-populations" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="samples-and-populations">Samples and populations</h2>
+<p>One of the key things that we want to do with <em>statistics</em> is to make <strong>inferences</strong> about <strong>populations</strong> from <em>the information</em> we get from <strong>samples</strong>. That is, we often want to make a judgement, or draw a conclusion, about an aspect of the population when all we have access to is a sample.</p>
+<p>We’ll get to more formal definitions of <em>populations</em> and <em>samples</em> shortly, but first, let’s make things more concrete by introducing an example.</p>
+<p>Let’s say you’re interested in the <strong>average height</strong> of <strong>people in the UK</strong>. The “easy” way to find an answer to this question is to measure <strong>all the people in the UK</strong> and then work out the <strong>average height</strong>. Doing this will give you the exact answer to your question. But if you can’t measure everyone in the UK, then what do you do?</p>
+<p>One option is to select a smaller group, or subset, of people from the UK. You can then measure the height of people in this group, and then try to use this information to figure out plausible values for the average height of people in the UK.</p>
+<p>In this example, the group (or groups) you’re making claims about is the population. You want to claims about <strong>the average height</strong> of <strong>people in the UK</strong>. And the <strong>sample</strong> is a subset of this population—the smaller group of people that you were eventually able to measure.</p>
+<p>It’s important to note that there isn’t a <strong>single</strong> population. What counts as the population will depend on the claim you’re making. For example, let’s say I’m interested in testing the claim, “Do <strong>people in East Sussex</strong> show an interference effect on the Stroop task?”. Here the <strong>population</strong> would be <strong>people in East Sussex</strong>. If, however, I want to make claims about <strong>people in general</strong>, then the <strong>population</strong> might be all <strong>living</strong> humans.</p>
+<section id="theoretical-populations" class="level3">
+<h3 class="anchored" data-anchor-id="theoretical-populations">Theoretical populations</h3>
+<p>So far in our talk of populations we’ve only really be thinking about populations as the <strong>set of actually existing things</strong> that we can take our sample from—for example, all <strong>living</strong> humans. But populations don’t have to be sets of actually existing things. Instead, they can be the <strong>set of possible things</strong> from which our samples can be drawn. This might seem a little confusing, so an example might help.</p>
+<p>Let’s say we want to collect a sample of 6 coin flips. To collect our <strong>sample</strong>, we take a coin and <em>flip it 6 times</em> and count up the number of heads and tails and from this we could work out, for example, how many <em>heads are typically seen when flipping the coin 6 times</em>.</p>
+<p>So that’s our <strong>sample</strong>, but what is our <strong>population</strong>? One way to think of our population is as the <strong>set of possible outcomes (numbers of heads) that would occur if we flipped the coin 6 times</strong>. It turns out that can actually work this out.</p>
+<p>To work it out we would do something like the following:</p>
+<!-- do binimials -->
+<p>We can work it out because we know something about the <strong>process that gives rise to our data</strong>. Although we might not be able to clearly specify the process that gives to the data in a Stroop task, there will still be some <strong>data generating process</strong>, which we can think of as the <strong>population</strong> we’re sampling from.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In later years you’ll learn about something called the <strong>null hypothesis</strong>. The <strong>null hypothesis</strong>, in simple terms, says that the <strong>data generating process</strong> for two sets of observations is same. For example, it might say that the <em>data generating process</em> that gives rises to people’s responses on the Stroop task is the same for the <strong>congruent condition</strong> and the <strong>incongruent condition</strong>. You’ll learn how to perform statistical tests that tell you whether the set of data that you’ve actually collecting is <strong>surprising</strong> or <strong>unsurprising</strong> if you were to assume that <em>two</em> <strong>data generating processes</strong> are actually the same.</p>
+</div>
+</div>
+</section>
+<section id="the-relationship-between-samples-and-populations" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="the-relationship-between-samples-and-populations">The relationship between samples and populations</h3>
+<p>Let’s assume that we have explicitly defined our <strong>population</strong> (for example, as <em>all people in the UK</em>) and we’ve collected a <strong>sample</strong> by taking measurements from a <strong>subset</strong> of this population. What is the relationship between this sample and the population from which it was drawn?</p>
+<p>The <em>sample</em> should <strong>resemble</strong> the <em>population</em> in some way. Most often we’re interested is knowing something like: “<em>What is the typical value (i.e., the mean) of the population?“</em> In the example I introduced earlier, we were interested in <strong>average height</strong>. But we might also be interested in things a difference between two averages—for example, whether there is a difference in <strong>average depression levels</strong> before and after some intervention, or whether <strong>average response times</strong> are different between the two conditions of a Stroop task. Ideally then, the <strong>average height</strong> of our <strong>sample</strong> should <strong>resemble</strong> the <strong>average</strong> height of our <strong>population</strong>, or the <em>average</em> <em>response</em> <em>time</em> <em>difference</em> in our <strong>experimental sample</strong> should <em>resemble</em> the <em>average response time difference</em> in our population. But if we don’t know the <strong>average</strong> of our <strong>population</strong>, then how will we know whether our <strong>sample</strong> <em>resembles</em> it?</p>
+<p>In short, <strong>we can’t know for sure</strong>. But we can think of a couple of things that will <strong>influence</strong> the relationship between our <strong>sample</strong> and the <strong>population</strong>. To figure out what these are, let’s do a thought experiment and think of some <strong>extreme cases</strong>.</p>
+<p>First, consider the case where <strong>all the members</strong> of a <em>population</em> are <strong>identical</strong>. If this were the case, then our <strong>sample</strong> will have an <strong>identical</strong> average to the population. The height of one person would be the same as the average height of two people, which would be the same as the average height of 100 people, which would be same as the average height of the population because people only come in one height. But if the <strong>members</strong> of the <strong>population</strong> are all <strong>different</strong> from one another, then there is no guarantee that the <strong>sample’s average</strong> will <strong>resemble</strong> the <strong>population’s average</strong>.</p>
+<p>The second extreme scenario is if our sample is <strong>very large</strong>. Let’s say that it is so large that it includes <strong>all the members of the population</strong>. If this were the case, then, by definition, our <strong>sample average</strong> would be <strong>identical</strong> to the <strong>population average</strong>. However, if our sample is smaller than the entire population, then once again, there is no guarantee that the <strong>sample’s average</strong> will <strong>resemble</strong> the <strong>population’s average</strong>.</p>
+<p>Based on this reasoning, we can say that two things will influence whether your <em>sample</em> resembles your <em>population</em>. These are 1) the amount of <strong>variation</strong> in our population, and 2) the <strong>size</strong> of our sample.</p>
+<p>Importantly, however, and barring the extreme cases above, for <strong>any particular sample</strong> we won’t know whether it <strong>resembles</strong> the population or not, because, remember, we don’t know the average of the population. Instead, we should think about these two factors as influencing <strong>how likely</strong> it is for samples to resemble the population. But what does this mean?</p>
+<p>One way to think about this is in terms of <strong>repeatedly</strong> taking samples from the same population. For example, if we take a large sample from the population—large, but not so large as to include the entire population—then we can’t say that our <strong>particular</strong> sample will resemble the population. But if we take many samples (of that size), then we can say that <strong>on average</strong> those samples will be closer to the population than would be the case for a collection of smaller samples.</p>
+<p>The same reasoning applies to <strong>variation in the population</strong>. If there is <strong>less variation</strong> in the <strong>population</strong>, then the samples drawn from that population will tend to be closer to each other and closer to the population average. But again, we won’t be able to say whether <strong>a particular sample</strong> has an <strong>average</strong> that is close to the population average.</p>
+<p>Of course, sample size and population variation exert their influence together. If we want our sample averages to be close to the population average, then we need samples that are <strong>big enough</strong>, but what counts as <strong>big enough</strong> will depend on the <strong>population variation</strong>. Therefore, knowing whether our sample is big enough depends on knowing the population variation. Unfortunately, we don’t know this; however, there is a way to estimate it. But that’s a topic for another lecture.</p>
+<!-- Explore more about sample -->
+<p>The 20-sided dice represents a population that has a lot of variability. The individuals in the population (the dice throws) can be any number between 1 and 20. The 6-sided dice represents a population that has only a little variability. The individuals in the population (the dice throws) can only be a number between 1 and 6.</p>
+<p>By looking at the running averages (the bottom plot for each dice) we can tell whether the samples <em>on average</em> resemble the population. If most of the averages fall very close to the population average then we can say the samples <em>on average</em> resemble the population.</p>
+<p>Notice how for a given sample size (say 5 for each dice) the average of the samples from the low variability dice (6 sided) do a better job of <em>on average</em> resembling the population average. For the high variability dice (20 sided), the averages of the same size samples do a poorer job of <em>on average</em> resembling the population average. The important part here in <em>on average</em>. Individual sample averages may do a good job of resembling the population average no matter what the sample size is. This demonstration tells use the <strong>population variability</strong> is one factor that influences whether the averages of our samples will <em>on average</em> resemble the average of our population.</p>
+<div class="page-columns page-full"><p>Let’s say that our sample averages do a good job of resembling the population average if the <em>almost all</em> the sample averages fall within ± 1 of the population average (the lines marked on the plot). Try adjusting the <em>sample sizes</em> for the two dice? What smallest value that will cause <em>almost all</em> the sample averages to land between the marked lines? Notice how for high variability dice this value must be far higher? This demonstration tells use the <strong>sample size</strong> is the second factor that influences whether the averages of our samples will <em>on average</em> resemble the average of our population.</p><div class="no-row-height column-margin column-container"><span class="aside"><strong>Hint</strong> If you can’t work it out try setting the sample size to <strong>16</strong> for the 6-sided dice and to <strong>180</strong> for the 20-side dice.</span></div></div>
+<!-- Note, here I'm going to have to have to talk about on average -->
+<!-- resembling, meaning on average closer. -->
+<!-- Now move on to the next lecture to talk about distributions -->
+<!-- -- process the give rise to data --  -->
+<p>Before we talk more about the <strong>sampling distribution</strong> let us first talk about <strong>distributions</strong> in general, and the processes that give rise to them. We’ll start off with the simplest distribution, the <strong>binomial distribution</strong> before moving on to the <strong>normal distribution</strong>.</p>
+<!-- probably need to trim down the bit where I talk about coin flips -->
+<!-- earlier -->
+</section>
+<section id="the-binomial-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="the-binomial-distribution">The binomial distribution</h3>
+<p>To understand what the <strong>binomial distribution</strong> is, and where it comes from we’ll do a little <em>thought experiment</em>. In our thought experiment, we’ll take a coin, and we’ll flip it. When we flip a coin, one of two outcomes is possible. Either the coin will land showing heads, or it will land showing tails. We can say that there are two possible events or two possible sequences of events (<em>sequences</em> will make more sense when we add more coins) than can happen when we flip a coin.</p>
+<p>Now let’s think of each of the sequences and count up how many heads are showing in each. In the first sequence, where the coin lands showing tails, no heads occur. In the second sequence, where the coin lands showing heads, there is one head. Therefore, we have one sequence that produces 0 heads, and one sequence that produces one head. And those are all the possible sequences.</p>
+<p>But now let’s make it more complicated. Let’s flip two coins. Now there’s a greater number of possible sequences. We can list them:</p>
+<ol type="1">
+<li>The first coin shows heads, and so does the second (HH),</li>
+<li>The first coin shows heads and the second shows tails (HT)</li>
+<li>The first coin shows tails and the second shows heads (TH)</li>
+<li>and the first coins shows tails and the second shows tails (TT)</li>
+</ol>
+<p>Therefore, there are four possible sequences. Let’s count up the <strong>number of sequences</strong> that lead to 0 heads, one head, two heads, etc. If we do this, we’ll see that one sequence leads to 0 heads (TT). Two sequences lead to 1 head (HT, and TH). And one sequence leads to 2 heads (HH).</p>
+<p>Let’s now add more coins. Things will get trickier from here because the number of sequences rapidly goes up. With three coins, there would be eight possible sequences, and with four coins, there would be 16 possible sequences. Figuring out the number sequences, and the nature of the sequences (whether they produce 0 heads, one head, two heads, etc.) quickly becomes difficult. To make things easier, we’ll draw a plot. First, we’ll draw a plot to trace out the sequences. We’ll use different coloured dots to indicate heads and tails. We can do this in the form of the branching tree diagram shown in Box @ref(fig:box2). Once we’ve</p>
+<!-- FIXME: Update the references -->
+<p>visualised the sequences, it’s easy to count up how many sequences result in 0 heads, one head, two heads etc. We can put our counts on another plot. For this, we’ll make a frequency plot or histogram. On the x-axis, we’ll have the number of heads. And on the y-axis, we’ll have the count of how many sequences result in that number of heads. This frequency plot is also shown in</p>
+<!-- TODO:: Add in a visualisation here about coin flips -->
+<p>You can adjust the slider in Box @ref(fig:box2) to change the number of coins you want to flip. Increasing the number of coins increases the number of possible sequences, and it changes the number of ways of getting one head, two heads, three heads and so on changes (however, there’s always only one way to get 0 heads and one way to get all heads). Notice that as you adjust the slider and add more and more coins, the frequency plot takes on a characteristic shape. You can mathematically model the shape of this plot using a <strong>binomial distribution</strong>.</p>
+<p>In our coin flipping example, we created this shape by counting up the number of sequences that produced various quantities of heads. But if we look around at <strong>natural processes</strong>, we’ll see that this shape occurs often.</p>
+<p>One natural process that gives rise to this shape is the “bean machine”[^1]. In a bean machine, small steel balls fall from the top of the device to the bottom of the device. On their way down, they bump into pegs. When one of the balls hits a peg, it has a roughly equal chance of bouncing off to the left or the right, not unlike a coin which has a roughly equal chance of landing heads up or tails up. At the bottom of the device are equally-spaced bins for collecting the balls. If enough balls are dropped into the device, then the <strong>distribution</strong> of balls across the bins will start to take on the shape of the <strong>binomial distribution</strong>. Very few balls will be at the very edges, because this would require the balls to bounce left or right every time.</p>
+<p>Similarly, very few sequences of coin flips result in large numbers of heads or large numbers of tails. The greatest number of balls are seen in the bins near the middle. The balls that land here have bounced left and right a roughly equal number of times. Again a similar pattern can be seen with the coin flips.</p>
+<p>In Box @ref(fig:box3), I’ve included a computer simulation of a bean machine. Press the Start button to display the bean machine and watch the balls drop. Press Replay to drop more balls.</p>
+<!-- TODO: Add in an actual video of a bean machine -->
+</section>
+<section id="the-normal-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="the-normal-distribution">The normal distribution</h3>
+<p>The shape seen in the <strong>binomial distribution</strong> is also seen in another distribution called <strong>the normal distribution</strong>. There are two key differences between the normal distribution and the binomial distribution.</p>
+<p>The <strong>binomial</strong> distribution is <strong>bounded</strong>. That means that one end represents 0 heads and the other end represents all heads. That is, the distribution can only range from 0 to n (where n is the number of coins that have been flipped)—it is bounded at 0 and n.&nbsp;The <strong>normal distribution</strong>, however, ranges from negative infinity to positive infinity. Additionally, for the <strong>binomial distribution</strong>, the steps along the x-axis are <strong>discrete</strong>. That is, you can have 0 heads, one head, two heads and so on, but you can have anything in between—for example, it’s not possible to have sequences of coin flips that results in 1.5 heads. In contrast, the normal distribution is <strong>continuous</strong>.</p>
+<p>The <strong>normal distribution</strong> is a mathematical abstraction, but we can use it as a <strong>model</strong> of real-life frequency distributions. That is, we can use it as a model of <strong>populations</strong> that are produced by certain kinds of natural processes. Because normal distributions are unbounded and continuous, nothing, in reality, is normally distributed. For example, it’s impossible to have infinity or negative infinity of anything. This is what is meant by an <strong>abstraction</strong>. But natural processes can give rise to frequency distributions that look a lot like normal distributions, which means that normal distributions can be used as a model of these processes.</p>
+<section id="describing-the-normal-distribution" class="level4">
+<h4 class="anchored" data-anchor-id="describing-the-normal-distribution">Describing the normal distribution</h4>
+<p>Before we see how natural processes can give rise to the normal distribution, let us take a look at one. Box @ref(fig:box4) shows an example of a <strong>normal distribution</strong>. Two parameters can be used to describe the normal distribution. The location parameter denoted μ describes where the distribution is centred. The scale parameter denoted σ describes the width of the distribution. When you learn how to represent populations with distributions, then these two parameters will correspond to the population average and population variation, respectively.</p>
+<!-- NOTE: This is just the mean and starndard deviation we talked about  -->
+<!-- in the *previous lecture* -->
+<!-- TODO: Add visualisation -->
+</section>
+<section id="processes-giving-rise-to-the-normal-distribution" class="level4">
+<h4 class="anchored" data-anchor-id="processes-giving-rise-to-the-normal-distribution">Processes giving rise to the normal distribution</h4>
+<p>To see how natural processes can give rise to the normal distribution let us take a look at a simple simulation. The simulation in</p>
+<!-- TODO: Referenes -->
+<p>In this game, each player rolls the dice a certain number of times, and they move the number of spaces indicated by the dice. Not that dissimilar to what you’d do in a game of monopoly, or a similar board game! For example, if a player rolled the die three times and they got 1, 4, 3, then they wouldn’t move 8 (1 + 4 + 3 = -4) spaces along the board. At the end of one round of rolls we can take a look at how far from the start each player is. And we can draw a histogram of this data.</p>
+<!-- TODO: Simulation and then add details about sample size -->
+<p>It’s not only dice rolling a 6-sided dice that will give rise to a normal distribution. It could be any dice.</p>
+<!-- TODO: Simulation -->
+<p>Or, instead of dice, we could pull scrabble tiles out of a bag. We’d just pull out one tile, then put it back, and then pull out another tile. And each player will just do this certain number of times. We can then just add up the tile values for the tiles that each player has drawn out and we can plot a histogram of the scores.</p>
+<!-- TOOD: Simulation -->
+<p>Now these games might seem a little artificial, but they actually represent something of a <em>general principle</em> that is <em>widely applicable</em>. What do all these games have in common? In all the games the final score of each player is determined by <strong>adding up</strong> a bunch of numbers. In fact, any process that involves <strong>adding up</strong> a bunch of numbers will produce something that looks like a <strong>normal distribution</strong>.</p>
+<p>Let’s take something that seems very different to these games—for example, a development process like a people’s heights. A person’s current height is determined by <strong>adding up</strong> all the bits of growth they’ve done from the moment that they were born. Because there’s this adding up process, we might expect heights of people to be <strong>normally distributed</strong>. As a result, <strong>normal distributions</strong> are pretty ubiquitous.</p>
+</section>
+<section id="processes-that-dont-produce-normal-distributions" class="level4">
+<h4 class="anchored" data-anchor-id="processes-that-dont-produce-normal-distributions">Processes that don’t produce normal distributions</h4>
+<p>We won’t cover other distribution shapes in much detail, but let us take a look at an example of a process that doesn’t produce a normal distribution. To do this, we’ll just modify the dice game in Box @ref(fig:box5).</p>
+<p>In Box @ref(fig:box5), click the option that says <strong>Multiply</strong>. Doing so changes the rules of the dice game so that a player’s score is determined by <em>multiply</em>ing together the values of their dice rolls. For example, under the new rules, if a player rolled 1, 4, 3 then their score would be 12 (1 × 4 × 3 = 12). Now try clicking Roll! to see the shape of the distribution. This new distribution has an extreme <strong>skew</strong>. The vast majority of players have fairly low scores, but a tiny minority of players have extremely high scores. When you have a process that grows by multiplying, then you’ll get a distribution that looks like this.</p>
+<p>In psychology, we won’t study many processes that grow like this, but some processes that grow like this will be very familiar to you. Think about something like wealth. Wealth tends to grow by multiplying. For example, earning interest or a return on investment of 10% means that the new value of the investment is 1.10 times the original value. This feature of wealth growth explains why, for example, in the UK, the top 10% of people control more wealth than the bottom 50%.</p>
+</section>
+<section id="describing-deviations-from-the-normal-distribution" class="level4">
+<h4 class="anchored" data-anchor-id="describing-deviations-from-the-normal-distribution">Describing deviations from the normal distribution</h4>
+<p>When you clicked the <em>Multiply</em> button, the dice game produced a distribution that was <strong>skew</strong>. <strong>Skew</strong> is a technical term that describes one way in which a distribution can <em>deviate</em> from a <em>normal distribution</em>. The <em>normal distribution</em> is <strong>symmetrical</strong>, but a <strong>skew</strong> distribution is not. A left-skewed distribution has a longer <em>left tail</em>, and a <strong>right-skewed</strong> distribution has a longer <em>right tail</em>. Use Box @ref(fig:box6) to explore <strong>skewness</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="at">url =</span> <span class="st">"https://paas-embed.netlify.app/skew/index.html"</span>, <span class="at">height =</span> <span class="st">"250px"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe src="https://paas-embed.netlify.app/skew/index.html" width="672" height="250px" data-external="1">
+</iframe>
+</div>
+<p>Apart from <strong>skew</strong>, deviations from the <strong>normal</strong> distribution can occur when a distribution either has fatter or skinnier <strong>tails</strong> than the normal distribution. The <em>tailedness</em> of a distribution is given by its <strong>kurtosis</strong>. The kurtosis of a distribution is often specified with reference to the <strong>normal distribution</strong>. In this case, what is being reported is <strong>excess</strong> kurtosis. A distribution with <strong>positive excess kurtosis</strong> has a higher kurtosis value than the normal distribution, and a distribution with <strong>negative excess kurtosis</strong> has a lower kurtosis value than the normal distribution. In your research methods courses, you probably won’t come across many distributions that have negative excess kurtosis. However, the distribution that describes dice rolls is one such distribution, and this will be discussed briefly later in this course. You will encounter distributions with positive excess kurtosis more often. In particular, the <em>t</em>-distributions, a distribution with positive excess kurtosis, will be used in several of the statistical procedures that you will learn. In Box @ref(fig:box7), you can explore excess kurtosis. When excess kurtosis is set to 0, then the figure displays a normal distribution. Distributions will no excess kurtosis are called <em>mesokurtotic</em>. When excess kurtosis is negative, the figure displays a thin tailed or <em>platykurtotic</em> distribution. And when excess kurtosis is positive, the figure displays a fat-tailed or <em>leptokurtotic</em> distribution.</p>
+<!-- FIXME: update the kurtosis visualisation -->
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="at">url =</span> <span class="st">"https://paas-embed.netlify.app/kurtosis/index.html"</span>, <span class="at">height =</span> <span class="st">"250px"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe src="https://paas-embed.netlify.app/kurtosis/index.html" width="672" height="250px" data-external="1">
+</iframe>
+</div>
+</section>
+</section>
+</section>
+<section id="distributions-and-samples" class="level2">
+<h2 class="anchored" data-anchor-id="distributions-and-samples">Distributions and samples</h2>
+<p>Now that we’ve covered samples, distributions, and populations, we’re going to start putting them all together. We saw that whenever we look at the distribution of values where the values are produced by <strong>adding up numbers</strong> we get something that looks like a normal distribution. And we saw that when we worked out the <strong>mean of a sample of data</strong> we did this by <strong>adding up all the values</strong> and then <em>dividing that number by the number of values</em>.</p>
+<p>Let’s say that we want to measure some phenomenon—for example, scores on some standardised reading tests. We collect a sample of data from 50 children, and then we work out the <strong>mean of this sample</strong>, by <strong>adding up the 50 scores</strong> and then dividing this value by 50. Now let’s say that instead of only collecting one sample, we collect 100,000 samples. We work out the <strong>mean</strong> for <em>each sample</em>. And we then draw a histogram of the means for our 100,000 samples. What will this distribution look like? In our games, any time we added up numbers, as long as we added enough enough numbers, and we had a large enough set of players, then we’d get a normal distribution.</p>
+<p>The same goes for our sample. As long as we add up enough numbers (our sample size) and we have enough samples (think, number of players) then the distribution of the means (the distribution of the players scores) will be <strong>normally distribution</strong>. This simple observation is fairly <strong>central</strong> in statistics. So much so that it’s called <strong>the central limit theorem</strong>.</p>
+<section id="a-distribution-of-our-samples" class="level3">
+<h3 class="anchored" data-anchor-id="a-distribution-of-our-samples">A distribution of our samples</h3>
+<p>The <strong>distribution</strong> of some statistic—for example, the <strong>mean</strong>—that we see when repeatedly sample from the population is called <strong>the sampling distribution</strong>. That’s a bit of a mouthful so we’ll try to unpack it a bit.</p>
+<p>Let’s us go back to example where we were working out the mean of a series of dice rolls. In that example, we saw how the mean of our samples moved around from sample to sample, so sometimes it was closer to the true mean, and sometimes it was further away. We can see this in the box below.</p>
+<!-- TODO: Add box -->
+<p>Now instead of looking at our sample means wiggle about from sample to sample, we’re just going to collect a lot of samples and then plot the distribution. We can see that here:</p>
+<!-- TODO: Add box -->
+<p>As we can see, the shape of the <strong>sampling distribution of the mean</strong> is unsurprisingly a <strong>normal distribution</strong>. Other statistics have sampling distributions too. For example, we could calculate the <strong>variance</strong> for each sample and the we could plot the <strong>sampling distribution of the variance</strong>. The sampling distribution of variance <strong>won’t</strong> be normally distributed. Why? Remember that whenever we add stuff up we get a normal distribution, and working out a mean is just a special way of adding up numbers. When we work out a <strong>variance</strong> we’re not adding numbers up. If you look at the formula, you’ll notice that there’s a <span class="math inline">\(^2\)</span> in there. That means we’re doing some multiplying. And we saw that when we were multiplying numbers instead of adding them, we got a distribution that wasn’t normally distributed.</p>
+<!-- NOTE: Maybe pull the variance stuff out -->
+<!-- milan.md 1316 -->
+<pre class="{ojs}"><code>import {skew_normal_plot_output} from "@ljcolling/distribution-shapes"
+</code></pre>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+
+<script type="ojs-module-contents">
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"import {viewof clear, viewof ave_select, box, mutable inputArray} from \"@ljcolling/samples\"\n\nbox(inputArray)\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"viewof clear\nviewof ave_select\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"import { box2 } from \"./samples.qmd\";\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"box2(inputArray)\n"}]}
+</script>
+<script type="module">
+window._ojs.paths.runtimeToDoc = "../../..";
+window._ojs.paths.runtimeToRoot = "../../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -3,3 +3,8 @@ print-slides.r
 render.sh
 .DS_Store
 .quarto
+
+/.quarto/
+
+# Local Netlify folder
+.netlify

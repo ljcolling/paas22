@@ -1,0 +1,18 @@
+
+## Sampling
+
+```{ojs}
+//| echo: false
+import {doplot} from "@ljcolling/samples"
+```
+
+```{ojs}
+//| echo: false
+doplot()
+```
+
+```{ojs}
+//| echo: false
+import {viewof sample_size} from "@ljcolling/samples"
+viewof sample_size
+```

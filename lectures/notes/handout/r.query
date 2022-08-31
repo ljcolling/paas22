@@ -1,0 +1,20 @@
+;; Write your query here like `(node) @capture`,
+;; put the cursor under the capture to highlight the matches.
+
+(section 
+  (fenced_code_block
+  (info_string
+      (language) @id (#match? @id "ojs")
+   )
+    (code_fence_content) @content
+  )
+)
+
+
+(section 
+  (paragraph
+    (inline
+      (strong_emphasis) @id
+     )
+  )
+)

@@ -461,7 +461,7 @@ getting engineering degrees and per capita consumption of sour cream.
 #| echo: false
 #| fig-cap: An example of a spurious correlation
 
-knitr::include_graphics("sexy_chart.png")
+knitr::include_graphics(here::here("images","sexy_chart.png"))
 ```
 
 ---
@@ -593,7 +593,7 @@ But you can **simulate** this behaviour with only three simple rules:
 
 ```{r}
 #| fig-align: center
-knitr::include_graphics("./boids.gif")
+knitr::include_graphics(here::here("images","./boids.gif"))
 ```
 
 
@@ -610,7 +610,7 @@ In the lecture notes you can adjust the rules of the simulation
 ```{r}
 #| fig-align: center
 #| fig-caption: An example of an oscillating pattern in the Game of Life
-knitr::include_graphics("./gol.gif")
+knitr::include_graphics(here::here("images","./gol.gif"))
 ```
 
 :::

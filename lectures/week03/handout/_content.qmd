@@ -1,15 +1,3 @@
-```{r}
-#| echo: false
-
-words <- system("pandoc --lua-filter wordcount.lua _content.qmd --from=markdown", intern = TRUE) |> as.numeric()
-minutes <- words %/% 200
-seconds <- ceiling(((words / 200) - minutes) * 60)
-reading_time <- paste0(minutes, " minutes and ", seconds, " seconds")
-``` 
-
-`r words` words. Reading time: `r reading_time`
-
----
 
 Doing research is an integral part of your training as a psychologist. But
 before you can start thinking about **doing research** you need to be aware of
@@ -454,7 +442,7 @@ getting engineering degrees and per capita consumption of sour cream.
 #| echo: false
 #| fig-cap: An example of a spurious correlation
 
-knitr::include_graphics("sexy_chart.png")
+knitr::include_graphics(here::here("images","sexy_chart.png"))
 ```
 
 ---
@@ -559,7 +547,7 @@ arise from **very simple processes**.
 :::{.column width="50%"}
 
 ```{r}
-knitr::include_graphics("flock.jpg")
+knitr::include_graphics(here::here("images","flock.jpg"))
 ```
 
 :::
@@ -585,7 +573,7 @@ But you can **simulate** this behaviour with only three simple rules:
 
 ```{r}
 #| fig-align: center
-knitr::include_graphics("./boids.gif")
+knitr::include_graphics(here::here("images","./boids.gif"))
 ```
 
 
@@ -602,7 +590,7 @@ Conway's game of life^[You can read more about Conway's game of life at [scholar
 ```{r}
 #| fig-align: center
 #| fig-caption: An example of an oscillating pattern in the Game of Life
-knitr::include_graphics("./gol.gif")
+knitr::include_graphics(here::here("images","./gol.gif"))
 ```
 
 :::

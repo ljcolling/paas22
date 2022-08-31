@@ -1,0 +1,179 @@
+```{ojs}
+box2 = (data) => {
+  let height = 200;
+  let xAxisOffest = 0;
+
+  let mean = d3.mean(data.map((v) => v.x));
+  let median = d3.median(data.map((v) => v.x));
+
+  let radius = 10;
+  let ave = ave_select;
+  mutable summary = {
+    mean: mean,
+    median: median,
+    data: data.map((v) => v.x)
+  };
+
+  let svg = d3
+    .create("svg")
+    .attr("viewBox", [0, 0, width, height])
+    .attr("stroke-width", 2);
+
+  svg
+    .selectAll("circle")
+    .data(data)
+    .join("circle")
+    .attr("cx", (d) => d.x + xAxisOffest)
+    .attr("cy", (d) => d.y)
+    .attr("r", radius)
+    .on("mouseover", function (d, i) {
+      d3.select(this)
+        .transition()
+        .duration("50")
+        .attr("opacity", ".5")
+        .attr("stroke", "blue");
+    })
+    .on("mouseout", function (d, i) {
+      d3.select(this)
+        .transition()
+        .duration("50")
+        .attr("opacity", "1")
+        .attr("stroke", "black");
+    })
+    .call(drag);
+  svg.selectAll("#labelline").remove();
+  if (ave_select.includes("Mean") & (mean != null)) {
+    svg
+      .append("line")
+      .attr("id", "labelline")
+      .attr("x1", mean + xAxisOffest)
+      .attr("x2", mean + xAxisOffest)
+      .attr("y1", 0)
+      .attr("y2", height * 0.9)
+      .attr("stroke", "red")
+      .attr("stroke-width", 5);
+  }
+  if (ave_select.includes("Median") & (mean != null)) {
+    svg
+      .append("line")
+      .attr("id", "labelline")
+      .attr("x1", median + xAxisOffest)
+      .attr("x2", median + xAxisOffest)
+      .attr("y1", 0)
+      .attr("y2", height * 0.9)
+      .attr("stroke", "blue")
+      .attr("stroke-width", 5);
+  }
+
+  //svg.selectAll("#deviations").remove();
+
+  var scale = d3.scaleLinear().domain([0, width]).range([0, width]);
+  var x_axis = d3.axisBottom().scale(scale);
+
+  function clicked(event, d) {
+    if (event.defaultPrevented) return; // dragged
+
+    let x = event.offsetX - xAxisOffest;
+    let y = event.offsetY;
+    if (x < 0) {
+      return;
+    }
+    data.push({ x: x, y: y });
+    svg.selectAll("text").remove();
+
+    let mean = d3.mean(data.map((v) => v.x));
+
+    let median = d3.median(data.map((v) => v.x));
+
+    mutable summary = {
+      mean: mean,
+      median: median,
+      data: data.map((v) => v.x)
+    };
+
+    svg
+      .selectAll("circle")
+      .data(data)
+      .join("circle")
+      .attr("cx", (d) => d.x + xAxisOffest)
+      .attr("cy", (d) => d.y)
+      .attr("r", radius)
+      .on("mouseover", function (d, i) {
+        d3.select(this)
+          .transition()
+          .duration("50")
+          .attr("opacity", ".5")
+          .attr("stroke", "blue");
+      })
+      .on("mouseout", function (d, i) {
+        d3.select(this)
+          .transition()
+          .duration("50")
+          .attr("opacity", "1")
+          .attr("stroke", "black");
+      })
+      .call(drag);
+
+    svg.selectAll("#labelline").remove();
+    svg.selectAll("line").remove();
+    svg
+      .append("g")
+      .attr("transform", "translate(" + xAxisOffest + ", " + height * 0.9 + ")")
+      .call(x_axis);
+    if (ave_select.includes("Mean") & (mean != null)) {
+      data.map((v) => {
+        svg
+          .append("line")
+          .join("line")
+          .attr("x1", mean)
+          .attr("x2", v.x)
+          .attr("y1", v.y)
+          .attr("y2", v.y)
+          .attr("stroke", "red")
+          .attr("stroke-width", 1);
+      });
+
+      svg
+        .append("line")
+        .attr("id", "labelline")
+        .attr("x1", mean + xAxisOffest)
+        .attr("x2", mean + xAxisOffest)
+        .attr("y1", 0)
+        .attr("y2", height * 0.9)
+        .attr("stroke", "red")
+        .attr("stroke-width", 5);
+    }
+    if (ave_select.includes("Median") & (mean != null)) {
+      //svg.selectAll("line").remove();
+      svg
+        .append("line")
+        .attr("id", "labelline")
+        .attr("x1", median + xAxisOffest)
+        .attr("x2", median + xAxisOffest)
+        .attr("y1", 0)
+        .attr("y2", height * 0.9)
+        .attr("stroke", "blue")
+        .attr("stroke-width", 5);
+
+      data.map((v) => {
+        svg
+          .append("line")
+          .join("line")
+          .attr("x1", median)
+          .attr("x2", v.x)
+          .attr("y1", v.y)
+          .attr("y2", v.y)
+          .attr("stroke", "blue")
+          .attr("stroke-width", 1);
+      });
+    }
+  }
+
+  svg
+    .append("g")
+    .attr("transform", "translate(" + xAxisOffest + ", " + height * 0.9 + ")")
+    .call(x_axis);
+  svg.on("click", clicked);
+  return svg.node();
+}
+```

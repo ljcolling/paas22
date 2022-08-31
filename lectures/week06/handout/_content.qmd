@@ -1,0 +1,293 @@
+This lecture is made up of two parts. **Part one** will introduce the concepts
+of **populations** and **samples** and how they are related to one another. In
+**Part Two**, we'll learn about **distributions** and about how natural
+processes can give rise to particular kinds of distributions. In particular,
+we'll learn about how natural phenomena can give rise to the **normal
+distribution**, and we will lay some of the groundwork for understanding the
+**sampling distribution**, which will be introduced in a later lecture. Finally,
+at the end of **Part Two**, we'll try to put everything together, and we'll look
+at the relationship between **samples**, **populations**, and **distributions**.
+
+## Samples and populations
+
+One of the key things that we want to do with _statistics_ is to make
+**inferences** about **populations** from _the information_ we get from
+**samples**. That is, we often want to make a judgement, or draw a conclusion,
+about an aspect of the population when all we have access to is a sample.
+
+We'll get to more formal definitions of _populations_ and _samples_ shortly, but
+first, let's make things more concrete by introducing an example.
+
+Let's say you're interested in the **average height** of **people in the UK**.
+The "easy" way to find an answer to this question is to measure **all the people
+in the UK** and then work out the **average height**. Doing this will give you
+the exact answer to your question. But if you can't measure everyone in the UK,
+then what do you do?
+
+One option is to select a smaller group, or subset, of people from the UK. You
+can then measure the height of people in this group, and then try to use this
+information to figure out plausible values for the average height of people in
+the UK.
+
+In this example, the group (or groups) you're making claims about is the
+population. You want to claims about **the average height** of **people in the
+UK**. And the **sample** is a subset of this population---the smaller group of
+people that you were eventually able to measure.
+
+It's important to note that there isn't a **single** population. What counts as
+the population will depend on the claim you're making. For example, let's say
+I'm interested in testing the claim, "Do **people in East Sussex** show an
+interference effect on the Stroop task?". Here the **population** would be
+**people in East Sussex**. If, however, I want to make claims about **people in
+general**, then the **population** might be **all living humans**. The
+**sample** is always going to be a subset of the **population**.
+
+:::{.callout-tip collapse="true"}
+
+### Learn more about WEIRD samples
+
+Researchers in psychology aren't always explicit about which population they're
+making inferences about. One might assume it to be something like "humans in
+general". But if this is the case, then the **samples** that psychological
+scientists study should be a **subset** of _humans in general_. However, several
+researchers have noted that the samples used in the vast majority of psychology
+research tend to be rather **WEIRD**. That is, the samples used in most
+published psychological science are drawn from **W**estern, **E**ducated,
+**I**ndustrialized, **R**ich, and **D**emocratic (WEIRD) societies [@weird]. The
+preponderance of WEIRD samples implies that researchers either assume that there
+is little variation across different population groups when it comes to the
+phenomena they're studying, or that these samples are as representative of
+**humans in general** as any other group.
+
+But is this true? Answering this question is difficult because it would
+plausibly be conditional on the nature of the research question or phenomenon
+being studied. For example, it _seems_ plausible that there would be little
+variation across human populations when it comes to phenomena like low-level
+auditory and visual processing. However, it also _seems_ plausible to expect to
+see more variation when it comes to phenomena like moral reasoning, where
+cultural practices may play a more prominent role. However, it is an empirical
+question---that is, it is a question that can only be answered by looking at the
+actual data. Unfortunately, the data required to answer these questions are
+sparse. However, the data that does exist suggests that there is probably more
+variation than people would expect, even when it comes to _low-level_ phenomena
+like visual perception[@weird]. In the past few years, there has been some
+movement to try to make samples in psychological research more diverse, but
+there is still a long way to go and, therefore, this is an issue worth bearing
+in mind.
+
+:::
+
+### The relationship between samples and populations
+
+Let's assume that we have explicitly defined our **population** (for example, as
+_all people in the UK_) and we've collected a **sample** by taking measurements
+from a **subset** of this population. What is the relationship between this
+sample and the population from which it was drawn?
+
+The _sample_ should **resemble** the _population_ in some way. Most often we're
+interested in making **inferences** about **averages**---for example,
+**average** performance or **average** score on a measure or a test. In the
+example I introduced earlier, we were interested in **average height**. But we
+might also be interested in things a difference between two averages---for
+example, whether there is a difference in **average depression levels** before
+and after some intervention, or whether **average response times** are different
+between the two conditions of a Stroop task. Ideally then, the **average
+height** of our **sample** should **resemble** the **average** height of our
+**population**, or the _average_ _response_ _time_ _difference_ in our
+**experimental sample** should _resemble_ the _average response time difference_
+in our population. But if we don't know the **average** of our **population**,
+then how will we know whether our **sample** _resembles_ it?
+
+In short, **we can't know for sure**. But we can think of a couple of things
+that will **influence** the relationship between our **sample** and the
+**population**. To figure out what these are, let's do a thought experiment and
+think of some **extreme cases**.
+
+First, consider the case where **all the members** of a _population_ are
+**identical**. If this were the case, then our **sample** will have an
+**identical** average to the population. The height of one person would be the
+same as the average height of two people, which would be the same as the average
+height of 100 people, which would be same as the average height of the
+population because people only come in one height. But if the **members** of the
+**population** are all **different** from one another, then there is no
+guarantee that the **sample's average** will **resemble** the **population's
+average**.
+
+The second extreme scenario is if our sample is **very large**. Let's say that
+it is so large that it includes **all the members of the population**. If this
+were the case, then, by definition, our **sample average** would be
+**identical** to the **population average**. However, if our sample is smaller
+than the entire population, then once again, there is no guarantee that the
+**sample's average** will **resemble** the **population's average**.
+
+Based on this reasoning, we can say that two things will influence whether your
+_sample_ resembles your _population_. These are 1) the amount of **variation**
+in our population, and 2) the **size** of our sample.
+
+Importantly, however, and barring the extreme cases above, for **any particular
+sample** we won't know whether it **resembles** the population or not, because,
+remember, we don't know the average of the population. Instead, we should think
+about these two factors as influencing **how likely** it is for samples to
+resemble the population. But what does this mean?
+
+One way to think about this is in terms of **repeatedly** taking samples from
+the same population. For example, if we take a large sample from the
+population---large, but not so large as to include the entire population---then
+we can't say that our **particular** sample will resemble the population. But if
+we take many samples (of that size), then we can say that **on average** those
+samples will be closer to the population than would be the case for a collection
+of smaller samples.
+
+The same reasoning applies to **variation in the population**. If there is
+**less variation** in the **population**, then the samples drawn from that
+population will tend to be closer to each other and closer to the population
+average. But again, we won't be able to say whether **a particular sample** has
+an **average** that is close to the population average.
+
+Of course, sample size and population variation exert their influence together.
+If we want our sample averages to be close to the population average, then we
+need samples that are **big enough**, but what counts as **big enough** will
+depend on the **population variation**. Therefore, knowing whether our sample is
+big enough depends on knowing the population variation. Unfortunately, we don't
+know this; however, there is a way to estimate it. But that's a topic for
+another lecture.
+
+:::{.callout-tip}
+
+### Explore more
+
+In this box you can explore the relationship between samples and populations. In
+particular, you can see how two factors (1) **sample size** and (2) **population
+variability** have an impact on how closely samples will _on average_ resemble
+the population.
+
+```{ojs}
+//| echo: false
+md`The top plot shows the outcome of ${sample_size6} dice throws of a 6-sides dice.
+
+Each dot represents the result of one throw. So one circle over the **1** means that
+one of the throws showed a **1**. Two circles of the **5** means
+that two of the throws showed a **5**. And so on. Because it's a 6-sided dice,
+each throw can show any number from 1 to 6.
+
+Below this is a plot showing each the **average** of each sample. This is 
+just calculated by adding up all the numbers shows on the dice and 
+dividing it by ${sample_size6}. The **population average** is also marked on
+this plot, together with lines showing ± 1 from the **population average**.
+Notice that the **sample average** is very rarely the same as the 
+**population average**. Instead, it bounces around. Sometimes it's 
+higher, and sometimes it's lower. Use the slider to add adjust the
+**sample size**. What happens when the sample size is small---for example, 1?
+What happens when the sample size is big--for example, 100?
+
+`
+```
+
+```{ojs}
+//| echo: false
+import {doplot} from "@ljcolling/samples"
+import {viewof sample_size6, viewof sample_size20} from "@ljcolling/samples"
+```
+
+```{ojs}
+//| echo: false
+//| fig-align: center
+doplot(6)
+```
+
+```{ojs}
+//| echo: false
+viewof sample_size6
+```
+
+```{ojs}
+//| echo: false
+md`The next two plots are the same as above, expect they show the outcome of
+${sample_size20} dice throws of a 20-sided dice. A 20-sided dice can show
+any value between 1 and 20.
+
+You can also see a plot showing each the **average** of each sample. This is 
+just calculated by adding up all the numbers shows on the dice and 
+dividing it by ${sample_size20}. The **population average**,
+together with lines showing ± 1 from the **population average** are also shown.
+Use the slider to add adjust the **sample size**. What happens when the 
+sample size is small---for example, 1?
+What happens when the sample size is big--for example, 100?
+
+`
+```
+
+```{ojs}
+//| echo: false
+//| fig-align: center
+doplot(20)
+```
+
+```{ojs}
+//| echo: false
+viewof sample_size20
+```
+
+::::
+
+The 20-sided dice represents a population that has a lot of variability. The
+individuals in the population (the dice throws) can be any number between 1
+and 20. The 6-sided dice represents a population that has only a little
+variability. The individuals in the population (the dice throws) can only be a
+number between 1 and 6.
+
+By looking at the running averages (the bottom plot for each dice) we can tell
+whether the samples _on average_ resemble the population. If most of the
+averages fall very close to the population average then we can say the samples
+_on average_ resemble the population.
+
+Notice how for a given sample size (say 5 for each dice) the average of the
+samples from the low variability dice (6 sided) do a better job of _on average_
+resembling the population average. For the high variability dice (20 sided), the
+averages of the same size samples do a poorer job of _on average_ resembling the
+population average. The important part here in _on average_. Individual sample
+averages may do a good job of resembling the population average no matter what
+the sample size is. This demonstration tells use the **population variability**
+is one factor that influences whether the averages of our samples will _on
+average_ resemble the average of our population.
+
+Let's say that our sample averages do a good job of resembling the population
+average if the _almost all_ the sample averages fall within ± 1 of the
+population average (the lines marked on the plot). Try adjusting the _sample
+sizes_ for the two dice? What smallest value that will cause _almost all_ the
+sample averages to land between the marked lines?[**Hint** If you can't work it
+out try setting the sample size to **16** for the 6-sided dice and to **180**
+for the 20-side dice.]{.aside} Notice how for high variability dice this value
+must be far higher? This demonstration tells use the **sample size** is the
+second factor that influences whether the averages of our samples will _on
+average_ resemble the average of our population.
+
+<!-- DIV -> style="background:#EBF5E8;margin-left: -16px;margin-right: -16px;padding:12px 5px 12px 10px;border:#DADEE2;border-width:1px;border-style:solid;margin-top: -20px;border-top-left-radius: 5px;border-top-right-radius: 5px;" -->
+
+<!-- H$ -> style="border:solid; border-width:1px;border-color: #DADEE2;padding-left: 15px;padding-right: 15px;border-top-left-radius: 10px;padding-bottom: 15px;padding-top: -8px;margin-top: 27px;" -->
+
+```{r}
+(sqrt((20^2 -1) / 12) / sqrt(180)) * qnorm(.99)
+(sqrt((6^2 -1) / 12) / sqrt(16)) * qnorm(.99)
+```
+
+```{r}
+rdu<-function(n,k) sample(1:k,n,replace=T)
+```
+
+```{r}
+side6_mean <- function(d){
+ n <- 1#5
+ x <- rdu(n, 6) 
+ mean(x)
+}
+lapply(X = 1:10000, side6_mean) |> unlist() |> sd() -> side6_se
+side20_mean <- function(d){
+ n <- 1#57
+ x <- rdu(n, 20) 
+ mean(x)
+}
+lapply(X = 1:10000, side20_mean) |> unlist() |> sd() -> side20_se
+qnorm(0.99, lower.tail = T) * side6_se
+qnorm(0.99, lower.tail = T) * side20_se
+```

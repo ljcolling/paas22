@@ -13,10 +13,11 @@ website:
 
 format:
   html:
+    template-partials:
+      - title-metadata.html
     theme: 
       light: cosmo
       dark: darkly
     css: styles.css
-
 
 

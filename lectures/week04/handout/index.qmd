@@ -7,14 +7,12 @@ author:
     affiliation: School of Psychology, University of Sussex
     affiliation-url: https://profiles.sussex.ac.uk/p488921-lincoln-colling
 week: 4
-format: 
-  html:
-    navbar: true
-    page-layout: article
-    date: 17 Oct 2022
-    date-format: "D MMMM, YYYY"
-    toc: true
-    toc-location: left
+navbar: true
+page-layout: article
+date: 17 Oct 2022
+date-format: "D MMMM, YYYY"
+toc: true
+toc-location: left
 type: handout
 ---
 
