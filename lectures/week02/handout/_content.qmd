@@ -1,15 +1,3 @@
-```{r}
-#| echo: false
-
-words <- system("pandoc --lua-filter wordcount.lua _content.qmd --from=markdown", intern = TRUE) |> as.numeric()
-minutes <- words %/% 200
-seconds <- ceiling(((words / 200) - minutes) * 60)
-reading_time <- paste0(minutes, " minutes and ", seconds, " seconds")
-``` 
-
-`r words` words. Reading time: `r reading_time`
-
----
 
 ## Introduction
 
@@ -29,7 +17,7 @@ approach" is often equated with reliability.
 #| label: fig-we-believe
 #| fig-cap: An example of a "We Believe" sign that was created in response to the election victory of Donald Trump
 #| cap-location: bottom
-knitr::include_graphics("we_believe.jpg")
+knitr::include_graphics(here::here("images","we_believe.jpg"))
 ```
 
 So we might want to say that science is a _special way of learning about the
@@ -123,7 +111,7 @@ senses. But is this actually the case?
 #| fig-cap: An example of an ambiguous image
 #| cap-location: bottom
 
-knitr::include_graphics("my_wife_and_my_mother_in_law.jpg")
+knitr::include_graphics(here::here("images","my_wife_and_my_mother_in_law.jpg"))
 ```
 
 The image is @fig-dual-image is an example of an _ambiguous image_. This image
@@ -413,7 +401,7 @@ Instead of just **collecting** _confirmations_ we can employ **induction** and
 #| label: fig-inductive-deductive
 #| fig-cap: Using induction and deduction together
 #| cap-location: bottom
-knitr::include_graphics("inductive-deductive.png")
+knitr::include_graphics(here::here("images","inductive-deductive.png"))
 ```
 
 To do this, we might collect observations and then use **induction** to come up
@@ -641,7 +629,7 @@ problems that need to be solved.
 #| label: fig-programme
 #| fig-cap: Example of a research programme from Dienes (2008)
 #| cap-location: bottom
-knitr::include_graphics("hardcore.png")
+knitr::include_graphics(here::here("images","hardcore.png"))
 ```
 
 Lakatos was also interested in comparing **research programmes**, something that
