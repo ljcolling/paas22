@@ -1,4 +1,6 @@
-
+<!--
+TODO: Decide which move parts should  be in footnotes vs asides
+-->
 Doing research is an integral part of your training as a psychologist. But
 before you can start thinking about **doing research** you need to be aware of
 the different **approaches** that are available to you. The aim of today's
@@ -422,30 +424,21 @@ If you wanted to see whether _emphysema_ caused _cancer_ then you'd have to
 
 Emphysema and cancer are **correlated** (the increase in one leads to an
 increase in the other), but emphysema doesn't cause cancer because they have a
-common cause.
-
-
-
-Correlation and causation
-
-Sometimes two correlated variables have a causal relationship: smoking and
-cancer
-
-Sometimes they have a common cause: emphysema and cancer
-
-And sometimes they have neither:
-
-From 2000 to 2009, there was a strong relationship between the number of men
-getting engineering degrees and per capita consumption of sour cream.
+common cause. Sometimes two correlated variables have a causal relationship,
+such as the correlation between smoking and cancer. Sometimes they have a common
+cause---such as the correlation between developing emphysema and cancer. And
+sometimes, they have neither. For example, the correlation between the number of
+men getting engineering degrees and per capita consumption of sour cream (see
+@fig-cream).
 
 ```{r}
 #| echo: false
 #| fig-cap: An example of a spurious correlation
-
+#| label: fig-cream
+#| out.width: 100%
 knitr::include_graphics(here::here("images","sexy_chart.png"))
 ```
 
----
 
 ## Qualitative vs Quantitative methods
 
@@ -460,8 +453,6 @@ How could you study **memory** from
 - A **qualitative** perspective?
 
 - A **quantitative** perspective?
-
-
 
 
 **Quantitative:**
@@ -480,9 +471,6 @@ Ensure that the only thing that differs between the words on each list is the
 - **Word order**: make sure some people get the lists in one order and some in the
   other order, because maybe people get tired by the end and that influences
   memory.
-
-
-
 
 
 **Qualitative:**
@@ -532,9 +520,6 @@ aspects of systems or phenomena they are studying.
   produce phenomena
 
 
-
-
-
 **Computer simulation** has been used to study a lot of different phenomena in
 psychology, but here are some examples of approaches I find particularly
 interesting.
@@ -542,17 +527,6 @@ interesting.
 **Simulation** has been used to show how **seemingly complex behaviour** can
 arise from **very simple processes**.
 
-::::{.columns}
-
-:::{.column width="50%"}
-
-```{r}
-knitr::include_graphics(here::here("images","flock.jpg"))
-```
-
-:::
-
-:::{.column width="50%"}
 
 Flocking behaviour in birds seems very complex, and it looks **as if** there
 must be something very complex going on inside their brains.
@@ -563,7 +537,56 @@ But you can **simulate** this behaviour with only three simple rules:
 2. **align** direction with nearby birds
 3. **approach** distant birds
 
+You can use @exm-boids to explore how these three rules influence the simulated
+flocking behaviour in birds.
+
+
+::::{.callout-tip icon="false" appearance="simple"}
+
+
+:::{#exm-boids}
+#### Explore flocking behaviour
 :::
+
+Use the sliders to make adjustments to each of the three rules that determine
+flocking behaviour in the simulated birds.
+
+<div style="display:flex;justify-content:center">
+
+```{ojs}
+//| echo: false
+//| align: center
+import {viewof boidsdisplay} from "@ljcolling/boids"
+viewof boidsdisplay
+```
+
+</div>
+
+```{ojs}
+//| echo: false
+import {viewof avoidanceStrength} from "@ljcolling/boids"
+```
+
+```{ojs}
+//| echo: false
+import {viewof alignmentStrength} from "@ljcolling/boids"
+```
+
+```{ojs}
+//| echo: false
+import {viewof cohesionStrength} from "@ljcolling/boids"
+```
+
+```{ojs}
+//| echo: false
+//| panel: input
+viewof avoidanceStrength
+viewof alignmentStrength
+viewof cohesionStrength
+```
+
+
+
 
 ::::
 
@@ -571,31 +594,10 @@ But you can **simulate** this behaviour with only three simple rules:
 
 
 
-```{r}
-#| fig-align: center
-knitr::include_graphics(here::here("images","./boids.gif"))
-```
 
 
-In the lecture notes you can adjust the rules of the simulation
+#### Conway's game of life
 
-
-
-Conway's game of life^[You can read more about Conway's game of life at [scholarpedia page](http://www.scholarpedia.org/article/Game_of_Life) or play with an example in the handout]
-
-::::{.columns}
-
-:::{.column width="50%"}
-
-```{r}
-#| fig-align: center
-#| fig-caption: An example of an oscillating pattern in the Game of Life
-knitr::include_graphics(here::here("images","./gol.gif"))
-```
-
-:::
-
-:::{.column width="50%"}
 
 Conway's Game Of Life has 4 simple rules: 
 
@@ -607,11 +609,60 @@ Conway's Game Of Life has 4 simple rules:
 
 - A dead cell with exactly 3 live neighbours becomes a live cell (reproduction)
 
+With just these 4 simplerules Conway's game of life can exhibit
+some very complex behaviour. You can explore the Game of Life in @exm-gof.[
+You can read more about Conway's game of life at
+[scholarpedia page](http://www.scholarpedia.org/article/Game_of_Life).
+
+The scholarpedia article was co-written by a Anil Seth, a neuroscientist at
+the University of Sussex.]{.aside}
+
+::::{.callout-tip icon="false" appearance="simple"}
+
+:::{#exm-gof}
+#### Explore the Game of Life
 :::
+
+You can use the slider to the select some of the more well known patterns. These
+patterns produce some interesting behaviour such as oscillating at particular
+rates. You can adjust the *Generation time* slider to speed up the simulation.
+
+Each time you select *pattern 6*, a new random set of live and dead cells will
+be produced. These random pattern might produce some interesting behaviour, or
+they could just burst into live and then die off!
+
+
+
+<div style="display:flex;justify-content:center">
+```{ojs}
+//| echo: false
+import {gun} from "@ljcolling/game-of-life"
+import {viewof n} from "@ljcolling/game-of-life"
+import {viewof delay} from "@ljcolling/game-of-life"
+import {gol_des} from "@ljcolling/game-of-life"
+gun
+```
+</div>
+
+\
+```{ojs}
+//| echo: false
+//| panel: input
+viewof n
+viewof delay
+```
+
+```{ojs}
+//| echo: false
+gol_des
+```
+
+You can read about some of the more interesting patterns on the
+[LifeWiki](https://conwaylife.com/wiki/Main_Page).
+
 
 ::::
 
----
 
 ### Agent-based modelling (ABM)
 

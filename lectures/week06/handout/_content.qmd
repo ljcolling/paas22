@@ -1,19 +1,385 @@
-This lecture is made up of two parts. **Part one** will introduce the concepts
-of **populations** and **samples** and how they are related to one another. In
-**Part Two**, we'll learn about **distributions** and about how natural
-processes can give rise to particular kinds of distributions. In particular,
-we'll learn about how natural phenomena can give rise to the **normal
-distribution**, and we will lay some of the groundwork for understanding the
-**sampling distribution**, which will be introduced in a later lecture. Finally,
-at the end of **Part Two**, we'll try to put everything together, and we'll look
-at the relationship between **samples**, **populations**, and **distributions**.
+```{r}
+#| echo: false
+#| include: false
 
-## Samples and populations
+require(ggplot2) 
+require(cowplot)
+require(tidyr)
+require(dplyr)
+require(plotly)
+salary <- readr::read_csv(here::here("data","world_salary.csv"))
+USD <- scales::dollar_format(suffix = " USD")
+ggplot2::theme_set(cowplot::theme_cowplot())
+```
 
-One of the key things that we want to do with _statistics_ is to make
-**inferences** about **populations** from _the information_ we get from
-**samples**. That is, we often want to make a judgement, or draw a conclusion,
-about an aspect of the population when all we have access to is a sample.
+In [Lecture 4](/lectures/week04/handout) we started talking about how
+quantitative methods deal with **measurement**---that is, putting numbers to
+things. In today's lecture we're going to start talking about what we actually
+do with these numbers, and how to make a little more sense of measurements in
+general. This lecture will be the first in a set of lectures where we'll talk
+about **samples** and **populations**, how to **describe** them, and how to
+understand the relationship between them. A lot of these ideas are
+interconnected, so we'll be touching on some ideas multiple times. But
+hopefully each time we'll be able to gain a richer understanding.
+
+The first thing we'll want to do when we've collected a set of measurements is
+to describe them in some way. One way to do this is to work out what the
+**typical value** is. And it's this kind of description that we'll turn our
+attention to first. We'll start off by looking at three different ways we can
+describe the **typical value** is a set of numbers. 
+
+## Measures of central tendency
+
+What we mean by the **typical value** is not always clear. For example, in
+@fig-income we can see the average annual salary (in US dollars) for a set of
+`r dim(salary)[1]` countries. Each bar of the plot represents the number of
+countries in the given salary bracket ($0--$10k, $10-$20k, ...).
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig.align: center
+#| fig.height: 3
+#| label: fig-income
+#| fig.cap: "National average annual salary [source: https://www.worlddata.info/average-income.php]"
+(salary |> ggplot(aes(x = yearly)) +
+  geom_histogram(binwidth = 1e4, boundary = 0, fill = "white", color = "black") +
+  labs(x = "Annual salary in USD", y = "Count")) |>
+  plotly::ggplotly(tooltip = "count") |>
+  plotly::config(displayModeBar = F)
+```
+
+
+From the plot we can see that there are a lot of countries where the average
+annual salary is less than $30,000 USD. There are also a handful of countries
+where the average annual salary is more than $100,000 USD. What would you
+consider the _most typical_ annual salary? The bracket with the most countries
+in it? If so, that would mean the most typical salary on the planet is between
+$0 and $10,000 USD per year. Or maybe we should pick the value where half the
+countries have a lower average salary and half the countries have a higher one?
+Choosing this option leads to an estimate of the most typical salary of
+`r salary$yearly |> median() |> USD()` per year.
+
+As you can see, depending on how we define _the most typical value_, we get
+different answers. We'll cover the three main ways of defining the _typical
+value_ or _average_. Together, these ways of describing the _typical_ or
+_average_ value are known as **measures of central tendency**.
+
+### Mode
+
+The **mode** is a term that refers to the **most frequent value** in a set of
+measurements. This is the kind of _average_ we discussed above when we said the
+most typical salary on the planet is between $0 and $10,000 USD a year. The
+easiest way to spot the **mode** is just to draw a plot like the one we did in
+@fig-income and then just look for the tallest bar.
+
+A set of numbers can have one or more modes. If it only has one mode, then it is
+said to be **unimodal**. **Bimodal** means it has two modes. If it has three or
+more modes, then it is usually called **multimodal**. Some examples of
+this are shown in @fig-diff-modes.
+
+```{r}
+#| echo: false
+#| label: fig-diff-modes
+#| fig-cap: Datasets with different numbers of modes.
+#| fig-subcap:
+#|    - "A unimodal dataset"
+#|    - "A bimodal dataset"
+#|    - "A multimodal dataset"
+#| layout-ncol: 3
+require(ggplot2)
+require(dplyr)
+
+# Let's draw some plots
+
+# Unimodal
+set.seed(123)
+tibble(x = rchisq(n = 10000, df = 5, ncp = 0)) |>
+  ggplot(aes(x = x)) +
+  geom_histogram(bins = 50, boundary = 0, col = "grey20", fill = "grey80") +
+  theme_cowplot() +
+  labs(x = "value", y = "count")
+
+# Bimodal
+set.seed(123)
+d <- rnorm(n = 5000, mean = 2, 1)
+tibble(x = c(
+  d,
+  d + 3
+)) |>
+  ggplot(aes(x = x)) +
+  geom_histogram(bins = 50, boundary = 0, col = "grey20", fill = "grey80") +
+theme_cowplot() +
+labs(x = "value", y = "count")
+
+# Multimodal
+d <- rep(seq(0, 5, length.out = 100), times = 100)
+tibble(x = d) |>
+  ggplot(aes(x = x)) +
+geom_histogram(bins = 11, boundary = 0, col = "grey20", fill = "grey80") +
+theme_cowplot() +
+labs(x = "value", y = "count")
+```
+
+
+:::{.callout-important}
+
+The mode is the only definition of _typical value_ that works for data that is
+measured at the **nominal**/**categorical** level.
+
+When it comes to truly **continuous** variables, such as height, the mode is
+often not very informative. Why? Because no two people are **exactly** the same
+height (right down to the exact same number of nanometres), so each value in the
+dataset may be unique. For this reason, the mode is rarely used for continuous
+variables measured at the **interval** or **ratio** levels.
+
+Average salary is continuous variable, but we turned it into a discrete variable
+placing chunking the measurements into discrete bins. 
+
+:::
+
+### Median
+
+```{r}
+#| echo: false
+dice_res <- c(3, 4, 6, 1, 1) 
+
+```
+
+The **median** is the second kind of average we talked about
+[above](#measures-of-central-tendency); the
+middle value where half the measurements are above that value and half the
+measurements are below. To find the median, we first need to sort our data.
+Let's say we roll a 6-sided dice 5 times and get the following: 
+`r paste0(dice_res[1:4], collapse = ", ")` and `r dice_res[5]`.
+
+To calculate the median, let's do the two steps:
+
+1. Sort the data from smallest or largest: `r sort(dice_res)`
+
+2. Find the mid-point: We have five observations so the third one in the
+sorted sequence is the mid-point.
+
+So out of five rolls the median is `r median(dice_res)` (and the mode is 1). If
+we had an even number of observations then the median would be the half-way
+point between the two mid-point values. For example, if we instead rolled the
+dice 6 times and got the results 1, 1, 3, 4, 4, and 6 then the median would be
+the midpoint between 3 and 4, or `r median(c(1, 1, 3, 4, 4, 6))`.
+
+@fig-sorted below shows the annual salary in USD per each of the countries in the
+data set, sorted from lowest to highest. Notice, that this time, we’re not
+grouping countries in salary brackets and looking at how many there are in each
+one as was the case in @fig-income. Here, each bar represents a country.
+
+Because we have an even numbers of countries in our dataset (78), there are two
+mid-points. These are highlighted in orange in the plot below. To get the median
+annual national salary, we need to find the value half-way between the average
+salary in Romania and Venezuela, which in this data set turns out to be 
+`r median(salary$yearly) |> USD()`.
+
+
+```{r}
+#| echo: false
+#| label: fig-sorted
+#| fig.cap: |
+#|  Average national salary per country sorted from lowest to highest (Hover 
+#|  over the bars to see the name of the country and the value).
+(salary |>
+  dplyr::arrange(yearly) |>
+  dplyr::mutate(index = 1:n()) |>
+  dplyr::mutate(
+    color =
+      case_when(
+        index == (1:78 |> median() |> floor()) ~ "red",
+        index == (1:78 |> median() |> ceiling()) ~ "red",
+        TRUE ~ " grey"
+      )
+  ) |>
+  dplyr::mutate(text = glue::glue("{country} (${round(yearly/1000,2)}k)")) |>
+  ggplot(aes(x = index, y = yearly, text = text, fill = color)) +
+  ggplot2::scale_fill_manual(
+    name = NULL,
+    values = c("#454A60", "#ff4500"), labels = NULL, guide = "none"
+  ) +
+  labs(y = "Annual salary in USD", x = "Country") +
+  scale_x_continuous(labels = NULL, breaks = NULL) +
+  scale_y_continuous(labels = function(x) paste0(x / 1000, "k")) +
+  ggplot2::theme(
+    axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+    legend.position = "none", legend.title = element_blank(),
+    panel.grid.major.y = element_line(color = "grey60"),
+    axis.line.x = element_blank(), axis.line.y = element_blank()
+  ) +
+  geom_col() +
+  NULL
+) |>
+  plotly::ggplotly(tooltip = "text") |>
+  plotly::config(displayModeBar = F)
+```
+
+
+:::{.callout-important}
+
+To be able to calculate a meaningful median, the variable must be measured on
+**at least the ordinal level**.
+
+:::
+
+### Mean
+
+The arithmetic mean is what most people mean when they talk about the
+*average*. You can work the mean of a set of numbers by adding up all
+the values and then dividing this by the number of values in the data
+set. Mathematically, you can represent this with the formula shown
+in @eq-mean, below:
+
+```{r}
+#| echo: false
+rgb2 <- \(red, green, blue) rgb(red, green, blue, maxColorValue = 255)
+hex <- function(x) {
+  stringr::str_split(x, ",")[[1]] |>
+  as.numeric() |>
+  setNames(c(
+    "red",
+    "green", "blue"
+  )) |>
+  as.list() |>
+  do.call("rgb2", args = _)
+}
+mean_c <- "255, 0, 0"
+sum_c <- "0, 255, 0"
+all_c <- "0, 0, 255"
+div_c <- "255, 0, 255"
+```
+
+
+$$
+\definecolor{sum}{RGB}{`r sum_c`}
+\definecolor{n}{RGB}{`r all_c`}
+\definecolor{i}{RGB}{`r all_c`}
+\definecolor{x}{RGB}{`r all_c`}
+\definecolor{div}{RGB}{`r div_c`}
+\definecolor{mean}{RGB}{`r mean_c`}
+{\color{mean}\bar{x}}={\color{div}\frac{1}{N}}{{\color{sum}\sum^{\color{n}N}_{\color{i}i=1}}{\color{x}x_i}}
+$$ {#eq-mean}
+
+Take <font color="`r hex(mean_c)`">mean of the data</font> is equal to
+<font color="`r hex(sum_c)`">the sum</font> of
+<font color="`r hex(all_c)`">all the values</font>
+<font color="`r hex(div_c)`">divided by the number of values</font>
+
+<!-- TODO: Break down the sum notation a bit more -->
+
+### Mean vs Median
+
+Both of these measures have their advantages and disadvantages. The mean is
+easier to worth with from a mathematical point of view. And for this reason,
+most of the statistical methods we'll be learning about are based on the mean.
+
+Compared to other measures of central tendency, *means taken from different
+samples of the same population* tend to be **more similar to each other**. If,
+on the other hand, we calculated medians for different samples from the same
+population, there would be more variability in the values we'd obtain. Turning
+back to our dice example: If we took the median and the mean of 5 dice rolls,
+and we did this over and over, the mean values would be more bunched around 3.5
+with very few values less than 2. The median values would still be be centred
+around 3.5, but we'd get more values less than 2, so they would be more spread
+out.
+
+
+However, there are also some downsides to the **mean** relative to the
+**median**. The primary one is that the _mean_ is **sensitive to extreme
+values** in a way that the _median_ is not. This means that, even if we have a
+really big sample size, adding a **single value** that is extremely big or
+extremely small can shift the _mean_ dramatically. This is not the case for
+the _median_.
+
+
+
+
+```{r}
+#| echo: false
+
+d1 <- c(5, 3, 1, 7, 10, 4, 5)
+n_v <- 1000
+d2 <- c(d1, n_v)
+```
+
+
+For example, let's say we have a list of numbers: `r d1`. This list of numbers
+has a median of `r median(d1)` and a mean of `r mean(d1)`. If we add an
+additional value of `r n_v` to this list, then our new median would be unchanged
+at `r median(d2)`, but our new mean would be `r mean(d2)`. You can explore the
+influe of data points on the mean and the median in @exm-mean-median.
+
+
+
+::::{.callout-tip icon="false" appearance="simple"}
+
+:::{#exm-mean-median}
+#### Explore the mean and median
+:::
+
+Click on the plot below to add data to the data set. After you've place a data
+point, you can click and drag it to move it. You can use the check boxes
+to diplay the mean (red) and median (blue).
+
+To see how the <font color="red">**mean**</font> and the <font
+color="blue">**median**</font> are influenced by extreme value try adding 
+several points to the left side of the plot before adding a single point to
+the far right. Drag this point around moving it closer or further away 
+from the left side points. Notice how the <font color="blue">median</font>
+is unchanged but the <font color="red">mean</font> does change.
+
+Tick the *show data table* box to show the raw data. From this you should be
+able to work out the mean and median yourself.
+
+
+```{ojs}
+//| echo: false
+import {central_tendency_display} from "@ljcolling/measures-of-central-tendency"
+import {viewof ave_select} from "@ljcolling/measures-of-central-tendency"
+import {viewof clear} from "@ljcolling/measures-of-central-tendency"
+import {viewof show_data_table} from "@ljcolling/measures-of-central-tendency"
+import { data_table} from "@ljcolling/measures-of-central-tendency"
+import {viewof summaryText} from "@ljcolling/measures-of-central-tendency"
+central_tendency_display
+```
+
+\
+```{ojs}
+//| echo: false
+//| panel: input
+viewof ave_select
+viewof clear
+viewof show_data_table
+```
+
+```{ojs}
+//| echo: false
+data_table
+```
+
+```{ojs}
+//| echo: false
+viewof summaryText
+```
+
+::::
+
+
+
+<!-- FIXME: Add visualisation of mean and median -->
+
+## Sample means and population means
+
+So far we've just been talking about describing the typical value in a set of
+measurements that we have---our **sample**. But one of the key things that we
+want to do with *statistics* is to make **inferences** about **populations**
+from *the information* that we get from **samples**. That is, we often want to
+make a judgement, or draw a conclusion, about an aspect of the population when
+all we have access to is a sample.
 
 We'll get to more formal definitions of _populations_ and _samples_ shortly, but
 first, let's make things more concrete by introducing an example.
@@ -39,41 +405,47 @@ the population will depend on the claim you're making. For example, let's say
 I'm interested in testing the claim, "Do **people in East Sussex** show an
 interference effect on the Stroop task?". Here the **population** would be
 **people in East Sussex**. If, however, I want to make claims about **people in
-general**, then the **population** might be **all living humans**. The
-**sample** is always going to be a subset of the **population**.
+general**, then the **population** might be all **living** humans.
 
-:::{.callout-tip collapse="true"}
+### Theoretical populations
 
-### Learn more about WEIRD samples
+So far in our talk of populations we've only really be thinking about
+populations as the **set of actually existing things** that we can take our
+sample from---for example, all **living** humans. But populations don't have to
+be sets of actually existing things. Instead, they can be the **set of possible
+things** from which our samples can be drawn. This might seem a little
+confusing, so an example might help.
 
-Researchers in psychology aren't always explicit about which population they're
-making inferences about. One might assume it to be something like "humans in
-general". But if this is the case, then the **samples** that psychological
-scientists study should be a **subset** of _humans in general_. However, several
-researchers have noted that the samples used in the vast majority of psychology
-research tend to be rather **WEIRD**. That is, the samples used in most
-published psychological science are drawn from **W**estern, **E**ducated,
-**I**ndustrialized, **R**ich, and **D**emocratic (WEIRD) societies [@weird]. The
-preponderance of WEIRD samples implies that researchers either assume that there
-is little variation across different population groups when it comes to the
-phenomena they're studying, or that these samples are as representative of
-**humans in general** as any other group.
+Let's say we want to collect a sample of 6 coin flips. To collect our
+**sample**, we take a coin and _flip it 6 times_ and count up the number of
+heads and tails and from this we could work out, for example, how many _heads
+are typically seen when flipping the coin 6 times_.
 
-But is this true? Answering this question is difficult because it would
-plausibly be conditional on the nature of the research question or phenomenon
-being studied. For example, it _seems_ plausible that there would be little
-variation across human populations when it comes to phenomena like low-level
-auditory and visual processing. However, it also _seems_ plausible to expect to
-see more variation when it comes to phenomena like moral reasoning, where
-cultural practices may play a more prominent role. However, it is an empirical
-question---that is, it is a question that can only be answered by looking at the
-actual data. Unfortunately, the data required to answer these questions are
-sparse. However, the data that does exist suggests that there is probably more
-variation than people would expect, even when it comes to _low-level_ phenomena
-like visual perception[@weird]. In the past few years, there has been some
-movement to try to make samples in psychological research more diverse, but
-there is still a long way to go and, therefore, this is an issue worth bearing
-in mind.
+So that's our **sample**, but what is our **population**? One way to think of
+our population is as the **set of possible outcomes (numbers of heads) that
+would occur if we flipped the coin 6 times**. It turns out that can actually
+work this out.
+
+To work it out we would do something like the following:
+
+<!-- FIXME: do binimials -->
+
+We can work it out because we know something about the **process that gives rise
+to our data**. Although we might not be able to clearly specify the process that
+gives to the data in a Stroop task, there will still be some **data generating
+process**, which we can think of as the **population** we're sampling from.
+
+:::{.callout-note}
+
+In later years you'll learn about something called the **null hypothesis**. The
+**null hypothesis**, in simple terms, says that the **data generating process**
+for two sets of observations is same. For example, it might say that the _data
+generating process_ that gives rises to people's responses on the Stroop task is
+the same for the **congruent condition** and the **incongruent condition**.
+You'll learn how to perform statistical tests that tell you whether the set of
+data that you've actually collecting is **surprising** or **unsurprising** if
+you were to assume that _two_ **data generating processes** are actually the
+same.
 
 :::
 
@@ -85,209 +457,155 @@ from a **subset** of this population. What is the relationship between this
 sample and the population from which it was drawn?
 
 The _sample_ should **resemble** the _population_ in some way. Most often we're
-interested in making **inferences** about **averages**---for example,
-**average** performance or **average** score on a measure or a test. In the
-example I introduced earlier, we were interested in **average height**. But we
-might also be interested in things a difference between two averages---for
-example, whether there is a difference in **average depression levels** before
-and after some intervention, or whether **average response times** are different
-between the two conditions of a Stroop task. Ideally then, the **average
-height** of our **sample** should **resemble** the **average** height of our
-**population**, or the _average_ _response_ _time_ _difference_ in our
-**experimental sample** should _resemble_ the _average response time difference_
-in our population. But if we don't know the **average** of our **population**,
-then how will we know whether our **sample** _resembles_ it?
+interested is knowing something like: "_What is the typical value (i.e., the
+mean) of the population?"_ In the example I introduced earlier, we were
+interested in **average height**. But we might also be interested in things a
+difference between two averages---for example, whether there is a difference in
+**average depression levels** before and after some intervention, or whether
+**average response times** are different between the two conditions of a Stroop
+task. Ideally then, the **average height** of our **sample** should **resemble**
+the **average** height of our **population**, or the _average_ _response_ _time_
+_difference_ in our **experimental sample** should _resemble_ the _average
+response time difference_ in our population. But if we don't know the
+**average** of our **population**, then how will we know whether our **sample**
+_resembles_ it?
 
-In short, **we can't know for sure**. But we can think of a couple of things
-that will **influence** the relationship between our **sample** and the
-**population**. To figure out what these are, let's do a thought experiment and
-think of some **extreme cases**.
+Let's say that adults in the UK are between 78cm and 231cm but that the average
+height of an adult in the UK 170cm. So our population average is 170cm. Now
+let's collect a sample of data. We'll talk more about the influence of sample
+size in [Lecture ](). But for now let's just say that we collect a sample of 50
+people. And let's say that we don't only collect one sample, but that we collect
+a sample of 50 over and over again. Below you can see the average height of our
+sample of 50 people, with a solid line showing the population mean.
 
-First, consider the case where **all the members** of a _population_ are
-**identical**. If this were the case, then our **sample** will have an
-**identical** average to the population. The height of one person would be the
-same as the average height of two people, which would be the same as the average
-height of 100 people, which would be same as the average height of the
-population because people only come in one height. But if the **members** of the
-**population** are all **different** from one another, then there is no
-guarantee that the **sample's average** will **resemble** the **population's
-average**.
+What do you notice? The sample means don't always line up exactly with the
+population mean. Sometimes the sample mean is higher and sometimes the sample
+mean is lower. It moves around a bit from sample to sample. Because it moves
+around, and because we don't know the population mean, this tells us that **on
+any particular sample** we won't know whether the sample mean is the same as the
+population mean.
 
-The second extreme scenario is if our sample is **very large**. Let's say that
-it is so large that it includes **all the members of the population**. If this
-were the case, then, by definition, our **sample average** would be
-**identical** to the **population average**. However, if our sample is smaller
-than the entire population, then once again, there is no guarantee that the
-**sample's average** will **resemble** the **population's average**.
+### The average of the sample means
 
-Based on this reasoning, we can say that two things will influence whether your
-_sample_ resembles your _population_. These are 1) the amount of **variation**
-in our population, and 2) the **size** of our sample.
+But let's think of things from a slightly different perspective. Let's treat
+the mean of each sample of 50 people as a measurement. We'll now take a
+**"sample"** of these measurements. That is, we'll take we'll measurement 50
+people and work out the average height, then measure another people people and
+work out the average height, and then another 50 people, and so on. And each of
+these averages of 50 people will be one measurements. We'll just add these
+measurements to our **sample of samples**, and each time get add a new
+measurement we'll work out the average of this **sample of samples**. We can see
+was happens to this average in the animation below. What do you notice?
 
-Importantly, however, and barring the extreme cases above, for **any particular
-sample** we won't know whether it **resembles** the population or not, because,
-remember, we don't know the average of the population. Instead, we should think
-about these two factors as influencing **how likely** it is for samples to
-resemble the population. But what does this mean?
+<!-- FIXME: Aniimatio -->
 
-One way to think about this is in terms of **repeatedly** taking samples from
-the same population. For example, if we take a large sample from the
-population---large, but not so large as to include the entire population---then
-we can't say that our **particular** sample will resemble the population. But if
-we take many samples (of that size), then we can say that **on average** those
-samples will be closer to the population than would be the case for a collection
-of smaller samples.
+That's right, as we carry on collecting more and more **samples of samples** the
+average of theses will eventually line up and match the **population mean**.
+What can we conclude from this?
 
-The same reasoning applies to **variation in the population**. If there is
-**less variation** in the **population**, then the samples drawn from that
-population will tend to be closer to each other and closer to the population
-average. But again, we won't be able to say whether **a particular sample** has
-an **average** that is close to the population average.
+This tells us that even though we don't know whether the mean of **any
+particular sample** is the same as the population mean, the **sample mean** will
+**on average** be the same as the population mean. We'll touch of this idea more
+in future lectures when we talk about the **sampling distribution**, but for now
+this simple idea is all you need to know. 
 
-Of course, sample size and population variation exert their influence together.
-If we want our sample averages to be close to the population average, then we
-need samples that are **big enough**, but what counts as **big enough** will
-depend on the **population variation**. Therefore, knowing whether our sample is
-big enough depends on knowing the population variation. Unfortunately, we don't
-know this; however, there is a way to estimate it. But that's a topic for
-another lecture.
+<!-- FIXME: This should probably be moved to the next lecture -->
 
-:::{.callout-tip}
+## Measures of spread
 
-### Explore more
-
-In this box you can explore the relationship between samples and populations. In
-particular, you can see how two factors (1) **sample size** and (2) **population
-variability** have an impact on how closely samples will _on average_ resemble
-the population.
-
-```{ojs}
-//| echo: false
-md`The top plot shows the outcome of ${sample_size6} dice throws of a 6-sides dice.
-
-Each dot represents the result of one throw. So one circle over the **1** means that
-one of the throws showed a **1**. Two circles of the **5** means
-that two of the throws showed a **5**. And so on. Because it's a 6-sided dice,
-each throw can show any number from 1 to 6.
-
-Below this is a plot showing each the **average** of each sample. This is 
-just calculated by adding up all the numbers shows on the dice and 
-dividing it by ${sample_size6}. The **population average** is also marked on
-this plot, together with lines showing ± 1 from the **population average**.
-Notice that the **sample average** is very rarely the same as the 
-**population average**. Instead, it bounces around. Sometimes it's 
-higher, and sometimes it's lower. Use the slider to add adjust the
-**sample size**. What happens when the sample size is small---for example, 1?
-What happens when the sample size is big--for example, 100?
-
-`
-```
-
-```{ojs}
-//| echo: false
-import {doplot} from "@ljcolling/samples"
-import {viewof sample_size6, viewof sample_size20} from "@ljcolling/samples"
-```
-
-```{ojs}
-//| echo: false
-//| fig-align: center
-doplot(6)
-```
-
-```{ojs}
-//| echo: false
-viewof sample_size6
-```
-
-```{ojs}
-//| echo: false
-md`The next two plots are the same as above, expect they show the outcome of
-${sample_size20} dice throws of a 20-sided dice. A 20-sided dice can show
-any value between 1 and 20.
-
-You can also see a plot showing each the **average** of each sample. This is 
-just calculated by adding up all the numbers shows on the dice and 
-dividing it by ${sample_size20}. The **population average**,
-together with lines showing ± 1 from the **population average** are also shown.
-Use the slider to add adjust the **sample size**. What happens when the 
-sample size is small---for example, 1?
-What happens when the sample size is big--for example, 100?
-
-`
-```
-
-```{ojs}
-//| echo: false
-//| fig-align: center
-doplot(20)
-```
-
-```{ojs}
-//| echo: false
-viewof sample_size20
-```
-
-::::
-
-The 20-sided dice represents a population that has a lot of variability. The
-individuals in the population (the dice throws) can be any number between 1
-and 20. The 6-sided dice represents a population that has only a little
-variability. The individuals in the population (the dice throws) can only be a
-number between 1 and 6.
-
-By looking at the running averages (the bottom plot for each dice) we can tell
-whether the samples _on average_ resemble the population. If most of the
-averages fall very close to the population average then we can say the samples
-_on average_ resemble the population.
-
-Notice how for a given sample size (say 5 for each dice) the average of the
-samples from the low variability dice (6 sided) do a better job of _on average_
-resembling the population average. For the high variability dice (20 sided), the
-averages of the same size samples do a poorer job of _on average_ resembling the
-population average. The important part here in _on average_. Individual sample
-averages may do a good job of resembling the population average no matter what
-the sample size is. This demonstration tells use the **population variability**
-is one factor that influences whether the averages of our samples will _on
-average_ resemble the average of our population.
-
-Let's say that our sample averages do a good job of resembling the population
-average if the _almost all_ the sample averages fall within ± 1 of the
-population average (the lines marked on the plot). Try adjusting the _sample
-sizes_ for the two dice? What smallest value that will cause _almost all_ the
-sample averages to land between the marked lines?[**Hint** If you can't work it
-out try setting the sample size to **16** for the 6-sided dice and to **180**
-for the 20-side dice.]{.aside} Notice how for high variability dice this value
-must be far higher? This demonstration tells use the **sample size** is the
-second factor that influences whether the averages of our samples will _on
-average_ resemble the average of our population.
-
-<!-- DIV -> style="background:#EBF5E8;margin-left: -16px;margin-right: -16px;padding:12px 5px 12px 10px;border:#DADEE2;border-width:1px;border-style:solid;margin-top: -20px;border-top-left-radius: 5px;border-top-right-radius: 5px;" -->
-
-<!-- H$ -> style="border:solid; border-width:1px;border-color: #DADEE2;padding-left: 15px;padding-right: 15px;border-top-left-radius: 10px;padding-bottom: 15px;padding-top: -8px;margin-top: 27px;" -->
+So far we've only been talk about the **typical** value, or the **central**
+value, of a set data. But if you look at at @fig-hist-width you'll see two data
+sets that are centred at the same value but have very different amounts of
+variability. Both sets of data have a mean of 0. But, as you can see, the values
+of one are spread out much more widely than the values of the other.
 
 ```{r}
-(sqrt((20^2 -1) / 12) / sqrt(180)) * qnorm(.99)
-(sqrt((6^2 -1) / 12) / sqrt(16)) * qnorm(.99)
+#| echo: false
+#| warning: false
+#| label: fig-hist-width
+#| fig-cap: Histogram of two distributions with equal means but different spreads. *N = 10,000* in each case.
+dist_narrow <- rnorm(10000, mean = 0, sd = 1)
+dist_wide <- rnorm(10000, mean = 0, sd = 3)
+tibble::tibble(
+  narrrow = dist_narrow,
+  wide = dist_wide
+) |>
+  tidyr::pivot_longer(1:2) |>
+  ggplot2::ggplot(aes(
+    x = value,
+    # group = name,
+    fill = name,
+    alpha = name
+  )) +
+  geom_histogram(color = "black", position = "identity") +
+  scale_alpha_manual(values = c(1, 0.7), guide = "none") +
+  scale_fill_manual(values = c("seagreen", "blue"), guide = "none") +
+  NULL
 ```
 
-```{r}
-rdu<-function(n,k) sample(1:k,n,replace=T)
-```
 
-```{r}
-side6_mean <- function(d){
- n <- 1#5
- x <- rdu(n, 6) 
- mean(x)
-}
-lapply(X = 1:10000, side6_mean) |> unlist() |> sd() -> side6_se
-side20_mean <- function(d){
- n <- 1#57
- x <- rdu(n, 20) 
- mean(x)
-}
-lapply(X = 1:10000, side20_mean) |> unlist() |> sd() -> side20_se
-qnorm(0.99, lower.tail = T) * side6_se
-qnorm(0.99, lower.tail = T) * side20_se
-```
+This is why, in addition to measures of central tendency, we also need measures
+that tell us about the spread, or _dispersion_ of a variable. Once again, there
+are several measures of spread available, and we'll talk about five of them:
+
+1. Range
+
+2. Interquartile range
+
+3. Deviation
+
+4. Variance
+
+5. Standard deviation
+
+<!-- FIXME: Add the visualisation in here? -->
+
+
+### Range
+
+The **range** of a variable is simply the distance between its smallest and
+largest values. For example, if we gather a sample of 100 participants and the
+youngest one is 17 years old, and the oldest one is 67 years old, then the range
+of our age variable in this sample if 67 - 15 = `r 67 - 17` years.
+
+Checking the range of a variable can tell us something about whether our data
+makes sense. Let's say that we've run a study examining reading ability in
+primary school age children. In this study, we've also measured the ages of the
+children. If the range of our age variable is, for example, 50 years, then that
+tells us that we've measured _at least_ one person that is not school age.
+
+Beyond that, the range doesn't tell us much of the information we'd usually like
+to know. This is because the range is _extremely_ **sensitive to outliers**.
+What this means is that it only takes one extreme value to inflate the range. In
+our school example, it might be that all but one of the people measured is
+actually in the correct age range. But the range alone cannot tell us if this is
+the case.
+
+### Interquartile range
+
+A slightly more useful measure than the range is the **interquartile range** or
+IQR. The IQR is the distance between the 1st and 3rd quartiles of the data.
+Quartiles, like the name suggests, are created by splitting the data into four
+chunks where each chunk has the same number of observations. Or put another way,
+the median splits the data into two where half the observations are higher than
+the median and half the observations are lower than the median. Quartiles are
+created by taking each of these halves and splitting them in half again. The
+range covered by the middle two 25% chunks is the IQR. It is the range that
+covers the middle 50% of the data.
+
+The benefit of the IQR over a simple range is that the IQR is not sensitive to
+occasional extreme values. This is because the bottom 25% and the top 25% are
+discarded. However, by discarding these data, the IQR provides no information
+about how spread these outer areas are.
+
+Both the range and the IQR work by looking at the distance between only two
+observations in the entire data. For the range, it's the distance between the
+minimum point and the maximum. For the IQR, it's the distance between the
+midpoint of the upper half and the midpoint of the lower half. To get a more
+fine-grained idea of the spread, we'll need a new way of measuring it. 
+
+But that is where we'll leave it for now, and we'll pick our story back up in
+the next lecture.
+
+
+

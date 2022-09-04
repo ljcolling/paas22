@@ -147,7 +147,7 @@ e.g., that it involves *information processing in discrete sequential steps*.
 ```{r}
 #| tbl-cap: Example Verbal Protocol Analysis
 #| tbl-label: tbl-vpa
-readr::read_csv("./vpa_example.csv") |>
+readr::read_csv(here::here("data","./vpa_example.csv")) |>
   knitr::kable()
 ```
 

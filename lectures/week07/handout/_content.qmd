@@ -1,0 +1,375 @@
+Last week we started talking about describing measurements, and the relationship
+between samples and populations. We covered measures of central tendency, and we
+started talking about measures of spread. Specifically, we covered the **range**
+and the **interquartile range** (IQR).
+
+Both the range and the IQR work by looking at the distance between only two
+observations in the entire data. For the range, it's the distance between the
+minimum point and the maximum. For the IQR, it's the distance between the
+midpoint of the upper half and the midpoint of the lower half. To get a more
+fine-grained idea of the spread, we'll need a new way of measuring it. And this
+is where we turn our attention to next.
+
+## Variance and standard deviation
+
+To get a more fine-grained measure of the spread we could look at each data
+point and calculate how far it is away from some reference point. This reference
+point is usually the mean. We look at how we do this for a population first,
+before turning our attention to samples, and then relationship between samples
+and populations.
+
+### Population variance
+
+Let's say that we've measured every member of some finite population.
+We're going to define a new measure which we're going to call the **deviation**,
+which is just going to be the difference between each individual in the
+population and the population mean. We can represent this mathematically with
+@eq-pop-dev, below:
+
+
+<!-- FIXME: Add equation -->
+
+Because we are calculating this for every data point there will be as many
+deviations as we have values for our variable. To get a _single measure_, we'll
+have to perform another step.
+
+One thing we could try doing is just to add up the numbers. But this won't work.
+To see why, try adding a few points below. Add you add the points take a look at
+the table below. The table has a column with all the points, and all the
+deviations from the mean. Below the table you can see what happens when you add
+up all those deviation values. What do you notice?
+
+As you can see, they add up to zero. Because the mean is our midpoint, the
+distances for all the points higher than the mean cancel out the distances for
+all the points lower than the mean.
+
+We can get around this problem by taking the square of the deviations before
+adding them up. Squaring a number will turn a negative number into a positive
+number, so when we add up all the numbers they'll no longer add up to 0.
+
+Adding up all the numbers, however, leaves us with another problem. The sum of
+the squared deviations gets bigger with bigger samples. That's not good because
+even big samples can have a small amount of variation, while smaller samples can
+vary a lot. So instead of simply adding up all the deviations, we'll instead
+work out what the **typical** squared deviation is by working out the **average**.
+
+The **average** or **mean squared deviation** is called the **variance**. Using
+this instead of the sum of the deviations gets around the problem of the measure
+of spread just getting bigger when we have bigger datasets. 
+
+To work out the **average squared deviation** or **variance** we would just
+divide the sum of the squared deviations by the size of our population. This is
+represented mathematically in @eq-variance, below:
+
+### Sample variance
+
+So far we've just talked about working out the **variance** of some population.
+This involved measuring the entire population. But as with our earlier
+discussion about sample means and population means, we usually don't have access
+to the entire population. And, we touched on in our discussion of "theoretical
+populations", we're often not dealing with populations were it's even possible
+to measure every member. Instead, we have to work with **samples**.
+
+How do we work out the **variance** for a sample? Well one options would be to
+do the same thing we do when we work out the **variance** of the **population**.
+Doing so would mean we'd first work out all the deviations between each one of
+our sample points and the population mean, and we'd then work out the average.
+But how do we do this if we don't know the **population mean**? Well this is
+where things get tricky. 
+
+#### Properties of a good estimate
+
+When we talked about **means** we saw that each individual sample mean might not
+have been equal to the population mean but that, *on average* the sample mean
+(the mean of our sample of samples) was equal to the population. This is a good
+thing. We want measurements we take from samples to resemble the population,
+even if it's only *on average*. Does the same same hold true for **variance**?
+
+Well, we can give it a try using a simulation. Let's say that I have some
+population that I know the properties of. We'll say that our population has a
+mean of 100 and a variance of `r 15^2`. But you don't know this mean and
+variance, so you'll have to take a sample from the population instead. Let's say
+that you'll take a sample of exactly 50 people. 
+
+<!-- NOTE: Again, we'll talk more about the influence of sample size later -->
+
+You use this sample of 50 people to work out the variance using the equation
+above, but because you don't know the value of the population mean you use the
+sample mean instead. Below you can see what happens when you work out the
+variance over and over. What do you notice?
+
+You can see that the variance moves around from sample to sample. Sometimes it
+is larger than the population variance and sometimes it is smaller than the
+population variance. This is the same thing we saw with the sample mean. So the
+variances from individual samples don't match the population variance. But are
+they the same, _on average_. Below you can see what happens when we work out the
+**average variance** over many samples. What do you notice?
+
+That's right, unlike with the **mean**, the variance that we've worked out from
+our sample doesn't eventually settle to match the **population variance**. It
+underestimates it!
+
+### The sample variance
+
+How can we fix this? Maybe if I tell you the **population mean** and you work
+out the variance using the **population mean** instead then that would work
+better. Below we can see what happens when you try that. What do you notice?
+
+
+That's right, the variance you've calculated from the sample now _on average_
+lines up with the **population variance**. Unfortunately, being in a situation
+where you know the population mean is unlikely, but seeing how this bit of
+information made a difference does tell us something useful Unfortunately, being
+in a situation where you know the population mean is unlikely, but seeing how
+this bit of information made a difference does tell us something useful. It
+tells us that the bias is related to how much the **sample mean** bounces around
+from sample to sample. We'll learn how to estimate this in a later lecture, but
+for now we just need to know how to correct for this bias.
+
+To correct for this bias we can just make a slight adjustment to our we compute
+the variance when we're dealing with a **sample**. This correction to to divide
+the sum of our squared deviations by _N - 1_ instead of _N_. We'll call this
+quantity the **sample variance**, because we calculate it from _a sample_. Below
+we can see what happens when we do this. What do you notice?
+
+That's right, after adding many samples, our **sample variance** eventually
+lines up with the variance of our **population**. From this, we can say that
+**the sample variance** provides an **unbiased estimate of the variance of the
+population**.
+
+### The standard deviation
+
+Variance is a good measure of dispersion and it is widely used. However, there
+is one downside to variance, and that is that it can be difficult to interpret:
+it's measured in _squared units_. For example, going back to our Salary example
+from [Lecture 6](), if salary is measured in USD, the **variance** would be
+expressed in USD^2^, whatever that means!
+
+Fortunately, the solution to this problem is easy: we simply take the square
+root of the variance. This measure is called the **standard deviation**. Just
+like with variance, there is a **population** standard deviation, denoted with
+$\sigma$. And a **sample** standard deviation, denoted with $s$ or $SD$.
+
+<!-- TODO: Maybe add the calculations -->
+
+:::{.callout-note} 
+
+You can think of _SD_ as a measure of the differences of a set of scores from
+their mean. If variance is the mean _squared_ deviation in the variable,
+standard deviation is the **mean deviation**.
+
+:::
+
+## Understanding the relationship between samples and populations
+
+Now that we have some mathematical tools for describing measurements, both in
+terms of where they are centred (the _mean_) and in terms of how spread out they
+are (the _standard deviation_). With these tools in hand, we can now dig into
+the relationship between samples and populations in a bit more detail.
+
+In the previous lecture we started talking about the problem of knowing whether
+our sample **resembles** our population. For example, if we really want to know
+what the mean of the population is, but all we have is the sample mean, so we
+might want to have some way of knowing whether these two values are similar.
+
+We said that we could never know whether any particular sample mean was the same
+as the population mean, but that _on average_ they would be the same. This is
+because the same mean varies from sample to sample, and the population mean is
+some fixed and unknown value.
+
+Although **we can't know for sure** whether a particular sample mean resembles
+the population mean, we might be able to think of some things that **influence**
+the relationship between our **sample** and the **population**. To figure out
+what these are, let's do a thought experiment and think of some **extreme
+cases**.
+
+First, consider the case where **all the members** of a _population_ are
+**identical**. If this were the case, then our **sample** will have an
+**identical** average to the population. The height of one person would be the
+same as the average height of two people, which would be the same as the average
+height of 100 people, which would be same as the average height of the
+population because people only come in one height. But if the **members** of the
+**population** are all **different** from one another, then there is no
+guarantee that the **sample's average** will **resemble** the **population's
+average**.
+
+The second extreme scenario is if our sample is **very large**. Let's say that
+it is so large that it includes **all the members of the population**. If this
+were the case, then, by definition, our **sample average** would be
+**identical** to the **population average**. However, if our sample is smaller
+than the entire population, then once again, there is no guarantee that the
+**sample's average** will **resemble** the **population's average**.
+
+Based on this reasoning, we can say that two things will influence whether your
+_sample_ resembles your _population_. These are 1) the amount of **variation**
+in our population, and 2) the **size** of our sample.
+
+Importantly, however, and barring the extreme cases above, for **any particular
+sample** we won't know whether it **resembles** the population or not, because,
+remember, we don't know the average of the population. Instead, we should think
+about these two factors as influencing the **average distance** between the
+samples and the population. But what does this mean?
+
+One way to think about this is in terms of **repeatedly** taking samples from
+the same population. For example, if we take a large sample from the
+population---large, but not so large as to include the entire population---then
+we can't say that our **particular** sample will resemble the population. But if
+we take many samples (of that size), then we can say that **on average** those
+samples will be closer to the population than would be the case for a collection
+of smaller samples.
+
+The same reasoning applies to **variation in the population**. If there is
+**less variation** in the **population**, then the samples drawn from that
+population will tend to be closer to each other and closer to the population
+average. But again, we won't be able to say whether **a particular sample** has
+an **average** that is close to the population average.
+
+Of course, sample size and population variation exert their influence together.
+If we want our sample averages to be close to the population average, then we
+need samples that are **big enough**, but what counts as **big enough** will
+depend on the **population variation**. 
+
+To make this concrete, we'll take a look at an example.
+
+<!-- FIXME: Tidy up and add things: Explore more about sample -->
+
+The 20-sided dice represents a population that has a lot of variability. The
+individuals in the population (the dice throws) can be any number between 1
+and 20. The 6-sided dice represents a population that has only a little
+variability. The individuals in the population (the dice throws) can only be a
+number between 1 and 6.
+
+By looking at the running averages (the bottom plot for each dice) we can tell
+whether the samples _on average_ resemble the population. If most of the
+averages fall very close to the population average then we can say the samples
+_on average_ resemble the population.
+
+Notice how for a given sample size (say 5 for each dice) the average of the
+samples from the low variability dice (6 sided) do a better job of _on average_
+resembling the population average. For the high variability dice (20 sided), the
+averages of the same size samples do a poorer job of _on average_ resembling the
+population average. The important part here in _on average_. Individual sample
+averages may do a good job of resembling the population average no matter what
+the sample size is. This demonstration tells use the **population variability**
+is one factor that influences whether the averages of our samples will _on
+average_ resemble the average of our population.
+
+Let's say that our sample averages do a good job of resembling the population
+average if the _almost all_ the sample averages fall within ± 1 of the
+population average (the lines marked on the plot). Try adjusting the _sample
+sizes_ for the two dice? What smallest value that will cause _almost all_ the
+sample averages to land between the marked lines?[**Hint** If you can't work it
+out try setting the sample size to **16** for the 6-sided dice and to **180**
+for the 20-side dice.]{.aside} Notice how for high variability dice this value
+must be far higher? This demonstration tells use the **sample size** is the
+second factor that influences whether the averages of our samples will _on
+average_ resemble the average of our population.
+
+With all this talk of how the sample means **varies** from sample to sample you
+might think that we would be able to **quantify** this variation. When we talked
+about the **standard deviation**, we said that it told us how much the _average
+deviation_ is **within** a sample. So could we use a similar measure to quantify
+the _average deviation_ **between** samples? It turns out that we can. But
+before we get there we'll have to take a brief digression to talk about
+**distributions**.
+
+## Distributions
+
+Up until now we've skirted around the idea of distributions. We've looked at
+histograms of data, but we haven't really talked that much about their shape. It
+turns out that there are some shapes that we'll come across very often, and some
+of these shapes have properties that will make them very useful for statistics.
+But before we can get to that, we need to first understand where these shapes
+come from---that is, distributions have the shape they do---and some language
+for describing these shapes. We'll start off with the simplest distribution, the
+**binomial distribution**, before moving on to the **normal distribution**. 
+
+### The binomial distribution
+
+
+To understand what the **binomial distribution** is, and where it comes from
+we'll do a little _thought experiment_. In our thought experiment, we'll take a
+coin, and we'll flip it. When we flip a coin, one of two outcomes is possible.
+Either the coin will land showing heads, or it will land showing tails. We can
+say that there are two possible events or two possible sequences of events
+(_sequences_ will make more sense when we add more coins) that can happen when
+we flip a coin.
+
+Now let's think of each of the sequences and count up how many heads are showing
+in each. In the first sequence, where the coin lands showing tails, no heads
+occur. In the second sequence, where the coin lands showing heads, there is one
+head. Therefore, we have one sequence that produces 0 heads, and one sequence
+that produces 1 head. And those are all the possible sequences.
+
+But now let's make it more complicated. Let's flip two coins. Now there's a
+greater number of possible sequences. We can list them:
+
+1. The first coin shows heads, and so does the second (HH),
+2. The first coin shows heads and the second shows tails (HT)
+3. The first coin shows tails and the second shows heads (TH)
+4. and the first coins shows tails and the second shows tails (TT)
+
+Therefore, there are four possible sequences. Let's count up the **number of
+sequences** that lead to 0 heads, one head, two heads, etc. If we do this, we'll
+see that one sequence leads to 0 heads (TT). Two sequences lead to 1 head (HT,
+and TH). And one sequence leads to 2 heads (HH).
+
+Let's now add more coins. Things will get trickier from here because the number
+of sequences rapidly goes up. With three coins, there would be eight possible
+sequences, and with four coins, there would be 16 possible sequences. Figuring
+out the number sequences, and the nature of the sequences (whether they produce
+0 heads, one head, two heads, etc.) quickly becomes difficult. To make things
+easier, we'll draw a plot. First, we'll draw a plot to trace out the sequences.
+We'll use different coloured dots to indicate heads and tails. We can do this in
+the form of the branching tree diagram shown in Box \@ref(fig:box2). 
+
+
+Once we've visualised the sequences, it's easy to count up how many sequences
+result in 0 heads, one head, two heads etc. We can put our counts on another
+plot. For this, we'll make a frequency plot or histogram, just like we've seen
+before. On the x-axis, we'll have the number of heads. And on the y-axis, we'll
+have the count of how many sequences result in that number of heads. This
+frequency plot is also shown in @fig.
+
+You can adjust the slider in Box \@ref(fig:box2) to change the number of coins
+you want to flip. Increasing the number of coins increases the number of
+possible sequences, and it changes the number of ways of getting one head, two
+heads, three heads and so on changes (however, there's always only one way to
+get 0 heads and one way to get all heads). Notice that as you adjust the slider
+and add more and more coins, the frequency plot takes on a characteristic shape.
+You can mathematically model the shape of this plot using a **binomial
+distribution**.
+
+In our coin flipping example, we created this shape by counting up the number of
+sequences that produced various quantities of heads. But if we look around at
+**natural processes**, we'll see that this shape occurs often.
+
+One natural process that gives rise to this shape is the "bean machine"[^1]. In
+a bean machine, small steel balls fall from the top of the device to the bottom
+of the device. On their way down, they bump into pegs. When one of the balls
+hits a peg, it has a roughly equal chance of bouncing off to the left or the
+right, not unlike a coin which has a roughly equal chance of landing heads up or
+tails up. At the bottom of the device are equally-spaced bins for collecting the
+balls. If enough balls are dropped into the device, then the **distribution** of
+balls across the bins will start to take on the shape of the **binomial
+distribution**. Very few balls will be at the very edges, because this would
+require the balls to bounce left or right every time.
+
+Similarly, very few sequences of coin flips result in large numbers of heads or
+large numbers of tails. The greatest number of balls are seen in the bins near
+the middle. The balls that land here have bounced left and right a roughly equal
+number of times. Again a similar pattern can be seen with the coin flips.
+
+In Box \@ref(fig:box3), I've included a computer simulation of a bean machine.
+Press the Start button to display the bean machine and watch the balls drop.
+Press Replay to drop more balls.
+
+Flipping coins might seem a log way off from anything you might want to study in
+Psychology. However, the **shape** of the binomial distribution, particularly
+when we're dealing with many coin flips, might be something you're more familiar
+with. This characteristic **bell shape** is also something we see in the
+**normal distribution**. And it's the **normal distribution** which we'll
+turn our attention to next. 
+
+
+

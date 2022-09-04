@@ -4,12 +4,12 @@ author:
     url: mailto:l.colling@sussex.ac.uk
     affiliation: School of Psychology, University of Sussex
     affiliation-url: https://profiles.sussex.ac.uk/p488921-lincoln-colling
-title: Describing measurements 1
-subtitle: Lecture 6
-week: 6
+title: Distributions
+subtitle: Lecture 8
+week: 8
 navbar: true
 page-layout: full
-date: 31 Oct 2022
+date: 14 Nov 2022
 date-format: "D MMMM, YYYY"
 toc: true
 type: landing

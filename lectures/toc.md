@@ -39,7 +39,17 @@
 ## Distributions and samples | notes/handout/_content.qmd
 ### A distribution of our samples | notes/handout/_content.qmd
 ### Standard error of the mean | notes/handout/_content.qmd
+# Distributions, functions, and transformations | notes/handout/_content.qmd
 # Distributions, functions, transformations | notes/handout/_content.qmd
+## The standard normal distribution | notes/handout/_content.qmd
+## Transformations | notes/handout/_content.qmd
+### Centering | notes/handout/_content.qmd
+### Scaling | notes/handout/_content.qmd
+### The *z*-transform | notes/handout/_content.qmd
+### *z*-scores | notes/handout/_content.qmd
+## Making comparisons | notes/handout/_content.qmd
+### Comparing groups | notes/handout/_content.qmd
+## Comparing across groups | notes/handout/_content.qmd
 ## Introduction | week02/handout/_content.qmd
 ## The common-sense view of science | week02/handout/_content.qmd
 ### Access through the senses | week02/handout/_content.qmd

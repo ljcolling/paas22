@@ -1,0 +1,3280 @@
+# Lecture 1
+
+<!-- FIXME: Make sure all the links are working -->
+
+## Welcome to Psychology as a Science
+
+The aim of today's lecture is to provide you with an overview of the structure
+of the research methods modules that you'll be taking in your degree. I'll also
+try to give you some tips that will help you to succeed in this course. Although
+this is not an inherently difficult course a lot of the material you'll be
+encountering may be new to you. Some of it might even seem a little intimidating
+(especially the programming stuff that you'll be doing in the practical
+classes). But if you stick with it, and give it your best shot, then I'm
+confident that you'll be able to do well.
+
+### Introductions
+
+The teaching team for Psychology as a Science (PAAS) is made up of three people.
+Each of us has different roles and responsibilities. Knowing this will help you
+to know who to contact if you need help with something (but see more on
+[knowing who to email](#knowing-who-to-email) below).
+
+**Dr Lincoln Colling** (lecture content convenor)
+
+Dr Colling is responsible for the lecture content, and for preparing the final
+exam.
+
+**Dr Jenny Terry** (practical content convenor)
+
+Dr Terry is responsible for the content covered in the practical sessions, the
+`R` homework activities, and the weekly `R` assessments. She is also responsible
+of the lab report, the major piece of written work you'll produce this year.[If
+you don't know what `R` is then don't worry---99% of the people taking this
+course won't know what `R` is. But you'll learn all about `R` and `RStudio` in
+the practical classes.]{.aside}
+
+**Dr Vlad Costin**
+
+Dr Costin, along with Dr Terry, is one of the lead practical lecturers.
+
+## Tips for doing well
+
+The information that most of you will want to know is how to do well in this
+course. So we'll get it out of the way right up the front. The single best thing
+you can do to do well in this course is simply to _show up to class every week_.
+Turning up to _in person_ every week not only means that you'll get exposed to
+the lecture content, but you'll also get to meet me, talk to me, meet your
+classmates, and talk to them too. So much of what makes university special are
+those moments that happen around the classes. And all you need to do to
+experience those moments is to show up to class every week.
+
+The second most important thing you can do is to do _all the assessments_. This
+is particularly important for the weekly assessments linked to the practical
+content. Each of these assessments builds on the one before, so if you fall
+behind it can be hard to catch up. Even if you find them difficult you should
+still do them. They will get easier!
+
+Start off by being present for everything and the rest will fall into place!
+
+## Finding the information you need
+
+The most important thing you need to know if you want to succeed in the course
+(and this is true of all the courses you'll be taking) is how to find the
+information you need.
+
+The first place to look for any information is on Canvas. If you're reading this
+lecture handout then you've probably already found Canvas. The Canvas page for
+this course will be your one-stop shop for almost all the information you need
+about this course. Familiarise yourself with it. Especially the front page!
+Click all the links, and read through the pages. If you have a question like
+"What do I do if I can't make a practical or lecture?", then that information is
+on Canvas. If you want to know what the various assessments are for this course,
+then that will be on Canvas. If you want to know whether references will be
+counted as part of the word count for your report, then that will be on Canvas
+too!
+
+There's a lot of information on Canvas. In fact, there's probably too much
+information on Canvas, and so it can be a little overwhelming. To help with
+this, I have two tips.
+
+First, as I said above, click the links and read through all the pages. But
+while you're doing this, keep a bit of paper or a notebook handy. Use this to
+note down bits of information, or where to find certain information so you can
+check back when you need it. You can also bookmark pages that you think will be
+useful later. And when you bookmark a page you can give it a informative title
+that is meaningful to you. All this will help you to find the information you
+need when you need it. And remember, on any web-page you can hit <kbd>Ctrl</kbd>
+<kbd>F</kbd> (windows) or <kbd>Command</kbd> <kbd>F</kbd> (mac) to search for a 
+word, and this might be particularly useful if it's a long page with a lot of 
+text and you're just looking for something specific.
+
+Second, check out the [Frequently Asked Questions (FAQ)]({{< var faq >}}). Here
+I will list the answers to some questions that I tend to encounter often. You
+might just find the answer to your question here. I will try to update this as I
+encounter more frequently asked questions, so make sure to check back whenever
+you're stuck. And if you have a question that you think your class mates might
+also want to know the answer to then click [here]() (this link is also on the
+FAQ page) to submit a new Frequently Asked Question, and I'll add it to the
+list.
+
+:::{.callout-note}
+
+### Emailing me for information
+
+You might be tempted to just email me as soon as you get stuck for some
+information. But remember, there's nearly 600 of you, and I get a lot of email,
+so it might take a few days before I can get back to you. So double check the
+[FAQ]({{< var faq >}}) and [Canvas]({{< var canvas >}}) before you send that
+email, because you might be able to get an instant answer there.
+
+:::
+
+### Knowing who to contact {#knowing-who-to-email}
+
+One thing that is tricky when you're first starting out at university is knowing
+who to contact with your queries. Here are a few tips for helping your to figure
+out who to contact.
+
+#### Admin queries
+
+Admin queries are any queries than are not directly related to the course
+content. For example, if you've been absent from class and you want to inform
+somebody, then that's an admin query. If you're meant to have an extension to
+hand-in date for an assessment, but it hasn't been correctly applied, then
+that's an admin query. If you're unable to submit and assessment because you're
+unwell, then that too is an admin query. All admin queries should be directed at
+the admin staff.
+
+You can contact the admin staff by emailing them at [](). If you'd specifically
+like to report an absence then you can email Psychology Absences at [](). For
+more information about Attendance and Absences, check out the
+[page on Canvas]().
+
+:::{.callout-important}
+
+Lecturers can't grant extensions for assessments. Please don't email us to ask,
+because there's nothing we can do about it.
+
+For information about _Requests for Extended Deadlines_ see the information on
+the
+[Student Support Unit](https://www.sussex.ac.uk/studentsupport/support-needs/extensionrequests)
+page.
+
+:::
+
+#### Queries about course content
+
+The lecturers are you point of content if you have questions about the course
+content. Who you contact will depend on what section of the course your question
+covers:
+
+**For questions about lecture materials**
+
+If you have a question about material that was covered in one of the regular
+weekly lectures then the best person to get in touch with is me (Dr Lincoln
+Colling).
+
+I can also help with queries related to the final exam (because the final exam
+will only cover the material from the regular weekly lectures).
+
+The best way to get in touch with me is to grab me right after the lecture. I'll
+always hang around for a few minutes to answer questions that you might have.
+But if you need to run off then you can always book into a drop in session.
+There's [information below](#drop-in-sessions) on how to do this.
+
+**For questions about the practical content**
+
+If you have a question about something that was covered in one of your weekly
+practical sessions then the best person to contact would be the practical lead
+_for your practical_. This will either be Dr Jenny Terry or Dr Vlad Costin.
+
+Your practical lead will also be able to help you out with queries about the
+weekly `R` quizzes **For queries about the report**
+
+If you have queries about the report, then the best person to contact is Dr
+Jenny Terry.
+
+**For general `R` help**
+
+If you have general `R` and `RStudio` queries, and it not something that need to
+be addressed to your practical lead (for example, if it's a general query, and
+not, for example, a question about something your lecturer said in class) the
+you can go to one of the **R Drop in Sessions**. You _can_ go to any of the R
+Drop in Sessions, but try to go to one run by somebody that teaches on PAAS.
+
+To book into an `R`
+
+More information on how to get help with `R` will also be provided in the
+practical sessions.
+
+[**Booking a drop in appointment**]{#drop-in-sessions}
+
+Know that you know how to contact, how do you go about actually contacting them?
+If it's a question quick question about the lecture content then just come up
+and talk to me after class. Or if it's a question about the practical content,
+then just ask the lecturer in your practical class. If you question is a little
+longer, or if you can't wait until class to ask, then you should book into a
+drop in session.
+
+To book into the drop in session you can follow the links on the front page of
+the module's canvas page.
+
+## Research methods in Psychology
+
+**Psychology as a Science** is the first of a series of research methods
+modules.
+
+Following this, you'll take:
+
+- Analysing Data (next term)
+
+- Discovering Statistics (year 2)
+
+- Quantitative and Qualitative Methods (year 2)
+
+All of these build up to prepare you for the **research dissertation** in your
+final year. But they're also a great way to learn a lot of transferable skills
+that are useful outside of university, for example:
+
+- How to analyse data
+
+- How to make sense of statistics
+
+- Basic computer programming/coding skills
+
+**Psychology as a Science (PAAS)** covers an introduction to the research
+process. Some topics you'll cover include:
+
+- Introduction to Philosophy of Science
+
+- Difference approaches to research including quantitative methods and
+  qualitative methods
+
+- Basics of statistical theory
+
+You'll also be introduced to coding in the `R` programming language. You'll
+cover the basics of the `R` language, how to process and summarise data, and how
+to make plots in `R`.
+
+Along the way we'll work with some of the same data that you'll be using for you
+**Cognition in Clinical Contexts** lab report
+
+In **Analysing Data (AD)** you'll learn about the core statistical tests used in
+Psychology. You'll also cover moved advanced use of `R`, and you'll learn how to
+perform statistical tests in `R`. AD will also give you your first chance to
+independently analyse some data.
+
+In **Discovering Statistics (DS)** you'll learn even more advanced statistical
+tests, and more in-depth knowledge of `R`.
+
+In the final course, **Quantitative and Qualitative Methods (QQM)** you'll learn
+about advanced multivariate statistical techniques. But you'll also learn about
+non-statistical approaches such as interviews and discourse analysis.
+
+The work you do in these modules will also connect up with other modules:
+
+1. **Analysing Data** with, for example, **Psychobiology**
+
+2. **Discovering Statistics** with, for example, **Developmental Psychology**
+
+3. And **Quantitative and Qualitative Methods** with, for example, **Social
+   Psychology**
+
+Research methods doesn't happen in isolation, but it's connected with everything
+else you do in your degree
+
+### Why research methods?
+
+The dominant approach to **training psychologists** is the **scientist
+practitioner model**. _Doing research_ is seen as integral to this approach!
+
+Just like _medical doctors_ not only deliver treatments but also _develop_
+treatments, the same goes for _psychologists._ As a _psychologist_ you want to
+do _what works_ and being able to **read**, **critique**, and **conduct**
+research will help you know _what works_ and allow you to develop
+_evidence-based care_
+
+Even for those that don't become psychologists research methods is still useful
+and the skills you'll learn in your research methods courses will prepare you
+for careers in a range of industries including working as a data scientist, in
+consultancy, and the civil service and government.
+
+## Structure of this module
+
+Like most research methods modules PAAS is made up of **three** main activities:
+
+1. Weekly lectures
+
+   - One hour each week.
+
+   - Cover research methods, statistics, and theory
+
+   - Note that you'll also have a special lecture one evening in Week 6 that
+     will cover research ethics. Check your timetable!
+
+2. Tutorials/Practical preparation homework
+
+   - About an hour a week.
+
+   - Done online or in `R` as preparation for the practical class
+
+3. Practical classes
+
+   - Two hours a week
+
+   - Hands on experience with the `R` programming language
+
+### Assessment Structure
+
+For the assessment there's a 50/50 split between **coursework** and the
+**exam**.
+
+There a four parts to the course work. Pay special attention to this section,
+because the list on **Sussex Direct** can be a little confusing.
+
+1. **Computer Based Exam** worth 10% due in approximately Week 8
+
+   This will cover the material from the _ethics lecture_ in Wk 6
+
+2. **Computer Based Exam** worth 40% (see below about due date)
+
+   This refers to the weekly `R` assessments that you'll do. You'll find out
+   more about these in the practical classes. It is **very important** to note
+   that this isn't a single assessment due at the end of term. Rather these are
+   continual weekly assessments. Make sure you keep up with them, because doing
+   them will really help you acheive a good grade.
+
+3. **Report** worth 40% due in approximately Wk 9
+
+4. **Portfolio** with 10% (listed on Sussex Direct as due in Wk 11)
+
+   This refers to the 20 credits worth of research participation that you're
+   required to do as part of the course. To find out more about this follow the
+   big yellow link labelled **Research Participation/Sona**.
+
+   The due date is the _final day_ you can complete research participation.
+   **Don't wait until the last week** to do it, because there'll probably be no
+   studies left to take part in. _These are easy marks so don't miss out on
+   getting them._
+
+## Lecture topics
+
+The rough outline of the lecture schedule is as follows:
+
+```{r}
+#| echo: false
+
+# TODO: Pull the lecture topics from the .json files
+tibble::tribble(
+~Week, ~Topic,
+1, 'Introduction to PAAS',
+2, 'What is this thing called "Science"',
+3, 'Approaches to research',
+4, 'Measurement and variables',
+5, 'Open Science',
+6, 'Samples, populations, and distributions',
+7, 'Descriptive statistics and the sampling distribution',
+8, 'Distributions, functions, and transformations',
+9, 'Summarising data in tables and plots',
+10, 'Probability theory',
+11, 'Recap and exam guide') |>
+  knitr::kable(align = c('l','l'))
+```
+
+The first set of lectures will cover _big picture_ ideas. These lectures will
+probably be most useful in helping you to prepare for the report.
+
+In these lectures we'll talk about issues like:
+
+- What are scientific theories
+
+- What issues do we need to consider when we're measuring things?
+
+- What does it mean to operationalise our variables?
+
+- What are different approaches you can take when conducting a study?
+
+- What are some sources of bias in psychology studies and publishing of
+  psychology studies and how might we be able to ameliorate some of these
+  biases?
+
+The second set of lectures are all about preparing you for learning about
+statistics and working with data.
+
+In these lectures you'll learn the underlying theory of _statistical testing_.
+You'll learn how to _reason about statistics and data_, and the relationship
+between scientific hypotheses and statistical hypotheses.
+
+Doing statistics isn't like following a recipe. It's **not** about just picking
+the **"correct"** statistical tests out of a list. It involving thinking about
+what you want to know, why you want to know it, and how statistics can help you
+to know it. So we spent a bit of time this term just learning about this
+reasoning before you actually learn about statistical tests next term.
+
+# Lecture 2
+ 
+## Introduction
+
+The title of this course is "Psychology as a Science". But what do we actually
+mean when we say something is a "science"?
+
+Science is certainly something that is held in high esteem in public discourse.
+"Following the science" or "believing in science" are things that are viewed
+positively. Conversely, "denying science" is viewed negatively. This positive
+view of science may come from the belief that there is something special about
+the "scientific method". We can see this in that fact that "taking a scientific
+approach" is often equated with reliability.
+
+```{r}
+#| echo: false
+#| out-width: "70%"
+#| label: fig-we-believe
+#| fig-cap: An example of a "We Believe" sign that was created in response to the election victory of Donald Trump
+#| cap-location: bottom
+knitr::include_graphics(here::here("images","we_believe.jpg"))
+```
+
+So we might want to say that science is a _special way of learning about the
+world_. But if it is special, then what makes it special?
+
+Answering the question, "what is science" or "what is the _scientific method_"
+might seem like something that is easy to do. After-all, many of you might have
+a sense that you _know_ what science is. A claim like "science is real" (e.g.,
+see @fig-we-believe) certainly implies some sense of know what science is, or at
+least being able to distinguish between _science_ and _non-science_ or
+_pseudo-science_. But when we try and clearly articulate this, we might find
+that it isn't actually that easy. In fact, the problem of telling the difference
+between _science_ and _non-science_ is a problem that has plagued philosophers
+for a very long time. This is something known as the _demarcation
+  problem_.[If you want to read a short digestible piece on the demarcation problem
+then you can check out the
+[wikipedia page](https://en.wikipedia.org/wiki/Demarcation_problem). If you're
+looking for something more philosophically heavy, then you can check out the
+page on
+[Science and Pseudo-Science](https://plato.stanford.edu/entries/pseudo-science/)
+at the Stanford Encyclopaedia of Philosophy
+]{.aside}
+A lot of work on the _demarcation problem_ has focused on examining
+_methods_---that is, it has looked at whether there is something like _"the
+scientific method"_ that might mark science out as special. In this lecture,
+we'll look at some of the prominent approaches for attempting to mark out
+something like _"the scientific method"_.
+
+You might be asking yourself, "what is the point of this?" First, I'll be clear
+about what the aim **is not**. The aim of this lecture **is not** to give you an
+answer to the question "What is science?" or "What is the scientific method?".
+My own personal view is that no philosophers have provided satisfactory answers
+to these questions. Or at least, they have not provided answers that can be
+summarised in a single lecture. So if I'm not going to give you an answer to the
+question, "what is science?" then what **am I going to do**?
+
+The aim of today is to get **you to start thinking about what you think science
+is**. I want you to apply that same kind of inquisitiveness that you might apply
+to thinking about a _scientific problem_ to the problem of thinking about _what
+science is_. I want you to start thinking deeply about _how we get to learn
+about the world_--about what is means to _know something about the world_. I
+want you to do this, because I think in the long run it'll make you a better
+scientist. I don't expect you to have all the answers in your first year. As you
+progress in your scientific career---whether that lasts the duration of your
+degree or longer---you'll learn more and your views might change. _Willingness
+to change your mind when new things become known_ is, after all, another feature
+often associated with science, so I expect your answer to the question "what is
+science?" to change as you learn more. So I don't expect you to have the answer
+now, but I want you to start _thinking about it now_.
+
+## The common-sense view of science
+
+The common-sense view might go something like this:
+
+> Science is special because it is knowledge **based on facts**
+
+By framing things in this way _science_ is often contrasted with other forms of
+knowledge that might be, based on authority (e.g., celebrities, religious and
+political leaders), revelation (e.g., personal religious or spiritual
+experiences), or superstition (e.g., "knowledge of the ancients").
+
+But by saying the science is **based on facts** immediately raises two
+questions: (1) If science is based on facts, then where do "facts" come from?
+(2) And how is knowledge then derived from these facts?
+
+The **common-sense view of science** was formalised by two schools of thought:
+The _empiricists_ and the _positivists_
+
+Together they held a view that went something like this:
+
+> _Knowledge should be derived from the facts of experience_
+
+We can break this idea down:
+
+1. Careful and unbiased observers can directly access facts through the
+   senses/observation.
+
+2. Facts come before, and are independent of, _theories_.
+
+3. Facts form a firm and reliable base for scientific knowledge.
+
+_But is this true?_
+
+### Access through the senses
+
+First, let us thinking about the idea that we can _directly access facts through
+the senses_. A simple story of a how the senses work is that there are some
+external physical causes (light, sound waves etc.) that produce some physical
+changes in our sense organs (e.g., our eyes) that are then registered by the
+brain.
+
+This account implies direct and unmediated access to the world through our
+senses. But is this actually the case?
+
+```{r}
+#| echo: false
+#| out-width: "50%"
+#| label: fig-dual-image
+#| fig-cap: An example of an ambiguous image
+#| cap-location: bottom
+
+knitr::include_graphics(here::here("images","my_wife_and_my_mother_in_law.jpg"))
+```
+
+The image is @fig-dual-image is an example of an _ambiguous image_. This image
+could be seen as an old woman or a young woman. Some of you might see one and
+not the other. Some of you might be able to see both and switch between the two
+precepts. Whether you see the young woman or the old woman, the physical causes
+(the light hitting our eyes) is more-or-less the same for everyone. But you
+might "see" different things.
+
+Although this is just a toy example, it reveals a larger point:
+
+<blockquote>
+
+Two scientists might _"observe"_ something different even when _looking at the
+same thing._
+
+</blockquote>
+
+In some fields, being able to make "observations" actually requires training.
+This training might, for example, be in how to observe stuff through a
+microscope, training in how to distinguish different kinds of behaviour, or
+training in how to to read an x-ray.
+
+I So a simple claim that observations are "unbiased" or "straightforwardly given
+by the senses" seems to be false.
+
+### But what do we even mean by "facts"?
+
+The second part of the this common-sense view of science has to do with
+_"facts"_. When we think of a "fact" there are two things we could mean. First,
+a "fact" could refer to some external state of the world. Or second, by "fact",
+we might be **statements** about those external states. That is, things we _say_
+about the external world.
+
+This distinction can be a little tricky, so here is an example. The fact that
+**this university is in East Sussex** could refer to this actual university and
+its actual being in East Sussex. That is, some external state of the world,
+independent of what anyone has to say about it or whether anyone has ever said
+anything about it. Alternatively, it might refer to the statement: "This
+university is in East Sussex."
+
+When we talk about "facts" as the basis for science, we're talking about these
+statements. That is, _science_ is what we _say about the world_ rather than just
+_the world itself_. We'll call this type of fact---the things we say about the
+world---an "observation statement."
+
+Do these facts come **before** theories? Like the common-sense view of science
+might suppose? Again, let us thing of an example:
+
+Think of a child learning the word apple:
+
+<blockquote>
+
+They might initially imitate the word "apple" when shown an apple by their
+parent.
+
+Next, they might use the word "apple" when pointing to apples
+
+But then one day they might see a tennis ball and say "apple". The parent would
+then correct them, and show them that a tennis ball isn't an apple because you
+can't, for example, bite into it like an apple
+
+By the time the child can make accurate "observation statements" about the
+presence of apples they might already know a lot about the properties of apples
+(have an extensive "theory of apples")
+
+</blockquote>
+
+Although this is just a toy example of a child learning about the world, we
+might see it as analogous to how a scientist learns about the world. The
+takeaway here is that _formulating observation statements_ (the _facts_ that
+form the basis of science) is no simple task. Formulating observation statements
+might require substantial background knowledge or a conceptual framework to
+place them in.
+
+So **observation statements** aren't completely **independent of theory**.
+
+Let's say that we've been able to acquire some facts---whatever that might
+exactly mean. Will any old facts do?
+
+Again, let's take a simple example:
+
+<blockquote>
+You observe that grass grows longer among the cowpats in a field.
+
+You think this is because the dung traps moisture that helps the grass grow.
+
+Your friend thinks this is because the dung acts as a fertiliser
+
+</blockquote>
+
+Observations alone can't distinguish these two explanations. To tell which is
+correct you need to **intervene** on the situation.
+
+For example, you might grind up the dung so that it still fertilises the ground.
+Or you might use something else to trap the moisture. **Intervening** on the
+world, for example, through experiment allows you to tell what the _relevant
+facts_ of your observation are.
+
+By intervening on the system, we can tell which facts are **relevant**, but your
+_scientific theories_ may play a part in helping to determine what is and isn't
+relevant. We can see this will another example. This time from the history of
+_cognitive psychology_.
+
+<blockquote>
+In certain kinds of reading tasks psychologists thought it was relevant **that**
+people made errors, but they didn't think the **exact nature of the errors** was
+relevant.
+
+But after certain kinds of theories were developed (ones based on neural network
+models) they came to realise that the particular **kinds of errors** (e.g., if
+people swapped letters between words) was relevant to understanding how people
+learn to read.
+
+The _nature of the errors_ which was once thought of a **irrelevant** now became
+**relevant**.
+
+</blockquote>
+
+In short, observations can't be completely divorced from theories.
+
+## "Objectivity"
+
+<blockquote>
+Facts don't care about your feelings
+
+</blockquote>
+
+<cite> Guy on the internet</cite>
+
+What a lot of the preceding ideas are trying to get to is the idea of
+**objectivity**. But the idea that science is **objective** in a _simple sense_
+of "objectivity" is misleading. Your **conceptual framework**, and **theoretical
+assumptions**, and even your **knowledge and training** can play **a part** in
+_what kinds of observations_ you can make or _what types of observation
+statements you can formulate_
+
+"Objectivity" **doesn't mean** observations free from theoretical assumptions
+("the view from nowhere"). **Objectivity** is more complex.
+
+"Objectivity" **does mean**
+
+- **Publicly** and independently verifiable methods
+
+- **Recognising** theoretical assumptions
+
+- **Theory/data that are open to revision** and improvement
+
+- Free from **avoidable** forms of bias (confounds, cherry picking data,
+  experimenter bias)
+
+We might also say that science is **objective** in the sense that despite all
+this, when you make the observations either the behaviour will happen or it
+won't, the detector will flash or it won't etc. _Your theory can't make things
+happen_.
+
+## Deriving theories from facts
+
+The last part of the **common-sense** view of science is that facts form the
+basis of scientific knowledge---that is, that scientific knowledge is
+**derived** from facts.
+
+Usually this idea of **derived** means something like **logically derived**. We
+might sum up the view like this:
+
+<blockquote>
+Science = Facts + Logic
+</blockquote>
+
+<cite >
+Guy on the internet
+</cite>
+
+To understand what it might mean to **logically** derive scientific knowledge we
+need to know a bit about **logic**.
+
+### Deductive logic
+
+A deductive argument is called **valid** if the conclusions follow from the
+premises. Let us take a look at two examples:
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+**Example 1**
+
+1. All research methods lectures are boring
+2. This is a research methods lecture
+3. (Therefore) this lecture is boring
+
+In this example, if we accept that (1) and (2) are true, then we have to accept
+(3) as true. We cannot accept (1) and (2) as true and then deny that (3) is true
+because we would be contradicting ourselves.
+
+:::
+
+::: {.column width="10%"}
+
+:::
+
+::: {.column width="45%"} 
+
+**Example 2**
+
+1. Most research methods lectures are boring
+2. This is a research methods lecture
+3. (Therefore) this lecture is boring
+
+In our new example, we can accept (1) and (2) as true without accepting (3) as
+true. That is, (3) does not **necessarily follow** from (1) and (2). It might
+just be a case of a research methods lecture that isn't boring. 
+
+:::
+
+::::
+
+Deduction is only concerned with whether (3) follows from (1) and (2). It is not
+concerned with determining whether (1) and (2) are true or false. The argument
+assumes that (1) and (2) _are_ true, but it doesn't establish **truth**.
+
+This means that conclusions can be **false** but **valid**.
+
+::: {.columns} 
+
+::: {.column width="50%"} 
+
+**Example 3**
+
+1. All pigs can fly
+2. Percy is a pig
+3. (Therefore) Percy can fly.
+
+:::
+
+::: {.column width="50%"} 
+
+The conclusion is **valid**. However, it is also
+**false** because (1) is false.
+
+It is **valid** because if we accept (1) and (2) we can have to accept (3) 
+
+:::
+
+::::
+
+**Logic** only tells us what follows from what. If there is truth in our
+premises, then there is truth in our conclusions. If our premises are false,
+then our conclusions will also be false.
+
+Deductive logic is **truth-preserving**, but it can't tell us what is true and
+what is false. And the conclusion is just a _re-statement of the information
+contained in the premises_. So _deductive logic_ can't **create new knowledge**.
+What can you do instead?
+
+To _create new knowledge_ we need a way to go from **particular observations**
+to **generalizations**. This process is called is called **induction**.
+
+### Induction
+
+To create new knowledge, we need a way to construct arguments of the following
+form:
+
+**Premises**
+
+1. Emily the swan is white
+2. Kevin the swan is white
+3. ... the swan is white
+
+**Conclusion**\
+All swans are white
+
+But the problem with arguments like this is that _all the premises may be true
+and yet the conclusion can be false_. **Maybe** we just haven't observed the one
+swan that **isn't white**?
+
+So even though might not be able to say whether an inductive argument is true,
+it surely seems like we might be able to distinguish between **good** and
+**bad** inductive arguments?
+
+We might, for example, say that **more** observations better than **fewer**
+observations. But if so, then _how many observation are enough?_ We might also
+want to say that observations need to be made in many **different contexts**.
+But _what makes a context different"?_ And what kinds of the difference are
+_relevant?_ For example, we might want to say that different contexts should be
+_novel_ in some sense. Or that we should not just make _trivial changes_.
+Finally, we might want to say that good inductive arguments have no
+**contradicting observations**. But where does this leave use with
+**probabilistic** phenomena, where the phenomenon of interest might not happen
+every time?
+
+**Clear** and **simple** rules aren't easy to come by. But the bigger problem is
+**induction can never establish truth**.
+
+So how do we ever **prove anything for certain in science?**. The short answer
+is, **we don't**. We can **never be certain** of **truth**. This might feel like
+it leaves us on very uncomfortable ground. And this is a realisation that has
+certainly troubled a lot of philosophers of science. A consequence of this can
+been to trying and come up with a way to try and put science on a firmer logical
+footing. And this is where we turn our attention to next.
+
+## Falsification
+
+Instead of just **collecting** _confirmations_ we can employ **induction** and
+**deduction** together (see @fig-inductive-deductive).
+
+```{r}
+#| echo: false
+#| out-width: "70%"
+#| label: fig-inductive-deductive
+#| fig-cap: Using induction and deduction together
+#| cap-location: bottom
+knitr::include_graphics(here::here("images","inductive-deductive.png"))
+```
+
+To do this, we might collect observations and then use **induction** to come up
+with **general laws** and theories from these **particular observations**. We
+might then use **deduction** to figure out what **logically follows** from these
+general laws and theories.
+
+This approach nicely captures the idea of **testability**. Our **theories**
+should make **predictions** about what we **expect to find** and we can **test**
+these predictions with more observations
+
+The philosopher _Karl Popper_ also saw trouble with relying on **induction**. He
+wanted to put science on a firmer logical footing. To do this, he proposed that
+while scientists can't use **deduction** to figure out what is **true**, they
+can use **deduction** to figure out what is **false**! He suggested that a key
+quality of **scientific theories** is that they should be **falsifiable**.
+
+Theories can come into existence through any means (wild speculation, guesses,
+dreams, or whatever), but once a theory has been proposed it has to be
+**rigorously and ruthlessly tested**.
+
+To see how **falsification** works in practise we'll take a look at another
+example.
+
+:::: {.columns}
+
+::: {.column width="45%"} 
+
+**Confirmation**\
+**Premise:** A swan that was white was spotted in London at time _t_
+
+**Conclusion:** All swans are white.
+
+The conclusion might be **true** or **false**, but it doesn't **logically**
+follow from the premise. 
+
+:::
+
+:::{.column width="10%"}
+
+:::
+
+::: {.column width="45%"} 
+
+**Falsification**\
+**Premise:** A swan, which was not white, was spotted in Australia at time _t_.
+
+**Conclusion:** Not all swans are white.
+
+The conclusion **logically** follows from the premise, so if the premise is
+**true** the conclusion is **true**. 
+
+:::
+
+::::
+
+In short, we can't **prove** the claim "_all swans are white_". But we can
+**reject it.**
+
+Popper also suggested that fallibility can come in degrees. **Good** theories
+are _falsifiable_, **better** theories are _**more falsifiable**_.
+
+Below we have some example theories:
+
+1. Mars moves in an elliptical orbit
+
+2. Mars and Venus move in elliptical orbits
+
+3. Planets move in elliptical orbits
+
+Of these three theories, (1) is the least falsifiable and (3) is the most
+falsifiable. Why? For theory (1) only an observation of Mars could falsify it.
+But for theory (3), an observation Mars, Venus, Saturn, Neptune, or any other
+yet undiscovered planet would falsify it. That is, there are more possible
+observations that can count against.
+
+This is in contrast to bed theories. Bad theories are ones that can seemingly
+accommodate **any observation**. If **two outcomes** are possible and the theory
+can explain **outcome one** and **outcome two** then this is **bad**. Because if
+it can account for both possible observation then what would be **evidence
+against the theory**?
+
+In short, we can say that **good** theories are **broad** in their
+_**applicability**_ but **precise** in their _**predictions**_!
+
+### Encountering a falsifier
+
+Once you have a theory that _can_ be falsified, what actually happens when you
+make an observation that falsifies a theory? That is, what do you do when you
+observe something that **contradicts** the theory you're testing. There are at
+least a couple of options.
+
+First, you could **abandon of your theory**. But what happens if you have a
+probabilistic? You theory might say that you should observe **phenomena A** and
+you fail to observe it, but your theory also say that it might not occur _every
+single time_. And what of _auxiliary assumptions?_ Maybe your observations rely
+on a brain imaging machine, and you have certain assumptions about how that
+machine works and it's ability to actually detect the things you want to
+observe.
+
+Alternatively, if you don't want to abandon your theory you might instead choose
+to **modify or amend the theory**. But are there better ways and worse ways of
+doing this? Let us dive into some of these issues in a little more detail.
+
+First, the issue of probabilistic theories. Theories in **psychology** often
+tend to be **probabilistic**. They make claims about how things are **on
+average**, not claims about how things are **in every case**.[A probabilistic claim might say something like _on average_ "men are
+taller than women", but of course there are shorter men and taller women.
+]{.aside} So knowing how
+to deal with probabilistic theories will be very important. Much of what we do
+with **statistics** is figuring out how to **test** and **specify**
+**probabilistic claims**. For example, what does it mean for things to be
+different **on average**? How many cases do you have to observe before you have
+**evidence for** a probabilistic claim? And how many cases do you have to
+observe before you have **evidence against** a probabilistic claim (that you
+might previously have believed).
+
+But putting that aside, a **single** contradictory observation can't falsify a
+probabilistic claim because we will **sometimes expect** contradictions with
+probabilistic claims.
+
+Let us, for now, just assume that you have a simpler non-probabilistic theory.
+Should contradictory observations now lead you to abandon the theory? You might
+not want to abandon your theory too quickly. Any experiment is not just testing
+**one theory in isolation** but also relies on a range of _auxiliary
+assumptions_ and other support theories. For example, an experiment on memory
+using brain imaging is also making assumptions about the truth of theories
+related to physics and brain function, **besides** testing the theory about
+memory.
+
+It **may be the case** that what is actually at fault is one of these auxiliary
+assumptions and not **your theory**. Telling which part of the **interconnected
+web** of theories is at fault can be tricky. Philosophers call this the
+_Duhem-Quine problem_. _Popper_ didn't have a good answer on how to figure out
+where to lay the blame for an _apparent_ falsification. It's certainly not an
+easy question to answer. But _Popper_ also didn't think that theories should be
+abandoned _too quickly_.
+
+Instead of quickly abandoning theories in the face of falsifier, Popper instead
+suggested some _dogmatism_. He pointed out that early on in some scientific
+field scientists might still be figuring out the details of their theories and
+assumptions, and therefore they might just need to make some _tweaks_ to their
+theories and modify rather than simply abandoning them completely.
+
+### Revising and amending theories
+
+If we do decide to amend a theory rather than abandoning it, then how do we do
+this? Are there good ways and bad ways to modify theories? Popper's considered
+_ad-hoc_ modifications to be bad. But he also thought that it was possible to
+come up with acceptable modifications. To see the difference between these two,
+let us examine the following theory:
+
+**Theory**: All bread is nourishing
+
+Once we have this theory, we might make the following observation that seemingly
+falsifies it:
+
+**Observation:** Bread eaten in a French village in 1951 was not
+nourishing[This is based on the true story of the Pont-Saint-Esprit mass
+poisoning. You can read more on
+[wikipedia.](https://en.wikipedia.org/wiki/1951_Pont-Saint-Esprit_mass_poisoning)]{.aside}
+
+Now that we've encountered the falsifying observation we can choose to make a
+modification to our theory. A might make a modification as follows:
+
+**Modification:** _All bread expect bread eaten in a French village in 1951 is
+nourishing_
+
+However, if we examine this modification, we can see that it has fewer tests.
+That is, the original theory can be tested by eating **any** bread. Modified
+theory can be tested by eating any bread **except** that particular bread. We
+already said that better theories have more tests than worse theories, so
+because our modified theory can fewer tests that our original theory our
+modified theory is worse. Is there a way to modify theories that doesn't make
+them worse? Wouldn't it be better if our modifications could actually make the
+theory better? Here is another example of a modification to our theory:
+
+**Modification:** _All bread except bread made with flour containing ergot
+fungus is nourishing_
+
+This modification has actually made our theory better, because the modification
+has lead to new tests. For example, we could now test the bread for the presence
+of fungus. Or we could cultivate the fungus and make bread with it and test
+whether it nourishes. Or we could analyse fungus for poisons. All these new
+tests create new chances to encounter possibly falsifiers and, therefore, our
+modification has actually improved upon our original theory.
+
+## Research programmes
+
+_Popper's_ approach is, however, not without it's problems. His focus on
+**falsifying** theories leads to at least a couple of issues. First, it can be
+difficult to figure out when to **abandon** theories and when to **amend**
+theories. And when parts of the theory are abandoned or modified are all parts
+of **theoretical web** of the same status?
+
+It can difficult to compare two theories to see which is "better". What I mean
+by this is, if you have **Theory A** and **Theory B** and neither has been
+falsified, which is the better theory? One might think that the theory with
+_more **confirming** observations_ is better? But then won't **trivial
+theories** will always win? The philosopher _Imre Lakatos_ developed his idea of
+**research programmes**[A _similar_ idea to Lakatos's idea of research
+programmes was developed by the philosopher _Thomas Kuhn_. 
+_Kuhn_ used the term **paradigms** for his idea.
+]{.aside} as a reaction to these two problems. Lakatos came to
+his view by actually observing how science operates in the real world.
+
+One key aspect of Lakatos's idea of **research programmes** is that not all
+**parts of a science are on par**. Some laws or principles are so fundamental
+they might be considered a **defining part of the science**. And other parts of
+the science might be more peripheral and of lower importance.
+
+Lakatos called these fundamental parts the **hard core** and the more peripheral
+parts the **protective belt**. He suggested that the **hard core** is resistant
+to _falsification_, so when an apparent falsifier is observed the blame is
+placed on theories in the **protective belt**. **Research programmes** are
+defined by what is in their **hard core**.
+
+What is in the **hard core** and what is in the **protective belt** might not
+always be explicit, but these might be some examples: In Cognitive Science the
+**hard core** might include the theory that mind/brain is a _particular kind of
+computational system_ and the **protective belt** might include specific
+theories about how memory works. Or in the biomedical view of mental illness the
+**hard core** might include the theory that mental illness can be explained
+biochemically and the **protective belt** might include the dopamine theory of
+schizophrenia (see @fig-programme for some more examples)
+
+When apparent falsifications occur the **protective belt** is up for revision
+but the **hard core** stays intact. Falsifying the **hard core** amounts to
+abandoning the _research programme_. But modifying the **protective belt** is
+more commonplace.
+
+On Latakos's view, scientists work **within a research programme**. He split
+guidelines for working within a research programme into a **negative** and
+**positive** heuristic, specifying what scientists **shouldn't** do but also
+what they **should** do. The _negative heuristic_ includes things like not
+abandoning the **hard core**. The _positive heuristic_ is harder to specify
+exactly, but it includes suggestions on how to supplement the protective belt to
+develop the research programme further. That is, the positive heuristic should
+actually specify a **programme of research**. And their should identify the
+problems that need to be solved.
+
+```{r}
+#| echo: false
+#| out-width: "70%"
+#| label: fig-programme
+#| fig-cap: Example of a research programme from Dienes (2008)
+#| cap-location: bottom
+knitr::include_graphics(here::here("images","hardcore.png"))
+```
+
+Lakatos was also interested in comparing **research programmes**, something that
+is difficult to do on a _strictly_ falsificationist account. He divided research
+programmes into those that are **progressive** and those that are
+**degenerating**.
+
+_Progressive research programmes_ are coherent. That is, they have minimal
+contradictions. Progressive research programmes make **novel** predictions that
+**follow naturally** from theories that are part of the programmes. And these
+predictions are then confirmed by experiments.
+
+In contrast, _degenerating research programmes_ are those that have faced so
+many falsifications that they have been modified to the point of being
+incoherent. At this point, it's no longer sustainable to carry on modifying the
+protective belt, and instead, the hard core must be abandoned!
+
+When the hard core is abandoned then scientists move from one research programme
+into a new one. We can see some examples of where this might have occurred in
+the history of psychology. For example, the move from _psychological
+behaviourism_ to _cognitive science_ might be one example. The move from
+classical cognitive science to embodied cognitive science, might be another.
+Other examples might be the move from connectionism to deep neural networks or
+from sociobiology to evolutionary psychology.
+
+But again, what is and isn't a **research programme** isn't always clear,
+because often the **hard core** and the **protective belt** are left _implicit_
+and not made _explicit_. However, I think it's valuable to keep these
+distinctions in mind as you move through your university career. All this might
+just help to make you a better scientist.
+
+## What's been left out
+
+There's so much more that I would've loved to have covered in this lecture, but
+unfortunately there simply isn't the time. But if you're interested in the
+nature of science, and the status of different kinds of knowledge, there are a
+few things that I can recommend for you to check out.
+
+# Lecture 3
+
+<!--
+TODO: Decide which move parts should  be in footnotes vs asides
+-->
+Doing research is an integral part of your training as a psychologist. But
+before you can start thinking about **doing research** you need to be aware of
+the different **approaches** that are available to you. The aim of today's
+lecture is to give you an overview of some kinds of approaches available to you.
+Research in psychology is incredibly varied and there are many different
+approaches available to you.
+
+In this lecture I'll primarily focus on two broad categories of approaches---
+qualitative methods, and quantitative methods--but at the end I'll also briefly
+mention how computer simulation can be used in psychology research. The current
+module, as with most of the research methods modules you'll take in your degree,
+is focused on quantitative methods. Therefore, this lecture will be the one
+chance we'll have to discuss methods that don't fit neatly under the label
+_quantitative_ until you have the chance to take more advanced courses later.
+
+## Introduction to Qualitative and Quantitative methods
+
+Approaches to research are ordinarily split into two **broad categories**. We
+can give some _simple_ descriptions of these categories.
+
+1. **Quantitative** methods collect numbers/numerical data and use statistical
+   tools
+
+2. **Qualitative** methods collect words, pictures, and artefacts
+
+As we'll see, these are really _approaches_ one might take to asking and
+answering a research question and the approaches _don't_ map neatly on to
+different subfields of psychology. Some researchers also adopt both approaches
+(_mixed-methods_) and some might apply _quantitative methods_ to _qualitative
+style_ data. **Quantitative methods** are probably easier to group together,
+because many approaches can be grouped under **qualitative methods**. So we'll
+start with _quantitative methods_ first.
+
+### Outline of quantitative methods
+
+Quantitative approaches take a phenomenon and try to **condense** it down into a
+few dimensions or **variables** that can be **measured** as _precisely and
+reliably_ as possible. Because of this, it is very important to choose
+**variables** that are **representative** of the phenomenon you're studying.
+This process of choosing variables that are representative of the phenomenon
+you're interested is called **operationalisation**.
+
+**Operationalisation** means choosing a **measurable** proxy for the phenomenon
+you're interested in. This is not always an easy process and involves lots of
+careful thought by researchers. How one researcher operationalises a phenomenon
+might be different to how another researcher does. And debates between
+researchers on exactly how to operationalise some phenomena can be common in the
+literature. _Operationalisation_ will be an important part of your lab report.
+
+Quantitative approaches often make use of **statistical methods**. Using
+**statistical methods** means looking at lots of cases by, for example, studying
+lots of people, not just one or two. The goal with quantitative methods is often
+to develop **generalisations**, or theories that are **generally applicable**.
+And quantitative methods often involves testing **predictions** that logically
+follow from **theories** (the _deductive_ step).^[Refer back Lecture 2 if you're
+unsure what _deductive_ means.]
+
+### Outline of qualitative methods
+
+**Qualitative methods** are focused on **meaning** rather than **measurement**.
+Instead of **condensing** a phenomenon down **to a simple set of features**
+dimensions (as is common in quantitative approaches), **qualitative research**
+tries to examine **many features** of a phenomenon. Qualitative approaches can
+do this, because instead of examining many instances of a single qualitative
+approaches try to look at **all aspects** of one or a few **instances**.
+
+**Qualitative approaches** view the **context** (_physical environment_, _social
+setting_, _cultural context_) as a **central** part of the phenomenon being
+studied. In contrast, it is common for quantitative approaches to place less
+emphasise on the context by abstracting away from it.
+
+Qualitative approaches—for example, **grounded theory** and
+**phenomenology**—also emphasise the idea of following the data wherever it
+leads (that is, the _inductive_ step).
+
+Qualitative methods is an umbrella term for a wide range of different
+methodologies. Each of these will have their own underlying theoretical
+assumptions and intellectual histories. I can't do justice to them all in one
+short lecture. In fact, just one of these approaches would require an entire
+course to itself if you were to learn enough about it to be able to apply it to
+your own research. So instead what I'll do is just pick out a few and highlight
+their key features.
+
+The methods I have chosen are: (1) Verbal protocol analysis, (2) ethnographic
+methods, (3) discourse analysis, and (4) phenomenology. However, there are many
+more, including Case Studies, Grounded Theory, Participatory Research, Focus
+Groups, to name just a few.
+
+I'll try to draw out some contrasts between **qualitative** and **quantitative**
+methods more generally and highlight **strengths** and **weaknesses** of each
+approach.
+
+## Qualitative methods
+
+### Verbal protocol analysis
+
+Also known as **"_thinking aloud protocols_"** (or **"_talking aloud
+protocols_"**). Verbal protocol analysis, involves collecting and analysing
+verbal data on cognitive processing.
+
+A typical setup might involve participants being given a task (usually a task
+that involves multiple steps that are chained together). They are asked to
+verbalise (speak aloud) what they are thinking as they go about solving the
+task. Finally, the data (i.e., recordings of what the participant said) are
+coded and analysed to infer the information processing steps involved in
+solving the problem. Consequently, verbal protocol analysis can carry **certain
+assumptions** about the nature of human cognition/thinking---for example, that
+it involves _information processing in discrete sequential steps_. For an
+example for verbal protocol analysis, see @tbl-vpa.
+
+```{r}
+#| tbl-cap: Example Verbal Protocol Analysis
+#| label: tbl-vpa
+#| echo: false
+#| messages: false
+readr::read_csv(here::here("data", "vpa_example.csv"), show_col_types = FALSE) |>
+  knitr::kable()
+```
+
+Although it might be common to associate qualitative methods with subfields of
+psychology like social psychology and quantitative methods with subfields like
+cognitive psychology, the qualitative--quantitative division does not map onto
+subfields this easily. Verbal protocol analysis is one example of a
+_qualitative_ approach that can a long history is cognitive psychology. The
+approach was used in early _cognitive science_ by _Simon_ and _Newell_ who were
+pioneering researchers in _Cognitive Science_ and _Artificial Intelligence_.
+
+
+
+### Ethnography
+
+More a **style of research** than a **method of data collection**, ethnography
+involves studying people in "the field" (i.e., their naturally occurring
+setting), and requires the researcher to **enter into the setting they are
+studying**
+
+- Attempts to understand how the socio-cultural practices and behaviours of
+  people are shaped by their social, physical, and cultural contexts
+
+- Tries to make sense of events from the perspective of their participants
+
+- Could include data from _interviews_, or _participant observation_^[In
+  _auto-ethnography_, researchers engage in self-reflection and treat themselves
+  as the participant.]
+
+
+
+In **cognitive psychology**, ethnographic approaches have been used to
+understand how people solve problems in **real-world settings**.
+
+For example, how do **technological artefacts** (that is, the _context_) to
+support cognitive processing^[One famous study in cognitive ethnography involves
+studying how sailors use the technological artefacts (instruments etc) and
+layout of a ship to help them navigate]
+
+In **critical psychology**, ethnographic approaches have been used to understand
+the interplay between, **race**, **class**, **gender**, and **education** in
+shaping participants' **life worlds**.
+
+
+
+### Discourse analysis
+
+Discourse analysis is the _social_ study of language as used in **talk**,
+**text**, and **other forms of communication**.
+
+It involves a distinctive way of thinking about talk and text where language
+doesn't just **represent** the world but also **constructs** the world.
+
+Some questions one might examine with this approach:
+
+- How does language shape social relations? For example, how might certain kinds
+  of talk establish professional distance in doctor-patient communication?
+
+- How might language construct or open up space for particular identities. For
+  example, how might language enforce or break down the concept of binary gender?
+
+
+
+
+
+The strengths of this approach are that it allows you to examine **how language
+constructs reality.**
+
+It can make use of primary data (interviews, talk in focus groups) or secondary
+data (books, newspaper articles).
+
+But it can be difficult to use discourse analysis to develop the same kind of
+**generalisations** as you might develop with other approaches.
+
+
+
+### Phenomenology
+
+Particularly associated with the philosophers _Husserl_, _Merleau-Ponty_, and
+_Sartre_
+
+The phenomenological approach involves **bracketing off** any preconceived
+notions we might have about a phenomenon to achieve an understanding of that
+phenomenon that has not been influenced by our prior beliefs.
+
+Phenomenology emphasises peoples first-hand experience and attempts to
+**understand** and **describe** subjective experience from the participant's
+point of view.
+
+
+
+
+
+Phenomenology has been used in fields like **cognitive psychology** to
+understand, for example, the nature of subjective sensory experiences, the
+nature of skilled actions, and the nature of cognition itself (e.g., been used
+to argue against the computational theory of mind).
+
+A **phenomenological** approach to studying, for example, inclusive classroom
+settings might try to understand **what it is like** for a student with a
+disability to be in that classroom setting.
+
+An **ethnographic** approach might look at how the classroom setting **changes
+interactions** between students with and without disabilities.
+
+
+
+### Issues in qualitative research
+
+Unlike **quantitative methods** than might use **printed questionnaires** or
+**computers** to record and measure responses, in **qualitative research**, the
+**researcher is the instrument**
+
+- important for researchers to reflect on their **values**, **assumptions**,
+  **biases**, and **beliefs** to understand how these might impact the research
+
+- the research instrument (i.e., the researcher) can change. For example, in
+  _ethnographic research_, the changes in the _researchers experience_ might
+  alter how they record and observe behaviours.
+
+There are parallels to **validity** (_internal_ and _external_),
+**reliability**, and **"objectivity"** in **qualitative research**^[We'll
+touch on these topics today, but you'll also learn more about these concepts in
+coming lectures]
+
+These are **Credibility**, **Transferability**, **Dependability**, and
+**Confirmability**
+
+
+
+
+
+- **Credibility**: Can the data support the claims. Can be established through
+  _prolonged engagement_, discussions with other researchers/participants, and
+  critical self-reflection
+
+- **Transferability**: Can the findings be transferred to similar **contexts**.
+  Requires extensive, detailed, and careful descriptions of the research
+  **context** (**"thick descriptions"**).
+
+- **Dependability**: Ensuring that researchers maintain a record of changes in
+  the research process or research instrument (i.e., themselves) over time.
+
+- **Confirmability**: Concerned with ensuring that the data used to support the
+  conclusions are _verifiable_.
+
+
+
+## Quantitative methods
+
+As the name suggests, a key aspect of **quantitative methods** is
+**quantification**.
+
+**Quantification** means putting numbers to the thing we're interested in
+studying so that it can be **measured**.
+
+The motivation behind **measuring** phenomena is that measurements are
+**publicly available and verifiable** (e.g., scientists can **check** or
+**verify** your measurements).
+
+Unlike _qualitative research_ where researchers try to simultaneously study many
+aspects of a single phenomenon, **quantitative research** tries to condense a
+phenomenon down into a single (or a few) dimension(s).
+
+The first step in quantitative research is often figuring out how **to
+quantify** the phenomenon of interest. This involves choosing a **proxy**
+(something measurable) that can **stand-in for** the phenomenon
+
+
+
+### Operationalisation
+
+If you're interested in **anxiety**, you have to decide how to **measure**
+anxiety. You can't measure an **abstract concept** directly.
+
+The process of choosing a **proxy** is known as **operationalisation**.
+
+There are lots of ways to choose a **measurable** proxy that can stand in for
+**anxiety**.
+
+1. Develop a **scale** or a **questionnaire**.
+
+2. Measure **physiological responses** like _increased heart rate_ or _galvanic
+   skin response_.
+
+
+
+
+
+Measurements have to be **reliable** (reproducible) and **valid** (actually
+measure what you think you're measuring).
+
+For example, if we develop a scale for **depression** then the scale must
+produce similar numbers when applied to the same person or to different people
+who are similarly depressed.
+
+A treatment for depression, should not just **reduce scores** on our depression
+scale, but it must also **result in people experiencing less depression**.
+
+
+
+### Quantitative methods and causation
+
+Unlike **qualitative** research, which studies phenomena _in the wild_,
+**quantitative** approaches try to exert a lot of **control** over phenomena.
+
+**Control** allows researchers to make claims about **causation** and give
+**causal explanations**.
+
+There are a few ways to understand **causation**, and thinking about what
+**causation** means will help us to think through ways to examine, study, or
+identify it:
+
+
+
+#### What is a cause?
+
+One view of **causation** can be summed up _as a **difference** that makes a
+**difference**_:
+
+If you take two situations, one in which the phenomenon occurs and another in
+which does not occur then whatever is different between those situations is the
+**cause** of the phenomenon.
+
+For example, take one situation in which a _window is broken_ and another in
+which a _window isn't broken_. If the only difference between the two is that in
+one _a boy has thrown a rock_ and in the other _a boy has not thrown a rock_
+then **a boy throwing a rock** is the **cause** of the **broken window.**
+
+
+
+
+
+You can also understand causation _in terms of **manipulation**_:
+
+If you can manipulate one thing and observe a change in another, then the two
+things may be **causally connected**.
+
+For example, as I _put my foot down or lift it from the accelerator pedal in a
+car_ I can observe _a change in the speed of the car_, so I know the
+**accelerator pedal** and the **speed of the car** are **causally connected**.
+By intervening and manipulating parts of **a system** you can identify how they
+work (you can identify **mechanisms**).
+
+
+
+
+
+Causation can also be understood _in terms of **probability**_:
+
+If the presence of one thing increases the probability of the other thing
+occurring, then there **may** be a **causal relationship**.
+
+For example, the presence of _smoking_ increases the probability of _developing
+cancer_, so _smoking_ **may** be the **cause** of _cancer_.
+
+
+
+### Causation and confounds
+
+In the examples above they are all examples of **possible** _causes_
+
+To be justified in claiming a causal relationship **other conditions must
+usually be met**.
+
+And causal claims are not always [black]{.red} and [white]{.green}. Sometimes we
+can only be more or less sure about causal relationships.
+
+[**What are some of the other conditions that need to be met?**]{.center-x}
+
+
+
+An example of Smoking and Cancer
+
+- The presence of _smoking_ increases the probability of _developing cancer_, so
+  _smoking_ **may** be the **cause** of _cancer_.
+
+- _Having emphysema_ also increases the probability of _developing cancer_. But
+  is _emphysema_ the **cause** of _cancer_?
+
+There is a **plausible mechanism of action between** _smoking_ and _cancer_ but
+not between _emphysema_ and _cancer_, so we can be more sure that _smoking_
+**causes** _cancer_ than we can be about _emphysema_ **causing** _cancer_.
+
+A more likely explanation is that _emphysema_ and _cancer_ have a **common
+cause**—_smoking_.
+
+
+
+
+
+Let's say you are studying the relationship between _emphysema_ and _cancer_,
+because you think _emphysema_ might cause _cancer_
+
+In this situation, _smoking_ is a **confound**
+
+If you wanted to see whether _emphysema_ caused _cancer_ then you'd have to
+**control for smoking**
+
+- Only look at smokers and see if there's still a relationship between emphysema
+  and cancer or whether cancer also occurs in the absence of emphysema
+
+- Only look at non-smokers and see whether emphysema and cancer are still
+  related or whether cancer develops in the absence of emphysema
+
+Emphysema and cancer are **correlated** (the increase in one leads to an
+increase in the other), but emphysema doesn't cause cancer because they have a
+common cause. Sometimes two correlated variables have a causal relationship,
+such as the correlation between smoking and cancer. Sometimes they have a common
+cause---such as the correlation between developing emphysema and cancer. And
+sometimes, they have neither. For example, the correlation between the number of
+men getting engineering degrees and per capita consumption of sour cream (see
+@fig-cream).
+
+```{r}
+#| echo: false
+#| fig-cap: An example of a spurious correlation
+#| label: fig-cream
+
+knitr::include_graphics(here::here("images","sexy_chart.png"))
+```
+
+
+## Qualitative vs Quantitative methods
+
+In qualitative research, you study phenomena **in context** while in
+quantitative research you aim for **control**.
+
+But you can use either approach to study the same phenomena/psychological
+processes. Let's say you're interested in **memory**:
+
+How could you study **memory** from
+
+- A **qualitative** perspective?
+
+- A **quantitative** perspective?
+
+
+**Quantitative:**
+
+You could use experiments in a lab where you give people lists of words to
+remember. You could _manipulate_ aspects of the words— for example, their
+**emotional salience**—and measure performance (accuracy scores) to try to
+understand something about **memory** and **emotional salience**.
+
+Ensure that the only thing that differs between the words on each list is the
+**emotional salience**. Control for possible **confounds** like:
+
+- **Word length**: make sure that one list doesn't contain long words and the
+  other short words
+
+- **Word order**: make sure some people get the lists in one order and some in the
+  other order, because maybe people get tired by the end and that influences
+  memory.
+
+
+**Qualitative:**
+
+For a **qualitative** approach you don't want to study memory in the lab—you
+want to study it in the wild. This allows you to **ask different kinds of
+questions**.
+
+You could use an _ethnographic_ approach with, for example, bartenders. You
+might do fieldwork in a bar **observing** bartenders. Through this, you might
+see that bartenders **structure their environment** in a particular way—e.g.,
+put certain types of glasses or bottles in particular places.
+
+
+
+
+
+This might lead you to form the hypothesis that bartenders **structure their
+environment** to support their memory—i.e., placing certain bottles and glasses
+together helps them remember what goes in what kinds of cocktails.
+
+- Follow-up interviews or discussions with bartenders or observing the training
+  of bartenders might provide further evidence for this hypothesis.
+
+- You might also engage in bartending and critically reflect on your own
+  experience to understand how this **environmental structuring** supports
+  memory.
+
+
+
+## Computer simulation and formal methods
+
+**Qualitative** and **quantitative** methods try to understand phenomena by
+studying the phenomena themselves. The **data** they use comes from the
+phenomena.
+
+In approaches like **computer simulation** and **formal/mathematical modelling**
+researchers instead **generate the data**.
+
+Researchers try to **build systems** that _replicate_ or _reproduce_ some
+aspects of systems or phenomena they are studying.
+
+- This might allow them to **gain new insights** into these systems.
+
+- **Comparing** the behaviour of their **artificial systems** with the **natural
+  system** allows researchers to test theories about the **processes** that
+  produce phenomena
+
+
+
+
+
+**Computer simulation** has been used to study a lot of different phenomena in
+psychology, but here are some examples of approaches I find particularly
+interesting.
+
+**Simulation** has been used to show how **seemingly complex behaviour** can
+arise from **very simple processes**.
+
+<!-- FIXME: VISUALISATION: Boids -->
+
+
+``{r}
+knitr::include_graphics(here::here("images","flock.jpg"))
+
+```
+
+Flocking behaviour in birds seems very complex, and it looks **as if** there
+must be something very complex going on inside their brains.
+
+But you can **simulate** this behaviour with only three simple rules:
+
+1. **avoid** collisions with other birds
+2. **align** direction with nearby birds
+3. **approach** distant birds
+
+
+
+
+```{r}
+#| fig-align: center
+knitr::include_graphics(here::here("images","./boids.gif"))
+```
+
+
+In the lecture notes you can adjust the rules of the simulation
+
+
+
+Conway's game of life^[You can read more about Conway's game of life at [scholarpedia page](http://www.scholarpedia.org/article/Game_of_Life) or play with an example in the handout]
+
+
+
+
+
+```{r}
+#| fig-align: center
+#| fig-caption: An example of an oscillating pattern in the Game of Life
+knitr::include_graphics(here::here("images","./gol.gif"))
+```
+
+
+
+Conway's Game Of Life has 4 simple rules: 
+
+- A live cell with 2 or 3 live neighbours lives on
+
+- A live cell with < 2 live neighbours dies (underpopulation)
+
+- A live cell with > 3 live neighbours dies (overpopulation)
+
+- A dead cell with exactly 3 live neighbours becomes a live cell (reproduction)
+
+
+<!-- FIXME: VISUALISATION: Conways game of life -->
+
+### Agent-based modelling (ABM)
+
+Agent-based modelling takes a cue from approaches like those used to model bird
+flocking and Conway's Game of Life.
+
+In an agent-based model, the research simulates a group of 'agents'.
+
+- The 'agents' will typically have some memory, a set of goals, and some rules.
+
+- The memory allows them to store their current state or consequences of their
+  previous actions.
+
+- The goals usually represent some state they're trying to achieve.
+
+- And rules govern their interactions.
+
+By allowing these agents to interact, and by manipulating aspects of the agents
+(their memory, goals, and rules) is it possible to see how social phenomena can
+arise.
+
+
+
+
+
+Agent-based modelling can be used for modelling phenomena like the spread of
+misinformation through social groups:
+
+- If you thought that **misinformation** was more likely to spread if passed on
+  by particularly influential individuals (e.g., celebrities or politicians),
+  then you could include these in your simulation.
+
+- Or if you thought that misinformation was more likely to spread inside
+  socially isolated groups, then you could modify your simulation to create
+  socially isolated groups to test this hypothesis.
+
+After your simulation, you could still go and check the real world to see if it
+behaves like your simulation.
+
+# Lecture 4
+
+As I said in the [previous lecture](), the focus of this course, and most of the
+undergraduate research methods courses that you will take, will be on
+quantitative methods. Today will be the start of our journey of learning more
+about the specifics of **study design** in _quantitative_ _research_.
+
+As we touched on in the [previous lecture](), _quantitative research_ is all
+about **measurement**. The aim of _quantitative research_ is to take a
+phenomenon and condense it down into a few **variables** than can be
+**measured** as _precisely_ and _reliability_ as possible. We also saw that
+_quantitative research_ often made use of statistical methods, and that the aim
+of _quantitative_ _research_ was often to develop **generalisations** or
+**generally applicable** theories. In today's lecture, we're going to learn a
+bit about how to **design** quantitative studies so that _all these things are
+possible_.
+
+## The "how" of quantitative research
+
+The conclusions that we can draw from our research depends on how that knowledge
+was generated and the research design that was used. For any piece research that
+we conduct (or piece of research that we read), we need to be able to answer
+several questions: 1) How do we actually test **hypotheses** appropriately? 2)
+How do we **generalise** our findings? 3) How to we **quantify** seemingly
+unquantifiable things? The answer to these questions lies in **research
+design**.
+
+### Research design
+
+We can use different types of research design to answer different **research
+questions** and to test different **hypotheses**.[If you're not sure what the
+terms **research question** and **hypothesis** mean, then just keep them in your
+mind for now. Their meanings will become clearer when we get to the
+examples.]{.aside} Study designs can vary along many dimensions. For example,
+study designs can differ on whether they include a **manipulation** or not. They
+can differ on whether they use a **between-subjects** or **within-subjects**
+measurement. And they can differ with respect to the **time frame** used for
+data collection.
+
+<!--
+
+// this is going to need a preview slide
+Some study designs that vary on these dimensions include **observational designs**
+and **correlational designs**.
+
+We'll try to examine all of these dimensions by way of
+examples.
+-->
+
+#### Experimental and non-experimental designs
+
+The key feature of **experimental designs** is that there is some form of
+**manipulation**. By **manipulation**, we just mean some sort of change that is
+introduced that may have some impact on the thing our study is measuring.[The
+**manipulation** might be something that is intentionally introduced by the
+experiment, or it might be some change that is naturally occurring. We'll see
+that this will be the difference between _true experiments_ and _natural
+experiments_.]{.aside}
+
+Not all possible designs include manipulations. Designs that don't include
+manipulations are known as **observational** or **correlational** designs. In
+correlational designs we rely on **observed data** that are not subjected to any
+**experimental manipulation**. By _observational_, we don't mean that we're
+_just looking_. There is still measurement, whether this is through
+questionnaires, laboratory tasks, or similar.
+
+**Correlational** designs have several **practical** advantages over
+**experimental** designs. These include the ability to collect data from far
+more people than would be practical for an experimental design. And they also
+allow us to study phenomena where experimental manipulations would be
+_unethical_. But correlational designs also have drawbacks when compared with
+experimental designs. In particular, while correlational designs can be used to
+investigate **relationships** between variables, but in order to make **causal**
+claims, experimental designs (whether true experiments or natural experiments)
+are needed.
+
+## An example: Ice cream and murder
+
+In @fig-murder we can see a plot of the relationship between the murder rate and
+the number of ice creams sold in New York City. We can see from the plot that
+when the murder rate is high then the number of ice cream sales is also high and
+when the murder rate is low then the number of ice creams sold is also low. But
+are they _just correlated_ or does ice cream _cause_ murder?
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-cap: The relationship between the murder rate and ice cream sales in New York City
+#| label: fig-murder
+knitr::include_graphics(here::here("images","IC.jpg"))
+```
+
+We might design to conduct some research into this relationship between ice
+cream and murder to see whether there actually is some sort of causal
+relationship. Obviously, there are **many** ethical issues with conducting an
+experiment on this, but let's put those aside for now and see what such an
+experiment might actually look like.
+
+Our first step in our experiment would be to specify our **research question**.
+In this example, our research question might be something like: _Does eating ice
+cream make you more prone to murderous tendencies?_ From this we can now
+formulate our **hypothesis**. In our **hypothesis** we will actually specify the
+outcome we expect. Our hypothesis might be something like: _Eating ice cream
+increases the desire to commit murder_.
+
+Testing our hypothesis with an experiment might involve something like the
+following steps: First, we might invite a bunch of people into lab. Half these
+people will be given some ice cream eat, and the other half will not be given
+some ice cream. This is our **manipulation**. Next, we might get all of our
+participants to look at several images of people (our _stimuli_) while we get to
+rate how much they want to **eliminate** them on a scale of 0 (no desire) to 9
+(all the desire possible).
+
+In this study, we have **independent variable** (IV) or _predictor variable_.
+This is the thing that we're manipulating. In our case, this is whether people
+ate ice cream or not. We manipulated our IV by assigning people to one of **two
+groups**: The _ice cream condition_ or the _no ice cream condition_. We also
+have one **dependent variable** (DV) or _outcome variable_. In our case, this
+would be participants total score on our _desire to eliminate_ measure.
+
+After we have all our data we could then compare the results between the _ice
+cream **condition**_ and the _no ice cream **condition**_ to see which group
+gave higher ratings for their _desire to eliminate people_ (the **outcome** or
+**DV**).
+
+## Features of good study design
+
+Our study on the relationship between murder and ice cream is an example of a
+very unethical study, but it is also a _poorly_ designed study. In a
+well-designed experiment, we can be confident in saying our **manipulation**
+_caused_ a change in our **outcome variable**. But this isn't the case for our
+ice-cream study. Let's take a look at some features of good study design.
+
+### Controls
+
+Our imaginary study didn't use _any_ **controls**. We recruited all kinds of
+people without giving consideration to how different characteristics might
+affect our results. Let's say, for example, that all the people that we
+recruited were actually lactose intolerant and that for these people eating
+ice-cream caused a great deal of discomfort. Perhaps it is actually this
+discomfort that caused their murderous rage and their murderous rage is not
+specific to ice cream _per se_. It could equally well be caused by drinking
+milkshakes.
+
+We might also not have had a standardised set of instructions that we gave to
+participants. Some participants might have arrived very hungry and other
+participants might have arrived very full. Maybe the differences that we observe
+are actually a result of some participants being very
+[hangry](https://www.oxfordlearnersdictionaries.com/definition/english/hangry).
+
+Maybe we didn't control our **IV** appropriately. We might have often changed
+the brand or the flavour of the ice cream. Some days we might have run out of
+ice cream and used _frozen yoghurt_ instead. And some days we might just have
+given a small amount of ice-cream and other days we might have forced our
+participants to eat a large amount of ice cream. Now we wouldn't know exactly
+what cause any changes in our **outcome**.
+
+We might also not have controlled the lab environment adequately. On some days
+the heating might have been up really high. And other days the air-conditioning
+might have been up really high. Maybe it's just the heat that's driving people
+into a murderous rage?
+
+### Randomisation
+
+Another feature that might have been missing from our study is that we didn't
+**randomly assign** people to groups: Maybe we did our participant recruitment
+first at a dentist's office and then at supermarket. And maybe all participants
+recruited first were assigned to the ice cream condition with the second batch
+of participants assigned to the no ice cream condition. Because of this, it
+might so happen to be the case that all the participants in the ice cream
+condition just so happened to have sensitive teeth. This would affect the
+results by giving us the impression that ice cream increases murderous
+tendencies when it doesn't. To deal with these issues, participants should have
+been sorted into groups **randomly**. A well-designed experiment would randomise
+the **participant allocation** and the **stimulus presentation order** (in our
+experiment, this refers to the order in which the images of faces were rated).
+
+### Blinding
+
+In our study, we might have told participants that we were interested in the
+effect of ice cream on murderous tendencies. And we might have also given
+participants the ice cream ourselves. Participants may have (consciously or not)
+modified their behaviour to either fit the hypothesis or to contradict the
+hypothesis. Because of this, it is crucial that participants are unaware of what
+the hypothesis was and also what condition they have been allocated to. If
+participants are naïve to group allocation then study is said to be
+**single-blind**. If neither the participants nor the researcher know which
+condition the participants are put in, then the study design is known as
+**double-blind**. In such a case allocation might be recorded but only revealed
+once the study is over and the data are being analysed.
+
+### Theoretical framework
+
+The choice of **predictor** (**IV**) and **outcome** (**DV**) variables does not
+happen in a theoretical vacuum. Rather, these choices are based on theory. In
+our experiment, the decision to have ice cream as the **IV** and murderous
+tendencies as the **DV** was not based on any **theory**. It could be that
+committing murder causes people to eat ice cream. In which case, we should
+probably have swapped around our IV and DV. Or it might be that they're
+completely unrelated. To have good reasons for running the experiment we did,
+we'd would probably have to be able to tell some kind of a plausible story about
+**how** eating ice cream a murder were related. Such a story would probably have
+to make reference to some kind of psychologically or biologically plausible
+mechanism that might explain the connection.
+
+## Types of study designs
+
+We've already talked about experimental designs through your example. But it's
+worth spending a little more time talking about different kinds of study design.
+
+### Experimental studies
+
+First, we have **experimental studies**. Experimental studies usually have tight
+controls. As a result, experimental studies can be somewhat artificial, because
+they abstract away from reality. This means that experimental studies can
+sometimes lack something called **ecological validity**. Ecological validity
+refers to the ability to generalise the results of the study to **real-life**
+settings. That is, just because something is true is the lab, doesn't
+necessarily mean that it will be true in "the real world". Experimental designs
+do, however, provide the most rigorous methodology for investigating **causal
+relationships**.
+
+As we saw in our example, good experimental design requires randomisation,
+manipulation, and adequate controls. For many research questions there are
+methodological, logistical, and ethical obstacles that make it infeasible to
+conduct experiments. In these cases, we might want to use a
+**quasi-experimental** design or a **natural experiment**.
+
+### Quasi-experiments
+
+**Quasi-experimental** designs are similar to experimental designs **expect for
+participant randomisation**. As a result, they're used in situations where it's
+not possible to randomise the allocation of participants into groups. An example
+of a study using a **quasi-experimental** design might be one looking at the
+effectiveness of attending summer school. If one school offers summer school,
+but another does not, then we can't randomise students into the intervention. In
+situations like this, we should still try to **match** the participants so that
+the two groups don't differ on any Characteristics that might be relevant to our
+outcome. Expect, of course, for the characteristic we're actually interested
+in---attending summer school.
+
+### Natural experiments
+
+**Natural experiments** are studies where randomisation and manipulation occur
+through **natural** or **socio-political** means. A good example of a **natural
+experimental** might be _twin studies_. Identical twins share 100% of their
+genes while fraternal twins only share on average 50% of their genes. However,
+both kinds of twins tend to share the same home environment (if they're raised
+together). By comparing similarities on some characteristic between identical
+twins and between fraternal twins we might be able to estimate the degree of
+variation of some characteristic that is due to genetic variation. Other
+examples of natural experiments might be made possible by differences or changes
+in government policy: For example, bans on cigarette advertising, or differences
+in length on compulsory education. Natural events, or even natural disasters,
+might create the manipulations that natural experiments can be based on.
+
+## Aspects of study design
+
+In our ice cream example, we used a between-subjects design, but this isn't the
+only option available to us. We just collected our data at one point in time.
+And this too isn't the only option available to us.
+
+### With-subjects and between-subjects designs
+
+In a **between-subjects** or **independent design** we compare different
+**groups** of participants. For example, in our ice cream study, one **group**
+of participants ate ice cream while the other **group** of participants did not.
+
+Between-subjects designs can be contrasted with **within-subjects** or
+**repeated measures** design. As the name suggested, this kind of design
+involves _repeatedly measuring_ participants, but **under different
+conditions**. We can show the distinction by way of an example. Let's say that I
+conduct a study where I'm interested in whether people are better at remembering
+long words or short words. A _between-subjects_ design would involve getting one
+_group_ of participants to remember long words and another _group_ of
+participants to remember short words. With a **within-subjects** design,
+however, all participants would be asked to remember the words under both
+conditions (short words and long words). We'd measure their memory for words
+under both of these conditions.
+
+With **within-subjects** designs there are some additional things than we will
+need to consider. For example, if participants perform one condition first
+followed by the other conditions then we might need to consider whether there
+are order effects presents. It might be that participants are fatigued by the
+time they get to the later condition and as a result they perform worse on it.
+Or it might be the case that by the time they get to the later condition they
+have already had some practise with the task and, therefore, they might perform
+better.
+
+Finally, we can mix **within-subject** manipulations with **between-subject**
+manipulations. This is what is known as a **mixed-design**. To use our word
+memory example above, an example of a **mixed-design** might be as follows:
+First, we might split our participants in **two groups** and give one group some
+special memory training. All participants would then be asked to perform the
+word memory task. We could then examine whether the influence of the memory
+training made a difference to whether people were better at remember short words
+over long words.
+
+### Time frame
+
+<!-- change this header -->
+
+In our ice cream example we also only took our measurements at one point in
+time. But this too is not the only option available to us. We could for example
+vary the time frame used. There are a couple of different ways in which we could
+do this. First, in a **cross-sectional** design, we're still taking our
+measurements at a single point in time
+
+An alternative to a _cross-sectional_ design might be a **longitudinal design**.
+This kind of design involves repeated measurement of the same characteristic of
+the same participants at multiple different time points. The logistics involves
+in **Longitudinal designs** can make them very difficult to carry out. This is
+particularly true where studies carry on for several decades. This can also make
+them very time-consuming and expensive to carry out. Finally, the risk of
+**missing data** with longitudinal studies can also be very high.
+
+### Missing data
+
+Missing data can occur in all types of studies, not just longitudinal studies,
+although the large-scale nature of them does make it more likely. Missing values
+can also result from a number of different causes. For example, they might be a
+result of technical failures (such a computer errors) that means answers don't
+get registered or recorded properly. They might also occur because participants
+accidentally skip questions. Or they might occur because participants
+intentionally skip questions because they don't want to disclose some bit of
+information---for example, information that might be of a sensitive nature.
+
+The presence and pattern of missing data can sometimes be random, but sometimes
+it is not. For example, you might have a survey that includes questions about
+income, because you're interested in some relationship between income and some
+characteristic. It might be the case that the missing data that you observe is a
+result of one specific group of participants, for example, those from a low SES
+background, skipping over those questions. By exploring the pattern and possible
+causes of missing responses we can learn more about our data.
+
+## Measurement
+
+### Construct validity
+
+A measure is **valid** if it measures what it is supposed to measure. In
+psychology, we often want to measure things that maybe be difficult to observe
+directly and difficult to **quantify**. For example, things like happiness, or
+cognitive ability, or personality. We attempt to measure these unobservable
+things using a range of different tools including questionnaires or experimental
+tasks. We design these tools by using the theoretical underpinnings behind the
+constructs we are trying to measure. **Construct validity** is the extent to
+which a tool can be justifiably trusted to actually measure the construct it is
+supposed to measure.
+
+### External validity
+
+A study has **external validity** if its findings can be applied to the entire
+population of people with the relevant characteristics. For example, if study
+uses a sample of white women in western cultures, the findings may only be true
+for white women in western cultures. They might not apply or **generalise** to
+_all_ people.
+
+We've already touched on **ecological validity**. **Ecological validity**, which
+is often an issue in experiments, refers to whether the findings of a study
+apply to the "_real world_". Just because something is true in the lab doesn't
+mean it is going to be true in the real world.
+
+### Reliability
+
+Finally, **reliability** refers to the **consistency** of a measure. A measure
+is **reliable** if it produces consistent results each time it's used by the
+same participant. For example, we could measure someone's maths anxiety with
+a questionnaire. Our questionnaire would be considered **reliable** if when we
+tested the same participant on different occasions they got similar scores each
+time. This stability over time is known as **test-retest reliability**.
+
+<!-- TODO: Levels of measurement -->
+
+## Levels of Measurement
+
+### Nominal/categorical
+
+### Ordinal
+
+### Interval
+
+### Ratio
+
+## Variable/Data Types
+# Lecture 5
+
+# Lecture 6
+
+```{r}
+#| echo: false
+#| include: false
+
+require(ggplot2) 
+require(cowplot)
+require(tidyr)
+require(dplyr)
+require(plotly)
+salary <- readr::read_csv(here::here("data","world_salary.csv"))
+USD <- scales::dollar_format(suffix = " USD")
+ggplot2::theme_set(cowplot::theme_cowplot())
+```
+
+In [Lecture 4](/lectures/week04/handout) we started talking about how
+quantitative methods deal with **measurement**---that is, putting numbers to
+things. In today's lecture we're going to start talking about what we actually
+do with these numbers, and how to make a little more sense of measurements in
+general. This lecture will be the first in a set of lectures where we'll talk
+about **samples** and **populations**, how to **describe** them, and how to
+understand the relationship between them. A lot of these ideas are
+interconnected, so we'll be touching on some ideas multiple times. But
+hopefully each time we'll be able to gain a richer understanding.
+
+The first thing we'll want to do when we've collected a set of measurements is
+to describe them in some way. One way to do this is to work out what the
+**typical value** is. And it's this kind of description that we'll turn our
+attention to first. We'll start off by looking at three different ways we can
+describe the **typical value** is a set of numbers. 
+
+## Measures of central tendency
+
+What we mean by the **typical value** is not always clear. For example, in
+@fig-income we can see the average annual salary (in US dollars) for a set of
+`r dim(salary)[1]` countries. Each bar of the plot represents the number of
+countries in the given salary bracket ($0--$10k, $10-$20k, ...).
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig.align: center
+#| fig.height: 3
+#| label: fig-income
+#| fig.cap: "National average annual salary [source: https://www.worlddata.info/average-income.php]"
+(salary |> ggplot(aes(x = yearly)) +
+  geom_histogram(binwidth = 1e4, boundary = 0, fill = "white", color = "black") +
+  labs(x = "Annual salary in USD", y = "Count")) |>
+  plotly::ggplotly(tooltip = "count") |>
+  plotly::config(displayModeBar = F)
+```
+
+
+From the plot we can see that there are a lot of countries where the average
+annual salary is less than $30,000 USD. There are also a handful of countries
+where the average annual salary is more than $100,000 USD. What would you
+consider the _most typical_ annual salary? The bracket with the most countries
+in it? If so, that would mean the most typical salary on the planet is between
+$0 and $10,000 USD per year. Or maybe we should pick the value where half the
+countries have a lower average salary and half the countries have a higher one?
+Choosing this option leads to an estimate of the most typical salary of
+`r salary$yearly |> median() |> USD()` per year.
+
+As you can see, depending on how we define _the most typical value_, we get
+different answers. We'll cover the three main ways of defining the _typical
+value_ or _average_. Together, these ways of describing the _typical_ or
+_average_ value are known as **measures of central tendency**.
+
+### Mode
+
+The **mode** is a term that refers to the **most frequent value** in a set of
+measurements. This is the kind of _average_ we discussed above when we said the
+most typical salary on the planet is between $0 and $10,000 USD a year. The
+easiest way to spot the **mode** is just to draw a plot like the one we did in
+@fig-income and then just look for the tallest bar.
+
+A set of numbers can have one or more modes. If it only has one mode, then it is
+said to be **unimodal**. **Bimodal** means it has two modes. If it has three or
+more modes, then it is usually called **multimodal**. Some examples of
+this are shown in @fig-diff-modes.
+
+```{r}
+#| echo: false
+#| label: fig-diff-modes
+#| fig-cap: Datasets with different numbers of modes.
+#| fig-subcap:
+#|    - "A unimodal dataset"
+#|    - "A bimodal dataset"
+#|    - "A multimodal dataset"
+#| layout-ncol: 3
+require(ggplot2)
+require(dplyr)
+
+# Let's draw some plots
+
+# Unimodal
+set.seed(123)
+tibble(x = rchisq(n = 10000, df = 5, ncp = 0)) |>
+  ggplot(aes(x = x)) +
+  geom_histogram(bins = 50, boundary = 0, col = "grey20", fill = "grey80") +
+  theme_cowplot() +
+  labs(x = "value", y = "count")
+
+# Bimodal
+set.seed(123)
+d <- rnorm(n = 5000, mean = 2, 1)
+tibble(x = c(
+  d,
+  d + 3
+)) |>
+  ggplot(aes(x = x)) +
+  geom_histogram(bins = 50, boundary = 0, col = "grey20", fill = "grey80") +
+theme_cowplot() +
+labs(x = "value", y = "count")
+
+# Multimodal
+d <- rep(seq(0, 5, length.out = 100), times = 100)
+tibble(x = d) |>
+  ggplot(aes(x = x)) +
+geom_histogram(bins = 11, boundary = 0, col = "grey20", fill = "grey80") +
+theme_cowplot() +
+labs(x = "value", y = "count")
+```
+
+
+:::{.callout-important}
+
+The mode is the only definition of _typical value_ that works for data that is
+measured at the **nominal**/**categorical** level.
+
+When it comes to truly **continuous** variables, such as height, the mode is
+often not very informative. Why? Because no two people are **exactly** the same
+height (right down to the exact same number of nanometres), so each value in the
+dataset may be unique. For this reason, the mode is rarely used for continuous
+variables measured at the **interval** or **ratio** levels.
+
+Average salary is continuous variable, but we turned it into a discrete variable
+placing chunking the measurements into discrete bins. 
+
+:::
+
+### Median
+
+```{r}
+#| echo: false
+dice_res <- c(3, 4, 6, 1, 1) 
+
+```
+
+The **median** is the second kind of average we talked about
+[above](#measures-of-central-tendency); the
+middle value where half the measurements are above that value and half the
+measurements are below. To find the median, we first need to sort our data.
+Let's say we roll a 6-sided dice 5 times and get the following: 
+`r paste0(dice_res[1:4], collapse = ", ")` and `r dice_res[5]`.
+
+To calculate the median, let's do the two steps:
+
+1. Sort the data from smallest or largest: `r sort(dice_res)`
+
+2. Find the mid-point: We have five observations so the third one in the
+sorted sequence is the mid-point.
+
+So out of five rolls the median is `r median(dice_res)` (and the mode is 1). If
+we had an even number of observations then the median would be the half-way
+point between the two mid-point values. For example, if we instead rolled the
+dice 6 times and got the results 1, 1, 3, 4, 4, and 6 then the median would be
+the midpoint between 3 and 4, or `r median(c(1, 1, 3, 4, 4, 6))`.
+
+@fig-sorted below shows the annual salary in USD per each of the countries in the
+data set, sorted from lowest to highest. Notice, that this time, we’re not
+grouping countries in salary brackets and looking at how many there are in each
+one as was the case in @fig-income. Here, each bar represents a country.
+
+Because we have an even numbers of countries in our dataset (78), there are two
+mid-points. These are highlighted in orange in the plot below. To get the median
+annual national salary, we need to find the value half-way between the average
+salary in Romania and Venezuela, which in this data set turns out to be 
+`r median(salary$yearly) |> USD()`.
+
+
+```{r}
+#| echo: false
+#| label: fig-sorted
+#| fig.cap: |
+#|  Average national salary per country sorted from lowest to highest (Hover 
+#|  over the bars to see the name of the country and the value).
+(salary |>
+  dplyr::arrange(yearly) |>
+  dplyr::mutate(index = 1:n()) |>
+  dplyr::mutate(
+    color =
+      case_when(
+        index == (1:78 |> median() |> floor()) ~ "red",
+        index == (1:78 |> median() |> ceiling()) ~ "red",
+        TRUE ~ " grey"
+      )
+  ) |>
+  dplyr::mutate(text = glue::glue("{country} (${round(yearly/1000,2)}k)")) |>
+  ggplot(aes(x = index, y = yearly, text = text, fill = color)) +
+  ggplot2::scale_fill_manual(
+    name = NULL,
+    values = c("#454A60", "#ff4500"), labels = NULL, guide = "none"
+  ) +
+  labs(y = "Annual salary in USD", x = "Country") +
+  scale_x_continuous(labels = NULL, breaks = NULL) +
+  scale_y_continuous(labels = function(x) paste0(x / 1000, "k")) +
+  ggplot2::theme(
+    axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+    legend.position = "none", legend.title = element_blank(),
+    panel.grid.major.y = element_line(color = "grey60"),
+    axis.line.x = element_blank(), axis.line.y = element_blank()
+  ) +
+  geom_col() +
+  NULL
+) |>
+  plotly::ggplotly(tooltip = "text") |>
+  plotly::config(displayModeBar = F)
+```
+
+
+:::{.callout-important}
+
+To be able to calculate a meaningful median, the variable must be measured on
+**at least the ordinal level**.
+
+:::
+
+### Mean
+
+The arithmetic mean is what most people mean when they talk about the
+*average*. You can work the mean of a set of numbers by adding up all
+the values and then dividing this by the number of values in the data
+set. Mathematically, you can represent this with the formula shown
+in @eq-mean, below:
+
+```{r}
+#| echo: false
+rgb2 <- \(red, green, blue) rgb(red, green, blue, maxColorValue = 255)
+hex <- function(x) {
+  stringr::str_split(x, ",")[[1]] |>
+  as.numeric() |>
+  setNames(c(
+    "red",
+    "green", "blue"
+  )) |>
+  as.list() |>
+  do.call("rgb2", args = _)
+}
+mean_c <- "255, 0, 0"
+sum_c <- "0, 255, 0"
+all_c <- "0, 0, 255"
+div_c <- "255, 0, 255"
+```
+
+
+$$
+\definecolor{sum}{RGB}{`r sum_c`}
+\definecolor{n}{RGB}{`r all_c`}
+\definecolor{i}{RGB}{`r all_c`}
+\definecolor{x}{RGB}{`r all_c`}
+\definecolor{div}{RGB}{`r div_c`}
+\definecolor{mean}{RGB}{`r mean_c`}
+{\color{mean}\bar{x}}={\color{div}\frac{1}{N}}{{\color{sum}\sum^{\color{n}N}_{\color{i}i=1}}{\color{x}x_i}}
+$$ {#eq-mean}
+
+Take <font color="`r hex(mean_c)`">mean of the data</font> is equal to
+<font color="`r hex(sum_c)`">the sum</font> of
+<font color="`r hex(all_c)`">all the values</font>
+<font color="`r hex(div_c)`">divided by the number of values</font>
+
+<!-- TODO: Break down the sum notation a bit more -->
+
+### Mean vs Median
+
+Both of these measures have their advantages and disadvantages. The mean is
+easier to worth with from a mathematical point of view. And for this reason,
+most of the statistical methods we'll be learning about are based on the mean.
+
+Compared to other measures of central tendency, *means taken from different
+samples of the same population* tend to be **more similar to each other**. If,
+on the other hand, we calculated medians for different samples from the same
+population, there would be more variability in the values we'd obtain. Turning
+back to our dice example: If we took the median and the mean of 5 dice rolls,
+and we did this over and over, the mean values would be more bunched around 3.5
+with very few values less than 2. The median values would still be be centred
+around 3.5, but we'd get more values less than 2, so they would be more spread
+out.[This is related to the idea of the **sampling distribution**, which we'll
+cover in [Lecture 8](/lectures/week08/handout).]{.aside}
+
+However, there are also some downsides to the **mean** relative to the
+**median**. The primary one is that the _mean_ is **sensitive to extreme
+values** in a way that the _median_ is not. This means that, even if we have a
+really big sample size, adding a **single value** that is extremely big or
+extremely small can shift the _mean_ dramatically. This is not the case for
+the _median_.
+
+```{r}
+#| echo: false
+
+d1 <- c(5, 3, 1, 7, 10, 4, 5)
+n_v <- 1000
+d2 <- c(d1, n_v)
+```
+
+
+For example, let's say we have a list of numbers: `r d1`. This list of numbers
+has a median of `r median(d1)` and a mean of `r mean(d1)`. If we add an
+additional value of `r n_v` to this list, then our new median would be unchanged
+at `r median(d2)`, but our new mean would be `r mean(d2)`.
+
+<!-- FIXME: Add visualisation of mean and median -->
+
+## Sample means and population means
+
+So far we've just been talking about describing the typical value in a set of
+measurements that we have---our **sample**. But one of the key things that we
+want to do with *statistics* is to make **inferences** about **populations**
+from *the information* that we get from **samples**. That is, we often want to
+make a judgement, or draw a conclusion, about an aspect of the population when
+all we have access to is a sample.
+
+We'll get to more formal definitions of _populations_ and _samples_ shortly, but
+first, let's make things more concrete by introducing an example.
+
+Let's say you're interested in the **average height** of **people in the UK**.
+The "easy" way to find an answer to this question is to measure **all the people
+in the UK** and then work out the **average height**. Doing this will give you
+the exact answer to your question. But if you can't measure everyone in the UK,
+then what do you do?
+
+One option is to select a smaller group, or subset, of people from the UK. You
+can then measure the height of people in this group, and then try to use this
+information to figure out plausible values for the average height of people in
+the UK.
+
+In this example, the group (or groups) you're making claims about is the
+population. You want to claims about **the average height** of **people in the
+UK**. And the **sample** is a subset of this population---the smaller group of
+people that you were eventually able to measure.
+
+It's important to note that there isn't a **single** population. What counts as
+the population will depend on the claim you're making. For example, let's say
+I'm interested in testing the claim, "Do **people in East Sussex** show an
+interference effect on the Stroop task?". Here the **population** would be
+**people in East Sussex**. If, however, I want to make claims about **people in
+general**, then the **population** might be all **living** humans.
+
+### Theoretical populations
+
+So far in our talk of populations we've only really be thinking about
+populations as the **set of actually existing things** that we can take our
+sample from---for example, all **living** humans. But populations don't have to
+be sets of actually existing things. Instead, they can be the **set of possible
+things** from which our samples can be drawn. This might seem a little
+confusing, so an example might help.
+
+Let's say we want to collect a sample of 6 coin flips. To collect our
+**sample**, we take a coin and _flip it 6 times_ and count up the number of
+heads and tails and from this we could work out, for example, how many _heads
+are typically seen when flipping the coin 6 times_.
+
+So that's our **sample**, but what is our **population**? One way to think of
+our population is as the **set of possible outcomes (numbers of heads) that
+would occur if we flipped the coin 6 times**. It turns out that can actually
+work this out.
+
+To work it out we would do something like the following:
+
+<!-- do binimials -->
+
+We can work it out because we know something about the **process that gives rise
+to our data**. Although we might not be able to clearly specify the process that
+gives to the data in a Stroop task, there will still be some **data generating
+process**, which we can think of as the **population** we're sampling from.
+
+:::{.callout-note}
+
+In later years you'll learn about something called the **null hypothesis**. The
+**null hypothesis**, in simple terms, says that the **data generating process**
+for two sets of observations is same. For example, it might say that the _data
+generating process_ that gives rises to people's responses on the Stroop task is
+the same for the **congruent condition** and the **incongruent condition**.
+You'll learn how to perform statistical tests that tell you whether the set of
+data that you've actually collecting is **surprising** or **unsurprising** if
+you were to assume that _two_ **data generating processes** are actually the
+same.
+
+:::
+
+### The relationship between samples and populations
+
+Let's assume that we have explicitly defined our **population** (for example, as
+_all people in the UK_) and we've collected a **sample** by taking measurements
+from a **subset** of this population. What is the relationship between this
+sample and the population from which it was drawn?
+
+The _sample_ should **resemble** the _population_ in some way. Most often we're
+interested is knowing something like: "_What is the typical value (i.e., the
+mean) of the population?"_ In the example I introduced earlier, we were
+interested in **average height**. But we might also be interested in things a
+difference between two averages---for example, whether there is a difference in
+**average depression levels** before and after some intervention, or whether
+**average response times** are different between the two conditions of a Stroop
+task. Ideally then, the **average height** of our **sample** should **resemble**
+the **average** height of our **population**, or the _average_ _response_ _time_
+_difference_ in our **experimental sample** should _resemble_ the _average
+response time difference_ in our population. But if we don't know the
+**average** of our **population**, then how will we know whether our **sample**
+_resembles_ it?
+
+Let's say that adults in the UK are between 78cm and 231cm but that the average
+height of an adult in the UK 170cm. So our population average is 170cm. Now
+let's collect a sample of data. We'll talk more about the influence of sample
+size in [Lecture ](). But for now let's just say that we collect a sample of 50
+people. And let's say that we don't only collect one sample, but that we collect
+a sample of 50 over and over again. Below you can see the average height of our
+sample of 50 people, with a solid line showing the population mean.
+
+What do you notice? The sample means don't always line up exactly with the
+population mean. Sometimes the sample mean is higher and sometimes the sample
+mean is lower. It moves around a bit from sample to sample. Because it moves
+around, and because we don't know the population mean, this tells us that **on
+any particular sample** we won't know whether the sample mean is the same as the
+population mean.
+
+### The average of the sample means
+
+But let's think of things from a slightly different perspective. Let's treat
+the mean of each sample of 50 people as a measurement. We'll now take a
+**"sample"** of these measurements. That is, we'll take we'll measurement 50
+people and work out the average height, then measure another people people and
+work out the average height, and then another 50 people, and so on. And each of
+these averages of 50 people will be one measurements. We'll just add these
+measurements to our **sample of samples**, and each time get add a new
+measurement we'll work out the average of this **sample of samples**. We can see
+was happens to this average in the animation below. What do you notice?
+
+<!-- FIXME: Aniimatio -->
+
+That's right, as we carry on collecting more and more **samples of samples** the
+average of theses will eventually line up and match the **population mean**.
+What can we conclude from this?
+
+This tells us that even though we don't know whether the mean of **any
+particular sample** is the same as the population mean, the **sample mean** will
+**on average** be the same as the population mean. We'll touch of this idea more
+in future lectures when we talk about the **sampling distribution**, but for now
+this simple idea is all you need to know. 
+
+## Measures of spread
+
+So far we've only been talk about the **typical** value, or the **central**
+value, of a set data. But if you look at at @fig-hist-width you'll see two data
+sets that are centred at the same value but have very different amounts of
+variability. Both sets of data have a mean of 0. But, as you can see, the values
+of one are spread out much more widely than the values of the other.
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: fig-hist-width
+#| fig-cap: Histogram of two distributions with equal means but different spreads. *N = 10,000* in each case.
+dist_narrow <- rnorm(10000, mean = 0, sd = 1)
+dist_wide <- rnorm(10000, mean = 0, sd = 3)
+tibble::tibble(
+  narrrow = dist_narrow,
+  wide = dist_wide
+) |>
+  tidyr::pivot_longer(1:2) |>
+  ggplot2::ggplot(aes(
+    x = value,
+    # group = name,
+    fill = name,
+    alpha = name
+  )) +
+  geom_histogram(color = "black", position = "identity") +
+  scale_alpha_manual(values = c(1, 0.7), guide = "none") +
+  scale_fill_manual(values = c("seagreen", "blue"), guide = "none") +
+  NULL
+```
+
+
+This is why, in addition to measures of central tendency, we also need measures
+that tell us about the spread, or _dispersion_ of a variable. Once again, there
+are several measures of spread available, and we'll talk about five of them:
+
+1. Range
+
+2. Interquartile range
+
+3. Deviation
+
+4. Variance
+
+5. Standard deviation
+
+<!-- FIXME: Add the visualisation in here? -->
+
+
+### Range
+
+The **range** of a variable is simply the distance between its smallest and
+largest values. For example, if we gather a sample of 100 participants and the
+youngest one is 17 years old, and the oldest one is 67 years old, then the range
+of our age variable in this sample if 67 - 15 = `r 67 - 17` years.
+
+Checking the range of a variable can tell us something about whether our data
+makes sense. Let's say that we've run a study examining reading ability in
+primary school age children. In this study, we've also measured the ages of the
+children. If the range of our age variable is, for example, 50 years, then that
+tells us that we've measured _at least_ one person that is not school age.
+
+Beyond that, the range doesn't tell us much of the information we'd usually like
+to know. This is because the range is _extremely_ **sensitive to outliers**.
+What this means is that it only takes one extreme value to inflate the range. In
+our school example, it might be that all but one of the people measured is
+actually in the correct age range. But the range alone cannot tell us if this is
+the case.
+
+### Interquartile range
+
+A slightly more useful measure than the range is the **interquartile range** or
+IQR. The IQR is the distance between the 1st and 3rd quartiles of the data.
+Quartiles, like the name suggests, are created by splitting the data into four
+chunks where each chunk has the same number of observations. Or put another way,
+the median splits the data into two where half the observations are higher than
+the median and half the observations are lower than the median. Quartiles are
+created by taking each of these halves and splitting them in half again. The
+range covered by the middle two 25% chunks is the IQR. It is the range that
+covers the middle 50% of the data.
+
+The benefit of the IQR over a simple range is that the IQR is not sensitive to
+occasional extreme values. This is because the bottom 25% and the top 25% are
+discarded. However, by discarding these data, the IQR provides no information
+about how spread these outer areas are.
+
+Both the range and the IQR work by looking at the distance between only two
+observations in the entire data. For the range, it's the distance between the
+minimum point and the maximum. For the IQR, it's the distance between the
+midpoint of the upper half and the midpoint of the lower half. To get a more
+fine-grained idea of the spread, we'll need a new way of measuring it. 
+
+But that is where we'll leave it for now, and we'll pick our story back up in
+the next lecture.
+
+
+
+# Lecture 7
+
+
+Last week we started talking about describing measurements, and the relationship
+between samples and populations. We covered measures of central tendency, and we
+started talking about measures of spread. Specifically, we covered the **range**
+and the **interquartile range** (IQR).
+
+Both the range and the IQR work by looking at the distance between only two
+observations in the entire data. For the range, it's the distance between the
+minimum point and the maximum. For the IQR, it's the distance between the
+midpoint of the upper half and the midpoint of the lower half. To get a more
+fine-grained idea of the spread, we'll need a new way of measuring it. And this
+is where we turn our attention to next.
+
+## Variance and standard deviation
+
+To get a more fine-grained measure of the spread we could look at each data
+point and calculate how far it is away from some reference point. This reference
+point is usually the mean. We look at how we do this for a population first,
+before turning our attention to samples, and then relationship between samples
+and populations.
+
+### Population variance
+
+Let's say that we've measured every member of some finite population.
+We're going to define a new measure which we're going to call the **deviation**,
+which is just going to be the difference between each individual in the
+population and the population mean. We can represent this mathematically with
+eq-pop-dev, below:
+
+
+<!-- FIXME: Add equation -->
+
+Because we are calculating this for every data point there will be as many
+deviations as we have values for our variable. To get a _single measure_, we'll
+have to perform another step.
+
+One thing we could try doing is just to add up the numbers. But this won't work.
+To see why, try adding a few points below. Add you add the points take a look at
+the table below. The table has a column with all the points, and all the
+deviations from the mean. Below the table you can see what happens when you add
+up all those deviation values. What do you notice?
+
+As you can see, they add up to zero. Because the mean is our midpoint, the
+distances for all the points higher than the mean cancel out the distances for
+all the points lower than the mean.
+
+We can get around this problem by taking the square of the deviations before
+adding them up. Squaring a number will turn a negative number into a positive
+number, so when we add up all the numbers they'll no longer add up to 0.
+
+Adding up all the numbers, however, leaves us with another problem. The sum of
+the squared deviations gets bigger with bigger samples. That's not good because
+even big samples can have a small amount of variation, while smaller samples can
+vary a lot. So instead of simply adding up all the deviations, we'll instead
+work out what the **typical** squared deviation is by working out the **average**.
+
+The **average** or **mean squared deviation** is called the **variance**. Using
+this instead of the sum of the deviations gets around the problem of the measure
+of spread just getting bigger when we have bigger datasets. 
+
+To work out the **average squared deviation** or **variance** we would just
+divide the sum of the squared deviations by the size of our population. This is
+represented mathematically in #eq-variance, below:
+
+### Sample variance
+
+So far we've just talked about working out the **variance** of some population.
+This involved measuring the entire population. But as with our earlier
+discussion about sample means and population means, we usually don't have access
+to the entire population. And, we touched on in our discussion of "theoretical
+populations", we're often not dealing with populations were it's even possible
+to measure every member. Instead, we have to work with **samples**.
+
+How do we work out the **variance** for a sample? Well one options would be to
+do the same thing we do when we work out the **variance** of the **population**.
+Doing so would mean we'd first work out all the deviations between each one of
+our sample points and the population mean, and we'd then work out the average.
+But how do we do this if we don't know the **population mean**? Well this is
+where things get tricky. 
+
+#### Properties of a good estimate
+
+When we talked about **means** we saw that each individual sample mean might not
+have been equal to the population mean but that, *on average* the sample mean
+(the mean of our sample of samples) was equal to the population. This is a good
+thing. We want measurements we take from samples to resemble the population,
+even if it's only *on average*. Does the same same hold true for **variance**?
+
+Well, we can give it a try using a simulation. Let's say that I have some
+population that I know the properties of. We'll say that our population has a
+mean of 100 and a variance of `r 15^2`. But you don't know this mean and
+variance, so you'll have to take a sample from the population instead. Let's say
+that you'll take a sample of exactly 50 people. 
+
+<!-- NOTE: Again, we'll talk more about the influence of sample size later -->
+
+You use this sample of 50 people to work out the variance using the equation
+above, but because you don't know the value of the population mean you use the
+sample mean instead. Below you can see what happens when you work out the
+variance over and over. What do you notice?
+
+You can see that the variance moves around from sample to sample. Sometimes it
+is larger than the population variance and sometimes it is smaller than the
+population variance. This is the same thing we saw with the sample mean. So the
+variances from individual samples don't match the population variance. But are
+they the same, _on average_. Below you can see what happens when we work out the
+**average variance** over many samples. What do you notice?
+
+That's right, unlike with the **mean**, the variance that we've worked out from
+our sample doesn't eventually settle to match the **population variance**. It
+underestimates it!
+
+### The sample variance
+
+How can we fix this? Maybe if I tell you the **population mean** and you work
+out the variance using the **population mean** instead then that would work
+better. Below we can see what happens when you try that. What do you notice?
+
+
+That's right, the variance you've calculated from the sample now _on average_
+lines up with the **population variance**. Unfortunately, being in a situation
+where you know the population mean is unlikely, but seeing how this bit of
+information made a difference does tell us something useful Unfortunately, being
+in a situation where you know the population mean is unlikely, but seeing how
+this bit of information made a difference does tell us something useful. It
+tells us that the bias is related to how much the **sample mean** bounces around
+from sample to sample. We'll learn how to estimate this in a later lecture, but
+for now we just need to know how to correct for this bias.
+
+To correct for this bias we can just make a slight adjustment to our we compute
+the variance when we're dealing with a **sample**. This correction to to divide
+the sum of our squared deviations by _N - 1_ instead of _N_. We'll call this
+quantity the **sample variance**, because we calculate it from _a sample_. Below
+we can see what happens when we do this. What do you notice?
+
+That's right, after adding many samples, our **sample variance** eventually
+lines up with the variance of our **population**. From this, we can say that
+**the sample variance** provides an **unbiased estimate of the variance of the
+population**.
+
+### The standard deviation
+
+Variance is a good measure of dispersion and it is widely used. However, there
+is one downside to variance, and that is that it can be difficult to interpret:
+it's measured in _squared units_. For example, going back to our Salary example
+from [Lecture 6](), if salary is measured in USD, the **variance** would be
+expressed in USD^2^, whatever that means!
+
+Fortunately, the solution to this problem is easy: we simply take the square
+root of the variance. This measure is called the **standard deviation**. Just
+like with variance, there is a **population** standard deviation, denoted with
+$\sigma$. And a **sample** standard deviation, denoted with $s$ or $SD$.
+
+<!-- TODO: Maybe add the calculations -->
+
+:::{.callout-note} 
+
+You can think of _SD_ as a measure of the differences of a set of scores from
+their mean. If variance is the mean _squared_ deviation in the variable,
+standard deviation is the **mean deviation**.
+
+:::
+
+## Understanding the relationship between samples and populations
+
+Now that we have some mathematical tools for describing measurements, both in
+terms of where they are centred (the _mean_) and in terms of how spread out they
+are (the _standard deviation_). With these tools in hand, we can now dig into
+the relationship between samples and populations in a bit more detail.
+
+In the previous lecture we started talking about the problem of knowing whether
+our sample **resembles** our population. For example, if we really want to know
+what the mean of the population is, but all we have is the sample mean, so we
+might want to have some way of knowing whether these two values are similar.
+
+We said that we could never know whether any particular sample mean was the same
+as the population mean, but that _on average_ they would be the same. This is
+because the same mean varies from sample to sample, and the population mean is
+some fixed and unknown value.
+
+Although **we can't know for sure** whether a particular sample mean resembles
+the population mean, we might be able to think of some things that **influence**
+the relationship between our **sample** and the **population**. To figure out
+what these are, let's do a thought experiment and think of some **extreme
+cases**.
+
+First, consider the case where **all the members** of a _population_ are
+**identical**. If this were the case, then our **sample** will have an
+**identical** average to the population. The height of one person would be the
+same as the average height of two people, which would be the same as the average
+height of 100 people, which would be same as the average height of the
+population because people only come in one height. But if the **members** of the
+**population** are all **different** from one another, then there is no
+guarantee that the **sample's average** will **resemble** the **population's
+average**.
+
+The second extreme scenario is if our sample is **very large**. Let's say that
+it is so large that it includes **all the members of the population**. If this
+were the case, then, by definition, our **sample average** would be
+**identical** to the **population average**. However, if our sample is smaller
+than the entire population, then once again, there is no guarantee that the
+**sample's average** will **resemble** the **population's average**.
+
+Based on this reasoning, we can say that two things will influence whether your
+_sample_ resembles your _population_. These are 1) the amount of **variation**
+in our population, and 2) the **size** of our sample.
+
+Importantly, however, and barring the extreme cases above, for **any particular
+sample** we won't know whether it **resembles** the population or not, because,
+remember, we don't know the average of the population. Instead, we should think
+about these two factors as influencing the **average distance** between the
+samples and the population. But what does this mean?
+
+One way to think about this is in terms of **repeatedly** taking samples from
+the same population. For example, if we take a large sample from the
+population---large, but not so large as to include the entire population---then
+we can't say that our **particular** sample will resemble the population. But if
+we take many samples (of that size), then we can say that **on average** those
+samples will be closer to the population than would be the case for a collection
+of smaller samples.
+
+The same reasoning applies to **variation in the population**. If there is
+**less variation** in the **population**, then the samples drawn from that
+population will tend to be closer to each other and closer to the population
+average. But again, we won't be able to say whether **a particular sample** has
+an **average** that is close to the population average.
+
+Of course, sample size and population variation exert their influence together.
+If we want our sample averages to be close to the population average, then we
+need samples that are **big enough**, but what counts as **big enough** will
+depend on the **population variation**. 
+
+To make this concrete, we'll take a look at an example.
+
+<!-- FIXME: Tidy up and add things: Explore more about sample -->
+
+The 20-sided dice represents a population that has a lot of variability. The
+individuals in the population (the dice throws) can be any number between 1
+and 20. The 6-sided dice represents a population that has only a little
+variability. The individuals in the population (the dice throws) can only be a
+number between 1 and 6.
+
+By looking at the running averages (the bottom plot for each dice) we can tell
+whether the samples _on average_ resemble the population. If most of the
+averages fall very close to the population average then we can say the samples
+_on average_ resemble the population.
+
+Notice how for a given sample size (say 5 for each dice) the average of the
+samples from the low variability dice (6 sided) do a better job of _on average_
+resembling the population average. For the high variability dice (20 sided), the
+averages of the same size samples do a poorer job of _on average_ resembling the
+population average. The important part here in _on average_. Individual sample
+averages may do a good job of resembling the population average no matter what
+the sample size is. This demonstration tells use the **population variability**
+is one factor that influences whether the averages of our samples will _on
+average_ resemble the average of our population.
+
+Let's say that our sample averages do a good job of resembling the population
+average if the _almost all_ the sample averages fall within ± 1 of the
+population average (the lines marked on the plot). Try adjusting the _sample
+sizes_ for the two dice? What smallest value that will cause _almost all_ the
+sample averages to land between the marked lines?[**Hint** If you can't work it
+out try setting the sample size to **16** for the 6-sided dice and to **180**
+for the 20-side dice.]{.aside} Notice how for high variability dice this value
+must be far higher? This demonstration tells use the **sample size** is the
+second factor that influences whether the averages of our samples will _on
+average_ resemble the average of our population.
+
+With all this talk of how the sample means **varies** from sample to sample you
+might think that we would be able to **quantify** this variation. When we talked
+about the **standard deviation**, we said that it told us how much the _average
+deviation_ is **within** a sample. So could we use a similar measure to quantify
+the _average deviation_ **between** samples? It turns out that we can. But
+before we get there we'll have to take a brief digression to talk about
+**distributions**.
+
+## Distributions
+
+Up until now we've skirted around the idea of distributions. We've looked at
+histograms of data, but we haven't really talked that much about their shape. It
+turns out that there are some shapes that we'll come across very often, and some
+of these shapes have properties that will make them very useful for statistics.
+But before we can get to that, we need to first understand where these shapes
+come from---that is, distributions have the shape they do---and some language
+for describing these shapes. We'll start off with the simplest distribution, the
+**binomial distribution**, before moving on to the **normal distribution**. 
+
+### The binomial distribution
+
+
+To understand what the **binomial distribution** is, and where it comes from
+we'll do a little _thought experiment_. In our thought experiment, we'll take a
+coin, and we'll flip it. When we flip a coin, one of two outcomes is possible.
+Either the coin will land showing heads, or it will land showing tails. We can
+say that there are two possible events or two possible sequences of events
+(_sequences_ will make more sense when we add more coins) that can happen when
+we flip a coin.
+
+Now let's think of each of the sequences and count up how many heads are showing
+in each. In the first sequence, where the coin lands showing tails, no heads
+occur. In the second sequence, where the coin lands showing heads, there is one
+head. Therefore, we have one sequence that produces 0 heads, and one sequence
+that produces 1 head. And those are all the possible sequences.
+
+But now let's make it more complicated. Let's flip two coins. Now there's a
+greater number of possible sequences. We can list them:
+
+1. The first coin shows heads, and so does the second (HH),
+2. The first coin shows heads and the second shows tails (HT)
+3. The first coin shows tails and the second shows heads (TH)
+4. and the first coins shows tails and the second shows tails (TT)
+
+Therefore, there are four possible sequences. Let's count up the **number of
+sequences** that lead to 0 heads, one head, two heads, etc. If we do this, we'll
+see that one sequence leads to 0 heads (TT). Two sequences lead to 1 head (HT,
+and TH). And one sequence leads to 2 heads (HH).
+
+Let's now add more coins. Things will get trickier from here because the number
+of sequences rapidly goes up. With three coins, there would be eight possible
+sequences, and with four coins, there would be 16 possible sequences. Figuring
+out the number sequences, and the nature of the sequences (whether they produce
+0 heads, one head, two heads, etc.) quickly becomes difficult. To make things
+easier, we'll draw a plot. First, we'll draw a plot to trace out the sequences.
+We'll use different coloured dots to indicate heads and tails. We can do this in
+the form of the branching tree diagram shown in Box \@ref(fig:box2). 
+
+
+Once we've visualised the sequences, it's easy to count up how many sequences
+result in 0 heads, one head, two heads etc. We can put our counts on another
+plot. For this, we'll make a frequency plot or histogram, just like we've seen
+before. On the x-axis, we'll have the number of heads. And on the y-axis, we'll
+have the count of how many sequences result in that number of heads. This
+frequency plot is also shown in @fig.
+
+You can adjust the slider in Box \@ref(fig:box2) to change the number of coins
+you want to flip. Increasing the number of coins increases the number of
+possible sequences, and it changes the number of ways of getting one head, two
+heads, three heads and so on changes (however, there's always only one way to
+get 0 heads and one way to get all heads). Notice that as you adjust the slider
+and add more and more coins, the frequency plot takes on a characteristic shape.
+You can mathematically model the shape of this plot using a **binomial
+distribution**.
+
+In our coin flipping example, we created this shape by counting up the number of
+sequences that produced various quantities of heads. But if we look around at
+**natural processes**, we'll see that this shape occurs often.
+
+One natural process that gives rise to this shape is the "bean machine"[^1]. In
+a bean machine, small steel balls fall from the top of the device to the bottom
+of the device. On their way down, they bump into pegs. When one of the balls
+hits a peg, it has a roughly equal chance of bouncing off to the left or the
+right, not unlike a coin which has a roughly equal chance of landing heads up or
+tails up. At the bottom of the device are equally-spaced bins for collecting the
+balls. If enough balls are dropped into the device, then the **distribution** of
+balls across the bins will start to take on the shape of the **binomial
+distribution**. Very few balls will be at the very edges, because this would
+require the balls to bounce left or right every time.
+
+Similarly, very few sequences of coin flips result in large numbers of heads or
+large numbers of tails. The greatest number of balls are seen in the bins near
+the middle. The balls that land here have bounced left and right a roughly equal
+number of times. Again a similar pattern can be seen with the coin flips.
+
+In Box \@ref(fig:box3), I've included a computer simulation of a bean machine.
+Press the Start button to display the bean machine and watch the balls drop.
+Press Replay to drop more balls.
+
+Flipping coins might seem a log way off from anything you might want to study in
+Psychology. However, the **shape** of the binomial distribution, particularly
+when we're dealing with many coin flips, might be something you're more familiar
+with. This characteristic **bell shape** is also something we see in the
+**normal distribution**. And it's the **normal distribution** which we'll
+turn our attention to next. 
+
+# Lecture 8
+
+## The normal distribution
+
+In the previous lecture we encountered the **binomial distribution**. The shape
+seen in the **binomial distribution** is also seen in another distribution
+called **the normal distribution**. There are two key differences between the
+normal distribution and the binomial distribution.
+
+The **binomial** distribution is **bounded**. That means that one end represents
+0 heads and the other end represents all heads. That is, the distribution can
+only range from 0 to n (where n is the number of coins that have been
+flipped)---it is bounded at 0 and n. The **normal distribution**, however,
+ranges from negative infinity to positive infinity. Additionally, for the
+**binomial distribution**, the steps along the x-axis are **discrete**. That is,
+you can have 0 heads, one head, two heads and so on, but you can have anything
+in between---for example, it's not possible to have sequences of coin flips that
+results in 1.5 heads. In contrast, the normal distribution is **continuous**.
+
+The **normal distribution** is a mathematical abstraction, but we can use it as
+a **model** of real-life frequency distributions. That is, we can use it as a
+model of **populations** that are produced by certain kinds of natural
+processes. Because normal distributions are unbounded and continuous, nothing,
+in reality, is normally distributed. For example, it's impossible to have
+infinity or negative infinity of anything. This is what is meant by an
+**abstraction**. But natural processes can give rise to frequency distributions
+that look a lot like normal distributions, which means that normal distributions
+can be used as a model of these processes.
+
+
+### Processes that produce normal distributions 
+
+In the previous lecture, we saw how sequences of coin flips, and the bean
+machine, give rise to a **binomial distribution**, but what processes give rise
+to a **normal distribution**. To see how a natural process can give rise to a
+normal distribution, let us play a board game! We won't play it for real, but
+we'll *simulate* it. 
+
+In this game, each player rolls the dice a certain number of times, and they
+move the number of spaces indicated by the dice. Not that dissimilar to what
+you'd do in a game of monopoly, or a similar board game! For example, if a
+player rolled the die three times and they got 1, 4, 3, then they wouldn't move
+`r 1 + 4 + 3` (1 + 4 + 3 = `r 1 + 4 - 4`) spaces along the board. At the end of
+one round of rolls we can take a look at how far from the start each player is.
+And we can draw a histogram of this data.
+
+In the simulation below, you can set the number of players and the number of
+dice that they roll. We'll start off by just having 10 players, and each player
+will roll the 1 die. 
+
+
+TODO: Add the simulations in here
+
+#### Processes that don't produce normal distributions
+
+We won't cover other distribution shapes in much detail, but let us take a look
+at an example of a process that doesn't produce a normal distribution. To do
+this, we'll just modify the dice game in Box \@ref(fig:box5).
+
+In Box \@ref(fig:box5), click the option that says **Multiply**. Doing so
+changes the rules of the dice game so that a player's score is determined by
+*multiply*ing together the values of their dice rolls. For example, under the
+new rules, if a player rolled 1, 4, 3 then their score would be 12 (1 × 4 × 3 =
+12). Now try clicking Roll! to see the shape of the distribution. This new
+distribution has an extreme **skew**. The vast majority of players have fairly
+low scores, but a tiny minority of players have extremely high scores. When you
+have a process that grows by multiplying, then you'll get a distribution that
+looks like this.
+
+In psychology, we won't study many processes that grow like this, but some
+processes that grow like this will be very familiar to you. Think about
+something like wealth. Wealth tends to grow by multiplying. For example, earning
+interest or a return on investment of 10% means that the new value of the
+investment is 1.10 times the original value. This feature of wealth growth
+explains why, for example, in the UK, the top 10% of people control more wealth
+than the bottom 50%.
+
+<!-- TODO: Add the simulations in here -->
+
+FIXME: Do I need to do something on describing normal distributions? Yes
+
+### Describing normal distributions
+
+The normal distribution has a characteristic bell shape, but not all normal
+distributions are identical. They can vary in terms of where they're centered
+and how spread out they are.
+
+<!-- FIXME: Finish stuff on this, and include visualisation -->
+
+<!-- TODO:
+And include stuff here about how we can change the mean and the sd, but the
+overall shape remains the same. Also talk about how if something is normally
+distributed then we know a certain "amount" of the distribution will lie within
+the x deviations from the mean -->
+
+### Describing departures from the normal distribution.
+
+When we looked at the example of the game where a players score was based on
+**multiplying** together the dice rolls, it produced a distribution that was
+**skewed**.
+
+*Skew** is a technical term that describes one way in which
+a distribution can _deviate_ from a _normal distribution_. The _normal
+distribution_ is **symmetrical**, but a **skew** distribution is not. A
+left-skewed distribution has a longer _left tail_, and a **right-skewed**
+distribution has a longer _right tail_. Use Box \@ref(fig:box6) to explore
+**skewness**.
+
+<!-- FIXME: Add visualisation -->
+
+Apart from **skew**, deviations from the **normal** distribution can occur when
+a distribution either has fatter or skinnier **tails** than the normal
+distribution. The _tailedness_ of a distribution is given by its **kurtosis**.
+The kurtosis of a distribution is often specified with reference to the **normal
+distribution**. In this case, what is being reported is **excess** kurtosis. A
+distribution with **positive excess kurtosis** has a higher kurtosis value than
+the normal distribution, and a distribution with **negative excess kurtosis**
+has a lower kurtosis value than the normal distribution. In your research
+methods courses, you probably won't come across many distributions that have
+negative excess kurtosis. However, the distribution that describes dice rolls is
+one such distribution, and this will be discussed briefly later in this course.
+You will encounter distributions with positive excess kurtosis more often. In
+particular, the _t_-distributions, a distribution with positive excess kurtosis,
+will be used in several of the statistical procedures that you will learn. In
+Box \@ref(fig:box7), you can explore excess kurtosis. When excess kurtosis is
+set to 0, then the figure displays a normal distribution. Distributions will no
+excess kurtosis are called _mesokurtotic_. When excess kurtosis is negative, the
+figure displays a thin tailed or _platykurtotic_ distribution. And when excess
+kurtosis is positive, the figure displays a fat-tailed or _leptokurtotic_
+distribution.
+
+## Distributions and samples 
+
+Now that we've covered samples, distributions, and populations, we're going to
+start putting them all together. We saw that whenever we look at the
+distribution of values where the values are produced by **adding up numbers** we
+get something that looks like a normal distribution. And we saw that when we
+worked out the **mean of a sample of data** we did this by **adding up all the
+values** and then _dividing that number by the number of values_.
+
+Let's say that we want to measure some phenomenon---for example, scores on some
+standardised reading tests. We collect a sample of data from 50 children, and
+then we work out the **mean of this sample**, by **adding up the 50 scores** and
+then dividing this value by 50. Now let's say that instead of only collecting
+one sample, we collect 100,000 samples. We work out the **mean** for _each
+sample_. And we then draw a histogram of the means for our 100,000 samples. What
+will this distribution look like? In our games, any time we added up numbers, as
+long as we added enough enough numbers, and we had a large enough set of
+players, then we'd get a normal distribution.
+
+The same goes for our sample. As long as we add up enough numbers (our sample
+size) and we have enough samples (think, number of players) then the
+distribution of the means (the distribution of the players scores) will be
+**normally distribution**. This simple observation is fairly **central** in
+statistics. So much so that it's called **the central limit theorem**.
+
+### A distribution of our samples
+
+The **distribution** of some statistic---for example, the **mean**---that we see
+when repeatedly sample from the population is called **the sampling
+distribution**. That's a bit of a mouthful so we'll try to unpack it a bit.
+
+Let's us go back to example where we were working out the mean of a series of
+dice rolls. In that example, we saw how the mean of our samples moved around
+from sample to sample, so sometimes it was closer to the true mean, and
+sometimes it was further away. We can see this in the box below.
+
+<!-- TODO: Add box -->
+
+Now instead of looking at our sample means wiggle about from sample to sample,
+we're just going to collect a lot of samples and then plot the distribution. We
+can see that here:
+
+<!-- TODO: Add box -->
+
+<!-- TODO: Need to emphasise sample size where it starts to look normal -->
+
+As we can see, the shape of the **sampling distribution of the mean** is
+unsurprisingly a **normal distribution**. Other statistics have sampling
+distributions too. For example, we could calculate the **variance** for each
+sample and the we could plot the **sampling distribution of the variance**. The
+sampling distribution of variance **won't** be normally distributed. Why?
+Remember that whenever we add stuff up we get a normal distribution, and working
+out a mean is just a special way of adding up numbers. When we work out a
+**variance** we're not adding numbers up. If you look at the formula, you'll
+notice that there's a $^2$ in there. That means we're doing some multiplying.
+And we saw that when we were multiplying numbers instead of adding them, we got
+a distribution that wasn't normally distributed.
+
+<!-- NOTE: Maybe pull the variance stuff out -->
+
+
+Because the sampling distribution of **the mean** is **normally
+distributed** (assuming the sample size is large enough, see
+<!-- FIXME: Link to above somewhere -->
+) it's centre and spread can be described the same way as any other
+normal distribution. It will have a centre, or **mean** that is 
+_equal to the population mean_. And it will have a spread, or
+**standard deviation** that is _proportional_ to the _sample size_ and
+the _population standard deviation_.
+
+### Standard error of the mean
+
+The _standard deviation of the sampling distribution_ of the mean has a special
+name. It is called the **standard error** of the mean. 
+<!-- TODO: As we saw above, how spread out the individuals samples were was -->
+<!-- determined by two things. First, how spread out the population was and, -->
+<!-- two, the sample size of the samples. -->
+The spread of these individual samples **is the standard error**.
+Therefore, just as we saw above, we know that the **standard error**
+will get smaller as the sample size goes up. And we know that the
+**standard error** will go down as the **population standard deviation**
+goes down. We can see how these two factors works together when we look
+at the formula for the **standard error of the mean (SEM)** in @eq-sem.
+
+$$\mathrm{SEM}=\frac{\sigma}{\sqrt{N}}$${#eq-sem}
+
+<!-- TODO: Add explorer box -->
+
+<!-- NOTE: Maybe something in here about the sampling distribution is useful -->
+
+<!-- NOTE: --> next lecture (lecture 9) of Z score, and comparisons -->
+

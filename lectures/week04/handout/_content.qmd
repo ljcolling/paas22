@@ -367,6 +367,8 @@ a questionnaire. Our questionnaire would be considered **reliable** if when we
 tested the same participant on different occasions they got similar scores each
 time. This stability over time is known as **test-retest reliability**.
 
+<!-- TODO: Levels of measurement -->
+
 ## Levels of Measurement
 
 ### Nominal/categorical

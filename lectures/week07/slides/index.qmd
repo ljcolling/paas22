@@ -1,19 +1,19 @@
 ---
-pagetitle: "Describing measurements 1"
+pagetitle: "Describing measurements 2"
 author-meta: "Dr Lincoln Colling"
 format: 
   sussex-revealjs:
     center-title-slide: false
 navbar: true
-week: 6
+week: 7
 type: slides
 ---
 
-<h2>Lecture 6</h2>
+<h2>Lecture 7</h2>
 
-<h1>Describing measurements 1</h1>
+<h1>Describing measurements 2</h1>
 
-<h2>Introduction to descriptive statistics</h2>
+<h2>Descriptive statitics and distributions</h2>
 
 
 <br>
@@ -21,7 +21,7 @@ type: slides
 
 <h3 style="color:black;font-weight:normal">Dr Lincoln Colling</h3>
 
-<h3 style="color:black;font-weight:normal">31 Oct 2022</h3>
+<h3 style="color:black;font-weight:normal">07 Nov 2022</h3>
 
 <br>
 

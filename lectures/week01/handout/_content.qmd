@@ -1,5 +1,4 @@
 
-## Welcome to Psychology as a Science
 
 The aim of today's lecture is to provide you with an overview of the structure
 of the research methods modules that you'll be taking in your degree. I'll also
@@ -10,7 +9,7 @@ encountering may be new to you. Some of it might even seem a little intimidating
 classes). But if you stick with it, and give it your best shot, then I'm
 confident that you'll be able to do well.
 
-### Introductions
+## Introductions
 
 The teaching team for Psychology as a Science (PAAS) is made up of three people.
 Each of us has different roles and responsibilities. Knowing this will help you
@@ -82,11 +81,9 @@ check back when you need it. You can also bookmark pages that you think will be
 useful later. And when you bookmark a page you can give it a informative title
 that is meaningful to you. All this will help you to find the information you
 need when you need it. And remember, on any web-page you can hit <kbd>Ctrl</kbd>
-
-- <kbd>F</kbd> (windows) <kbd>Command</kbd>
-- <kbd>F</kbd> (mac) to search for a word, and this might be particularly useful
-  if it's a long page with a lot of text and you're just looking for something
-  specific.
+<kbd>F</kbd> (windows) or <kbd>Command</kbd> <kbd>F</kbd> (mac) to search for a 
+word, and this might be particularly useful if it's a long page with a lot of 
+text and you're just looking for something specific.
 
 Second, check out the [Frequently Asked Questions (FAQ)]({{< var faq >}}). Here
 I will list the answers to some questions that I tend to encounter often. You
@@ -343,22 +340,28 @@ The rough outline of the lecture schedule is as follows:
 
 ```{r}
 #| echo: false
+#| message: false
+# TODO: Pull the lecture topics from the .json files
 
+lectures <- list.files(
+  path = here::here(), pattern = "info.json",
+  recursive = TRUE,
+  full.names = TRUE
+)
 
-tibble::tribble(
-~Week, ~Topic,
-1, 'Introduction to PAAS',
-2, 'What is this thing called "Science"',
-3, 'Approaches to research',
-4, 'Measurement and variables',
-5, 'Open Science',
-6, 'Samples, populations, and distributions',
-7, 'Descriptive statistics and the sampling distribution',
-8, 'Distributions, functions, and transformations',
-9, 'Summarising data in tables and plots',
-10, 'Probability theory',
-11, 'Recap and exam guide') |>
-  knitr::kable(align = c('l','l'))
+get_details <- function(file) {
+  json_data <- jsonlite::read_json(file)
+  tibble::tibble(
+    Week = json_data$week,
+    Topic = json_data$title
+  )
+}
+purrr::map_df(lectures, ~ get_details(.x)) |>
+  knitr::kable(align = c("l", "l"))
+#   dplyr::arrange(Week) |>
+#   readr::write_csv("../data/outline.csv")
+#
+# readr::read_csv(here::here("data", "outline.csv")) |>
 ```
 
 The first set of lectures will cover _big picture_ ideas. These lectures will

@@ -11,22 +11,17 @@ navbar: true
 page-layout: article
 date: 17 Oct 2022
 date-format: "D MMMM, YYYY"
+reading-time: |
+  `r 
+  words <- system("pandoc --lua-filter wordcount.lua _content.qmd --from=markdown", intern = TRUE) |> as.numeric();
+  minutes <- ceiling(words / 180);
+  reading_time <- paste0("About ", minutes, " minutes");
+  reading_time
+  `
 toc: true
 toc-location: left
 type: handout
 ---
 
-```{r}
-#| echo: false
-
-words <- system("pandoc --lua-filter wordcount.lua _content.qmd --from=markdown", intern = TRUE) |> as.numeric()
-minutes <- words %/% 200
-seconds <- ceiling(((words / 200) - minutes) * 60)
-reading_time <- paste0(minutes, " minutes and ", seconds, " seconds")
-``` 
-
-<p class="quarto-title-meta-contents">Reading time: `r reading_time`</p>
-
-<hr />
 
 {{< include _content.qmd >}}

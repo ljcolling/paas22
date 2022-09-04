@@ -1,4 +1,3 @@
-
 ## Introduction
 
 The title of this course is "Psychology as a Science". But what do we actually
@@ -11,7 +10,7 @@ view of science may come from the belief that there is something special about
 the "scientific method". We can see this in that fact that "taking a scientific
 approach" is often equated with reliability.
 
-```
+```{r}
 #| echo: false
 #| out-width: "70%"
 #| label: fig-we-believe
@@ -31,7 +30,15 @@ least being able to distinguish between _science_ and _non-science_ or
 _pseudo-science_. But when we try and clearly articulate this, we might find
 that it isn't actually that easy. In fact, the problem of telling the difference
 between _science_ and _non-science_ is a problem that has plagued philosophers
-for a very long time. This is something known as the _demarcation problem_.[^1]
+for a very long time. This is something known as the _demarcation
+  problem_.[If you want to read a short digestible piece on the demarcation problem
+then you can check out the
+[wikipedia page](https://en.wikipedia.org/wiki/Demarcation_problem). If you're
+looking for something more philosophically heavy, then you can check out the
+page on
+[Science and Pseudo-Science](https://plato.stanford.edu/entries/pseudo-science/)
+at the Stanford Encyclopaedia of Philosophy
+]{.aside}
 A lot of work on the _demarcation problem_ has focused on examining
 _methods_---that is, it has looked at whether there is something like _"the
 scientific method"_ that might mark science out as special. In this lecture,
@@ -104,7 +111,7 @@ brain.
 This account implies direct and unmediated access to the world through our
 senses. But is this actually the case?
 
-```
+```{r}
 #| echo: false
 #| out-width: "50%"
 #| label: fig-dual-image
@@ -293,7 +300,11 @@ need to know a bit about **logic**.
 A deductive argument is called **valid** if the conclusions follow from the
 premises. Let us take a look at two examples:
 
-:::: {.columns} ::: {.column width="45%"} **Example 1**
+:::: {.columns}
+
+::: {.column width="45%"}
+
+**Example 1**
 
 1. All research methods lectures are boring
 2. This is a research methods lecture
@@ -301,13 +312,17 @@ premises. Let us take a look at two examples:
 
 In this example, if we accept that (1) and (2) are true, then we have to accept
 (3) as true. We cannot accept (1) and (2) as true and then deny that (3) is true
-because we would be contradicting ourselves. :::
+because we would be contradicting ourselves.
+
+:::
 
 ::: {.column width="10%"}
 
 :::
 
-::: {.column width="45%"} **Example 2**
+::: {.column width="45%"} 
+
+**Example 2**
 
 1. Most research methods lectures are boring
 2. This is a research methods lecture
@@ -315,7 +330,11 @@ because we would be contradicting ourselves. :::
 
 In our new example, we can accept (1) and (2) as true without accepting (3) as
 true. That is, (3) does not **necessarily follow** from (1) and (2). It might
-just be a case of a research methods lecture that isn't boring. ::: ::::
+just be a case of a research methods lecture that isn't boring. 
+
+:::
+
+::::
 
 Deduction is only concerned with whether (3) follows from (1) and (2). It is not
 concerned with determining whether (1) and (2) are true or false. The argument
@@ -323,16 +342,27 @@ assumes that (1) and (2) _are_ true, but it doesn't establish **truth**.
 
 This means that conclusions can be **false** but **valid**.
 
-::: {.columns} ::: {.column width="50%"} **Example 3**
+::: {.columns} 
+
+::: {.column width="50%"} 
+
+**Example 3**
 
 1. All pigs can fly
 2. Percy is a pig
-3. (Therefore) Percy can fly. :::
+3. (Therefore) Percy can fly.
 
-::: {.column width="50%"} The conclusion is **valid**. However, it is also
+:::
+
+::: {.column width="50%"} 
+
+The conclusion is **valid**. However, it is also
 **false** because (1) is false.
 
-It is **valid** because if we accept (1) and (2) we can have to accept (3) :::
+It is **valid** because if we accept (1) and (2) we can have to accept (3) 
+
+:::
+
 ::::
 
 **Logic** only tells us what follows from what. If there is truth in our
@@ -395,7 +425,7 @@ footing. And this is where we turn our attention to next.
 Instead of just **collecting** _confirmations_ we can employ **induction** and
 **deduction** together (see @fig-inductive-deductive).
 
-```
+```{r}
 #| echo: false
 #| out-width: "70%"
 #| label: fig-inductive-deductive
@@ -426,25 +456,37 @@ dreams, or whatever), but once a theory has been proposed it has to be
 To see how **falsification** works in practise we'll take a look at another
 example.
 
-:::: {.columns} ::: {.column width="45%"} **Confirmation**\
+:::: {.columns}
+
+::: {.column width="45%"} 
+
+**Confirmation**\
 **Premise:** A swan that was white was spotted in London at time _t_
 
 **Conclusion:** All swans are white.
 
 The conclusion might be **true** or **false**, but it doesn't **logically**
-follow from the premise. :::
+follow from the premise. 
+
+:::
 
 :::{.column width="10%"}
 
 :::
 
-::: {.column width="45%"} **Falsification**\
+::: {.column width="45%"} 
+
+**Falsification**\
 **Premise:** A swan, which was not white, was spotted in Australia at time _t_.
 
 **Conclusion:** Not all swans are white.
 
 The conclusion **logically** follows from the premise, so if the premise is
-**true** the conclusion is **true**. ::: ::::
+**true** the conclusion is **true**. 
+
+:::
+
+::::
 
 In short, we can't **prove** the claim "_all swans are white_". But we can
 **reject it.**
@@ -496,7 +538,9 @@ doing this? Let us dive into some of these issues in a little more detail.
 
 First, the issue of probabilistic theories. Theories in **psychology** often
 tend to be **probabilistic**. They make claims about how things are **on
-average**, not claims about how things are **in every case**.[^2] So knowing how
+average**, not claims about how things are **in every case**.[A probabilistic claim might say something like _on average_ "men are
+taller than women", but of course there are shorter men and taller women.
+]{.aside} So knowing how
 to deal with probabilistic theories will be very important. Much of what we do
 with **statistics** is figuring out how to **test** and **specify**
 **probabilistic claims**. For example, what does it mean for things to be
@@ -545,7 +589,10 @@ let us examine the following theory:
 Once we have this theory, we might make the following observation that seemingly
 falsifies it:
 
-**Observation:** Bread eaten in a French village in 1951 was not nourishing[^3]
+**Observation:** Bread eaten in a French village in 1951 was not
+nourishing[This is based on the true story of the Pont-Saint-Esprit mass
+poisoning. You can read more on
+[wikipedia.](https://en.wikipedia.org/wiki/1951_Pont-Saint-Esprit_mass_poisoning)]{.aside}
 
 Now that we've encountered the falsifying observation we can choose to make a
 modification to our theory. A might make a modification as follows:
@@ -585,7 +632,10 @@ by this is, if you have **Theory A** and **Theory B** and neither has been
 falsified, which is the better theory? One might think that the theory with
 _more **confirming** observations_ is better? But then won't **trivial
 theories** will always win? The philosopher _Imre Lakatos_ developed his idea of
-**research programmes**[^4] as a reaction to these two problems. Lakatos came to
+**research programmes**[A _similar_ idea to Lakatos's idea of research
+programmes was developed by the philosopher _Thomas Kuhn_. 
+_Kuhn_ used the term **paradigms** for his idea.
+]{.aside} as a reaction to these two problems. Lakatos came to
 his view by actually observing how science operates in the real world.
 
 One key aspect of Lakatos's idea of **research programmes** is that not all
@@ -623,7 +673,7 @@ develop the research programme further. That is, the positive heuristic should
 actually specify a **programme of research**. And their should identify the
 problems that need to be solved.
 
-```
+```{r}
 #| echo: false
 #| out-width: "70%"
 #| label: fig-programme
@@ -668,18 +718,3 @@ unfortunately there simply isn't the time. But if you're interested in the
 nature of science, and the status of different kinds of knowledge, there are a
 few things that I can recommend for you to check out.
 
-[^1]: If you want to read a short digestible piece on the demarcation problem
-then you can check out the
-[wikipedia page](https://en.wikipedia.org/wiki/Demarcation_problem). If you're
-looking for something more philosophically heavy, then you can check out the
-page on
-[Science and Pseudo-Science](https://plato.stanford.edu/entries/pseudo-science/)
-at the Stanford Encyclopaedia of Philosophy
-
-[^2]: A probabilistic claim might say something like _on average_ "men are
-taller than women", but of course there are shorter men and taller women.
-
-[^3]: <https://en.wikipedia.org/wiki/1951_Pont-Saint-Esprit_mass_poisoning>
-
-[^4]: A _similar_ idea was developed by the philosopher _Thomas Kuhn_, but
-_Kuhn_ used the term **paradigms** for his idea.
