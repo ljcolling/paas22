@@ -435,6 +435,7 @@ to our data**. Although we might not be able to clearly specify the process that
 gives to the data in a Stroop task, there will still be some **data generating
 process**, which we can think of as the **population** we're sampling from.
 
+
 :::{.callout-note}
 
 In later years you'll learn about something called the **null hypothesis**. The
@@ -448,6 +449,8 @@ you were to assume that _two_ **data generating processes** are actually the
 same.
 
 :::
+
+
 
 ### The relationship between samples and populations
 
@@ -470,13 +473,38 @@ response time difference_ in our population. But if we don't know the
 **average** of our **population**, then how will we know whether our **sample**
 _resembles_ it?
 
-Let's say that adults in the UK are between 78cm and 231cm but that the average
-height of an adult in the UK 170cm. So our population average is 170cm. Now
+Adults in the UK range in height between 78cm and 231cm but the the average
+height of an adult in the UK is 170cm. So our population mean is 170cm. Now
 let's collect a sample of data. We'll talk more about the influence of sample
-size in [Lecture ](). But for now let's just say that we collect a sample of 50
+size in [Lecture](). But for now let's just say that we collect a sample of 50
 people. And let's say that we don't only collect one sample, but that we collect
-a sample of 50 over and over again. Below you can see the average height of our
-sample of 50 people, with a solid line showing the population mean.
+a sample of 50 over and over again. In @exm-mean-samples you can see the average
+height of our sample of 50 people, with a solid line showing the population
+mean.
+
+<!-- FIXME: Animation goes in here -->
+
+::::{.callout-tip icon="false" appearance="simple"}
+
+:::{#exm-mean-samples}
+#### Explore sample means
+:::
+
+```{ojs}
+//| echo: false
+import {sample_means} from "@ljcolling/measures-of-central-tendency"
+import {viewof replay_mean} from "@ljcolling/measures-of-central-tendency"
+sample_means
+```
+
+\
+```{ojs}
+//| echo: false
+///| panel: input
+viewof replay_mean
+```
+
+::::
 
 What do you notice? The sample means don't always line up exactly with the
 population mean. Sometimes the sample mean is higher and sometimes the sample
@@ -485,22 +513,47 @@ around, and because we don't know the population mean, this tells us that **on
 any particular sample** we won't know whether the sample mean is the same as the
 population mean.
 
+
 ### The average of the sample means
 
 But let's think of things from a slightly different perspective. Let's treat
 the mean of each sample of 50 people as a measurement. We'll now take a
-**"sample"** of these measurements. That is, we'll take we'll measurement 50
-people and work out the average height, then measure another people people and
-work out the average height, and then another 50 people, and so on. And each of
-these averages of 50 people will be one measurements. We'll just add these
-measurements to our **sample of samples**, and each time get add a new
-measurement we'll work out the average of this **sample of samples**. We can see
-was happens to this average in the animation below. What do you notice?
+**"sample"** of these measurements. That is, we'll measure the height of 50
+people and we'll work out the average height. This might be something like 168
+cm. We'll then measure another 50 people and we'll work out the average height,
+which might be something like 175 cm. We'll then work out the average of these
+two averages (`r (168 + 175) / 2` cm). We'll do this over and over recalculating
+our average of averages after each new sample of 50 people. In
+@exm-running-samples we can see can see what happens to our average of our
+**sample of samples**. What do you notice?
 
 <!-- FIXME: Aniimatio -->
 
+
+::::{.callout-tip icon="false" appearance="simple"}
+
+:::{#exm-running-samples}
+#### Explore sample of samples
+:::
+
+```{ojs}
+//| echo: false
+import {sample_means_ave} from "@ljcolling/measures-of-central-tendency"
+import {viewof replay_running_mean} from "@ljcolling/measures-of-central-tendency"
+sample_means_ave
+```
+
+\
+```{ojs}
+//| echo: false
+///| panel: input
+viewof replay_running_mean
+```
+
+::::
+
 That's right, as we carry on collecting more and more **samples of samples** the
-average of theses will eventually line up and match the **population mean**.
+average of these will eventually line up and match the **population mean**.
 What can we conclude from this?
 
 This tells us that even though we don't know whether the mean of **any
@@ -510,102 +563,4 @@ in future lectures when we talk about the **sampling distribution**, but for now
 this simple idea is all you need to know. 
 
 <!-- FIXME: This should probably be moved to the next lecture -->
-
-## Measures of spread
-
-So far we've only been talk about the **typical** value, or the **central**
-value, of a set data. But if you look at at @fig-hist-width you'll see two data
-sets that are centred at the same value but have very different amounts of
-variability. Both sets of data have a mean of 0. But, as you can see, the values
-of one are spread out much more widely than the values of the other.
-
-```{r}
-#| echo: false
-#| warning: false
-#| label: fig-hist-width
-#| fig-cap: Histogram of two distributions with equal means but different spreads. *N = 10,000* in each case.
-dist_narrow <- rnorm(10000, mean = 0, sd = 1)
-dist_wide <- rnorm(10000, mean = 0, sd = 3)
-tibble::tibble(
-  narrrow = dist_narrow,
-  wide = dist_wide
-) |>
-  tidyr::pivot_longer(1:2) |>
-  ggplot2::ggplot(aes(
-    x = value,
-    # group = name,
-    fill = name,
-    alpha = name
-  )) +
-  geom_histogram(color = "black", position = "identity") +
-  scale_alpha_manual(values = c(1, 0.7), guide = "none") +
-  scale_fill_manual(values = c("seagreen", "blue"), guide = "none") +
-  NULL
-```
-
-
-This is why, in addition to measures of central tendency, we also need measures
-that tell us about the spread, or _dispersion_ of a variable. Once again, there
-are several measures of spread available, and we'll talk about five of them:
-
-1. Range
-
-2. Interquartile range
-
-3. Deviation
-
-4. Variance
-
-5. Standard deviation
-
-<!-- FIXME: Add the visualisation in here? -->
-
-
-### Range
-
-The **range** of a variable is simply the distance between its smallest and
-largest values. For example, if we gather a sample of 100 participants and the
-youngest one is 17 years old, and the oldest one is 67 years old, then the range
-of our age variable in this sample if 67 - 15 = `r 67 - 17` years.
-
-Checking the range of a variable can tell us something about whether our data
-makes sense. Let's say that we've run a study examining reading ability in
-primary school age children. In this study, we've also measured the ages of the
-children. If the range of our age variable is, for example, 50 years, then that
-tells us that we've measured _at least_ one person that is not school age.
-
-Beyond that, the range doesn't tell us much of the information we'd usually like
-to know. This is because the range is _extremely_ **sensitive to outliers**.
-What this means is that it only takes one extreme value to inflate the range. In
-our school example, it might be that all but one of the people measured is
-actually in the correct age range. But the range alone cannot tell us if this is
-the case.
-
-### Interquartile range
-
-A slightly more useful measure than the range is the **interquartile range** or
-IQR. The IQR is the distance between the 1st and 3rd quartiles of the data.
-Quartiles, like the name suggests, are created by splitting the data into four
-chunks where each chunk has the same number of observations. Or put another way,
-the median splits the data into two where half the observations are higher than
-the median and half the observations are lower than the median. Quartiles are
-created by taking each of these halves and splitting them in half again. The
-range covered by the middle two 25% chunks is the IQR. It is the range that
-covers the middle 50% of the data.
-
-The benefit of the IQR over a simple range is that the IQR is not sensitive to
-occasional extreme values. This is because the bottom 25% and the top 25% are
-discarded. However, by discarding these data, the IQR provides no information
-about how spread these outer areas are.
-
-Both the range and the IQR work by looking at the distance between only two
-observations in the entire data. For the range, it's the distance between the
-minimum point and the maximum. For the IQR, it's the distance between the
-midpoint of the upper half and the midpoint of the lower half. To get a more
-fine-grained idea of the spread, we'll need a new way of measuring it. 
-
-But that is where we'll leave it for now, and we'll pick our story back up in
-the next lecture.
-
-
 

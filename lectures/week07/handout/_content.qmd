@@ -1,3 +1,19 @@
+```{r}
+#| echo: false
+#| message: false
+require(tidyverse)
+```
+
+
+<!--
+
+FIXME: Update this
+
+But that is where we'll leave it for now, and we'll pick our story back up in
+the next lecture.
+
+
+
 Last week we started talking about describing measurements, and the relationship
 between samples and populations. We covered measures of central tendency, and we
 started talking about measures of spread. Specifically, we covered the **range**
@@ -9,6 +25,107 @@ minimum point and the maximum. For the IQR, it's the distance between the
 midpoint of the upper half and the midpoint of the lower half. To get a more
 fine-grained idea of the spread, we'll need a new way of measuring it. And this
 is where we turn our attention to next.
+
+-->
+
+Last week we started learning about the tools we can use to describe data.
+Specifically, we learned about the **mean**, **mode**, and **median**. And we
+learned about they were different ways of describing the typical value. But in
+addition to describing the *typical value*, we might also want a way to
+describe how spread out the data is around this *typical value*. We'll start
+this week off by talking about **measures of spread**.
+
+## Measures of spread
+If you look at @fig-hist-width you'll see two data sets that are centred at the
+same value but have very different amounts of variability. Both sets of data
+have a mean of 0. But, as you can see, the values of one are spread out much
+more widely than the values of the other.
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: fig-hist-width
+#| fig-cap: Histogram of two distributions with equal means but different spreads. *N = 10,000* in each case.
+dist_narrow <- rnorm(10000, mean = 0, sd = 1)
+dist_wide <- rnorm(10000, mean = 0, sd = 3)
+tibble::tibble(
+  narrrow = dist_narrow,
+  wide = dist_wide
+) |>
+  tidyr::pivot_longer(1:2) |>
+  ggplot2::ggplot(aes(
+    x = value,
+    # group = name,
+    fill = name,
+    alpha = name
+  )) +
+  geom_histogram(color = "black", position = "identity") +
+  scale_alpha_manual(values = c(1, 0.7), guide = "none") +
+  scale_fill_manual(values = c("seagreen", "blue"), guide = "none") +
+  NULL
+```
+
+
+This is why, in addition to measures of central tendency, we also need measures
+that tell us about the spread, or _dispersion_ of a variable. Once again, there
+are several measures of spread available, and we'll talk about five of them:
+
+1. Range
+
+2. Interquartile range
+
+3. Deviation
+
+4. Variance
+
+5. Standard deviation
+
+<!-- FIXME: Add the visualisation in here? -->
+
+
+### Range
+
+The **range** of a variable is simply the distance between its smallest and
+largest values. For example, if we gather a sample of 100 participants and the
+youngest one is 17 years old, and the oldest one is 67 years old, then the range
+of our age variable in this sample if 67 - 15 = `r 67 - 17` years.
+
+Checking the range of a variable can tell us something about whether our data
+makes sense. Let's say that we've run a study examining reading ability in
+primary school age children. In this study, we've also measured the ages of the
+children. If the range of our age variable is, for example, 50 years, then that
+tells us that we've measured _at least_ one person that is not school age.
+
+Beyond that, the range doesn't tell us much of the information we'd usually like
+to know. This is because the range is _extremely_ **sensitive to outliers**.
+What this means is that it only takes one extreme value to inflate the range. In
+our school example, it might be that all but one of the people measured is
+actually in the correct age range. But the range alone cannot tell us if this is
+the case.
+
+### Interquartile range
+
+A slightly more useful measure than the range is the **interquartile range** or
+IQR. The IQR is the distance between the 1st and 3rd quartiles of the data.
+Quartiles, like the name suggests, are created by splitting the data into four
+chunks where each chunk has the same number of observations. Or put another way,
+the median splits the data into two where half the observations are higher than
+the median and half the observations are lower than the median. Quartiles are
+created by taking each of these halves and splitting them in half again. The
+range covered by the middle two 25% chunks is the IQR. It is the range that
+covers the middle 50% of the data.
+
+The benefit of the IQR over a simple range is that the IQR is not sensitive to
+occasional extreme values. This is because the bottom 25% and the top 25% are
+discarded. However, by discarding these data, the IQR provides no information
+about how spread these outer areas are.
+
+Both the range and the IQR work by looking at the distance between only two
+observations in the entire data. For the range, it's the distance between the
+minimum point and the maximum. For the IQR, it's the distance between the
+midpoint of the upper half and the midpoint of the lower half. To get a more
+fine-grained idea of the spread, we'll need a new way of measuring it. 
+
 
 ## Variance and standard deviation
 
@@ -272,104 +389,4 @@ deviation_ is **within** a sample. So could we use a similar measure to quantify
 the _average deviation_ **between** samples? It turns out that we can. But
 before we get there we'll have to take a brief digression to talk about
 **distributions**.
-
-## Distributions
-
-Up until now we've skirted around the idea of distributions. We've looked at
-histograms of data, but we haven't really talked that much about their shape. It
-turns out that there are some shapes that we'll come across very often, and some
-of these shapes have properties that will make them very useful for statistics.
-But before we can get to that, we need to first understand where these shapes
-come from---that is, distributions have the shape they do---and some language
-for describing these shapes. We'll start off with the simplest distribution, the
-**binomial distribution**, before moving on to the **normal distribution**. 
-
-### The binomial distribution
-
-
-To understand what the **binomial distribution** is, and where it comes from
-we'll do a little _thought experiment_. In our thought experiment, we'll take a
-coin, and we'll flip it. When we flip a coin, one of two outcomes is possible.
-Either the coin will land showing heads, or it will land showing tails. We can
-say that there are two possible events or two possible sequences of events
-(_sequences_ will make more sense when we add more coins) that can happen when
-we flip a coin.
-
-Now let's think of each of the sequences and count up how many heads are showing
-in each. In the first sequence, where the coin lands showing tails, no heads
-occur. In the second sequence, where the coin lands showing heads, there is one
-head. Therefore, we have one sequence that produces 0 heads, and one sequence
-that produces 1 head. And those are all the possible sequences.
-
-But now let's make it more complicated. Let's flip two coins. Now there's a
-greater number of possible sequences. We can list them:
-
-1. The first coin shows heads, and so does the second (HH),
-2. The first coin shows heads and the second shows tails (HT)
-3. The first coin shows tails and the second shows heads (TH)
-4. and the first coins shows tails and the second shows tails (TT)
-
-Therefore, there are four possible sequences. Let's count up the **number of
-sequences** that lead to 0 heads, one head, two heads, etc. If we do this, we'll
-see that one sequence leads to 0 heads (TT). Two sequences lead to 1 head (HT,
-and TH). And one sequence leads to 2 heads (HH).
-
-Let's now add more coins. Things will get trickier from here because the number
-of sequences rapidly goes up. With three coins, there would be eight possible
-sequences, and with four coins, there would be 16 possible sequences. Figuring
-out the number sequences, and the nature of the sequences (whether they produce
-0 heads, one head, two heads, etc.) quickly becomes difficult. To make things
-easier, we'll draw a plot. First, we'll draw a plot to trace out the sequences.
-We'll use different coloured dots to indicate heads and tails. We can do this in
-the form of the branching tree diagram shown in Box \@ref(fig:box2). 
-
-
-Once we've visualised the sequences, it's easy to count up how many sequences
-result in 0 heads, one head, two heads etc. We can put our counts on another
-plot. For this, we'll make a frequency plot or histogram, just like we've seen
-before. On the x-axis, we'll have the number of heads. And on the y-axis, we'll
-have the count of how many sequences result in that number of heads. This
-frequency plot is also shown in @fig.
-
-You can adjust the slider in Box \@ref(fig:box2) to change the number of coins
-you want to flip. Increasing the number of coins increases the number of
-possible sequences, and it changes the number of ways of getting one head, two
-heads, three heads and so on changes (however, there's always only one way to
-get 0 heads and one way to get all heads). Notice that as you adjust the slider
-and add more and more coins, the frequency plot takes on a characteristic shape.
-You can mathematically model the shape of this plot using a **binomial
-distribution**.
-
-In our coin flipping example, we created this shape by counting up the number of
-sequences that produced various quantities of heads. But if we look around at
-**natural processes**, we'll see that this shape occurs often.
-
-One natural process that gives rise to this shape is the "bean machine"[^1]. In
-a bean machine, small steel balls fall from the top of the device to the bottom
-of the device. On their way down, they bump into pegs. When one of the balls
-hits a peg, it has a roughly equal chance of bouncing off to the left or the
-right, not unlike a coin which has a roughly equal chance of landing heads up or
-tails up. At the bottom of the device are equally-spaced bins for collecting the
-balls. If enough balls are dropped into the device, then the **distribution** of
-balls across the bins will start to take on the shape of the **binomial
-distribution**. Very few balls will be at the very edges, because this would
-require the balls to bounce left or right every time.
-
-Similarly, very few sequences of coin flips result in large numbers of heads or
-large numbers of tails. The greatest number of balls are seen in the bins near
-the middle. The balls that land here have bounced left and right a roughly equal
-number of times. Again a similar pattern can be seen with the coin flips.
-
-In Box \@ref(fig:box3), I've included a computer simulation of a bean machine.
-Press the Start button to display the bean machine and watch the balls drop.
-Press Replay to drop more balls.
-
-Flipping coins might seem a log way off from anything you might want to study in
-Psychology. However, the **shape** of the binomial distribution, particularly
-when we're dealing with many coin flips, might be something you're more familiar
-with. This characteristic **bell shape** is also something we see in the
-**normal distribution**. And it's the **normal distribution** which we'll
-turn our attention to next. 
-
-
 

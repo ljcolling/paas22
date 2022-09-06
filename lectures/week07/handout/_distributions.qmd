@@ -1,0 +1,100 @@
+## Distributions
+
+Up until now we've skirted around the idea of distributions. We've looked at
+histograms of data, but we haven't really talked that much about their shape. It
+turns out that there are some shapes that we'll come across very often, and some
+of these shapes have properties that will make them very useful for statistics.
+But before we can get to that, we need to first understand where these shapes
+come from---that is, distributions have the shape they do---and some language
+for describing these shapes. We'll start off with the simplest distribution, the
+**binomial distribution**, before moving on to the **normal distribution**. 
+
+### The binomial distribution
+
+
+To understand what the **binomial distribution** is, and where it comes from
+we'll do a little _thought experiment_. In our thought experiment, we'll take a
+coin, and we'll flip it. When we flip a coin, one of two outcomes is possible.
+Either the coin will land showing heads, or it will land showing tails. We can
+say that there are two possible events or two possible sequences of events
+(_sequences_ will make more sense when we add more coins) that can happen when
+we flip a coin.
+
+Now let's think of each of the sequences and count up how many heads are showing
+in each. In the first sequence, where the coin lands showing tails, no heads
+occur. In the second sequence, where the coin lands showing heads, there is one
+head. Therefore, we have one sequence that produces 0 heads, and one sequence
+that produces 1 head. And those are all the possible sequences.
+
+But now let's make it more complicated. Let's flip two coins. Now there's a
+greater number of possible sequences. We can list them:
+
+1. The first coin shows heads, and so does the second (HH),
+2. The first coin shows heads and the second shows tails (HT)
+3. The first coin shows tails and the second shows heads (TH)
+4. and the first coins shows tails and the second shows tails (TT)
+
+Therefore, there are four possible sequences. Let's count up the **number of
+sequences** that lead to 0 heads, one head, two heads, etc. If we do this, we'll
+see that one sequence leads to 0 heads (TT). Two sequences lead to 1 head (HT,
+and TH). And one sequence leads to 2 heads (HH).
+
+Let's now add more coins. Things will get trickier from here because the number
+of sequences rapidly goes up. With three coins, there would be eight possible
+sequences, and with four coins, there would be 16 possible sequences. Figuring
+out the number sequences, and the nature of the sequences (whether they produce
+0 heads, one head, two heads, etc.) quickly becomes difficult. To make things
+easier, we'll draw a plot. First, we'll draw a plot to trace out the sequences.
+We'll use different coloured dots to indicate heads and tails. We can do this in
+the form of the branching tree diagram shown in Box \@ref(fig:box2). 
+
+
+Once we've visualised the sequences, it's easy to count up how many sequences
+result in 0 heads, one head, two heads etc. We can put our counts on another
+plot. For this, we'll make a frequency plot or histogram, just like we've seen
+before. On the x-axis, we'll have the number of heads. And on the y-axis, we'll
+have the count of how many sequences result in that number of heads. This
+frequency plot is also shown in @fig.
+
+You can adjust the slider in Box \@ref(fig:box2) to change the number of coins
+you want to flip. Increasing the number of coins increases the number of
+possible sequences, and it changes the number of ways of getting one head, two
+heads, three heads and so on changes (however, there's always only one way to
+get 0 heads and one way to get all heads). Notice that as you adjust the slider
+and add more and more coins, the frequency plot takes on a characteristic shape.
+You can mathematically model the shape of this plot using a **binomial
+distribution**.
+
+In our coin flipping example, we created this shape by counting up the number of
+sequences that produced various quantities of heads. But if we look around at
+**natural processes**, we'll see that this shape occurs often.
+
+One natural process that gives rise to this shape is the "bean machine"[^1]. In
+a bean machine, small steel balls fall from the top of the device to the bottom
+of the device. On their way down, they bump into pegs. When one of the balls
+hits a peg, it has a roughly equal chance of bouncing off to the left or the
+right, not unlike a coin which has a roughly equal chance of landing heads up or
+tails up. At the bottom of the device are equally-spaced bins for collecting the
+balls. If enough balls are dropped into the device, then the **distribution** of
+balls across the bins will start to take on the shape of the **binomial
+distribution**. Very few balls will be at the very edges, because this would
+require the balls to bounce left or right every time.
+
+Similarly, very few sequences of coin flips result in large numbers of heads or
+large numbers of tails. The greatest number of balls are seen in the bins near
+the middle. The balls that land here have bounced left and right a roughly equal
+number of times. Again a similar pattern can be seen with the coin flips.
+
+In Box \@ref(fig:box3), I've included a computer simulation of a bean machine.
+Press the Start button to display the bean machine and watch the balls drop.
+Press Replay to drop more balls.
+
+Flipping coins might seem a log way off from anything you might want to study in
+Psychology. However, the **shape** of the binomial distribution, particularly
+when we're dealing with many coin flips, might be something you're more familiar
+with. This characteristic **bell shape** is also something we see in the
+**normal distribution**. And it's the **normal distribution** which we'll
+turn our attention to next. 
+
+
+
