@@ -1,0 +1,32 @@
+---
+pagetitle: "What is this thing called &quot;Science&quot;?"
+author-meta: "Dr Lincoln Colling"
+format: 
+  sussex-revealjs:
+    center-title-slide: false
+navbar: true
+week: 2
+type: slides
+---
+
+<h2>Lecture 2</h2>
+
+<h1>What is this thing called &quot;Science&quot;?</h1>
+
+<h2>Introduction to Philosophy of Science</h2>
+
+
+<br>
+<br>
+
+<h3 style="color:black;font-weight:normal">Dr Lincoln Colling</h3>
+
+<h3 style="color:black;font-weight:normal">03 Oct 2022</h3>
+
+<br>
+
+<span class="absolute" style="bottom: 0; width:100%; text-align: center">Psychology as a Science</span>
+
+![](../../../images/logo.png){.absolute bottom="2em" left="1000" width="280"}
+
+{{< include _content.qmd >}}
