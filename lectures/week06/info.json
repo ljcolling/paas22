@@ -1,0 +1,13 @@
+{
+  "author": "Dr Lincoln Colling",
+  "content": "{{< include _content.qmd >}}",
+  "course": "Psychology as a Science",
+  "date": "31 Oct 2022",
+  "department": "School of Psychology, University of Sussex",
+  "department_url": "https://profiles.sussex.ac.uk/p488921-lincoln-colling",
+  "email": "l.colling@sussex.ac.uk",
+  "start_data": "20220926",
+  "subtitle": "Measures of central tendency",
+  "title": "Describing measurements I",
+  "week": 6
+}

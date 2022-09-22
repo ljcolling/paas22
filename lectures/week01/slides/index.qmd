@@ -1,0 +1,32 @@
+---
+pagetitle: "Introduction to Psychology as a Science"
+author-meta: "Dr Lincoln Colling"
+format: 
+  sussex-revealjs:
+    center-title-slide: false
+navbar: true
+week: 1
+type: slides
+---
+
+<h2>Lecture 1</h2>
+
+<h1>Introduction to Psychology as a Science</h1>
+
+<h2>Introductions and housekeeping</h2>
+
+
+<br>
+<br>
+
+<h3 style="color:black;font-weight:normal">Dr Lincoln Colling</h3>
+
+<h3 style="color:black;font-weight:normal">26 Sep 2022</h3>
+
+<br>
+
+<span class="absolute" style="bottom: 0; width:100%; text-align: center">Psychology as a Science</span>
+
+![](logo.png){.absolute bottom="2em" left="1000" width="280"}
+
+{{< include _content.qmd >}}

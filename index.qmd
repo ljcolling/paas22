@@ -1,0 +1,21 @@
+<style>
+.cell-output-display:not(.no-overflow-x) {
+overflow-x: visible
+}
+</style>
+<style>
+.cell-output-display:not(.no-overflow-x) {
+overflow-x: visible
+}
+</style>
+---
+listing:
+  template: materials.ejs
+content: lectures/**/*.qmd
+---
+
+## Psychology as a Science 2022/2023
+
+If you're looking for the 2021/2022 or 2020/2021 version of this course
+then please follow the following link:
+[https://paas-archive.netlify.app/](https://paas-archive.netlify.app/)

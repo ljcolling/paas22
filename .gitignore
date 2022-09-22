@@ -1,0 +1,13 @@
+_site/
+print-slides.r
+render.sh
+.DS_Store
+.quarto
+
+/.quarto/
+
+# Local Netlify folder
+.netlify
+.Rproj.user
+.Rhistory
+termpdf.log
