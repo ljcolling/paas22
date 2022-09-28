@@ -703,12 +703,15 @@ just help to make you a better scientist.
 ## What's been left out
 
 There's so much more that I would've loved to have covered in this lecture, but
-unfortunately there simply isn't the time. To take just two, I would've liked to
+unfortunately there simply isn't the time. To take just a few: I would've liked to
 have been able to cover feminist perspectives on science
 (see [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/feminist-science/)
-if you're interested) and the status of indigenous and non-western epistemology.
+if you're interested). I would also have liked to cover the status of indigenous and non-western epistemology.
 For example, I grew up in Aotearoa New Zealand where Mātauranga Māori is
-currently having a renaissance [see @ref2;@ref1 if you're interested].
+currently having a renaissance [see @ref2;@ref1 if you're interested]. And I
+would have also have liked to cover work on Race, Racism, and Colonialism---for
+example, see the work of @ref3 if you're interested.
+
 Hopefully, however, there was enough in this lecture to get you to start
 thinking more deeply about what science is, and hopefully that will make you a
 better scientist. 
@@ -744,19 +747,39 @@ require(niceQuiz)
      answer("The theory is considered trivial")
    ),
    question(
-   "You can use Deductive Logic to help you figure out what is true and what is
-   false",
+   "You can use Deductive Logic to help you figure out what is true:",
    answer("False", correct = TRUE),
    answer("True")
-   )
-   # question(
-   #   "What is R?",
-   #   answer("A high-level programming language", correct = TRUE),
-   #   answer("An IDE for Windows and MacOS"),
-   #   answer("Machine code for RStudio"),
-   #   answer("Baby don't hurt me.")
-   # )
+   ),
+   question(
+     "You can use Induction to help you figure out what is true:",
+     answer("True"),
+     answer("False", correct = TRUE)
+   ),
+   question(
+    "Which terms describes the process of going from specific observations to general statements?",
+    answer("Induction", correct = TRUE),
+    answer("Deduction")
+    ),
+    question("Which of the following are part of the common-sense view of science?",
+    answer("Observers have direct access to facts through the senses?", correct = TRUE),
+    answer("Facts are independent of theory", correct = TRUE),
+    answer("Theories are statements that have been proven true")
+    )
  )
 ```
 
+## Leave a comment {.unnumbered .unlisted}
+
+```{r}
+#| echo: false
+form_url <- "https://docs.google.com/forms/d/e/1FAIpQLSdcA0B4oOoPXNQdkNCcu7wQHTlg1ynAbS5aqxjZbFtGqJqYnQ/formResponse"
+comment_id <- "entry.2112951534"
+label_id <- "entry.2046375008"
+lecture <- "lecture2"
+commentr::commentr(form_url = form_url, comment_id = comment_id, label_id = label_id, lecture = lecture)
+```
+
 ## References
+
+

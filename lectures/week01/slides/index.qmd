@@ -4,6 +4,7 @@ author-meta: "Dr Lincoln Colling"
 format: 
   sussex-revealjs:
     center-title-slide: false
+    multiplex: true
 navbar: true
 week: 1
 type: slides
@@ -25,8 +26,8 @@ type: slides
 
 <br>
 
-<span class="absolute" style="bottom: 0; width:100%; text-align: center">Psychology as a Science</span>
+<span class="absolute" style="bottom: 2em; width:100%; text-align: center">Psychology as a Science</span>
 
-![](logo.png){.absolute bottom="2em" left="1000" width="280"}
+![](../../../images/logo.png){.absolute bottom="2em" left="1000" width="280"}
 
 {{< include _content.qmd >}}

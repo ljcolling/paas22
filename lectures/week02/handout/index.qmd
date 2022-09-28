@@ -14,10 +14,11 @@ format:
     navbar: false
     page-layout: article
     toc: true
-    toc-location: left
+    toc-location: right
     date: 03 Oct 2022
     date-format: "D MMMM, YYYY"
   pdf:
+    cite-method: biblatex
     toc: false
     date: 03 Oct 2022
     date-format: "D MMMM, YYYY"

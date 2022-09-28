@@ -2,6 +2,7 @@ project:
   type: website
 
 website:
+  reader-mode: true
   title: "Psychology As A Science"
   navbar:
     background: primary

@@ -12,7 +12,7 @@ format:
     navbar: false
     page-layout: article
     toc: true
-    toc-location: left
+    toc-location: right
     date: 26 Sep 2022
     date-format: "D MMMM, YYYY"
   pdf:

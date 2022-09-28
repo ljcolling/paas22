@@ -1,0 +1,33 @@
+---
+pagetitle: "Approaches to Research"
+author-meta: "Dr Lincoln Colling"
+format: 
+  sussex-revealjs:
+    center-title-slide: false
+    multiplex: true
+navbar: true
+week: 3
+type: slides
+---
+
+<h2>Lecture 3</h2>
+
+<h1>Approaches to Research</h1>
+
+<h2>Qualitative and Quantitative methods</h2>
+
+
+<br>
+<br>
+
+<h3 style="color:black;font-weight:normal">Dr Lincoln Colling</h3>
+
+<h3 style="color:black;font-weight:normal">10 Oct 2022</h3>
+
+<br>
+
+<span class="absolute" style="bottom: 2em; width:100%; text-align: center">Psychology as a Science</span>
+
+![](../../../images/logo.png){.absolute bottom="2em" left="1000" width="280"}
+
+{{< include _content.qmd >}}

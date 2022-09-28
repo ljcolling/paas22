@@ -60,3 +60,5 @@ make_handouts <- function(x) {
 }
 
 lapply(X = handout_files, FUN = make_handouts)
+
+system('fd canvas_link -x cat {} > _site/pdfs.html')
