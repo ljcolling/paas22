@@ -1,0 +1,624 @@
+## The "how" of quantitative research
+
+The **conclusions** that we can draw from research depends on **how** the
+knowledge was generated
+
+For any piece of research we plan (or any research we read), we must be able to
+answer:
+
+1. How do we actually test **hypotheses** appropriately?
+
+2. How do we **generalise** our findings?
+
+3. How do we **quantify** seemingly unquantifiable things? 
+
+The answer to these questions lies in **research design**
+
+---
+
+## The "how" of quantitative research
+
+**Research designs** can vary on lots of different dimensions:
+
+1. Some designs have some kind of **manipulation** and others don't
+
+2. Some designs involve **multiple measurements from the same people** and some
+design **compare groups**
+
+3. Some designs take all their measurement **at one point in time** and others
+**follow participants across time**
+
+The design we choose depends on:
+
+- Our hypothesis
+- The resources we have (time, money, facilities)
+- Logistical considerations
+- Ethical considerations
+
+---
+
+[An example: Ice cream and murder]{.section}
+
+---
+
+
+## An example: Ice cream and murder
+
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| out.width: 100%
+#| fig-cap: The relationship between the murder rate and ice cream sales in New York City
+#| label: fig-murder
+knitr::include_graphics(here::here("images","IC.jpg"))
+```
+
+---
+
+## An example: Ice cream and murder
+
+We might decide to conduct some research into this relationship between ice
+cream and murder to see whether there's actually a **causal**
+relationship^[For now, we'll just **ignore** all the **ethical issues**]
+
+\
+
+<center>How would we actually go about this?</center>
+
+\
+
+1. We start with a **research question**
+
+This is the **question** we hope our **research** will **answer**
+
+We might have something like the following:
+
+> Does eating ice cream make you more prone to murderous tendencies?
+
+---
+
+## An example: Ice cream and murder
+
+2. Next we come up with a **hypothesis**
+
+In our **hypothesis**  we specify the outcome we expect
+
+We might have something like the following:
+
+> Eating ice cream increases the desire to commit murder
+
+
+To test this **hypothesis** we'll design an experiment...
+
+---
+
+### Testing our hypothesis
+
+Our experiment might be something like the following:
+
+1. Invite a group of people into the lab
+
+2. Give half the people some ice cream to eat, and don't give any ice cream to
+the other half (our **manipulation**)
+
+3. We then get all participants to look at pictures of people (the **stimuli**)
+and rate how much they want to **eliminate** them on a scale from 0 (no desire) to 9
+(all the desire possible)
+
+After the experiment we might thank the participants, and *debrief* them by
+describing the aims of the study in more depth...
+
+---
+
+### Testing our hypothesis
+
+In our study we're **manipulating** one thing and we're **measuring** one thing
+
+This means our study has one **independent variable (IV)** and one **dependent
+variable (DV)**
+
+You'll encounter the terms **independent variable (IV)** and **dependent
+variable (DV)** a lot, so let's define what they mean:
+
+- The **dependent** variable is the variable that you analyse. Its value _depends_
+on the value of other variables. It's the thing we're measuring, and it's
+sometimes also called the _outcome_.
+
+  - In our example, this is _desire to eliminate_
+
+
+- An **independent variable** is a variable that *influences the values* of your
+**dependent variable**. It's the thing we're manipulating, and it's sometimes
+also called the _predictor_.
+
+  - In our example, this is _whether or not somebody was given ice cream_
+
+---
+
+## Features of good study design
+
+In a well designed experiment, we can be confident in saying our
+**manipulation** _caused_ a change in our **outcome**
+
+But this isn't the case with **our** study, because we're **missing** a lot of
+things (or at least we haven't specified them yet). Including:
+
+- Controls
+
+- Randomisation
+
+- Blinding
+
+- A theoretical framework
+
+---
+
+### Controls
+
+
+Our imaginary study didn't use _any_ **controls** (we touched on _controls_ last
+week too)
+
+- We recruited all kinds of people without giving consideration to how different
+characteristics might affect our results:
+
+  - We might have children as well as adults in our _sample_
+
+  - We might have people with lactose intolerance in our _sample_ who would've
+    experienced discomfort eating ice-cream
+
+- We didn't have _standardised instructions_ for participants who enrolled in
+  the study
+
+  - Maybe some participants arrived very hungry, and others arrived very full,
+    and the hungry participants were just _hangry_
+
+---
+
+### Controls
+
+- We didn't control our **IV** appropriately: We might have often changed the
+  brand, the flavour, or the amount of ice-cream. Maybe one day we gave frozen
+  yoghurt instead of ice cream
+
+  - Now we don't know exactly what caused any changes in our **outcome**
+
+  - It could be that only strawberry mini milks cause murderous tendencies
+
+
+- We didn't control the lab environment it was conducted in. On some days the
+  heating was up super high and on others we had the windows wide open
+
+  - Maybe people only felt murderous when they were made to eat ice-cream in the
+    cold
+
+
+---
+
+### Randomisation
+
+Another feature that might have been missing from our study is **randomisation**
+
+- We didn't **randomly assign** people to the groups
+
+  - Maybe we recruited all our participants for the _ice cream_ condition first,
+    and we did this outside of a dentists office
+
+  - It might be that most of these participants had sensitive teeth and so
+    eating cold food made them angry
+
+- A well-designed experiment should **randomise** both participant allocation
+  and **stimulus presentation order** (which we touched on last week in the
+  _memory example_)
+
+---
+
+### Blinding
+
+Another feature that might have been missing from our study is **blinding**
+
+- Maybe we told participants that we were interested in the effects of ice cream
+  on murderous tendencies
+
+  - Participants may have (consciously or not) modified their behaviour to fit
+    or contradict our hypothesis
+
+- Maybe we also gave all the participants the ice cream ourselves
+
+  - If participants are naïve to group allocation then the study is said to be
+    **single-blind**
+
+- If neither the participants nor the researcher know which condition the
+  participants are put in, the study design is known as **double-blind**
+
+  - Allocation is recorded but only revealed once the study is over and the data
+    are being analysed
+
+---
+
+### Theoretical Framework
+
+- The choice of **predictor** (**IV**) and **outcome** (**DV**) variables does not
+happen in a theoretical vacuum
+
+- These choices **should** be base on theory, but in our experiment these
+  choices weren't based on theory
+
+- It could be that murder **causes** people to eat ice-cream, in which case we
+  should probably swap the **IV** and **DV**
+
+- Or it might be that they're completely unrelated and any effect we find is
+  just a **coincidence**
+
+---
+
+## Types of experimental studies
+
+We've already talked a bit about **experimental designs**, but experiments
+actually come in different types
+
+- **True** experiments
+
+- Quasi-experiments
+
+- And natural experiments
+
+Sometimes it's not logistically, or ethically, possible to do a **true**
+experiment, so that's where **quasi-experiments** and **natural experiments**
+come in handy
+
+---
+
+### (True) Experiments
+
+- True experiments usually have **tight controls**
+
+- They can be somewhat artificial because they _abstract away
+  from the real world_
+
+- This means they lack something called **ecological validity**
+
+- Ecological validity refers to the ability to generalise the results _from an
+  experiment_ **to** _the real world_
+
+  - Just because something is true in the lab, doesn't necessarily mean it'll be
+    true in the _real world_
+
+- But experiments provide the most rigorous methodology for investigating
+  **causal relationships**.
+
+Experiments can be difficult to perform from a **logistical** point of view,
+because **randomisation** can be difficult, and sometimes **manipulating** IVs
+directly can be difficult or impossible
+
+---
+
+### Quasi-experiments
+
+- **Quasi-experiments** are similar to **true experiments** except for
+  participant randomisation 
+
+- This makes them useful in situations were randomisation isn't possible 
+
+  - E.g., the effectiveness of attending summer school - one school offers the
+    intervention and the other does not
+
+- In situations like this, we should still try to **match** the participants so
+  that the groups don't differ on any relevant characteristics, except for
+  the ones we're investigating
+
+---
+
+### Natural experiment
+
+- **Natural experiments** are studies where **randomisation** and
+  **manipulation** occur through **natural** or **socio-political** processes
+
+- One example might be **twin studies**
+
+  - Identical twins share essentially 100% of their genes
+
+  - Fraternal twins share on average 50% of their genes
+
+  - Both kinds of twins tend to share the same home environment (raised
+    together)
+
+  - Comparing similarities between identical twins and similarities between
+    fraternal twins, we can estimate the role of genes and environment in all
+    sorts of things (physical/mental health, personality, cognitive ability,
+    etc.)
+
+
+- Other kinds of natural experiments might be a result of policy changes (like
+  _smoking bans_, or _changes in the length of compulsory eduction_) or natural
+  events
+
+
+---
+
+[Aspects of study design]{.section}
+
+
+---
+
+### Within-subject and between-subjects designs
+
+Studies can vary on whether the **manipulation** or **measurements** occurs
+**between groups**
+
+- In **between-subjects** or **independent** designs we compare different
+  **groups** of participants 
+
+  - Different participants are assigned to (or naturally fall into) different
+    conditions
+
+- In **within-subjects** or **repeated measures** we take _repeated
+  measurements_ from participants
+
+  - This is where each participant gets assigned to _all the conditions_ and we
+    compare, e.g., how a person responded differently in the different
+    conditions
+
+- **Mixed designs** have both **within-subject** and **between-subject**
+  manipulations
+
+  - For example, we might split people into two groups, but then still measure
+    each person under multiple conditions
+
+_Within-subject_ designs have some disadvantages like order effects (people
+might perform differently in the second condition because they get better at the
+task, or worse because they get tired)
+
+But with _within-subject_ designs it can sometimes be easier to detect
+differences between conditions
+
+---
+
+### Time frame
+
+Studies can also vary in terms of whether participants are measured at one
+points in time or whether they're followed over time
+
+**Cross-sectional designs**
+
+- Take a _cross-section_ of the sample at a **single point in time**
+
+- Logistically easier than other types of studies
+
+- Not very useful for telling us how things change over time
+
+---
+
+### Time frame
+
+**Longitudinal designs**
+
+- Involves repeated measurements of the same characteristics from the same
+  participants at multiple different points in time
+
+- Logistically very difficult to do and can be expensive. Some can run for years
+  or even decades
+
+- Very useful for seeing how things change over time. Particularly useful for
+  studying e.g., developmental processes
+
+- Because they can run for so long there can be issues with missing data
+
+  - Missing data can be complex to deal with because sometimes data is missing
+    at random, but other times it can be tracking something you're interested in
+
+  - E.g., A study on whether dating apps help you find love might show that no
+    people find love on the apps, but that might just be because those that do
+    find love drop out of the study
+
+---
+
+## Issues in measurement
+
+Whenever we're trying to measure something there are some issues that we need to
+be aware of^[We touched on these last week, but we'll talk about them in more
+detail here]
+\
+
+### Construct validity
+
+- In psychology we measure lots of things that are difficult to _observe
+  directly_
+
+  - This includes things like _happiness_, _cognitive ability_, and aspects of
+    _personality_
+
+- We try to measure these things using a range of tools including
+  _questionnaires_, and _experimental tasks_
+
+- We design these tools using the _theoretical underpinnings_ behind the
+  **constructs** we're trying to measure
+
+- **Construct validity** is the extent to which a tool can be justifiably
+  trusted to actually measure the construct it is supposed to measure.
+
+---
+
+### External validity
+
+- We want to be able to **generalise** the findings from our studies beyond the
+  particular people that took part in our study
+
+- And we want to be able to **generalise** the findings from our studies beyond
+  the _exact experimental tasks and setup_ used in our study
+
+- A study has **external validity** if it can be generalised to the _population_
+  of people with relevant characteristics
+
+  - It might be the case that if our study only used white mean in western
+    cultures that the findings might only **generalise** to white men in western
+    cultures
+
+- **Ecological validity** is a type of external validity that is particularly
+  relevant to **experimental designs**
+
+  - Refers to whether the findings of a study apply to the "_real world_"
+
+---
+
+#### WEIRD samples
+
+- Researchers have questioned whether the results from typical psych
+  studies are generalisable
+
+- Most psychology studies are conducted in a small handful of countries in the 
+  Global North (e.g., in North America, Europe, Australia/New Zealand)
+
+- Many of these studies also make use of _undergraduate psychology students_ for 
+  their participants
+
+- More generally, typical psychology studies are conducted in societies that are 
+WEIRD:
+  
+    - Western
+    - Educated
+    - Industrialised 
+    - Rich
+    - Democratic
+
+Understanding exactly whether and how these impact the **generalisability** of 
+psychology findings means running more studies with samples that aren't WEIRD
+
+
+---
+
+### Reliability
+
+- Reliability is about the **consistency** of a measure
+
+- A measure is **reliable** if it produces the same results each time it's used
+  on the same participant
+
+- E.g., If we're measuring maths anxiety with a questionnaire then our
+  questionnaire is **reliable** if we get similar scores each time we test a
+  particular participant
+
+- This kind of _stability over time_ is known as **test-retest reliability**
+
+---
+
+## Levels of measurement 
+
+The last couple of things we'll cover in this lecture will be about the 
+**jargon** we use to talk about the _nature of the measurements_ we're taking
+
+- The first set of terms describe the **kind of information** we're working
+with
+
+- We call this the **level of measurement**
+
+- There are **four** levels of measurement
+
+    1. Nominal/categorical
+
+    2. Ordinal
+
+    3. Interval
+
+    4. Ratio
+
+
+Sometimes a construct can fall into many of these levels, and it's on the
+researcher to decide what measurement level is the most appropriate to use.
+
+---
+
+## Levels of measurement 
+
+### Nominal/categorical
+
+Refers to **names**, **categories**, **labels**, or **group membership**.
+
+- Some examples include:
+  - Eye colour (e.g., green, brown, blue)
+  - Occupation status (e.g., FT employed, PT employed, unemployed, student...)
+  - Study condition (control, experimental);
+  - Even age can be nominal if we wanted it to be (under 50s vs over 50s).
+
+- Can't compare the different groups in any quantifiable way
+
+  - E.g., It doesn't make sense to say that green is more blue when it comes to
+    eye colour.
+
+---
+
+### Ordinal level
+
+Individual observations can be **ordered** in a meaningful way
+
+For example:
+
+- We could order marathon runners ranked in order of who came 1st, 2nd, or 3rd.
+
+- However, doesn't give information about the differences between individual points
+
+  - E.g., We don't know how much faster the winner is compared to the runner-up
+
+  - The distance between 1st and 2nd doesn't have to be the same as the distance
+between 2nd and 3rd
+
+- Common in psychology because of **Likert scale**
+
+```{r}
+#| echo: false
+#| out.width: "500px"
+#| fig.align: center
+knitr::include_graphics(here::here("images","LS.png"))
+```
+
+---
+
+### Interval level
+
+- At the **interval** level of measurement, the differences (intervals) between
+  pairs of adjacent values are the same
+
+  - E.g., The difference between 20°C and 21°C is the same as between 35°C and
+    36°C.
+
+- But there is no **absolute zero point**
+
+  - E.g., IQ is measured at the interval level. Somebody with an IQ of 200 isn't twice as smart as
+    somebody with an IQ of 100, because there is no such thing as an IQ of 0
+
+### Ratio level
+
+- The **ratio level** is similar to the interval level, but there is a **meaningful 0 point**.
+
+- Some examples of the ratio level of measurement that you might encounter in
+  psychology are:
+  - Reaction time
+  - Number of correct responses
+  - Score on an exam
+
+---
+
+## Variable / data types
+
+When we represent variables with numbers we can have different types depending on
+the type of data
+
+**Continuous variables** can contain any numerical value within a certain range
+
+  - E.g., time, height, and weight
+
+**Discrete variables** can only contain some values
+
+- E.g., The number of children (only whole numbers, because there's not such thing as 2.5 children)
+
+**Binary variables** can only take one of two possible values (Special case of **discrete variables** )
+
+- E.g., Head / Tails, Pass / Fail
+
+Our **IV**s and **DV**s can be any type (continuous, discrete, binary) or any level
+of measurement (nominal, ordinal, interval, ratio). It all depends on the study!
+
+---
+
+[End]{.section}

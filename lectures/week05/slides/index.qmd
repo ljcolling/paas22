@@ -1,0 +1,36 @@
+---
+pagetitle: "Open Science"
+author-meta: "Dr Lincoln Colling"
+format: 
+  sussex-revealjs:
+    center-title-slide: false
+    auto-stretch: false
+    multiplex: true
+navbar: true
+week: 5
+type: slides
+---
+
+<h2>Lecture 5</h2>
+
+<h1>Open Science</h1>
+
+<h2>Preregistration and the lab report</h2>
+
+
+<br>
+<br>
+<h3 style="color:black;font-weight:normal">Dr Lincoln Colling</h3>
+
+<h3 style="color:black;font-weight:normal">24 Oct 2022</h3>
+
+<br>
+
+<span class="absolute" style="bottom: 2em; width:100%; text-align: center">Psychology as a Science</span>
+
+![](../../../images/logo.png){.absolute bottom="2em" left="1000" width="280"}
+
+{{< include _content.qmd >}}
+
+
+

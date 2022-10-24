@@ -664,7 +664,7 @@ problems that need to be solved.
 #| echo: false
 #| out-width: "70%"
 #| label: fig-programme
-#| fig-cap: Example of a research programme from Dienes (2008)
+#| fig-cap: Example of a research programme from @dienes
 #| cap-location: bottom
 knitr::include_graphics(here::here("images","hardcore.png"))
 ```
@@ -712,22 +712,13 @@ currently having a renaissance [see @ref2;@ref1 if you're interested]. And I
 would have also have liked to cover work on Race, Racism, and Colonialism---for
 example, see the work of @ref3 if you're interested.
 
-Hopefully, however, there was enough in this lecture to get you to start
-thinking more deeply about what science is, and hopefully that will make you a
-better scientist. 
+Finally, if you're interested in Philosophy of Science in general, then a good
+book to start with is "What is this thing called Science?" [@chalmers], from
+which I took the title of this lecture.
 
+\newpage
 
 ## Check your understanding
-
-<style>
-.quiz {
-  align-content: center;
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
 
 
 ```{r}
@@ -769,6 +760,8 @@ require(niceQuiz)
  )
 ```
 
+::: {.content-hidden when-format="pdf"}
+
 ## Leave a comment {.unnumbered .unlisted}
 
 ```{r}
@@ -780,6 +773,10 @@ lecture <- "lecture2"
 commentr::commentr(form_url = form_url, comment_id = comment_id, label_id = label_id, lecture = lecture)
 ```
 
-## References
+:::
+
+
+:::{#refs}
+:::
 
 

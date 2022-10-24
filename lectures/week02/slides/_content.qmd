@@ -6,7 +6,7 @@ The title of this course is "Psychology as a Science"
 
 - Is it a special way of learning about the world?
 
-- And if it is then what makes it special?
+- And if so, then what makes it special?
 
 ---
 
@@ -14,9 +14,9 @@ The title of this course is "Psychology as a Science"
 
 The common-sense view might go something like this:
 
-> Science is special because it is knowledge **based on facts**
+> Science is special because it's knowledge **based on facts**
 
-Science is often contrasted with other forms of knowledge that might be
+Science is often contrasted with other forms of knowledge that might be:
 
 - based on authority (e.g., celebrities, religious and political leaders)
 - revelation (e.g., personal religious or spiritual experiences)
@@ -25,7 +25,7 @@ Science is often contrasted with other forms of knowledge that might be
 But this raises two questions:
 
 1. If science is based on facts, then where do "facts" come from?
-2. And how is knowledge then derived from these facts
+2. How is knowledge then derived from these facts
 
 ---
 
@@ -69,9 +69,10 @@ knitr::include_graphics(here::here("images","my_wife_and_my_mother_in_law.jpg"))
 ::: {.column width="60%"}
 
 
-A simple story of a how the senses work is that there are some external physical
-causes (light, sound waves etc.) that produce some physical changes in our sense
-organs (e.g., our eyes) that are then registered by the brain.
+A simple story of how the senses work might go like this: There are some
+external physical causes (light, sound waves etc.) that produce some physical
+changes in our sense organs (e.g., our eyes) that are then registered by the
+brain.
 
 This account implies direct and unmediated access to the world through our
 senses. But is this actually the case?
@@ -79,7 +80,8 @@ senses. But is this actually the case?
 - This image could be seen as an old woman or a young woman. Some of you might
   see one and not the other while some might see both and switch between them.
 - The physical causes (the light hitting our eyes) is more-or-less the same for
-  everyone, but you might "see" different things
+  everyone, but you might "see" different things.
+
 :::
 
 ::::
@@ -90,20 +92,17 @@ senses. But is this actually the case?
 
 The previous example is just a toy example, but it reveals a larger point:
 
-
-
 Two scientists might "observe" something different even when looking at the same
 thing.
 
-
-
 In some fields, being able to make "observations" actually requires training.
+For example, 
 
-1. Training in how to observe stuff through a microscope
+- Training in how to observe stuff through a microscope
 
-2. Training in how to distinguish different kinds of behaviour
+- Training in how to distinguish different kinds of behaviour
 
-3. Training in how to read an x-ray etc
+- Training in how to read an x-ray
 
 So a simple claim that observations are "unbiased" or "straightforwardly given
 by the senses" seems to be false.
@@ -116,7 +115,7 @@ When we think of a "fact" there are two things we could mean
 
 1. "Fact" could refer to some external state of the world
 
-2. Or **statements** about those external states
+2. Or "fact" could refer to **statements** about those external states
 
 _The fact that **this university is in East Sussex**_ could refer to this actual
 university and its actual being in East Sussex
@@ -137,20 +136,21 @@ Think of a child learning the word apple:
 <blockquote style="font-size: 90%">
 They might initially imitate the word "apple" when shown an apple by their parent.
 
-Next, they might use the word "apple" when pointing to apples
+Next, they might use the word "apple" when pointing to apples.
 
 But then one day they might see a tennis ball and say "apple". The parent would
 then correct them, and show them that a tennis ball isn't an apple because you
-can't, for example, bite into it like an apple
+can't, for example, bite into it like an apple.
 
 By the time the child can make accurate "observation statements" about the
 presence of apples they might already know a lot about the properties of apples
 (have an extensive "theory of apples")
 </blockquote>
 
-The same goes for scientists; formulating **observation statements** might require
+The same goes for scientists: formulating **observation statements** might require
 substantial background knowledge or a conceptual framework to place them in.
-They aren't completely **independent of theory**
+
+They aren't completely **independent of theory**.
 
 ---
 
@@ -165,7 +165,7 @@ You observe that grass grows longer among the cowpats in a field.
 
 You think this is because the dung traps moisture that helps the grass grow.
 
-Your friend thinks this is because the dung acts as a fertiliser
+Your friend thinks this is because the dung acts as a fertiliser.
 
 </blockquote>
 
@@ -176,7 +176,7 @@ For example, grind up the dung so that it still fertilises the ground or use
 something else to trap the moisture.
 
 **Intervening**, for example, through experiment allows you to tell what the
-_relevant facts_ of your observation are
+_relevant facts_ of your observation are.
 
 ---
 
@@ -187,8 +187,9 @@ By intervening on the system, we can tell which facts are **relevant**
 **But** _scientific theories_ may play a part in helping to determine what is
 and isn't relevant
 
+An example from the history of *cognitive psychology*:
+
 <blockquote style="font-size: 90%">
- Example from the history of *cognitive psychology*
 
 In certain kinds of reading tasks psychologists thought it was relevant **that**
 people made errors, but they didn't think the **exact nature of the errors** was
@@ -232,18 +233,21 @@ assumptions ("the view from nowhere")
 
 ### "Objectivity" is more complex
 
-"Objectivity" [does mean]{.green}
+"Objectivity" [does mean]{.green}:
 
 - **Publicly** and independently verifiable methods
+
 - **Recognising** theoretical assumptions
+
 - **Theory/data that are open to revision** and improvement
+
 - Free from **avoidable** forms of bias (confounds, cherry picking data,
   experimenter bias)
 
 
 It is also **objective** in the sense that despite all this, when you make the
 observations either the behaviour will happen or it won't, the detector will
-flash or it won't etc. _Your theory can't make things happen_.
+flash, or it won't etc. _Your theory can't make things happen_.
 
 ---
 
@@ -263,7 +267,8 @@ Science = Facts + Logic
 internet</cite>
 
 
-To understand what it might mean to **logically** derive scientific knowledge we need to know a bit about **logic**
+To understand what it might mean to **logically** derive scientific knowledge
+we need to know a bit about **logic**.
 
 ---
 
@@ -300,7 +305,7 @@ just be a case of a research methods lecture that isn't boring.
 
 ::::
 
-Deduction is only concerned with whether (3) follows from (1) and (2). Not
+Deduction is only concerned with whether (3) follows from (1) and (2). It is not
 concerned with determining whether (1) and (2) are true or false. The argument
 assumes that (1) and (2) _are_ true, but it doesn't establish **truth**
 
@@ -325,32 +330,32 @@ assumes that (1) and (2) _are_ true, but it doesn't establish **truth**
 The conclusion is **valid**. However, it is also
 **false** because (1) is false.
 
-It is **valid** because if we accept (1) and (2) we can have to accept (3) 
+It is **valid** because if we accept (1) and (2) we have to accept (3) 
 
 :::
 
 ::::
 
-**logic** only tells us what follows from what. If there is truth in our
+**Logic** only tells us what follows from what. If there is truth in our
 premises, then there is truth in our conclusions.
 
 If our premises are false, then our conclusions will also be false.
 
 Deductive logic is **truth-preserving**, but it can't tell us what is true and
-what is false. And the conclusion is just a _re-statement of the information
+what is false. The conclusion is just a _re-statement of the information
 contained in the premises_
 
-So **deductive logic** can't create new knowledge. What can you do instead?
+So **deductive logic** can't create new knowledge. What we you do instead?
 
 We need a way to go from **particular observations** to **generalizations**
-(this process is called **induction**)
+
 
 ---
 
 
 ## Induction
 
-We need a way to construct arguments of the following form:
+The process of **induction** allows us to construct arguments of the following form:
 
 **Premises**
 
@@ -363,7 +368,7 @@ All swans are white
 
 
 But the problem with arguments like this is that _all the premises may be true
-and yet the conclusion can be false_
+and yet the conclusion can be false_.
 
 **Maybe** we just haven't observed the one swan that **isn't white**?
 
@@ -374,7 +379,7 @@ and yet the conclusion can be false_
 
 But surely there are [good]{.green} and [bad]{.red} **inductive** arguments?
 
-- **More** observations better than **fewer** observations—_but how many is
+- **More** observations are better than **fewer** observations—_but how many is
   enough?_
 
 - Observations in many **different contexts**—_but what makes a context
@@ -392,7 +397,7 @@ But the bigger problem is **induction can never establish truth**.
 So how do we ever **prove anything for certain in science**. The short answer
 is, **we don't**.
 
-We can **never be certain** of **truth**.
+We can **never** be **certain** of **truth**.
 
 ---
 
@@ -400,7 +405,7 @@ We can **never be certain** of **truth**.
 ## Using induction and deduction
 
 Instead of just **collecting** _confirmations_ we can employ **induction** and
-**deduction**
+**deduction** together
 
 :::: {.columns} 
 
@@ -418,7 +423,7 @@ knitr::include_graphics(here::here("images","inductive-deductive.png"))
   and theories from **particular observations**
 
 - Use deduction to figure out what **logically follows** from these general laws
-  and theories] 
+  and theories 
 
 ::: 
 
@@ -426,7 +431,7 @@ knitr::include_graphics(here::here("images","inductive-deductive.png"))
 
 This approach nicely captures the idea of **testability**
 
-Our **theories** should make **predictions** about what we **expect to find**
+Our **theories** should make **predictions** about what we **expect to find**,
 and we can **test** these predictions with more observations
 
 ---
@@ -434,14 +439,16 @@ and we can **test** these predictions with more observations
 
 ## Deduction and knowing what is **false**
 
-The philosopher _Karl Popper_ also saw trouble with relying on **induction**. He
+The philosopher _Karl Popper_ saw trouble with relying on **induction**. He
 wanted to put science on a firmer logical footing.
 
-To do this, he proposed that while scientists can't use **deduction** to figure
-out what is **true**, they can use **deduction** to figure out what is **false**
+He proposed that while you can't use **deduction** to figure
+out what is **true**, you can use **deduction** to figure out what is **false**
 
-He suggested that a key quality of **scientific theories** is that they should
-be **falsifiable**.
+He said a key quality of **scientific theories** is that they should
+be **falsifiable**
+
+\
 
 Theories can come into existence through any means (wild speculation, guesses,
 dreams, or whatever), but once a theory has been proposed it has to be
@@ -461,28 +468,30 @@ dreams, or whatever), but once a theory has been proposed it has to be
 
 **Conclusion:** All swans are white.
 
-Conclusion might be **true** or **false**, but it doesn't **logically** follow
-from the premise 
+The **conclusion** might be **true** or **false**, but it doesn't **logically**
+follow from the premise
 
 :::
 
 :::{.column width="50%"}
 
-**Falsification**\
+**Falsification**
 
 **Premise:** A swan, which was not white, was spotted in Australia at time _t_.
 
 **Conclusion:** Not all swans are white.
 
-Conclusion **logically** follows from the premise, so if the premise is **true**
-the conclusion is **true**. 
+The **conclusion** **logically** follows from the premise, so if the premise is
+**true** the conclusion is **true**.
 
 ::: 
 
 ::::
 
 
-We can't **prove** the claim "_all swans are white_", but we can **reject it.**
+We can't **prove** the claim "_all swans are white_", but we can **reject it**
+
+That is, we can show that the claim "_all swans are white_" is **false**
 
 ---
 
@@ -508,7 +517,7 @@ falsifiable_**
 
 Of these three theories, (1) is the least falsifiable and (3) is the most
 falsifiable. Why? For theory (1) only an observation of Mars could falsify it.
-But for theory (3), an observation Mars, Venus, Saturn, Neptune, or any other
+But for theory (3), an observation of Mars, Venus, Saturn, Neptune, or any other
 yet undiscovered planet would falsify it.
 
 :::
@@ -537,12 +546,15 @@ What do you do?
 
 **Your options:**
 
-- You could _abandon the theory_
-  - But what about _probabilistic theories_?
-  - And what about _auxiliary assumptions_?
+1. You could _abandon the theory_
 
-- You could _modify or amend the theory_
-  - But are their _better_ ways and _worse_ ways to do this?
+    - But what about _probabilistic theories_?
+
+    - And what about _auxiliary assumptions_?
+
+2. You could _modify or amend the theory_
+
+    - But are their _better_ ways and _worse_ ways to do this?
 
 ## Probabilistic theories
 
@@ -554,11 +566,11 @@ taller than women", but of course there are shorter men and taller women.]
 Much of what we do with **statistics** is figuring out how to **test** and
 **specify** **probabilistic claims**. For example:
 
-- What does it mean for things to be different **on average**
+- What does it mean for things to be different **on average**?
 - How many cases do you have to observe before you have **evidence for** a
-  probabilistic claim
+  probabilistic claim?
 - How many cases do you have to observe before you have **evidence against** a
-  probabilistic claim (that you might previously have believed)
+  probabilistic claim (that you might previously have believed)?
 
 But putting that aside, a **single** contradictory observation can't falsify a
 probabilistic claim because we will **sometimes expect** contradictions with
@@ -573,30 +585,40 @@ Putting aside the probabilistic nature of claims (or assuming you've seen enough
 contradictory examples), should these contradictory observations lead you to
 abandon the theory?
 
-Any experiment is not testing **one theory in isolation** but also relies on a
+Experiments don't test **one theory in isolation**, but rely on a
 range of auxiliary assumptions and other support theories.
 
-For example, an experiment on memory using brain imaging is also making
-assumptions about the truth of theories related to physics and brain
-functioning, **besides** testing the theory about memory).
+For example, an experiment on memory using **brain imaging** is also making
+assumptions about the truth of theories related to:
+
+- The physics of how brain imaging machines work
+
+- Theories about how brains work by, for example, requiring oxygen during neural
+  processing
+
+And possibly many other theories
+
 
 ---
 
 ### The Duhem-Quine problem
 
 It **may be the case** that what is actually at fault is one of these auxiliary
-assumptions and not **your theory**. Telling which part of the **interconnected
-web** of theories is at fault can be tricky. Philosophers call this the
-_Duhem-Quine problem_.
+assumptions and not **your theory**
+
+Telling which part of the **interconnected web** of theories is at fault can be
+tricky. Philosophers call this the _Duhem-Quine problem_.
 
 _Popper_ didn't have a good answer on how to figure out where to lay the blame
 for an _apparent_ falsification.
 
-_Popper_ also didn't think that theories should be abandoned _too quickly_.
+But he thought that theories shouldn't be **abandoned** too quickly.
 
 He suggested some _dogmatism_, because at the start scientists might still be
 figuring out the details, and therefore they might just need to make some
-_tweaks_ and modify their theories.
+_tweaks_ and **modify** their theories instead of abandoning them
+
+---
 
 ## Revising and amending theories
 
@@ -607,7 +629,7 @@ But if we decide to amend a theory, then how do we do this?
 nourishing^[[https://en.wikipedia.org/wiki/1951_Pont-Saint-Esprit_mass_poisoning](https://en.wikipedia.org/wiki/1951_Pont-Saint-Esprit_mass_poisoning)]
 
 **[Ad-hoc modification]{.red}**\
-_All bread expect bread eaten in a French village in 1951 is nourishing_
+_All bread except bread eaten in a French village in 1951 is nourishing_
 
 Modification has fewer tests: Original theory can be tested by eating any bread.
 Modified theory can be tested by eating any bread **except** that particular
@@ -618,7 +640,7 @@ _All bread except bread made with flour containing ergot fungus is nourishing_
 
 Modification leads to new tests: 1) Test the bread for the presence of
 fungus; 2) Cultivate fungus and make bread with it and test whether it
-nourishes; 3) Analyse fungus for poisons.
+nourishes; 3) Analyse fungus for poisons, etc
 
 ---
 
@@ -631,17 +653,16 @@ _Popper's_ focus on **falsifying** theories leads to a couple of problems:
 
    - Are all parts of the **theoretical web** of the same status?
 
-2. It can difficult to compare two theories to see which is "better"
+2. It can be difficult to compare two theories to see which is "better"
    - For example, if you have **Theory A** and **Theory B** and neither has been
      falsified, which is the better theory? The one with _more **confirming**
-     observations_? But then won't **trivial theories** will always win?
+     observations_? But then won't **trivial theories** always win?
 
 The philosopher _Imre Lakatos_ developed his idea of **research programmes**^[A
 _similar_ idea was developed by the philosopher _Thomas Kuhn_, but _Kuhn_ used
 the term **paradigms** for his idea.] as a reaction to these two problems.
 
 ---
-
 
 ## Research programmes
 
@@ -669,7 +690,7 @@ apparent falsifier is observed the blame is placed on theories in the
 What is in the **hard core** and what is in the **protective belt** might not
 always be explicit, but these might be some examples:
 
-- In Cognitive Science the **hard core** might include the theory that
+- In Cognitive Science the **hard core** might include the theory that the
   mind/brain is a _particular kind of computational system_ and the **protective
   belt** might include specific theories about how memory works
 
@@ -683,10 +704,9 @@ abandoning the _research programme_ (more on this later)
 
 ---
 
-
 ## Working within a research programme
 
-On _Latakos's_ view, scientists work **within a research programme**.
+On _Lakatos's_ view, scientists work **within a research programme**.
 
 He split guidelines for working within a research programme into a **negative**
 and **positive** heuristic, specifying what scientists **shouldn't** do but also
@@ -729,12 +749,12 @@ that are **degenerating**
   contradictions)
 
   - And progressive research programmes make **novel** predictions that **follow
-    naturally** from theories that are part of the programmes
+    naturally** from theories that are part of the programme
 
   - These predictions are then confirmed by experiments
-
+ 
 - Degenerating research programmes are those that have faced so many
-  falsifications that they have been modified to the point of being incoherent.
+  falsifications that they have been modified to the point of being incoherent
 
   - At this point, it's no longer sustainable to carry on modifying the
     protective belt, and instead, the hard core must be abandoned
@@ -761,14 +781,14 @@ because often the **hard core** and the **protective belt** are left _implicit_
 and not made _explicit_
 
 However, I think it's valuable to keep these distinctions in mind as you move
-through your university career.
+through your university career
 
 ---
 
 ## Final thoughts
 
 In thinking about the nature of science, the status of science, and the processes
-we use to create and justify knowledge there are **a lot** of things to talk
+we use to create and justify knowledge, there are **a lot** of things to talk
 about.
 
 This **one course** doesn't have time to do them all justice.

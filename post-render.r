@@ -1,5 +1,4 @@
 # get a list of all the slides
-
 slide_files <- list.files(
   path = "_site/lectures",
   recursive = TRUE,
@@ -62,3 +61,31 @@ make_handouts <- function(x) {
 lapply(X = handout_files, FUN = make_handouts)
 
 system('fd canvas_link -x cat {} > _site/pdfs.html')
+
+
+## now write out the speaker links
+speaker_files <- list.files(pattern = "index-speaker.html", recursive = TRUE)
+new_files <- stringr::str_replace_all(speaker_files, "/", "-")
+
+dir.create("_site/speaker/")
+
+list(
+  old = speaker_files,
+  new = new_files) |>
+  purrr::pmap(function(old, new) {
+    file.copy(old, paste0("_site/speaker/", new))
+  })
+
+
+body <- new_files |>
+  purrr::map(function(x) {
+    glue::glue('<p><a href="{x}">{x}</a></p>')
+  }) |>
+  paste0(collapse = "\n\n")
+
+body <- c("<h4>Speaker links</h4>",body) |>
+  paste0(collapse = "\n\n")
+
+writeLines(text = body, con = "_site/speaker/index.html")
+
+
