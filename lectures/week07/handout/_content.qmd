@@ -8,7 +8,7 @@ require(cowplot)
 Last week we started learning about the tools we can use to describe data.
 Specifically, we learned about the **mean**, **mode**, and **median**. And we
 learned about how they are different ways of describing the typical value. But
-in addition to describing the _typical value_, we might also want a way to
+apart describing the _typical value_, we might also want a way to
 describe how **spread** out the data is around this value. We'll start this week
 off by talking about ways to measure this spread.
 
@@ -49,7 +49,7 @@ tibble::tibble(
 ```
 
 
-This is why, in addition to measures of central tendency, we also need measures
+This is why, apart from measures of central tendency, we also need measures
 that tell us about the spread, or _dispersion_ of a variable. Once again, there
 are several measures of spread available, and we'll talk about five of them:
 
@@ -63,14 +63,13 @@ are several measures of spread available, and we'll talk about five of them:
 
 5. Standard deviation
 
-<!-- FIXME: Add the visualisation in here? -->
 
 
 ### Range
 
-The **range** of a variable is simply the distance between its smallest and
+The **range** of a variable is the distance between its smallest and
 largest values. For example, if we gather a sample of 100 participants and the
-youngest one is 17 years old, and the oldest one is 67 years old, then the range
+youngest is 17 years old, and the oldest is 67 years old, then the range
 of our age variable in this sample if 67 - 15 = `r 67 - 17` years.
 
 Checking the range of a variable can tell us something about whether our data
@@ -84,12 +83,7 @@ to know. This is because the range is _extremely_ **sensitive to outliers**.
 What this means is that it only takes one extreme value to inflate the range. In
 our school example, it might be that all but one of the people measured is
 actually in the correct age range. But the range alone cannot tell us if this is
-the case.
-
-You can explore the range in @exm-range-only below. Notice that the range is
-based only on the two most extreme points, and it doesn't tell use much about
-the points in the middle.
-
+the case. You can explore the range in @exm-range-only below.
 
 ::::{.callout-tip icon="false" appearance="simple"}
 
@@ -98,8 +92,8 @@ the points in the middle.
 :::
 
 To explore the **range**, first add some data points. Notice how the range is
-based on only the two most extreme data points. You can add more data points
-any where in the middle and the range won't change. Try clicking on **Preset 1**
+based on the two most extreme value. You can add more data points
+anywhere in the middle and the range won't change. Try clicking on **Preset 1**
 and then on **Preset 2**. Notice how the data points in **Preset 1** are more
 bunched in the middle, but in **Preset 2** they are more spread out. Although
 the data points in the middle are different in these two displays, the extreme
@@ -153,9 +147,8 @@ range that covers the middle 50% of the data.
 The benefit of the IQR over a simple range is that the IQR is not sensitive to
 occasional extreme values. This is because the bottom 25% and the top 25% are
 discarded. However, by discarding these data, the IQR provides no information
-about how spread out these outer areas are.
-
-In @exm-iqr-only you can explore the interquartile range.
+about how spread out these outer areas are. You can explore the 
+interquartile range in @exm-iqr-only.
 
 
 
@@ -176,7 +169,7 @@ they have different **interquartile ranges**.
 
 But notice that you can also have data where the range differs and the
 interquartile range stays the same. Try clicking on **Preset 3** and **Preset
-4**. With these presets, the ranges changes but the interquartile range stays
+4**. With these presets, the ranges change, but the interquartile ranges stay
 the same.  
 
 
@@ -219,8 +212,8 @@ observations in the entire dataset. For the range, it's the distance between the
 minimum point and the maximum point. For the IQR, it's the distance between the
 midpoint of the upper half and the midpoint of the lower half. As a result, you
 can get arrangements of data that have very different spreads, but have the same
-range or IQR. You can explore this in @exm-both. To get a more fine-grained
-idea of the spread, we'll need a new way of measuring it.
+range or IQR. You can explore this in @exm-both. 
+
 
 
 ::::{.callout-tip icon="false" appearance="simple"}
@@ -229,7 +222,7 @@ idea of the spread, we'll need a new way of measuring it.
 #### Explore the Interquartile Range
 :::
 
-The **range** and the **interquartile range** only tell use limited information
+The **range** and the **interquartile range** only tell us limited information
 about how spread out the data is. Two datasets can have identical ranges and
 IQRs but still look very different. If you click **Preset 1** you'll see the
 data bunched around the middle. If you click **Preset 2** you'll see the data
@@ -276,14 +269,14 @@ data_table
 
 ::::
 
+
 ### Deviation
 
-To get a more fine-grained measure of the spread we could look at each data
-point and calculate how far it is away from some reference point, such as the
-mean. This is known as the deviation. You can explore deviation in
-@exm-deviation, below.
-
-
+To get a more fine-grained idea of the spread, we'll need a new way of
+measuring it, one where we take into account every data-point. One way to do
+this is to take each data point and calculate how far it is away from some
+reference point, such as the mean. This is known as the deviation. You can
+explore deviation in @exm-deviation, below.
 
 ::::{.callout-tip icon="false" appearance="simple"}
 
@@ -552,25 +545,63 @@ sometimes the sample mean was higher than the population mean, and sometimes it
 was lower. But _on average_ the sample mean was the same as the population mean.
 We can see this again in @exm-sample-means.
 
+<!-- TODO:
 
+Add plot that shows points higher and lower than population mean
+Add plot showing that the sample mean converges on the population mean
+
+-->
+
+```{r}
+#| echo: false
+#| message: false
+source("./two_plots.r")
+```
 
 In the previous lecture, I also said that we wouldn't know whether a particular
 sample mean was higher, lower, close to, or far away from the population mean.
 We can't know this, because we don't know the value of the population mean. But
 one thing we can know, is how much, _on average_, the sample means will deviate
 from the population. To see what I mean by this, let's say a look at the two
-plots in @fig-plot. @fig-plot-a, shows the mean of 10 different samples taken from
-the sample population. Sometimes the sample mean is higher than the population
-mean, sometimes it's lower. But the thing I want you to notice is how spread out
-the values are. @fig-plot-b, also shows the mean of 10 different samples taken
-form the same population. Again, some are higher and some are lower. But notice
-the spread of the values. If we were to calculate the standard deviation for
-@fig-plot-a, we would find that the sample means deviate from the population
-mean by an average of XX. And if we were to calculate the standard deviation for
-@fig-plot-b, we would find that the sample means deviate from the population
-mean by an average of XX. 
+plots in @fig-plot. @fig-plot-a, shows the mean of 10 different samples taken
+from the sample population. Sometimes the sample mean is higher than the
+population mean, sometimes it's lower. But the thing I want you to notice is
+how spread out the values are. @fig-plot-b, also shows the mean of 10 different
+samples taken from the same population. Again, some are higher and some are
+lower. But notice the spread of the values. If we were to calculate the
+standard deviation for @fig-plot-a, we would find that the sample means deviate
+from the population mean by an average of `r round(sd(d1$y), 2)`. And if we
+were to calculate the standard deviation for @fig-plot-b, we would find that
+the sample means deviate from the population mean by an average of
+`r round(sd(d2$y), 2)`. 
+
+Now we're not using the **standard deviation** to tell us about the spread of
+the values in our sample. Instead, we're using the idea to tell us about the
+spread of our sample means. This **standard deviation**, the **standard
+deviations of the sample means from the population mean** has a special name.
+It is called the **standard error of the mean**. 
+
+We'll learn about two factors that influence the size of the **standard error
+of the mean**. The first factor has to do with features of our sample, and the
+second will depend on a feature of the population. We'll cover that in the next
+lecture, but if you think about it, you might be able to work out what they are
+yourself.
+
+<!-- TODO: These can just be ggplots 
+But they'll need some styling etc
+-->
+
+```{r}
+#| echo: false
+#| message: false
+p1
+p2
+```
 
 
+<!--
+
+TODO: Move to lecture 8?
 
 Let's thing about what these standard deviation values tell us. They tell us,
 that _on average_ the samples in @fig-plot-a more closely resemble the
@@ -619,4 +650,4 @@ the population, which we can get from the **sample standard deviation**. And
 some measure of the size of our sample, which we can get from just counting how
 big our sample is.
 
-
+-->

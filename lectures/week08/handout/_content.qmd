@@ -1,0 +1,124 @@
+In the previous lecture, we started talking about something called the
+**standard error**. The _standard error_ will be important for understanding the
+concept of the **sampling distribution**. But before we can talk about about the
+**sampling distribution**, we need to talk about **distributions** more
+generally, where they come from, and why they look the way that they do.
+
+Up until now, we've skirted around the around the idea of distributions. We've
+looked at histograms of data, but we haven't really talked much about their
+shape. It turns out that there are some shapes that we'll come across very
+often, and some of these shapes have properties that will make them very useful
+for statistics. But before we can get to that, we need to first understand where
+these shapes come from---that is, why distributions have the shape they do---and
+some language for describing these shapes. We'll start off with the simplest
+distribution, the **binomial distribution**, before moving on to the **normal
+distribution**.
+
+## The binomial distribution
+
+
+To understand what the **binomial distribution** is, and where it comes from
+we'll do a little _thought experiment_. In our thought experiment, we'll take a
+coin, and we'll flip it. When we flip a coin, one of two outcomes is possible.
+Either the coin will land showing heads, or it will land showing tails. We can
+say that there are two possible events or two possible sequences of events
+(_sequences_ will make more sense when we add more coins) that can happen when
+we flip a coin.
+
+But now let's make it a little more complicated. Let's flip two coins. Now
+there's a greater number of possible sequences. We can list them:
+
+
+1. The first coin shows heads, and so does the second (HH),
+2. The first coin shows heads and the second shows tails (HT)
+3. The first coin shows tails and the second shows heads (TH)
+4. and the first coins shows tails and the second shows tails (TT)
+
+
+Now there are four possible sequences. Let's count up the **number of
+sequences** that lead to 0 heads, one head, two heads, etc. If we do this, we'll
+see that one sequence leads to 0 heads (TT). Two sequences lead to 1 head (HT,
+and TH). And one sequence leads to 2 heads (HH).
+
+Let's now add more coins. Things will get tricker from here, because the number
+of sequences rapidly goes up. With three coins there will be `r 2^3` possible
+sequence. With four coins there will be `r 2^4` sequences. And with five coins
+there will be `r 2^5` possible sequences. To make things easier, we'll draw a
+plot. First, we'll draw out a plot to trace the sequences. We'll use different
+coloured dots to indicate heads and tails. We can do this in the form of a
+branch tree diagram shown in @exm-coins.
+
+Once we've visualised the sequences, it's easy to count up how many sequences
+result in 0 heads, one head, two heads etc. For this, we'll make a frequency
+plot, or histogram, just like we've seen before. On the x-axis, we'll have the
+number of heads. And on the y-axis, we'll have the number of sequences that
+result in that number of heads. This frequency plot is also shown in @exm-coins. 
+
+
+
+<!-- TODO: Add coin flipping explorable  -->
+
+
+
+You can adjust the slider in @exm-coins to change the number of coins you want
+to flip. Increasing the number of coins increases the number of possible
+sequences. And it changes the number of ways of getting one head, two heads,
+three heads and so on changes. Notice that as you adjust the slider and add more
+and more coins, the frequency plot takes on a characteristic shape. You can
+mathematically model the shape of this plot using a **binomial distribution**.
+
+The binomial distribution is just an **idealised representation** of the
+**process** that **generates** sequences of heads and tails when we flip a coin.
+It tells us that if we flip a coin a certain number of times, and that coin
+lands head 50% of the time, then there is a particular number of sequences that
+will produce 0 heads, 1 head, 2 heads etc. And the shape of the distribution
+tells us how many sequences will produce each of those outcomes. We'll encounter
+the binomial distribution again when we talk about probability, but for now
+hopefully the intuition make sense.
+
+I said it's an **idealised** representation, but we can also see that
+stereotypical shape being produced by natural processes. One natural process
+that gives rise to this shape is the "bean machine". In a bean machine, small
+steel balls fall from the top of the device to the bottom of the device. On
+their way down, they bump into pegs. When one of the balls hits a peg, it has a
+roughly equal chance of bouncing off to the left or the right. At the bottom of
+the device are equally-spaced bins for collecting the balls. If enough balls are
+dropped into the device, then the **distribution** of balls across the bins will
+start to take on the shape of the **binomial distribution**. Very few balls will
+be at the far edges, because this would require the balls to bounce left or
+right every time. Instead, most of the balls will tend to be clumped somewhere
+near the middle. You can an example of a "bean machine" in 
+
+<!-- FIXME: Add embed -->
+
+Flipping coins might seem a log way off from anything you might want to study in
+Psychology. However, the **shape** of the binomial distribution, might be
+something you're more familiar with. This characteristic **bell shape** is also
+something we see in the **normal distribution**. And it's the **normal
+distribution** which we'll turn our attention to next.
+
+## The normal distribution
+
+The **normal distribution** has a similar shape to the **binomial
+distribution**; however, there are a few key differences. First, the binomial
+distribution is **bounded**. One end represents 0 heads. And the other end
+represents all heads. That is, the distribution can only range from 0 to n
+(where n is the number of coins). The **normal distribution**, however, is
+unbounded. It can range from **positive infinity** to **negative infinity**. The
+second difference is that for the binomial distribution, the steps along the
+x-axis are **discrete**. You can have 0 heads, 1 head, 2 heads etc. But you
+can't get 1.5 heads. But for the **normal distribution**, the steps are
+**continuous**.
+
+
+The **normal distribution** is a mathematical abstraction, but we can use it as a **model** of real-life frequency distributions. That is, we can use it as a
+model of **populations** that are produced by certain kinds of natural
+processes. Because normal distributions are unbounded and continuous, nothing,
+in reality, is normally distributed. For example, it's impossible to have
+infinity or negative infinity of anything. This is what is meant by an
+**abstraction**. But natural processes can give rise to frequency distributions
+that look a lot like normal distributions, which means that normal distributions
+can be used as a model of these processes.
+
+### Processes that produce normal distributions 
+
