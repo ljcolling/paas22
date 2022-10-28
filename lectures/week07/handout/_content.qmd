@@ -291,8 +291,38 @@ mean. This is known as the deviation. You can explore deviation in
 #### Explore deviation
 :::
 
+```{ojs}
+//| echo: false
+import {deviationplot} from "@ljcolling/samples"
+import {viewof clear as dev_clear} from "@ljcolling/samples"
+import {viewof show_data_table as show_dev_table} from "@ljcolling/samples"
+import {data_table as dev_table} from "@ljcolling/samples"
+import {sum_stats} from "@ljcolling/samples"
+import {viewof show_sq_devs} from "@ljcolling/samples"
+```
 
+```{ojs}
+//| echo: false
+deviationplot
+```
 
+```{ojs}
+//| echo: false
+viewof dev_clear
+```
+
+```{ojs}
+//| echo: false
+//| panel: center
+//| layout-ncol: 2
+viewof show_dev_table
+viewof show_sq_devs
+```
+
+```{ojs}
+//| echo: false
+dev_table(show_dev_table)
+```
 
 ::::
 
@@ -317,11 +347,16 @@ cancel out the distances for all the points lower than the mean.
 
 We can get around this problem by taking the square of the deviations before
 adding them up. Squaring a number will turn a negative number into a positive
-number. Click **Show squared deviations** in @exm-devations, to add a column for
-the squared deviations. Now when we add up all the squared deviations we won't
-get zero. We do however, get another problem. As you add more and more data to
-the dataset, you'll notice that the sum of the squared deviations gets bigger
-and bigger.
+number. Click **Show squared deviations** in @exm-deviation, to add a column for
+the squared deviations. 
+
+```{ojs}
+//| echo: false
+md`Now when we add up all the squared deviations we won't get zero. Now they add up 
+to ${Math.round(sum_stats.sq_devs * 100) / 100 || "<font color='red'>warning: add some data!</font>"}.
+But now we have another problem. As you add more data above, the sum of the squared
+deviations will get bigger and bigger. `
+```
 
 That's not good because even big samples can have a small amount of variation,
 while smaller samples can vary a lot. We want our measure of spread to be able
@@ -334,12 +369,23 @@ Our next measure of spread is the **variance**. The **variance** gets around the
 problem of the measure of spread getting bigger when we have bigger datasets.
 It's gets around this problem by working out the **average squared deviation**
 from the mean. Or more precisely, the **average squared deviations** from the
-**population** mean.
+**population** mean. This point is important, and we'll get to why further
+down below. But for now, we'll keep it simple.
 
-In @exm-deviations, we can work out the average squared deviations from the
+In @exm-deviation, we can work out the average squared deviations from the
 **population** mean, because our **population** in this case is just _the data
 points you've added to the plot_. So in this example, we have access to the
-entire population, because we've specifically created it. But usually this is
+entire population, because we've specifically created it.
+
+```{ojs}
+//| echo: false
+md`If we now work out the **mean** of the squared deviations, rather than the 
+**sum** of the squared deviations we get: ${Math.round(sum_stats.popvar * 100) / 100 || "<font color='red'>warning: add some data!</font>"}. `
+```
+
+
+
+But usually this is
 not the case. Usually, we only have access to a sample, and we don't know the
 value of the population mean. Recall from Lecture 6, that sometimes the sample
 mean was higher than the population mean, sometimes the sample mean was
@@ -470,14 +516,28 @@ the function for computing the standard deviation is called `sd()` and this
 computes the **sample** standard deviation (that is, it uses N - 1).
 
 
+:::{.callout-tip collapse="true"} 
+#### Why squared and not the absolute value
 
-:::{.callout-note} 
+To turn all the deviations into positive values we square these values. 
+But you might be thinking, why do we square them and why don't we just
+take the **absolute value** instead? The short answer to this question
+is that taking the **mean of the absolute values** doesn't really 
+give us the kind of measure we want. To see what I mean, take a look
+and the plot below. Try clicking on **Preset 1** and then **Preset 2**.
 
-You can think of _SD_ as a measure of the differences of a set of scores from
-their mean. If variance is the mean _squared_ deviation in the variable,
-standard deviation is the **mean deviation**.
+When you click **Preset 1** the data are more spread out than when you hit
+**Preset 2**. But the **mean of the absolute values of the deviations** is the
+same in both plots. That's not really what we want. But notice what happens to
+the **standard deviation**, which is calculated from the **squared
+deviations**. The **standard deviation** changes between the two displays so
+that it is smaller when the points are less spread out and larger when the
+points are more spread.
 
 :::
+
+
+
 
 ## Understanding the relationship between samples and populations
 
