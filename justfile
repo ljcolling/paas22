@@ -5,3 +5,6 @@ render :
 
 deploy:
 	netlify deploy --dir=_site --prod
+
+copy :
+  cp -r ./images/ _site/images/

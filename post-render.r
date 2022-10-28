@@ -60,7 +60,7 @@ make_handouts <- function(x) {
 
 lapply(X = handout_files, FUN = make_handouts)
 
-system('fd canvas_link -x cat {} > _site/pdfs.html')
+system("fd canvas_link -x cat {} > _site/pdfs.html")
 
 
 ## now write out the speaker links
@@ -71,7 +71,8 @@ dir.create("_site/speaker/")
 
 list(
   old = speaker_files,
-  new = new_files) |>
+  new = new_files
+) |>
   purrr::pmap(function(old, new) {
     file.copy(old, paste0("_site/speaker/", new))
   })
@@ -83,9 +84,7 @@ body <- new_files |>
   }) |>
   paste0(collapse = "\n\n")
 
-body <- c("<h4>Speaker links</h4>",body) |>
+body <- c("<h4>Speaker links</h4>", body) |>
   paste0(collapse = "\n\n")
 
 writeLines(text = body, con = "_site/speaker/index.html")
-
-

@@ -134,3 +134,33 @@ h1 {
   margin-bottom: 1em;
 }
 
+
+.section {
+  top:50% !important;
+  position:absolute !important;
+  bottom:50% !important;
+  margin-top:auto !important;
+  margin-bottom:auto !important;
+  font-size: $h1-font-size;
+  color: $presentation-heading-color;
+  font-weight: bold;
+} 
+
+/*
+.reveal .slide {
+  border: solid;
+  border-width: 1px;
+  padding: 3rem;
+  margin: -3rem;
+}
+
+section.slide {
+  background-color: white;
+}
+
+.reveal {
+  background-color: grey;
+}
+
+
+*/
