@@ -1,8 +1,8 @@
 all : render deploy
 
 render :
-	quarto render && quarto run post-render.r 
-  fd . **/handout/ -e .qmd --exclude=_content.qmd -x quarto render {} --to=html
+  quarto render && quarto run post-render.r 
+  fd . lectures/**/handout -e qmd --exclude=_content.qmd -x quarto render {} --to=html
 
 deploy:
 	netlify deploy --dir=_site --prod
