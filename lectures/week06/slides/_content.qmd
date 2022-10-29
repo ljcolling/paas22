@@ -305,27 +305,33 @@ Both the mean and median have their advantages and disadvantages
 
 - The mean is easier to work with from a mathematical point of view
 
-- Means taken from different samples of the same population_ tend to be
+- Means taken from different samples of the _same population_ tend to be
   **more similar to each other** (see @fig-dice)
 
 ```{r}
 #| echo: false
-#| fig.cap: Means and medians for 5 dice rolls repeated 100 times
+#| fig.cap: Means and medians for 5 dice rolls repeated 10,000 times
 #| label: fig-dice
 #| out.height: 60%
 #| out.width: 50%
 # require(tidyverse)
+# require(plotshow)
 
+set.seed(123)
 gen <- function(x) {
   sample.int(n = 6, size = 5, replace = TRUE) |>
-    pipebind::bind(b, data.frame(mean = mean(b), median = median(b)))
+    pipebind::bind(b, data.frame(Mean = mean(b), Median = median(b)))
 }
-lapply(X = seq_len(100), gen) |>
+df <- parallel::mclapply(X = seq_len(10000), gen) |>
   bind_rows() |>
-  tidyr::pivot_longer(1:2) |>
+  tidyr::pivot_longer(1:2)
+
+df |>
   ggplot(aes(x = value, group = name)) +
-  geom_histogram() +
+  geom_histogram(colour = "white", fill = "black") +
   facet_grid(~name) +
+  labs(y = "Number of samples", x = "Value") +
+  scale_x_continuous(breaks = seq_len(6)) +
   theme_minimal() +
   NULL
 ```
