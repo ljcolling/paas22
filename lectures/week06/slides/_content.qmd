@@ -334,10 +334,11 @@ lapply(X = seq_len(100), gen) |>
 
 ### Mean vs Median
 
-There are also some downsides to the **mean** relative to the
-**median**.
+There are also some downsides to the <font color="red">mean</font> relative
+to the <font color="blue">median</font>.
 
-The _mean_ is **sensitive to extreme values** in a way the _median_ is not
+The <font color="red">mean</font> is **sensitive to extreme values** in a way
+the <font color="blue">median</font> is not
 
 ```{r}
 #| echo: false
@@ -347,11 +348,9 @@ source <- tags$source(src = here::here("images","test.webm"), type = "video/webm
 vid$children = source
 vid
 ```
-<!-- <video width="100%" autoplay loop controls> -->
-<!-- <source src="`r here::here('images','test.webm')" type="video/webm"> -->
-<!-- </video> -->
 
 ---
+
 
 ## Sample means and population means
 
@@ -368,11 +367,10 @@ vid
 
 _But if you can't measure everyone in the UK, then what do you do?_
 
-- You could instead select a smaller group, or subset, of people from the UK. 
-
-- You then measure the height of people in this group, and then try to use this
+- You could instead select a smaller group, or subset, of people from the UK.
+  Measure the height of people in this group, and then try to use this
   information to figure out plausible values for the average height of people
-  in the UK
+  in the UK.
 
 In this example, the group (or groups) you're making claims about is the
 **population**, and the **sample** is a subset of this population
