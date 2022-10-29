@@ -1,0 +1,54 @@
+---
+pagetitle: "Introduction to study design"
+author-meta: "Dr Lincoln Colling"
+format: 
+  sussex-revealjs:
+    center-title-slide: false
+    multiplex: true
+navbar: true
+week: 4
+type: slides
+---
+
+<h2>Lecture 4</h2>
+
+<h1>Introduction to study design</h1>
+
+<h2>Measurement and variables</h2>
+
+
+<br>
+<br>
+
+<h3 style="color:black;font-weight:normal">Dr Lincoln Colling</h3>
+
+<h3 style="color:black;font-weight:normal">17 Oct 2022</h3>
+
+<br>
+
+<span class="absolute" style="bottom: 2em; width:100%; text-align: center">Psychology as a Science</span>
+
+![](../../../images/logo.png){.absolute bottom="2em" left="1000" width="280"}
+
+{{< include _content.qmd >}}
+
+
+
+```{css}
+/*
+.reveal .slide {
+  border: solid;
+  border-width: 0px;
+  padding: 3rem;
+  margin: -3rem;
+}
+
+section.slide {
+  background-color: white;
+}
+
+.reveal {
+  background-color: #e3e3e3
+}
+*/
+```

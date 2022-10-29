@@ -1,0 +1,720 @@
+## Plan for today
+
+- Meet the teaching team
+- Tips on doing well
+- Finding the information you need
+- Knowing how to get help
+- Research methods in your degree
+- Structure of this module
+    - Assessments
+    - Lecture topics
+
+
+---
+
+## Introductions
+
+Main teaching is three people:
+
+**Dr Lincoln Colling** (Lecture content convenor)
+
+::::{.columns}
+
+::: {.column width="65%"}
+
+Cognitive Neuroscientist and software developer
+
+- Work on Social Cognition, Numerical Cognition, and Philosophy of
+  Cognitive Neuroscience
+
+- Develop statistics software
+
+_Responsibilities_
+
+- Lecture content
+
+- Final Exam
+
+:::
+
+::: {.column width="5%"} 
+
+:::
+
+::: {.column width="30%"}
+
+```{r}
+#| echo: false
+#| out.width: 100%
+knitr::include_graphics(here::here("images","lincoln.jpeg"))
+```
+
+:::
+
+::::
+
+---
+
+## Introductions
+
+
+:::: {.columns} 
+
+::: {.column width="65%"}
+
+**Dr Jenny Terry** (practical content convenor)
+
+Educational psychology researcher and psychometrician
+
+- Measures of Maths and Statistics anxiety
+- Statistics education 
+
+_Responsibilities_
+
+- Practical content
+
+- Assessments related to `R`
+
+- Lab report
+
+
+:::
+
+::: {.column width="5%"} 
+
+:::
+
+::: {.column width="30%"}
+
+```{r}
+#| echo: false
+#| out.width: 100%
+knitr::include_graphics(here::here("images","jenny.jpeg"))
+```
+
+
+:::
+
+::::
+
+---
+
+
+## Introductions
+
+:::: {.columns} 
+
+::: {.column width="65%"}
+
+
+
+**Dr Vlad Costin** (practical co-lead)
+
+Social Psychologist
+
+- Existential psychology and subjective evaluations of meaning in life
+- Belief systems and worldviews
+
+_Responsibilities_
+
+- Practical content
+
+- Lab report
+
+:::
+
+::: {.column width="5%"} 
+
+:::
+
+::: {.column width="30%"}
+
+
+```{r}
+#| echo: false
+#| out.width: 100%
+knitr::include_graphics(here::here("images","vlad.jpeg"))
+```
+
+:::
+
+::::
+
+
+---
+
+## Introductions
+
+In addition to the three main people there's also:
+
+- Dr Bryan Singer who is responsible for the special **Research Ethics** lecture
+  and the assessment that goes with it
+
+- An entire team of doctoral tutors who are there to help you in the practical
+  classes and who will be responsible for marking your lab report
+
+Knowing who is responsible for which sections of the course will help to make
+sure that you contact the correct person
+
+_We spend a lot of time just **re-directing** queries, so just directing queries
+at the correct person will save everyone a lot of time_
+
+---
+
+## Tips for doing well
+
+The **most important** thing you can do to make sure you do well is **attend all
+the classes**
+
+Coming to the lectures each week means:
+
+You get exposed to all the lecture content **without even trying**!
+
+- It might be tempting to just watch the recordings, but it's really easy to
+  fall behind
+
+But **more importantly** so much of what makes university great is the stuff
+that happens around the classes
+
+- You get to meet me and talk to me after class
+
+- You'll get to meet to your classmates
+
+- You'll get more of an authentic university experience
+
+---
+
+## Tips for doing well
+
+Apart from showing up every week, the other thing you should do is:
+
+Do all the assessments!
+
+- This is particularly true to the assessments related to the practical content!
+- Each of these assessments _builds on the previous one_, so if you miss too
+  many it can be _difficult_ to catch up.
+
+For all the assessments you'll do during the course, whether it's the
+
+- Assessments related to `R`
+- Or the Lab Report
+
+it'll be the first time you'll be doing anything like them
+
+This means they might appear **daunting**, but you're all in the **same boat**,
+and if you stick with it, I **know** you can be **successful**
+
+---
+
+## Tips for doing well
+
+**Psychology as a Science** is **not** a difficult course, but most of the
+material we'll be covering will be _very new_...
+
+For example, I've mentioned `R` several times, but all you are probably thinking
+"what is R?"
+
+
+I don't expect any of you will know what `R` is, but that is something you'll
+learn about in this course!
+
+\
+
+Don't feel bad if you don't know what `R` is or if you've never come across any
+other material in this course. If you **knew** all the material in this course,
+then this course will be pointless!
+
+\
+
+You're here to **learn new stuff** and we **don't assume any background
+knowledge**^[Not even A-Level Psychology is assumed knowledge]
+
+
+---
+
+## Finding the information you need
+
+All the information you need is on **canvas**
+
+```{r}
+#| echo: false
+#| fig-align: center
+knitr::include_graphics(here::here("images","canvas_home.png"))
+```
+
+---
+
+## Finding the information you need
+
+Click through all the links and read the information
+
+
+```{r}
+#| echo: false
+#| fig-align: center
+knitr::include_graphics(here::here("images","module_navigation.png"))
+```
+
+---
+
+## Finding the information you need
+
+- Keep a notebook handy while you read through the information on canvas
+
+- Note down anything you think is particularly important
+
+- Or bookmark pages you think are important
+
+- Check out the **Frequently Asked Questions**
+
+
+
+---
+
+## Knowing who to contact
+
+One thing that can be tricky when you're first starting at university is knowing
+the correct person to contact if you need help.
+
+
+
+**Admin queries**
+
+
+- If you're meant to have an extension but it hasn't been applied correctly
+
+- If you're unable to submit your lab report because you're unwell
+
+If you have any of these kinds of queries then you should email the admin staff
+at {{< var adminemail >}}
+
+
+\
+
+**Please** don't email teaching staff asking for extensions, because we can't do
+anything about it.
+
+See the handout (and **canvas** for more information about absences and
+extensions)
+
+---
+
+## Knowing who to contact
+
+
+**Queries about course content**
+
+The lecturers are your point of contact if you have queries about the **course
+content**
+
+- For queries about the **lecture material** and **final exam** I'm the best
+person to contact
+
+- For queries about the **practical content** or the **lab report**, you should
+take to **Dr Terry** or **Dr Costin**
+
+\
+
+The best way to get in touch with me is to talk to me after class!
+
+\
+
+**I'll always hang around after class to answer any questions**
+
+
+---
+
+## Asking for help
+
+Apart from asking me a question after/during class, the best place to ask for
+help is on the **Discord**
+
+Sign up here: [https://discord.gg/TBf8Zju2xv](https://discord.gg/TBf8Zju2xv)
+
+
+::::{.columns}
+
+:::{.column width="30%"}
+
+You can also book into a drop in session on Canvas:
+
+- Book me for lecture questions
+
+- Drs Terry or Costin for
+practical / lab report questions
+
+- Anybody for general `R` queries
+
+:::
+
+::: {.column width="70%"}
+
+```{r}
+#| echo: false
+#| out.width: 100%
+knitr::include_graphics(here::here("images","calendar.png"))
+```
+
+:::
+
+::::
+
+---
+
+## Asking for help
+
+The best ways to get help are to **talk to us directly** before/after
+class, by using **the Discord**, or by coming to **the drop in sessions**.
+
+\
+
+You **shouldn't** need to email us unless there is a matter that you'd like to raise
+**confidentially**. 
+
+\
+
+There's lots of ways to get help, so make sure you make use of these methods
+first
+
+---
+
+## Research methods in Psychology
+
+**Psychology as a Science** is only the **first** in a **series** of research
+methods modules you'll do during your degree.
+
+\
+
+Following this module you'll take the following modules:
+
+- Analysing Data (next term)
+
+- Discovering Statistics (year 2)
+
+- Quantitative and Qualitative Methods (year 2)
+
+
+All these courses build on each other and prepare you for your **research
+dissertation** in your **final year**
+
+They're also a great way to learn a lot of transferable skills
+that are useful outside university, for example: 1) how to analyse data; 
+2) how to make sense of statistics; 3) computer programming/coding skills.
+
+---
+
+### Psychology as a Science (PAAS)
+
+PAAS covers an introduction to the research process. Some of the topics we'll
+cover include:
+
+- Introduction to *Philosophy of Science*
+  qualitative methods
+- Basics of statistical theory
+
+In the practical classes you'll be introduced to the `R` programming language
+and you'll learn:
+
+- The basics of programming using R
+- How to process and summarise data
+- How to draw plots in R
+
+You'll eventually learn how to perform various kinds of statistical analyses
+using `R`, so the aim of PAAS is to lay the foundation for this!
+
+You'll also work with some of the same data data you'll be using
+in **_Cognition in Clinical Contexts_**
+
+---
+
+### Analysing Data (AD)
+
+- You'll learn the core statistical tests used in Psychology
+
+- More advanced `R`, and using `R` to perform statistical tests
+
+- You first chance to independently analyse some data
+
+In AD it is assumed that you have basic knowledge of `R`, so it's very important
+that you stay on top of the work in PAAS
+
+Some of the work you do in **Analysing Data** will connect up with the work you
+do in **Psychobiology**
+
+---
+
+
+### Discovering Statistics (DS)
+
+- Move advanced statistical tests
+
+- Focus on more complex statistical analyses
+
+- More advanced R
+
+Some of the work you do in **Discovering Statistics** will connect up with
+**Developmental Psychology**
+
+---
+
+### Quantitative and Qualitative Methods (QQM)
+
+- Advanced multivariate statistical techniques
+
+- Non-statistical research methods such as interviews and discourse analysis
+
+Some of the work you do in **Quantitative and Qualitative Methods** will connect
+up with **Social Psychology**
+
+*Research methods do not happen in isolation, but they're connected with
+everything else you do in your degree*
+
+---
+
+## Why research methods?
+
+- Dominant approach to **training psychologists** is the **scientist**
+  **practitioner** **model**
+
+- _Doing research_ is integral to this approach!
+
+Just like _medical doctors_, who not only deliver treatments but also _develop_
+treatments, _psychologists_ also _apply_ and _produce_ knowledge.
+
+You want to do _what works_ and being able to **read**, **critique**, and
+**conduct** research will help you know _what works_ and allow you to develop
+_evidence-based care_
+
+Even for those that don't become psychologists, research methods is a useful
+skills that can prepare you for careers in, data science, civil service,
+consultancy, and more
+
+---
+
+## Structure of this module
+
+Like most research methods modules PAAS is made up of **three** main activities:
+
+1. Weekly lectures
+
+   - One hour each week.
+
+   - Covers research methods, statistics, and theory
+
+   - Note that you'll also have a special lecture one evening in Week 6 that
+     will cover research ethics. Check your timetable!
+
+Note, that **Psychology as a Science** does not have an additional reading list,
+because you'll have enough `R` homework for the practicals to keep you busy
+
+---
+
+## Structure of this module
+
+2. Tutorials/Practical preparation homework
+
+   - About an hour a week.
+
+   - Done in `R` as preparation for the practical class.
+
+3. Practical classes
+
+   - Two hours a week.
+
+   - Gives you hands-on experience with the `R` programming language.
+
+You'll find out more about the exact structure of the tutorials and practicals in
+the practical sessions.
+
+---
+
+### Assessment Structure
+
+For the assessment there's a 50/50 split between **coursework** and the
+**exam**.
+
+The coursework is made up of four parts. Pay special attention to this section,
+because the list on **Sussex Direct** can be a little confusing.
+
+1. **Computer Based Exam** worth 10% due in Week 8
+
+   This will cover the material from the _ethics lecture_ in Week 6
+
+1. **Computer Based Exam** worth 40% (Beware confusing due data on Sussex
+Direct)
+
+   This refers to the `R` assessments that you'll do. You'll find out more about
+   these in the practical classes. 
+
+It's **very important** to note that this isn't a single assessment due at the
+end of term. 
+
+Consist of several assessments you'll do through out
+the term. Make sure you keep up with them, because doing them will help you
+achieve a good grade.
+
+---
+
+### Assessment Structure
+
+
+1. **Report** worth 40% due in Wk 9
+
+This is the major piece of written work you'll do, and you'll find out more in
+the practical classes
+
+1. **Portfolio** with 10% (Beware confusing due date on Sussex Direct)
+
+   This refers to the 20 credits worth of research participation that you're
+   required to do as part of the course. To find out more about this follow the
+   big yellow link labelled [**Research
+   Participation/Sona**](https://canvas.sussex.ac.uk/courses/23036/pages/research-participation-module-credits-scheme).
+
+Again, it's **very important** to note that the due date is the _final day_ you
+can complete research participation.
+
+**But don't wait until the last week** to do it, because there'll probably be no
+studies left to take part in. 
+
+Research participation is also important for your academic
+development, because it will give you a first-hand experience of the research
+process.
+
+---
+
+## Lecture topics
+
+Lecture topics divided into **two** sections
+
+In **part one** you'll do:
+
+```{r}
+#| echo: false
+#| message: false
+
+lectures <- list.files(
+  path = here::here(), pattern = "info.json",
+  recursive = TRUE,
+  full.names = TRUE
+)
+
+get_details <- function(file) {
+  json_data <- jsonlite::read_json(file)
+  tibble::tibble(
+    Week = json_data$week,
+    Topic = json_data$title
+  )
+}
+
+purrr::map_df(lectures, ~ get_details(.x)) |>
+  dplyr::arrange(Week) |>
+  dplyr::slice(1:5) |>
+  knitr::kable(align = c("l", "l")) |>
+  kableExtra::kable_styling(full_width = TRUE, bootstrap_options = "striped")
+```
+
+
+These lectures are all about the **research process**, and they'll prepare you
+for the **lab report**
+
+
+---
+
+## Lecture topics
+
+In **part two** you'll do:
+
+```{r}
+#| echo: false
+#| message: false
+
+lectures <- list.files(
+  path = here::here(), pattern = "info.json",
+  recursive = TRUE,
+  full.names = TRUE
+)
+
+get_details <- function(file) {
+  json_data <- jsonlite::read_json(file)
+  tibble::tibble(
+    Week = json_data$week,
+    Topic = json_data$title
+  )
+}
+
+purrr::map_df(lectures, ~ get_details(.x)) |>
+  dplyr::arrange(Week) |>
+  dplyr::slice(6:11) |>
+  kableExtra::kbl(align = c("l", "l")) |>
+  kableExtra::kable_styling(bootstrap_options = c("striped"), full_width = TRUE)
+```
+
+These lectures focus on **statistical concepts**, and they'll prepare you for
+learning about *statistical testing* in **Semester two**
+
+---
+
+## Lecture topics
+
+The first set of lectures will cover _big picture_ ideas. These lectures will
+probably be most useful in helping you to prepare for the report.
+
+
+- What are scientific theories?
+
+- What issues do we need to consider when we're measuring phenomena?
+
+- What does it mean to operationalise our variables?
+
+- What are different approaches you can take when conducting a study?
+
+- What are some sources of bias in psychology studies and publishing of
+  psychology studies, and how might we be able to ameliorate some of these
+  biases?
+
+---
+
+## Lecture topics
+
+
+The second set of lectures are all about preparing you for learning about 
+statistics and working with data.
+
+In these lectures you'll learn the underlying theory of _statistical testing_.
+You'll learn how to _reason about statistics and data_, and the relationship
+between scientific hypotheses and statistical hypotheses.
+
+Doing statistics isn't like following a recipe. It's **not** about just picking
+the **"correct"** statistical test out of a list.
+
+It involves thinking about what you want to know, why you want to know it, and
+how statistics can help you to know it. So we spend a bit of time this term just
+learning about this reasoning before you actually learn about statistical tests
+next term.
+
+
+---
+
+## Closing thoughts
+
+- Can't **emphasise enough** that this course is not **inherently** difficult
+
+- **Most people** do **very well**
+
+- **BUT** you'll only do well if you **keep up with the work**
+
+This means:
+
+- Coming to all the classes (Lectures and Practicals)
+
+- Doing all the assessments (particularly the `R` assessments) 
+
+- Doing all the `R` tutorial activities
+
+- Coming to drop in sessions if you're stuck or confused about anything
+
+The better you do in this course, the easier you'll find the methods courses
+that follow
+
+And the better you do at **methods** the better you'll do in your **final year
+dissertation**

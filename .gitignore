@@ -1,0 +1,15 @@
+.gitignore
+.DS_Store
+.Rhistory
+.Rproj.user/
+.netlify/
+.quarto/
+_site/
+lectures/week01/handout/template.old
+lectures/week01/slides/logo.png
+lectures/week01/slides/sussex.scss
+termpdf.log
+
+/.quarto/
+
+pid

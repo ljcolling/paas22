@@ -1,0 +1,16 @@
+---
+title: "Lecture slides"
+listing:
+  sort-ui: false
+  page-size: 12
+  contents:
+  - "lectures/**/slides/*.qmd"
+  type: table
+  fields: [week, title, author]
+  field-display-names:
+    week: "Week"
+  sort:
+    - "week"
+---
+
+

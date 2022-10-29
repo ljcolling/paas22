@@ -1,0 +1,13 @@
+{
+  "author": "Dr Lincoln Colling",
+  "content": "{{< include _content.qmd >}}",
+  "course": "Psychology as a Science",
+  "date": "21 Nov 2022",
+  "department": "School of Psychology, University of Sussex",
+  "department_url": "https://profiles.sussex.ac.uk/p488921-lincoln-colling",
+  "email": "l.colling@sussex.ac.uk",
+  "start_data": "20220926",
+  "subtitle": "Introduction to standardisation and z scores",
+  "title": "Transformation and comparisons",
+  "week": 9
+}

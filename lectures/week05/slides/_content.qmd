@@ -1,0 +1,640 @@
+## Outline for today
+
+Today's lecture aims to provide you with information about the lab report, 
+and some of the motivations behind why the lab report is designed 
+in the way it is.
+
+Today's lecture is in two parts:
+
+**Part I** 
+
+- The replication crisis, pre-registration, and reproducibility
+
+
+**Part II**
+
+- The lab report itself
+
+---
+
+## Some terminology
+
+**_Replication_ and _Reproducibility_?** What's the difference?
+
+### Reproducibility 
+
+Reproducibility refers to the idea of taking a **dataset** (which 
+another researcher may have collected) and running the _same analysis_ as that
+researcher and getting the same results.
+
+This might sound like it's trivial, but it turns out that it isn't! One of the
+reasons you're learning `R` and `Quarto` in this course is so that you can
+learn how to do **reproducible** science.
+
+### Replicability
+
+Replicability refers to the idea of taking the methods (research design,
+stimuli, etc) from a previously run study, re-running the study, and getting
+the same results.
+
+The lecture will mainly focus on **replicability/replication**, but I'll also
+touch on **reproducibility**.
+
+---
+
+## A spectre is haunting psychology...
+
+The spectre of failed replications.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+#| out.width: 65%
+#| fig.align: center
+knitr::include_graphics(
+  here::here("images", "open_science_collab.png"), 
+  dpi= "600"
+)
+```
+
+:::
+
+
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+#| out.width: 90%
+#| fig.align: center
+knitr::include_graphics(
+  here::here("images", "open_science_collab_2.png"),
+  dpi = "600"
+)
+
+```
+
+:::
+
+::::
+
+- Several large-scale replication attempts have shown that many classic
+  findings in the psychology literature **can not** be replicated
+
+- Some estimates suggest that > 50% of findings aren't replicable 
+
+- This has prompted some to claim that psychology is in a state of **crisis**!
+
+---
+
+## What is the cause of this crisis?
+
+There are likely to be **several** causes of this crisis. These might include:
+
+- How **statistics** and **statistical procedures** are used and abused in
+  psychology
+
+- Bias in which studies get published and which do not
+
+- The typical use of small sample sizes in psychology
+
+- Lack of clearly defined theories in psychological science
+
+
+These causes probably aren't independent but are likely to be interconnected
+and related to each other.
+
+When we designed the psychology methods courses at Sussex, many of these issues
+were at the forefront of our minds.
+
+In this lecture, I'll focus on the causes that are most relevant in motivating
+the design of the lab report.
+
+---
+
+## Bias in publishing
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+
+If we look specifically at the psychology literature we'll notice something odd
+
+The **vast majority** of published papers in psychology journals report
+findings that **support** the *tested hypothesis*
+
+**But how is this possible?**
+
+- Maybe psychology researchers as psychic and they always test hypotheses that
+  turn out to be true...   
+- Maybe the hypotheses they're testing a *trivial*...   
+- Maybe there is some sort of **bias** in publishing...   
+- Or maybe they only report the results that support their hypothesis   
+
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+#| out.width: 80%
+#| fig.align: center
+knitr::include_graphics(here::here("images","much_positive.png"))
+```
+
+:::
+
+::::
+
+---
+
+## Bias in publishing
+
+One source of **bias in publishing** of psychology studies is that **journal
+editors** and **peer reviewers** might not want to publish studies when they
+don't support the tested hypotheses
+
+- This might **especially** be the case when new studies don't show support
+  for a **famous** or **influential** theory
+
+- Editors/reviewers might be *more likely* to suspect there's *some kind
+  of a problem with the new study*
+
+- Researchers might also choose not to submit studies for publication if they 
+don't support the tested hypothesis
+
+---
+
+## Bias in research practices
+
+It is **very easy** for researchers to engage in certain practices that
+**invalidate** their results
+
+These practices make it so that researchers are more likely to find
+results that support a tested theory even if that theory isn't true
+
+Some examples include:
+
+- Running a statistical test, looking at the result, collecting more data,
+  re-running the statistical test... rinse, repeat.. until you find the desired
+  result
+
+- Collecting data under many different conditions and **only reporting the
+  conditions** that produce the desired result
+
+---
+
+## Combating bias
+
+But if these are **problems**, then what is the **solution**?
+
+One solution that has been proposed is **pre-registration**
+
+The idea of pre-registration has been covered in popular media. For example, it's
+been written about in The Guardian on several occasions (see the handout for more
+details)
+
+---
+
+
+## Pre-registration and combating bias
+
+- Pre-registration can get around publication bias by allowing editors and
+reviewers to judge whether a study is likely to produce reliable results
+**before the results are known**
+
+- Pre-registration can also get around certain kinds of **experimenter** 
+and **statistical** biases by making researchers specify 
+their statistical and study methods in advance
+
+---
+
+
+## Pre-registration and combating bias
+
+**Preregistration** means that **before** conducting a study, researchers plan
+their study in detail
+
+1. Specifying the theory they plan to test and all of their hypotheses 
+
+  - This means they can't **change their hypothesis** to make it fit whatever
+    their data happened to show (think about *falsification* and infinitely
+    flexible theories!)
+	
+  - They can't cherry-pick their data or engage in subtle procedures to make
+    the data fit their hypotheses 
+
+---
+
+## Pre-registration and combating bias
+
+2. By  outlining their plans in detail, reviewers can judge
+
+	- Whether the methods are scientifically rigorous
+	
+	- Whether the study is likely to produce clear (rather than ambiguous results)
+	
+And they have to do this all before seeing the results, which might otherwise
+bias their decision
+
+In a special form of **pre-registration** known as a **registered report**,
+a journal actually agrees to **publish** a study **before** the data 
+are collected. 
+
+This is possible because the pre-registration plan gives enough detail for
+editors/ reviewers to judge whether the study is scientifically sound 
+
+\
+
+To see how a registered report works in practice I'll take you through an
+example from my our research...
+
+---
+
+## Pre-registration in action...
+
+```{r}
+#| echo: false
+#| out.width: 650px
+#| fig.align: center
+knitr::include_graphics(here::here("images","FischerHeader.png"))
+```
+
+In 2003 a paper was published claiming to show that *merely looking at numbers*
+would cause a *shift in attention* to either the left or right side of space.
+
+- This finding was **very influential** with more than 700 subsequent studies
+  citing this finding or building on it.
+
+- Some published studies tried to replicate it. Most
+  showed **successful** replications and very few failed replications.
+
+---
+
+### But is it true?
+
+
+- If you spoke to people at scientific conferences then many researchers would
+tell you that they **couldn't** successfully replicate the effect...
+
+- But this wasn't reflected in the **scientific literature** where most published
+papers on the effect showed that it could be replicated and where scientists
+continued to cite the original finding *believing it to be true*
+
+<center>**But why?**</center>
+
+- The original finding was published in an extremely prestigious journal
+  (Nature Neuroscience) and it quickly became influential...
+
+- This means it probably got accepted as something like an **established fact**
+
+---
+
+### Overturning established findings...
+
+Once a finding is accepted as an **established fact** then journal editors
+and reviewers might be reluctant to publish studies that don't support the
+original finding... 
+
+- Note that it can sometimes, but not always, be very reasonable to not believe
+the results of a new study...
+
+  - For example, if I did a study that showed that gravity doesn't exist, then 
+  what is more likely?
+
+  - That gravity doesn't exist, or that my study is wrong?
+
+- But for other examples, it might be that the established theory
+  is wrong
+
+It's best to try and judge studies based on their methods rather than
+being influenced by what the results are
+
+<center>**Registered reports** make this possible</center>
+
+---
+
+### An example registered report
+
+- In 2017 I put together a **registered report** that involved a **replication
+  attempt** of the original 2003 attentional cuing finding and some additional
+  experiments to attempt to understand the mechanism that produced the effect
+  (that is if I could replicate it!)^[That is, we wanted to do more than just a
+**replication**. We wanted to try **replicate** the effect but we also wanted
+to try **improve** the methods as much as possible. ]
+
+- I then approached a journal **with this plan** to see if they were willing to
+  publish the study if I did it according to the plan
+
+- The plan was sent out for review to be checked and then the journal agreed
+  that they would publish it if I did it according to the plan
+
+- I then gathered together 30+ psychological scientists from 17 universities
+  around the world and we ran the experiment on over 1300 participants (nearly
+  100 times the original sample size!)
+
+<center>**What did we find?**</center>
+
+---
+
+### An example registered report
+
+```{r}
+#| echo: false
+#| out.width: 90%
+knitr::include_graphics(here::here("images","header_joint.png"))
+```
+
+- We found **absolutely no evidence** for the original finding...
+
+- **No evidence** that the **additional manipulations** modulate
+the size of the effect...
+
+- Now scientists can move on from this finding, but a lot of resources have
+  already been wasted studying it
+
+- This finding is not a unique case! There are likely many **zombie findings**
+  in psychology
+
+---
+
+## The reproducibility crisis
+
+This lecture is primarily about the **replication crisis** but there might also be
+a **reproducibility** crisis on the way!
+
+**Reproducibility** is _one_ of the reasons you're learning about `R`, `RStudio` 
+and `Quarto` in the practical sessions.
+
+We can say a study is **reproducible** if:
+
+> We can take a dataset (from a published journal article) and re-run the analysis
+> described in that journal article and get the same numbers
+
+<center>This seems like it should be fairly simple, but is it?</center>
+
+It's difficult to test because researchers don't typically share their data (so
+you can't re-analyze it)
+
+But data sharing is **becoming more common**, which means we might 
+be able to test it!
+
+
+---
+
+### Auditing reproducibility
+
+- In 2019, the journal **Psychological Science** published an issue where **all
+  14 papers** shared their data!
+
+- So we decided to see whether we could **re-analyze the data** and get the same
+  numbers as the published papers
+
+<center>**What did we find?**</center>
+
+- Of the 14, we found that only 1 was **exactly reproducible**
+
+- For 3 we could reproduce the numbers with only **minor differences**
+
+- For the remaining 6 we could reproduce _some but not all_ of the analyses
+
+That leaves 4** where we could only reproduce a fraction of the results
+or could not reproduce **any results at all!**
+
+---
+
+### Auditing reproducibility
+
+So what went wrong?
+
+- Some researchers didn't share the correct/appropriate data
+
+  - Key parts of the data were missing
+
+  - Data wasn't appropriately labeled
+
+We want you to be better, so as part of your research methods courses you'll
+also learn how to organize data appropriately
+
+- But the major issue was that often the analyses weren't appropriately
+  described. But why?
+
+  - One reason might be that it's **difficult** to _describe analyses_
+
+  - This is especially true when analyses are _complex_
+
+<center>**So what's the solution?**</center>
+
+---
+
+### Sharing <code>code</code> to improve reproducibility
+
+- Instead of only **verbally describing** analyses researchers can 
+  include <code>code</code> with the **shared data**
+
+- But then _psychological scientists_ **need to know how to write `code`**!
+
+- Unfortunately, training in *coding* is still not typical in undergraduate psychology
+programs!
+
+- But things are changing, and Sussex (together with e.g., Cambridge, KCL, QUB,
+  Edinburgh, Glasgow) is one of the universities changing this!
+
+In fact, in our **audit** the **1** paper that was **exactly reproducible** was
+reproducible because
+
+- They shared the `R` code
+
+- The manuscript was written using `Quarto`
+
+\
+<center>So we could just **re-run** the code!</center>
+
+\
+<center>**This is why we're training you the way we are!**</center>
+
+---
+
+[Over to Dr. Terry...]{.section}
+
+<center>_Unfortunately, Dr Terry is unwell today, so I'll do my best to fill in_</center>
+
+---
+
+## The lab report
+
+The lab report is designed to be part of your training to do **better science**
+by introducing you to the idea of **pre-registration!**
+
+- The lab report will present a *research plan* for **an experiment**
+
+- The expected length with be around 1000–1500 words (with a maximum allowable
+  length of 2000 words)
+
+The research plan will address one of two questions 
+
+1. Is buying "green" (i.e., environmentally friendly) products driven by status
+   motives?
+
+2. Do women find men more attractive in conjunction with the colour red?
+
+Links to two studies that have addressed this question can be found [on Canvas](
+https://canvas.sussex.ac.uk/courses/23036/pages/lab-report-task-and-resources)
+
+---
+
+### Structure of the lab report
+
+The **lab** report will have a similar structure to **journal article**, but without
+a **results** section
+
+
+- **Introduction**
+
+- **Methods**
+
+- **Discussion** (strengths and limitations only)
+
+- **References**
+
+---
+
+
+#### Introduction
+
+Your _introduction_ should include the following information:
+
+1. Thesis statement — What is the **main research question**/area you are considering? 
+Think of this as an introduction to your introduction! 
+Tell us broadly what the topic area is and why it's important.
+
+2. Background — What is the context for your research question, and what do we already know?
+
+    - Introduce important previous research including previous ideas/theories/hypotheses
+    that were tested
+
+    - How did previous studies investigate these questions. _Briefly_ explain the 
+    experimental designs (participants, methods, materials) that have been previously 
+    used
+
+    - _Critically evaluate_ whether these were appropriate or sufficient to address the
+    research question. You should **cite additional evidence** to support any claims
+    you make 
+
+    - Suggest a new experiment 
+
+3. Hypotheses — based on this background, what do you expect to happen in your 
+   experiment?
+
+
+---
+
+##### Suggesting a new experiment
+
+- Given the questions and/or issues identified in your intro, propose a new
+  experiment. E.g., you might suggest:
+
+  - A new experimental design or paradigm. E.g., different test design,
+    measuring the outcome in a different way, or changing the way the
+    conditions are presented
+
+  - A new variable or group manipulation to include
+
+  - A new population test. You might suggest that studying or contrasting with
+    a particular population may be able to provide further insight into the
+    effect
+
+
+---
+
+##### Suggesting a new experiment
+
+- You must **minimally propose one improvement/modification to previous
+  experiments**. You can suggest several at once, but try not to
+  over-complicate it.
+
+- You must **justify your modification with previous literature**
+
+  - You should have a good, evidence-based reason to believe that the
+    modification you are proposing would be an interesting and meaningful
+    improvement on the previous design
+
+  - Explain your reasoning clearly and thoroughly, so try to avoid
+    modifications if you don't really understand them (e.g., brain imaging)
+
+---
+
+#### Method
+
+1. Participants — Who will take part in the research?
+
+    - From which population will your draw your sample?
+
+    - You don't need to specify exactly _how many_ participants you'll include.
+      Instead, give the characteristics of the participants you'll recruit 
+
+2. Materials — what kind of tests will be administered, and how do they work?
+
+    - You need to think about how you're going to **operationalise** your
+      variables
+
+3. Design — What variables will be included? Will it be a between-groups or a
+   within-participants design?
+
+    - Specify your **dependent** and **independent** variables
+
+    - Consider **confounds** and **controls**
+
+4. Procedure — What instructions will be given to participants, what will
+   participants do, and will the tasks be administered in a specific order? 
+
+---
+
+#### Discussion  
+
+1. What are the strengths of your design. For example, will it be able to tell
+   you something about *causation*
+
+2. What will the results _not_ be able to tell you about your research
+   question? Why?
+
+3. Will this study need a follow-up study? Why?
+
+#### References
+
+1. Include an APA-style reference list for all your citations (see [Week 05
+   Worksheet](https://canvas.sussex.ac.uk/courses/23036/files/3386538?wrap=1)
+   for more information)
+
+---
+
+#### My tips for doing well
+
+There is a tendency to over-complicate things!
+
+- Don't suggest changes that you don't fully understand
+
+- Focus on doing the simple things well
+
+- Suggesting a complex experimental design is _not impressive_ if you get it
+  all wrong
+
+But don't go the other way and _suggest no changes at all_!
+
+  - Try to put some thought into your _suggested change_. They can be _simple_
+    but they must exist!
+
+
+And don't worry if you find the lab report **difficult**. Everyone will find it
+difficult!
+
+For most, this will be your first experience doing something like this,
+but you'll only learn how to do it by doing it!
+
+You'll be discussing the report more in practical classes this week, so make
+sure you go to them!

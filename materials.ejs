@@ -1,0 +1,58 @@
+```{=html}
+
+<%
+
+var materials = {}
+
+for (let week = 1; week < 12; week++) {
+  materials[week] = {}
+  materials[week]['slides'] = items.filter((x) => x.week === week)
+    .filter((x) => x.type === "slides")
+  materials[week]['handout'] = items.filter((x) => x.week === week)
+    .filter((x) => x.type === "handout")
+
+}
+
+const print_slides = (materials, week) => {
+  if (Object.keys(materials[week]["slides"])[0] === "0") {
+    const item = materials[week]["slides"][0]
+    return `<li><a href=${item.path}>Lecture slides</a></li>`
+  } else {
+    return "Currently unavailable"
+  }
+}
+
+const print_handout = (materials, week) => {
+  if (Object.keys(materials[week]["handout"])[0] === "0") {
+    const item = materials[week]["handout"][0]
+    return `<li><a href=${item.path}>Lecture handout</a></li>`
+  } else {
+    return "Currently unavailable"
+  }
+}
+
+const print_week = (materials, week) => {
+
+  const has_handout = Object.keys(materials[week]["handout"])[0] === "0" ? `<li><a href=${materials[week]["handout"][0].path}>Lecture handout</a></li>` : "Currently unavailable"
+  const has_slides = Object.keys(materials[week]["slides"])[0] === "0" ? `<li><a href=${materials[week]["slides"][0].path}>Lecture slides</a></li>` : "Currently unavailable"
+
+  if (has_handout === has_slides) {
+    return "Currently unavailable"
+  }
+
+  return `${has_handout}${has_slides}`
+
+
+}
+
+
+%>
+
+<% for (let week = 1; week < 12; week++) { %>
+<h3>Week <%= week %></h3>
+<ul>
+<%= print_week(materials, week) %>
+</ul>
+<% } %>
+
+```

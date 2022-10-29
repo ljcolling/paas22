@@ -1,0 +1,581 @@
+```{r}
+#| echo: false
+#| include: false
+
+require(ggplot2) 
+require(cowplot)
+require(tidyr)
+require(dplyr)
+require(plotly)
+salary <- readr::read_csv(here::here("data","world_salary.csv"))
+USD <- scales::dollar_format(suffix = " USD")
+ggplot2::theme_set(cowplot::theme_cowplot())
+```
+
+## Today's lecture
+
+- So far we've talked about quantitative methods in the abstract
+
+- We've said quantitative methods is all about putting **numbers to things**, but
+  we haven't talked about what to do with the numbers
+
+In this lecture, and the one that follows we're going to start talking
+about the techniques we can use for **describing sets of measurements**
+
+We'll use these tools when we start learning the basics of **statistical
+models**, and learn about **the sampling distribution**
+
+---
+
+## Measures of central tendency
+
+When we have a set of measurements the first thing we might want to do is
+work out what the typical value is
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig.align: center
+#| fig.height: 3
+#| label: fig-income
+#| fig.cap: |
+#|  National average annual salary [source: worlddata.info]
+
+(salary |> ggplot(aes(x = yearly)) +
+  geom_histogram(binwidth = 1e4, boundary = 0, fill = "white", color = "black") +
+  labs(x = "Annual salary in USD", y = "Count")) |>
+  plotly::ggplotly(tooltip = "count") |>
+  plotly::config(displayModeBar = F)
+```
+
+What we mean by **typical value** is not always clear
+
+- What is the _typical_ average income in the set of countries shown in
+  @fig-income?
+
+- Lot's of countries have an income below USD 30,000, but some have
+  incomes higher than USD 100,000
+
+---
+
+## Measures of central tendency
+
+_Maybe we should pick the bracket with the most countries in it?_
+
+- Then the typical salary is between $0 and USD 10,000 per year. 
+
+_Maybe we should pick the value where half the countries have a lower
+  average salary and half the countries have a higher one?_
+
+- Then the typical salary is `r salary$yearly |> median() |> USD()` per
+year.
+
+
+Depending on how we define _the most typical value_, we get
+different answers. 
+
+We'll cover the three main ways of defining the _typical value_ or
+_average_
+
+Together, these ways of describing the _typical_ or _average_
+value are known as **measures of central tendency**.
+
+---
+
+### Mode
+
+ - The **mode** is the **most frequent value** in a set of
+measurements
+
+- For this kind of _average_ the most typical salary is between $0 and $10,000 
+
+- The easiest way to spot the **mode** is to draw a plot like the one we did in
+  @fig-income and then look for the tallest bar
+
+A set of numbers can have more than one mode. Some examples of this are shown
+in @fig-diff-modes.
+
+```{r}
+#| echo: false
+#| label: fig-diff-modes
+#| fig-cap: Datasets with different numbers of modes.
+#| fig-subcap:
+#|    - "A unimodal dataset"
+#|    - "A bimodal dataset"
+#|    - "A multimodal dataset"
+#| layout-ncol: 3
+require(ggplot2)
+require(dplyr)
+
+# Let's draw some plots
+
+# Unimodal
+set.seed(123)
+tibble(x = rchisq(n = 10000, df = 5, ncp = 0)) |>
+  ggplot(aes(x = x)) +
+  geom_histogram(bins = 50, boundary = 0, col = "grey20", fill = "grey80") +
+  theme_cowplot() +
+  labs(x = "value", y = "count")
+
+# Bimodal
+set.seed(123)
+d <- rnorm(n = 5000, mean = 2, 1)
+tibble(x = c(
+  d,
+  d + 3
+)) |>
+  ggplot(aes(x = x)) +
+  geom_histogram(bins = 50, boundary = 0, col = "grey20", fill = "grey80") +
+theme_cowplot() +
+labs(x = "value", y = "count")
+
+# Multimodal
+d <- rep(seq(0, 5, length.out = 100), times = 100)
+tibble(x = d) |>
+  ggplot(aes(x = x)) +
+geom_histogram(bins = 11, boundary = 0, col = "grey20", fill = "grey80") +
+theme_cowplot() +
+labs(x = "value", y = "count")
+```
+
+---
+
+### Mode
+
+- The mode is the only definition of _typical value_ that works for data that is
+measured at the **nominal**/**categorical** level (see Lecture 4).
+
+- When it comes to truly **continuous** variables, such as height, the mode is
+often not very informative. Why?
+
+  - Because each value in the dataset is probably unique
+
+  - For this reason, the mode is rarely used for continuous variables measured
+    at the **interval** or **ratio** levels
+
+
+Average salary is a continuous variable, but we've turned it into a discrete
+variable by placing measurements into discrete ranges. By doing so, we can make
+the mode useful.
+
+---
+
+### Median
+
+```{r}
+#| echo: false
+dice_res <- c(3, 4, 6, 1, 1) 
+serial_and <- function(x) {
+  n <- length(x)
+  first <- x[1:n-1]
+  second <- x[n]
+  glue::glue('{paste0(first, collapse = ", ")}, and {second}')
+}
+```
+
+- The **median** is the middle value where half the measurements are above that
+  value and half the measurements are below
+
+- The easiest way to work out the media is to sort our data (e.g., from
+  the smallest to the largest)
+
+
+Let's say we roll a 6-sided dice 5 times and get the following: `r serial_and(dice_res)`
+
+To calculate the median, we'll do two steps:
+
+  1. Sort the data from smallest to largest: `r sort(dice_res)`
+
+  2. Find the mid-point: We have five observations so the third one in the
+  sorted sequence is the mid-point.
+
+Out of the five rolls the median is `r median(dice_res)` (and the mode is 1).
+
+---
+
+### Median
+
+```{r}
+#| echo: false
+#| fig.align: center
+#| out.height: 65%
+#| out.width: 100%
+#| label: fig-sorted
+#| fig.cap:   Average national salary per country sorted from lowest to highest (Hover over the bars to see the name of the country and the value).
+(salary |>
+  dplyr::arrange(yearly) |>
+  dplyr::mutate(index = 1:n()) |>
+  dplyr::mutate(
+    color =
+      case_when(
+        index == (1:78 |> median() |> floor()) ~ "red",
+        index == (1:78 |> median() |> ceiling()) ~ "red",
+        TRUE ~ " grey"
+      )
+  ) |>
+  dplyr::mutate(text = glue::glue("{country} (${round(yearly/1000,2)}k)")) |>
+  ggplot(aes(x = index, y = yearly, text = text, fill = color)) +
+  ggplot2::scale_fill_manual(
+    name = NULL,
+    values = c("#454A60", "#ff4500"), labels = NULL, guide = "none"
+  ) +
+  labs(y = "Annual salary in USD", x = "Country") +
+  scale_x_continuous(labels = NULL, breaks = NULL) +
+  scale_y_continuous(labels = function(x) paste0(x / 1000, "k")) +
+  ggplot2::theme(
+    axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+    legend.position = "none", legend.title = element_blank(),
+    panel.grid.major.y = element_line(color = "grey60"),
+    axis.line.x = element_blank(), axis.line.y = element_blank()
+  ) +
+  geom_col() +
+  NULL
+) |>
+  plotly::ggplotly(tooltip = "text") |>
+  plotly::config(displayModeBar = F)
+```
+
+Because we have an even number of countries in our dataset (78), there are two
+mid-points. 
+
+To get the median annual national salary, we need to find the value half-way
+between Romania and Venezuela, which is `r median(salary$yearly) |> USD()`.
+
+---
+
+### Median
+
+
+- To be able to calculate a meaningful median, the variable must be measured on
+  **at least the ordinal level**. 
+
+- If we had categorical data like eye colour, then it wouldn't make sense to
+  ask for the median between a set of four blue eyes and 3 green eyes
+
+---
+
+### Mean
+
+- The  mean is what most people think of when we talk about the _average_
+
+- You can work out the mean by **adding up all the values** and then diving
+  this by the number of values
+
+
+Mathematically, you can represent this with the formula shown in @eq-mean,
+below:
+
+$$\bar{x}=\frac{\displaystyle\sum^{N}_{i=1}{x_i}}{N}$$ {#eq-mean}
+
+
+You can also write @eq-mean as @eq-mean-sum
+
+$$\bar{x}={\displaystyle\sum^{N}_{i=1}{\frac{x_i}{N}}}$$ {#eq-mean-sum}
+
+@eq-mean might be more familiar to you, but I like @eq-mean-sum because it
+makes it clear that a **mean** is just a special way of adding up numbers (more
+in Lecture 8)
+
+---
+
+### Mean
+
+
+$$\bar{x}=\frac{\displaystyle\sum^{N}_{i=1}{x_i}}{N}$$ {#eq-mean}
+
+
+- This formula just tells use that the mean ($\bar{x}$) is equal to the sum of
+all the numbers ($\sum^{N}_{i=1}{x_i}$) divided by the number of values in the
+dataset ($N$).
+
+
+- We use the symbol $\bar{x}$ (pronounced x-bar) to represent the mean of a sample
+of data. 
+
+- We use the symbol $\mu$ (pronounced mew) to represent the mean of the population
+
+---
+
+### Mean vs Median
+
+
+Both the mean and median have their advantages and disadvantages
+
+- The mean is easier to work with from a mathematical point of view
+
+- Means taken from different samples of the same population_ tend to be
+  **more similar to each other** (see @fig-dice)
+
+```{r}
+#| echo: false
+#| fig.cap: Means and medians for 5 dice rolls repeated 100 times
+#| label: fig-dice
+#| out.height: 60%
+#| out.width: 50%
+# require(tidyverse)
+
+gen <- function(x) {
+  sample.int(n = 6, size = 5, replace = TRUE) |>
+    pipebind::bind(b, data.frame(mean = mean(b), median = median(b)))
+}
+lapply(X = seq_len(100), gen) |>
+  bind_rows() |>
+  tidyr::pivot_longer(1:2) |>
+  ggplot(aes(x = value, group = name)) +
+  geom_histogram() +
+  facet_grid(~name) +
+  theme_minimal() +
+  NULL
+```
+
+---
+
+### Mean vs Median
+
+There are also some downsides to the **mean** relative to the
+**median**.
+
+The _mean_ is **sensitive to extreme values** in a way the _median_ is not
+
+```{r}
+#| echo: false
+require(htmltools)
+vid <- tags$video(width = "100%", autoplay = NA, loop = NA, controls = NA)
+source <- tags$source(src = here::here("images","test.webm"), type = "video/webm")
+vid$children = source
+vid
+```
+<!-- <video width="100%" autoplay loop controls> -->
+<!-- <source src="`r here::here('images','test.webm')" type="video/webm"> -->
+<!-- </video> -->
+
+---
+
+## Sample means and population means
+
+
+- So far we've just talked about describing the typical value in a set of
+  measurements that we have---our **sample**
+
+- But we want to do with *statistics* is to make **inferences** about
+  **populations** from *the information* that we get from **samples**
+
+- If you're interested in the **average height** of **people in the UK** the
+  "easy" way to find an answer to this question is to measure **all the people
+  in the UK** and then work out the **average height**
+
+_But if you can't measure everyone in the UK, then what do you do?_
+
+- You could instead select a smaller group, or subset, of people from the UK. 
+
+- You then measure the height of people in this group, and then try to use this
+  information to figure out plausible values for the average height of people
+  in the UK
+
+In this example, the group (or groups) you're making claims about is the
+**population**, and the **sample** is a subset of this population
+
+---
+
+### Theoretical populations
+
+- We often talk about populations as if they're a **set of actually existing
+  things** that we can take our sample from---for example, all **living**
+  humans
+
+- But populations don't have to be sets of actually existing things. Instead,
+  they can be the **set of possible things** from which our samples can be
+  drawn
+
+- Let's say we want to collect a sample of 2 dice rolls
+
+  - To collect our **sample**, we take a die and roll it **twice**
+
+  - We can then work out the typical value (i.e., the mean) from these rolls
+
+Our **sample** is the set of 2 dice rolls we've collected, but what is our
+**population**?
+
+One way to think of our population is as the **set of possible outcomes that
+could occur if we rolled the dice twice**
+
+
+---
+
+### Theoretical populations
+
+If our population is **all possible rolls of two dice** then what is the mean
+of this population?
+
+We can easily draw out all the possible things that will happen if we roll a
+dice twice:
+
+
+
+
+
+From this, we can count up how many times we get a total 2, 3, 4, etc from two
+dice rolls
+
+- We'd find that 6 sequences lead to a total of 7 (more than any other total(
+
+- A total of 7 gives a mean of 3.5 (7 ÷ 2 = 3.5)
+
+---
+
+### Theoretical populations
+
+- We can work out the **population mean** of two dice rolls because we know
+  something about the data generating process 
+
+- Our samples are just a set of instances of data generated by this process
+
+
+- Applying this idea to something like the Stroop task we say that:
+
+    - Our population isn't **all living humans** but all humans that might have
+      lived, might be living now, and might be living in the future
+
+    - Our samples are just instances of data generated by the process that goes
+      on in peoples brains when they do the Stroop task
+
+For the Stroop task (or any other psychological process we might be interested
+in) we can't just work out exactly what that data generating process looks like
+
+So we collect samples to try to characterise it
+
+---
+
+## From samples to populations
+
+Let's say we have defined our **population** as _all people in the UK_
+
+Our **sample** is a **subset** of this
+
+- We really want to know about the **population**. E.g., What is the _average_
+(**mean**) height of _people in the UK_?
+
+- But all we have is our **sample**. I.e., The _average_ (**mean**) height of
+_people in our sample_.
+
+If we want to go from our **sample** to the **population** then _ideally_ our
+**sample mean** should **resemble** our **population mean**
+
+But if _real life situations_ we don't know the **population mean**, so how
+would we know whether our **sample mean** **resembles** it?
+
+---
+
+### A sample of samples
+
+- Let's say I happen to know that the population mean for the height of people
+  in the UK is 170cm (and heights range from about 78cm to 231 cm)
+
+- I can now draw a sample of 50 people from this population and calculate the
+  mean 
+
+- I can do this over and over and plot each sample mean in @fig-samps
+
+```{ojs}
+//| echo: false
+import {sample_means} from "@ljcolling/measures-of-central-tendency"
+import {viewof replay_mean} from "@ljcolling/measures-of-central-tendency"
+```
+
+```{ojs}
+//| fig-cap: Repeatably sampling our population
+//| label: fig-samps
+//| echo: false
+sample_means(1200, 300)
+```
+
+```{ojs}
+//| echo: false
+viewof replay_mean
+```
+
+---
+
+### A sample of samples
+
+- The samples don't always line up exactly with the population mean
+
+- Sometimes it's higher, sometimes it's lower. Sometimes it's closer and
+  sometimes it's further way
+
+- Because we **don't know the population** we'd never know whether **any
+  particular sample** was close, far, higher, or lower **than the population
+  mean**
+
+Even though we can't say that **a particular sample** is close to the
+population, there is something else we **can** say
+
+We can say how **sample means** will behave **on average**:
+
+
+> The sample mean will **on average** be the same as the population mean
+
+
+\
+_This is an idea that we'll make use of **a lot** in statistics_
+
+_But what does it **mean**?_
+
+---
+
+### The average of the sample means
+
+- If treat each sample mean from 50 people as a **measurement** 
+
+- As we collect more samples, we average together the **sample means**
+
+
+```{ojs}
+//| echo: false
+import {sample_means_ave} from "@ljcolling/measures-of-central-tendency"
+import {viewof replay_running_mean} from "@ljcolling/measures-of-central-tendency"
+```
+
+```{ojs}
+//| fig-cap: Running average of sample means
+//| label: fig-running
+//| echo: false
+sample_means_ave(1200, 300)
+```
+
+```{ojs}
+//| echo: false
+viewof replay_running_mean
+```
+
+This **average** of **sample means** will eventually be the same as the
+**population mean**<sup>1</sup>
+
+<aside><sup>1</sup>In technical terms we say: $\mathrm{E}(\bar{x}) = \mu$</aside>
+
+---
+
+## Looking forward
+
+- So far we've covered **measures of central tendency** for samples
+
+- And we've covered the idea of the **sample mean** ($\bar{x}$) and
+  **population mean** ($\mu$)
+
+- We saw that although we don't know whether **a particular sample mean** is
+  the same as the **population mean**, we do know that **on average** they will
+  be the same
+
+- In the coming lectures we'll learn how to describe how **spread out** our
+  **sample** is, and how **spread out** the **population is**
+
+
+When we plotted the **individual sample means** we saw that they were **spread
+out around the population mean**
+
+We'll finally put ideas about **means** and **spread** together to finally work
+out how to quantify this spread
+
+_But all that is for later..._
