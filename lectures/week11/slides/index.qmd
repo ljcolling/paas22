@@ -1,0 +1,33 @@
+---
+pagetitle: "Introduction to probability"
+author-meta: "Dr Lincoln Colling"
+format: 
+  sussex-revealjs:
+    center-title-slide: false
+    multiplex: true
+navbar: true
+week: 11
+type: slides
+---
+
+<h2>Lecture 11</h2>
+
+<h1>Introduction to probability</h1>
+
+<h2>Reasoning about probability and common pitfalls</h2>
+
+
+<br>
+<br>
+
+<h3 style="color:black;font-weight:normal">Dr Lincoln Colling</h3>
+
+<h3 style="color:black;font-weight:normal">05 Dec 2022</h3>
+
+<br>
+
+<span class="absolute" style="bottom: 2em; width:100%; text-align: center">Psychology as a Science</span>
+
+![](../../../images/logo.png){.absolute bottom="2em" left="1000" width="280"}
+
+{{< include _content.qmd >}}
