@@ -515,6 +515,8 @@ sample means. Some samples might look roughly normally distribution, and some
 samples won't.
 
 <!-- show a single sample -->
+<!-- TODO: Location of animations -->
+<!-- https://observablehq.com/@ljcolling/central-limit -->
 
 As long as the sample size is sufficiently large then the **sampling
 distribution (of the mean)** will have a normal distribution. 
