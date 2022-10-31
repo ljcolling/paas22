@@ -24,7 +24,8 @@ make_slides <- function(x) {
 dir.create("_site/pdfs/", showWarnings = FALSE)
 
 # make the slides
-lapply(X = slide_files, FUN = make_slides)
+cores <- parallel::detectCores()
+parallel::mclapply(X = slide_files, FUN = make_slides, mc.cores = cores)
 
 
 handout_files <- list.files(
@@ -58,7 +59,8 @@ make_handouts <- function(x) {
   file.rename(from = from_file, to = to_file)
 }
 
-lapply(X = handout_files, FUN = make_handouts)
+parallel::mclapply(X = handout_files, FUN = make_handouts, mc.cores = cores)
+
 
 system("fd canvas_link -x cat {} > _site/pdfs.html")
 
@@ -85,6 +87,6 @@ body <- new_files |>
   paste0(collapse = "\n\n")
 
 body <- c("<h4>Speaker links</h4>", body) |>
-  paste0(collapse = "\n\n")
+  paste0(collapse = "\n\n") 
 
 writeLines(text = body, con = "_site/speaker/index.html")
