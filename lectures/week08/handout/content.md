@@ -1,3 +1,5 @@
+# Lecture 8
+
 In the previous lecture, we started talking about something called the
 **standard error**. We said that the **standard error** told us something about
 how spread out the **sample means** would be if we took multiple samples from
@@ -509,12 +511,41 @@ distribution!
 We can try this out. Let's say that we want to measure some phenomenon---for
 example, score on some standardised reading test. We collect a sample of data
 from sample of children and we work out the **mean of this sample**. But instead
-of collecting 
+of collecting one sample we'll collect a lot of samples (let's say 100, 000). 
+Once we've done this we can plot a histogram of the sample means. This will
+look like a normal distribution, show shown in @fig-
 
-TODO: Note that the sampling distribution isn't the **distribution of the
+<!-- FIXME: Add figure -->
+
+But you might think that this occurs just because the parent distribution---that is,
+the distribution of scores in the population---is normally distributed. It might
+be the case that the scores are normally distributed in the population, but this 
+doesn't have to be the case for the distribution of sample means to be normally 
+distributed.
+
+TODO: Note that the sampling distribution isn't the **distributwon of the
 sample**. The **sampling distribution** is a distribution of many individual
 sample means. Some samples might look roughly normally distribution, and some 
-samples won't.
+samples won't. You can explore this in @exm-
+
+:::
+
+Use the selector to select the population distribution. The plot in
+@fig- shows a histogram of the population.
+
+
+
+
+Use the sliders to adjust the sample size for each sample. Try setting
+the sample size to 1. What do you notice? When the sample size is 1, then
+the sampling distribution is the same shape at the population distribution.
+
+Now try increasing the sample size. What do you notice? When the sample 
+size increases then the sampling distribution takes on the shape of a 
+normal distribution.
+
+:::
+
 
 <!-- show a single sample -->
 <!-- TODO: Location of animations -->
