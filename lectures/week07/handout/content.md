@@ -1,3 +1,5 @@
+# Lecture 7
+
 ```{r}
 #| echo: false
 #| message: false
