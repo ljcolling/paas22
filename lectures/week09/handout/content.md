@@ -1,4 +1,4 @@
-
+# Lecture 9
 <!-- TODO: Probably need to standard errors here again in the begin -->
 
 <!-- TODO: Thing that influence the width of the sampling distribution -->
