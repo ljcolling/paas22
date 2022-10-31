@@ -39,6 +39,7 @@ work out what the typical value is
 #| message: false
 #| fig.align: center
 #| fig.height: 3
+#| out.width: 100%
 #| label: fig-income
 #| fig.cap: |
 #|  National average annual salary [source: worlddata.info]
