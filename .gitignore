@@ -14,3 +14,6 @@ termpdf.log
 
 pid
 TODO
+
+lectures/*/handout/*.html
+lectures/*/slides/*.html
