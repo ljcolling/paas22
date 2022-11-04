@@ -13,5 +13,7 @@ contributes:
       transition-speed: fast
       height: 720
       width: 1280
+      max-scale: 4
+      min-scale: .5
       fig-cap-location: bottom
       navigation-mode: linear

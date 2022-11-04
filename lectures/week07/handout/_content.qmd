@@ -1,5 +1,3 @@
-# Lecture 7
-
 ```{r}
 #| echo: false
 #| message: false
@@ -12,9 +10,9 @@ knitr::opts_knit$set(eval.after = "fig.cap")
 Last week we started learning about the tools we can use to describe data.
 Specifically, we learned about the **mean**, **mode**, and **median**. And we
 learned about how they are different ways of describing the typical value. But
-apart describing the _typical value_, we might also want a way to
-describe how **spread** out the data is around this value. We'll start this week
-off by talking about ways to measure this spread.
+apart describing the _typical value_, we might also want a way to describe how
+**spread** out the data is around this value. We'll start this week off by
+talking about ways to measure this spread.
 
 ## Measures of spread
 
@@ -460,7 +458,7 @@ viewof show_both_table = Inputs.toggle({ label: "Show data table" })
 
 To get a more fine-grained idea of the spread, we'll need a new way of
 measuring it, one where we take into account every data-point. One way to do
-this is to take each data point and calculate how far it is away from some
+this is to take each data-point and calculate how far it is away from some
 reference point, such as the mean. This is known as the deviation. You can
 explore deviation in @exm-deviation, below.
 
@@ -659,7 +657,7 @@ deviations_summary = (opts) =>{
 ::::
 
 
-Mathematically, we can represent deviation with the equation in @eq-dev, below:
+Mathematically, we can represent deviation with @eq-dev, below:
 
 
 $$D=x_i - \bar{x}$${#eq-dev}
@@ -1188,7 +1186,7 @@ for computing the variance is called `var()`, and this function will give you
 the **sample variance** (divided by N - 1).  
 
 
-### The standard deviation
+### Standard deviation
 
 Variance is a good measure of dispersion and it's widely used. However, there
 is one downside to variance, and that is that it can be difficult to interpret:
@@ -1197,21 +1195,20 @@ from Lecture 6, if salary is measured in USD, then the **variance** would be
 expressed in USD^2^, whatever that means!
 
 Fortunately, the solution to this problem is easy: we simply take the square
-root of the variance. This measure is called the **standard deviation**. Just
-like with variance, there is a **population** standard deviation, denoted with
-$\sigma$. And a **sample** standard deviation, denoted with $s$ or $SD$.
+root of the variance. This measure is called the **standard deviation**. The
+standard deviation, denoted with $s$ or $SD$.
 
-The **sample** standard deviation is what we compute when all we have access to
-is the **sample**. It's the square root for the **sample** variance. The
-**population** standard deviation is what we compute when we have access to the
-**population** characteristics. It's the square root of the **population**
-variance. Because we almost never have access to the population characteristics
-you'll almost always be calculating the **sample standard deviation**. In `R`,
-the function for computing the standard deviation is called `sd()` and this
-computes the **sample** standard deviation (that is, it uses N - 1).
+Because the standard deviation is just the square root of the variance, you'll
+often see the variance denoted as $s^2$ (for the sample variance) or $\sigma^2$
+(for the population variance).
+
+The `R` function for computing the standard deviation is called `sd()`, and
+this function will give you the square root of the **sample variance** (divided
+by N - 1).
 
 
-:::{.callout-tip collapse="true"} 
+:::{.callout-tip} 
+
 #### Why squared and not the absolute value
 
 To turn all the deviations into positive values we square these values. 
