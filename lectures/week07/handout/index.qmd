@@ -11,7 +11,6 @@ bibliography: refs.bib
 csl: apa.csl
 format:
   html:
-    echo: false
     navbar: false
     page-layout: article
     toc: true
