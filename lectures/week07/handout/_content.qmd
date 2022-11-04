@@ -1291,8 +1291,12 @@ But they'll need some styling etc
 p1 + p2 + plot_annotation(tag_levels = "a")
 ```
 
-The **standard error of the mean** will be an important concept. We'll start of
-the next lecture learning how to calculate it.
+The **standard error of the mean** will be an important concept. But to fully
+appreciate the idea we'll first need to learn about the **sampling
+distribution**. And before we can get to the sampling distribution, we first
+need to understand the what distributions are, what they look like,
+and why they look the way they do.
+
 
 
 
