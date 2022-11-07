@@ -18,3 +18,5 @@ quick :
 week week:
  fd . lectures/{{week}}/handout -e qmd --exclude=_content.qmd --threads=16 -x quarto render {} --to=html 
  fd . lectures/{{week}}/slides -e qmd --exclude=_content.qmd --threads=16 -x quarto render {} --to=sussex-revealjs
+
+  

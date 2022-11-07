@@ -1191,6 +1191,34 @@ need to understand the concept of the **sampling distribution**
   way they do
 
 
+But we get to that I want to return to the problem I left you with **last week**
+
+---
+
+## The standard error of the mean
+
+- Last week I got you to start thinking about the problem how you can know how
+close sample means will be to the population mean _on average_
+
+- You should now be able to recognise this question is about the **standard
+deviation** between **sample means** and the **population mean**
+
+- Or more technically, it's a question about the **standard error of the mean**
+
+
+Without me telling you how to work out the **standard error of the mean** can
+you work out what it's formula might be?
+
+To do this, I want you to think of **two scenarios** where the **standard error
+of the mean** will be very small:
+
+- One of these scenarios has something to do with the nature of the **samples
+  you're collecting**
+
+- The other scenario has something to do with the nature of the **population
+  you're sampling from**
+
+
 
 <!-- Dependencies {{{ -->
 
