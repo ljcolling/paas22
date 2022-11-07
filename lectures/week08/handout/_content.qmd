@@ -61,37 +61,41 @@ result in that number of heads. This frequency plot is shown in @fig-binomdist.
 
 
 ```{ojs}
-//| echo: false
-import {viewof sequences} from "@ljcolling/simple-binomial"
-import {viewof coin_flip_dist} from "@ljcolling/simple-binomial"
-import {viewof coins} from "@ljcolling/simple-binomial"
-import {coins_label} from "@ljcolling/simple-binomial"
-```
-
-```{ojs}
-//| echo: false
 //| label: fig-sequences
 //| fig-cap: Possible sequences after ${coins - 1} coin flips
-//| panel: fill
-viewof sequences
+viewof sequences = {
+  const div = document.createElement("div");
+  div.value = new vega.View(parsedSpec).initialize(div).run();
+  return div;
+}
 ```
 
-
 ```{ojs}
-//| echo: false
 //| panel: fill
 //| label: fig-binomdist
 //| fig-cap: Distribution of number of heads after ${coins - 1} coin flips
-viewof coin_flip_dist
+viewof coin_flip_dist = Plot.plot({
+  y: {
+    label: "Sequences",
+    grid: true
+  },
+  x: {
+    label: "Number of heads"
+  },
+  marks: [Plot.barY(n_heads, { x: "x", y: "y" }), Plot.ruleY([0])]
+})
 ```
 
 ```{ojs}
-//| echo: false
 //| width: 100%
 //| panel: input
-coins_label
-viewof coins
+viewof coins = htl.html`<input style="width:300px" type="range" id="coins" min="1" max="7" value="1" class="form-range">`
+
+coins_label = htl.html`<label for="coins" class= "form-label" width="100%">Number of coin flips: ${
+  coins - 1
+}</label>`
 ```
+
 
 
 Neither @fig-sequences nor @fig-binomdist look very interesting at the moment.
@@ -203,24 +207,42 @@ increasing the _Number of rounds_ so that it's more than **2**. What do you
 notice?
 
 
-```{ojs}
-//| echo: false
-import {simple_dice_plot} from "@ljcolling/simple-normal"
-import {viewof n_dice} from "@ljcolling/simple-normal"
-import {viewof n_players} from "@ljcolling/simple-normal"
-```
 
 ```{ojs}
 //| echo: false
-simple_dice_plot
+simple_dice_plot = Plot.plot({
+  x: {
+    label: "places from start",
+    domain: d3.sort(dicedata, (d) => d.value).map((d) => d.value)
+  },
+  y: {
+    label: "number of players"
+  },
+  marks: [
+    Plot.barY(dicedata, {
+      x: "value",
+      y: "count",
+      sort: { x: "y", reverse: true }
+    }),
+    Plot.ruleY([0])
+  ]
+})
 ```
 
 ```{ojs}
 //| echo: false
 //| panel: input
 //| layout-ncol: 2
-viewof n_dice
-viewof n_players
+viewof n_dice = Inputs.range([1, 2000], {
+  step: 1,
+  value: 1,
+  label: "Number of rounds"
+})
+viewof n_players = Inputs.range([1, 10000], {
+  step: 1,
+  value: 10,
+  label: "Number of players"
+})
 ```
 
 ::::
@@ -571,3 +593,210 @@ mistaking rules of thumb or actually hard and fast rules when they're not. So
 you'll have to make do with the ambiguity of **sufficiently large**!
 
 <!-- TODO: Generate different populations?  -->
+
+
+
+<!-- Dependencies {{{ -->
+
+
+```{ojs}
+n_heads = jstat(0, coins - 1, coins + 1 - 1)[0].map((v) => {
+  return {
+    x: v,
+    y: jstat.binomial.pdf(v, coins - 1, 0.5) * 2 ** (coins - 1)
+  };
+})
+```
+
+```{ojs}
+vega = require("https://cdn.jsdelivr.net/npm/vega@5/build/vega.js")
+```
+
+```{ojs}
+coin_data = [
+  { name: "START", id: 1, parent: "", color: "red" },
+  ...d3.range(2, 2 ** coins).map((i) => {
+    return {
+      name: i % 2 ? "T" : "H",
+      id: i,
+      parent: Math.floor(i / 2)
+    };
+  })
+].map((x) => {
+  let colors = { H: "black", T: "white", START: "red" };
+  x.color = colors[x.name];
+  return x;
+})
+```
+
+```{ojs}
+parsedSpec = {
+  return vega.parse(spec3);
+}
+```
+
+```{ojs}
+spec3 = {
+  return {
+    $schema: "https://vega.github.io/schema/vega/v5.0.json",
+    padding: 0,
+    width: 500,
+    height: 100,
+    layout: {
+      padding: 0,
+      columns: 1
+    },
+    marks: [
+      {
+        type: "group",
+        encode: {
+          update: {
+            width: {
+              value: 1000
+            },
+            height: {
+              value: 130
+            }
+          }
+        },
+        data: [
+          {
+            name: "tree",
+            values: coin_data,
+            transform: [
+              {
+                type: "stratify",
+                key: "id",
+                parentKey: "parent"
+              },
+              {
+                type: "tree",
+                method: "tidy",
+                size: [500, 200],
+                as: ["x", "y", "depth", "children"]
+              }
+            ]
+          },
+          {
+            name: "links",
+            source: "tree",
+            transform: [
+              {
+                type: "treelinks",
+                key: "id"
+              },
+              {
+                type: "linkpath",
+                orient: "horizontal",
+                shape: "line"
+              }
+            ]
+          }
+        ],
+        scales: [
+          {
+            name: "color",
+            domain: [0, 1, 2, 3, 4, 5],
+            type: "sequential",
+            range: "ramp"
+          }
+        ],
+        marks: [
+          {
+            type: "path",
+            from: {
+              data: "links"
+            },
+            encode: {
+              update: {
+                path: {
+                  field: "path"
+                },
+                stroke: {
+                  value: "black"
+                }
+              }
+            }
+          },
+          {
+            type: "symbol",
+            from: {
+              data: "tree"
+            },
+            encode: {
+              enter: {
+                size: {
+                  value: 50
+                },
+                stroke: {
+                  value: "black"
+                }
+              },
+              update: {
+                x: {
+                  field: "x"
+                },
+                y: {
+                  field: "y"
+                },
+                fill: {
+                  field: "color"
+                }
+              }
+            }
+          },
+          {
+            type: "text",
+            from: {
+              data: "tree"
+            },
+            encode: {
+              enter: {
+                text: {
+                  field: "name"
+                },
+                fontSize: {
+                  value: 0
+                },
+                baseline: {
+                  value: "bottom"
+                }
+              },
+              update: {
+                x: {
+                  field: "x"
+                },
+                y: {
+                  field: "y"
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  };
+}
+```
+
+```{ojs}
+jstat = require("https://bundle.run/jstat@1.9.4")
+```
+
+
+```{ojs}
+dicedata = {
+  return d3.sort(
+    dist.six_dice_roll_histogram(n_dice, n_players).counts,
+    (d) => d.value
+  );
+}
+```
+
+```{ojs}
+import { dist } from "@ljcolling/wasm-distributions"
+```
+
+<!-- }}} -->
+
+
