@@ -1,0 +1,749 @@
+
+## Plan for today 
+
+Today we'll learn about the **sampling distribution**
+
+But before we can do that we need to know what **distributions**
+are, where they come from, and how to describe them
+
+- The binomial distribution
+
+- The normal distribution
+
+  - Processes that produce normal distributions
+
+  - Process that don't produce normal distributions
+
+  - Describing normal distributions
+
+  - Describing departures from the normal distributions
+
+- Distributions and samples
+
+  - The Central Limit Theorem 
+
+- The Standard Error of the Mean
+
+
+---
+
+## The Binomial Distributions
+
+- The binomial distribution is one of the simplest distribution you'll come
+across
+
+- To see where it comes from, we'll just build one!
+
+- We can build one by flipping a coin (multiple times) and counting up the number of
+heads that we get
+
+---
+
+:::: {.columns}
+
+:::{.column width="45%"}
+
+```{ojs}
+//| label: fig-sequences
+//| fig-cap: Possible sequences after ${coins - 1} coin flips
+viewof sequences = {
+  const div = document.createElement("div");
+  div.value = new vega.View(parsedSpec).initialize(div).run();
+  return div;
+}
+```
+
+:::
+
+:::{.column width="45%"}
+
+```{ojs}
+//| panel: fill
+//| label: fig-binomdist
+//| fig-cap: Distribution of number of heads after ${coins - 1} coin flips
+viewof coin_flip_dist = Plot.plot({
+  y: {
+    label: "Sequences",
+    grid: true
+  },
+  x: {
+    label: "Number of heads"
+  },
+  marks: [Plot.barY(n_heads, { x: "x", y: "y" }), Plot.ruleY([0])]
+})
+```
+
+
+:::
+
+::::
+
+```{ojs}
+//| width: 100%
+//| panel: input
+viewof coins = htl.html`<input style="width:300px" type="range" id="coins" min="1" max="7" value="1" class="form-range">`
+
+coins_label = htl.html`<label for="coins" class= "form-label" width="100%">Number of coin flips: ${
+  coins - 1
+}</label>`
+```
+
+- In @fig-sequences we can see the possible sequences of events that can happen if we
+flip a coin (&#9864; = heads and &#9862; = tails)
+@fig-binomdist look very interesting at the moment.
+
+- In @fig-binomdist we just count up the number of sequences that lead to 0 heads, 1 head,
+2 heads, etc
+
+- As we flip more coins the distribution of number of heads takes on a characteristic shape
+
+- This is the **binomial distribution**
+
+---
+
+## The binomial distribution
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+- The binomial distribution is just an **idealised representation** of the
+process that **generates** sequences of heads and tails when we flip a coin
+
+  - Or any other process that gives rise to **binary data**
+
+- It's an **idealisation** but natural processes do give rise to binomial distribution
+
+
+- In the bean machine (@fig-bean) balls fall from the top and bounce off pegs as they fall
+
+  - Balls can bounce one of two directions (left or right; binary outcome)
+
+- Most of the balls collect near the middle, and fewer balls are found at the edges
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+#| message: false
+#| fig.cap: Example of the bean machine
+#| label: fig-bean
+require(htmltools)
+vid <- tags$video(width = "100%", controls = NA)
+# source <- tags$source(src = here::here("images","bean_machine.webm"), type = "video/webm")
+source <- tags$source(src = "../../../images/bean_machine.webm", type = "video/webm")
+vid$children = source
+vid
+```
+
+:::
+
+::::
+
+---
+
+## The normal distribution
+
+Flipping coins might seem a long way off anything you might want to study in
+psychology, but the **shape** of the binomial distribution might be familiar to
+you
+
+- The **binomial distribution** has a **shape** that is similar to the **normal
+  distribution**
+
+But there are a few key differences:
+
+1. The binomial distribution is bounded at 0 and n (number of coins)
+
+    - The normal distribution can range from $+\infty$ to $-\infty$
+
+2. The binomial distribution is _discrete_ (0, 1, 2, 3 etc, but no 2.5)
+
+    - The normal distribution is _continuous_
+
+The **normal distribution** is a **mathematical abstraction**, but we can use it as
+**model** of real-life populations that are produced by certain kinds of
+natural processes 
+
+---
+
+### Processes that produce normal distributions
+
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+To see how a natural process can give rise to a normal distribution, let's play
+a board game!
+
+There's only 1 rule: You roll the dice **n** times (number of rounds), add up
+all the values, and move than many spaces. That is your **score**
+
+- We can play any number of rounds 
+
+- And we'll play with friends, because you can't get a **distribution of
+  scores** if you play by yourself!
+
+If we have _enough players_ who play _enough rounds_ then the **distribution of
+scores** across all the players will take on a **characteristic shape**
+
+:::
+
+
+:::{.column width="50%"}
+
+```{ojs}
+//| echo: false
+//| label: fig-dice-dist1
+//| fig-cap: Distribution of players' position from the starting point
+simple_dice_plot = Plot.plot({
+  x: {
+    label: "places from start",
+    domain: d3.sort(dicedata, (d) => d.value).map((d) => d.value)
+  },
+  y: {
+    label: "number of players"
+  },
+  marks: [
+    Plot.barY(dicedata, {
+      x: "value",
+      y: "count",
+      sort: { x: "y", reverse: true }
+    }),
+    Plot.ruleY([0])
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+//| panel: input
+//| layout-ncol: 2
+viewof n_dice = Inputs.range([1, 2000], {
+  step: 1,
+  value: 1,
+  label: "Number of rounds"
+})
+viewof n_players = Inputs.range([1, 10000], {
+  step: 1,
+  value: 1,
+  label: "Number of players"
+})
+```
+
+:::
+
+::::
+
+---
+
+### Processes that produce normal distributions
+
+- A players score on the **dice game** is determined by **adding up** the
+  values of each roll
+
+- So after each roll their score can increase by some amount 
+
+The dice game might look artificial, but it maybe isn't that different to 
+some natural processes 
+
+For example, **developmental processes** might look pretty similar to the dice game
+
+Think about **height**:
+
+- At each **point in time** some **value** can be **added** (growth) or a
+  person's current height
+
+- So if we looked at the distribution of **heights** in the population then we
+  might find something that looks *similar* to a normal distribution
+
+A key factor that results in the **normal distribution** shape is this
+**adding up** of values
+
+---
+
+### Processes that don't produce normal distributions
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+Let's change the rules of the game
+
+- Instead of **adding** up the value of each roll, we'll **multiply** them (
+  e.g., roll a 1, 2, and 4 and your score is `r 1 * 2 * 4`)
+
+
+- The distribution is **skewed** with most player having low scores and
+  a few players have very high scores
+
+- Can you think of a process that operates like this in the real world?
+
+  - How about **interest** or **returns on investments**?
+
+  - Maybe this explains the shape of real world **wealth distributions**...
+
+:::
+
+
+:::{.column width="50%"}
+
+
+```{ojs}
+//| echo: false
+dice_plot_mult = Plot.plot({
+  x: { label: "places from start" },
+  y: { label: "number of players" },
+  marks: [
+    Plot.rectY(d, Plot.binX({ y: "count" }, { x: "x" })),
+    Plot.ruleY([0]),
+  ],
+});
+```
+
+
+```{ojs}
+//| echo: false
+//| panel: input
+//| layout-ncol: 2
+viewof n_dice_mult = Inputs.range([1, 20], {
+  step: 1,
+  value: 1,
+  label: "Number of rounds"
+})
+viewof n_players_mult = Inputs.range([1, 400], {
+  step: 1,
+  value: 1,
+  label: "Number of players"
+})
+```
+
+:::
+
+::::
+
+---
+
+### Describing normal distributions
+
+---
+
+
+<img style="width:100%;height:100%" src="`r xfun::embed_file(here::here("images/mentors.png"))[2]$attribs$href`">
+
+<!-- Dependencies {{{ -->
+
+
+```{ojs}
+n_heads = jstat(0, coins - 1, coins + 1 - 1)[0].map((v) => {
+  return {
+    x: v,
+    y: jstat.binomial.pdf(v, coins - 1, 0.5) * 2 ** (coins - 1)
+  };
+})
+```
+
+```{ojs}
+vega = require("https://cdn.jsdelivr.net/npm/vega@5/build/vega.js")
+```
+
+```{ojs}
+coin_data = [
+  { name: "START", id: 1, parent: "", color: "red" },
+  ...d3.range(2, 2 ** coins).map((i) => {
+    return {
+      name: i % 2 ? "T" : "H",
+      id: i,
+      parent: Math.floor(i / 2)
+    };
+  })
+].map((x) => {
+  let colors = { H: "black", T: "white", START: "red" };
+  x.color = colors[x.name];
+  return x;
+})
+```
+
+```{ojs}
+parsedSpec = {
+  return vega.parse(spec3);
+}
+```
+
+```{ojs}
+spec3 = {
+  return {
+    $schema: "https://vega.github.io/schema/vega/v5.0.json",
+    padding: 0,
+    width: 500,
+    height: 100,
+    layout: {
+      padding: 0,
+      columns: 1
+    },
+    marks: [
+      {
+        type: "group",
+        encode: {
+          update: {
+            width: {
+              value: 1000
+            },
+            height: {
+              value: 130
+            }
+          }
+        },
+        data: [
+          {
+            name: "tree",
+            values: coin_data,
+            transform: [
+              {
+                type: "stratify",
+                key: "id",
+                parentKey: "parent"
+              },
+              {
+                type: "tree",
+                method: "tidy",
+                size: [500, 200],
+                as: ["x", "y", "depth", "children"]
+              }
+            ]
+          },
+          {
+            name: "links",
+            source: "tree",
+            transform: [
+              {
+                type: "treelinks",
+                key: "id"
+              },
+              {
+                type: "linkpath",
+                orient: "horizontal",
+                shape: "line"
+              }
+            ]
+          }
+        ],
+        scales: [
+          {
+            name: "color",
+            domain: [0, 1, 2, 3, 4, 5],
+            type: "sequential",
+            range: "ramp"
+          }
+        ],
+        marks: [
+          {
+            type: "path",
+            from: {
+              data: "links"
+            },
+            encode: {
+              update: {
+                path: {
+                  field: "path"
+                },
+                stroke: {
+                  value: "black"
+                }
+              }
+            }
+          },
+          {
+            type: "symbol",
+            from: {
+              data: "tree"
+            },
+            encode: {
+              enter: {
+                size: {
+                  value: 50
+                },
+                stroke: {
+                  value: "black"
+                }
+              },
+              update: {
+                x: {
+                  field: "x"
+                },
+                y: {
+                  field: "y"
+                },
+                fill: {
+                  field: "color"
+                }
+              }
+            }
+          },
+          {
+            type: "text",
+            from: {
+              data: "tree"
+            },
+            encode: {
+              enter: {
+                text: {
+                  field: "name"
+                },
+                fontSize: {
+                  value: 0
+                },
+                baseline: {
+                  value: "bottom"
+                }
+              },
+              update: {
+                x: {
+                  field: "x"
+                },
+                y: {
+                  field: "y"
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  };
+}
+```
+
+```{ojs}
+jstat = require("https://bundle.run/jstat@1.9.4")
+```
+
+```{ojs}
+dicedata = {
+  return d3.sort(
+    dist.six_dice_roll_histogram(n_dice, n_players).counts,
+    (d) => d.value
+  );
+}
+
+```
+
+```{ojs}
+d = {
+  return Array(n_players_mult)
+    .fill(0)
+    .map((x) => {
+      return {
+        x: Number(
+          Array.from(dist.six_dice_roll(1, n_dice_mult)).reduce(
+            (state, item) => state * item
+          )
+        )
+      };
+    });
+}
+```
+
+```{ojs}
+import { dist } from "@ljcolling/wasm-distributions"
+```
+
+```{ojs}
+sd_value_slider = Inputs.range([0.5, 2], {
+  value: 1,
+  step: 0.25,
+  label: htl.html`standard deviation <br />&#x3C3;`
+})
+```
+
+```{ojs}
+import { texmd } from "@kelleyvanevert/katex-within-markdown"
+```
+
+```{ojs}
+mean_value_slider = Inputs.range([-3, 3], {
+  value: 0,
+  step: 0.25,
+  label: htl.html`mean<br />  &#x3BC`
+})
+```
+
+<!--
+```ojs
+viewof show = true//Inputs.toggle({ label: "Show coverage", value: false })
+```
+-->
+
+```{ojs}
+sd_value = Generators.input(sd_value_slider)
+```
+
+<!--
+```ojs
+viewof s = 1//= Inputs.range([0, 3], { step: 0.5 })
+```
+-->
+
+```{ojs}
+mean_value = Generators.input(mean_value_slider)
+```
+
+```{ojs}
+// jStat.normal.pdf( x, mean, std )
+normal_plot = (min, max, mean, sd) => {
+  // jStat.normal.pdf(x, mean, sd)
+
+  return d3.ticks(min, max, 501).map((v) => {
+    return {
+      x: v,
+      y: dist.dnorm(v, mean, sd)
+    };
+  });
+}
+```
+
+<!--
+```ojs
+fill_limits = (mult) => {
+  let s = sd_value * mult;
+  return [
+    { x: mean_value - s > -4 ? mean_value - s : -4, y: 0 },
+    normal_plot(
+      mean_value - s > -4 ? mean_value - s : -4,
+      mean_value - s > -4 ? mean_value - s : -4,
+      mean_value,
+      sd_value
+    )[0],
+    normal_plot(
+      mean_value + s < 4 ? mean_value + s : 4,
+      mean_value + s < 4 ? mean_value + s : 4,
+      mean_value,
+      sd_value
+    )[0],
+    { x: mean_value + s < 4 ? mean_value + s : 4, y: 0 }
+  ];
+}
+```
+-->
+
+```{ojs}
+skew_normal_plot = (min, max, alpha) => {
+  // jStat.normal.pdf(x, mean, sd)
+
+  return d3.ticks(min, max, 201).map((v) => {
+    return {
+      x: v,
+      y: dsn(v, alpha)
+    };
+  });
+}
+```
+
+```{ojs}
+dsn = (x, alpha) => {
+  // set the defaults
+
+  const xi = 0;
+  const omega = 1;
+  const tau = 0;
+
+  let z = (x - xi) / omega;
+
+  let logN = -Math.log(Math.sqrt(2 * Math.PI)) - 0 - Math.pow(z, 2) / 2;
+
+  let logS = Math.log(
+    jStat.normal.cdf(tau * Math.sqrt(1 + Math.pow(alpha, 2)) + alpha * z, 0, 1)
+  );
+
+  let logPDF = logN + logS - Math.log(jStat.normal.cdf(tau, 0, 1));
+
+  return Math.exp(logPDF);
+}
+```
+
+```{ojs}
+// import jStat library
+jStat = require("jStat")
+```
+
+```{ojs}
+kurtosis = {
+  return {
+    uniform: -(6 / 5),
+    raised_cosine: (6 * (90 - Math.PI ** 4)) / (5 * (Math.PI ** 2 - 6) ** 2),
+    standard_normal: 0,
+    t_dist30: 6 / (30 - 4),
+    t_dist20: 6 / (20 - 4),
+    t_dist10: 6 / (10 - 4),
+    t_dist7: 6 / (7 - 5),
+    t_dist5: 6 / (5 - 4)
+  };
+}
+```
+
+```{ojs}
+kurtosis_values = Object.values(kurtosis).map((v) => Math.round(v * 100) / 100)
+```
+
+
+```{ojs}
+dists = {
+  return {
+    raised_cosine: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.raised_cosine(v, 0, 2.5)
+      };
+    }),
+    standard_normal: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dnorm(v, 0, 1)
+      };
+    }),
+    t_dist30: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 30)
+      };
+    }),
+    t_dist20: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 20)
+      };
+    }),
+    t_dist10: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 10)
+      };
+    }),
+    t_dist7: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 7)
+      };
+    }),
+    t_dist5: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 5)
+      };
+    }),
+
+    uniform: d3.ticks(-2.1, 2.1, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dunif(v, -2, 2)
+      };
+    })
+  };
+}
+```
+
+<!-- }}} -->
+

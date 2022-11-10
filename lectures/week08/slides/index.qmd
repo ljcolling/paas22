@@ -31,3 +31,21 @@ type: slides
 ![](../../../images/logo.png){.absolute bottom="2em" left="1000" width="280"}
 
 {{< include _content.qmd >}}
+
+
+<style>
+.reveal .slide {
+  border: solid;
+  border-width: 0px;
+  padding: 3rem;
+  margin: -3rem;
+}
+
+section.slide {
+  background-color: white;
+}
+
+.reveal {
+  background-color: #e3e3e3
+}
+</style>

@@ -395,28 +395,28 @@ normal_plot_output = Plot.plot({
     domain: [0, 0.8]
   },
   marks: [
-    Plot.line(
-      normal_plot(
-        mean_value - sd_value * s > -4 ? mean_value - sd_value * s : -4,
-        mean_value + sd_value * s < 4 ? mean_value + sd_value * s : 4,
-        mean_value,
-        sd_value
-      ),
-      {
-        x: "x",
-        y: "y",
-        strokeWidth: 1,
-        fill: "blue",
-        opacity: show ? 0.5 : 0
-      }
-    ),
-    Plot.line(fill_limits(s), {
-      x: "x",
-      y: "y",
-      fill: "blue",
-      strokeWidth: 1,
-      opacity: show ? 0.5 : 0
-    }),
+  // Plot.line(
+  //   normal_plot(
+  //     mean_value - sd_value * s > -4 ? mean_value - sd_value * s : -4,
+  //     mean_value + sd_value * s < 4 ? mean_value + sd_value * s : 4,
+  //     mean_value,
+  //     sd_value
+  //   ),
+  //   {
+  //     x: "x",
+  //     y: "y",
+  //     strokeWidth: 1,
+  //     fill: "blue",
+  //     opacity: show ? 0.5 : 0
+  //   }
+  // ),
+  // Plot.line(fill_limits(s), {
+  //   x: "x",
+  //   y: "y",
+  //   fill: "blue",
+  //   strokeWidth: 1,
+  //   opacity: show ? 0.5 : 0
+  // }),
     Plot.line(normal_plot(-4, 4, mean_value, sd_value), {
       x: "x",
       y: "y",
@@ -515,8 +515,6 @@ skew_desc = md`This distribution has a **skewness** of ${skew}. It is ${
   skew == 0 ? "symmetrical" : skew < 0 ? "left-skewed" : "right-skewed"
 }.`
 ```
-
-
 
 ::::
 
@@ -703,7 +701,6 @@ import {pop_hist_plot} from "@ljcolling/central-limit"
 import {sampling_distrubution} from "@ljcolling/central-limit"
 ```
 
-
 ```{ojs}
 viewof poptype
 
@@ -724,7 +721,6 @@ sampling distribution of the mean in @fig-sampling-central-limit. When the
 sample size is **1** then the sampling distribution should look just like the
 population distribution. But try increasing the sample size and see what
 happens. What do you notice?
-
 
 ```{ojs}
 //| fig-cap: Sampling distribution of the mean (50, 000 samples)
@@ -747,7 +743,6 @@ is an idealisation of what happens if you collect an _infinite_ number of sample
 But we're not collecting an _infinite_ number. We're only collecting 50,000].
 
 :::
-
 
 <!-- TODO: FINISH OFF AND THEN DO FORMULA FOR STANDARD ERROR -->
 
@@ -775,15 +770,90 @@ you'll have to make do with the ambiguity of **sufficiently large**!
 
 ## The standard error of the mean
 
-We've now had the chance to see a few different sampling distributions. And we've seen
-that sampling distributions of the mean look like normal distributions that have a 
-mean that is equal to the population mean and that they also have a standard deviation
-(the **standard error of the mean**). But how do we work out the **standard error of
-the mean**?
+<!--
+We've now had the chance to see a few different sampling distributions. And
+we've seen that sampling distributions of the mean look like normal
+distributions that have a mean that is equal to the population mean and that
+they also have a standard deviation (the **standard error of the mean**). But
+how do we work out the **standard error of the mean**?
 
 In the Lecture 7, I asked you to try think of two situations where all the samples drawn
 from a population will have idenitical means---or put another way, two situations where
 the standard error of the mean would be 0. 
+-->
+
+In Lecture 7 we started talking about the spread of **sample means** around the
+**population mean** that occurs when we repeatedly draw samples from the same
+population. I showed you [an
+example](https://paas.netlify.app/lectures/week07/handout/#fig-se) where the
+**average deviation** was small (that is, _on average_ the individual sample
+means were close to the population mean). And I showed you an example where the
+**average deviation** was larger (that is, _on average_ the individual sample
+means were further away from the population mean). We also learned in Lecture 7
+that **variance** is a measure of **average (squared) deviation**.
+
+I ended the lecture by asking you to think of two situations where the 
+average deviation (of sample means around the population mean) would be
+small or 0. If you managed to think of those two situations, then great!
+But if you didn't, then here they are:
+
+First, a feature of populations that will make the average deviation
+of sample means around the population mean be equal to 0. If the 
+variance in the population is 0 then all sample means will be identical 
+to the population mean. Why? Because if the variance in the population
+is 0 then all members of the population will be identical. The 
+typical value (the mean) any sample will have to be identical to the 
+population mean, because there's only one value anything can take. 
+
+Second, a feature of the samples that will make the average deviation of
+samples means around the population mean be equal to 0. If the sample size is
+so large that it includes the entire population then the sample mean would, by
+definition, be equal to the population mean. So if all your samples are this
+large then all the sample means will be equal to the population mean. And this
+means that the average deviation of sample means around the population would be
+equal to 0.
+
+This means that if we want to compute the **average (squared) deviation** of
+sample means around the population mean then it will depend on two factors.
+First, when the **variance of the population** ($\sigma^2$) is small then the
+_variance of sample means around the population mean_ will be small.
+Conversely, when the **variance of the population** is larger then we'd expect
+the _variance of sample means around the population mean_ to be larger. Second,
+if the sample size (n) is large then the _variance of the sample means around the
+population mean_ will be small. Conversely, when the sample is small then
+we'd expect the _variance of sample means around the population mean_ to be
+larger. 
+
+The only way to combine $\sigma^2$ and $n$ that matches these observations
+is as shown in @eq-sem-squ, below:
+
+
+$$\frac{\sigma^2}{n}$${#eq-sem-squ}
+
+
+This formula gives us the _variance of the sample means around the population
+mean_. But I said that the **standard error of the mean** is the **standard
+deviation** of the sample means around the population mean. That means that we
+just need to take the square root of the formula in @eq-sem-squ. And because we
+don't actually know the value of $\sigma$ (the variance of the population) and
+only know our **estimate of it**, the sample variance (s), we need to replace
+$\sigma$ with s. This gives us the equation in @eq-sem, below: 
+
+
+$$\frac{s}{\sqrt{n}}$${#eq-sem}
+
+This is exactly the formula for **the standard error of the mean**.
+
+Now this is, admittedly, a fairly long winded way to get to what is essentially
+a very simple formula. However, as I have alluded to several times, the
+**standard error of the mean** is a fairly misunderstood concept. Part of the 
+reason for this is that it's often just presented as a formula. I hope that
+getting the there the long way has helped you to build a better intuition of
+what the standard error of the mean actually is.
+
+
+
+
 
 <!-- Dependencies {{{ -->
 
@@ -972,7 +1042,6 @@ spec3 = {
 jstat = require("https://bundle.run/jstat@1.9.4")
 ```
 
-
 ```{ojs}
 dicedata = {
   return d3.sort(
@@ -999,7 +1068,6 @@ d = {
 }
 ```
 
-
 ```{ojs}
 import { dist } from "@ljcolling/wasm-distributions"
 ```
@@ -1011,7 +1079,6 @@ sd_value_slider = Inputs.range([0.5, 2], {
   label: htl.html`standard deviation <br />&#x3C3;`
 })
 ```
-
 
 ```{ojs}
 import { texmd } from "@kelleyvanevert/katex-within-markdown"
@@ -1025,17 +1092,21 @@ mean_value_slider = Inputs.range([-3, 3], {
 })
 ```
 
-```{ojs}
+<!--
+```ojs
 viewof show = true//Inputs.toggle({ label: "Show coverage", value: false })
 ```
+-->
 
 ```{ojs}
 sd_value = Generators.input(sd_value_slider)
 ```
 
-```{ojs}
+<!--
+```ojs
 viewof s = 1//= Inputs.range([0, 3], { step: 0.5 })
 ```
+-->
 
 ```{ojs}
 mean_value = Generators.input(mean_value_slider)
@@ -1055,7 +1126,8 @@ normal_plot = (min, max, mean, sd) => {
 }
 ```
 
-```{ojs}
+<!--
+```ojs
 fill_limits = (mult) => {
   let s = sd_value * mult;
   return [
@@ -1076,6 +1148,7 @@ fill_limits = (mult) => {
   ];
 }
 ```
+-->
 
 ```{ojs}
 skew_normal_plot = (min, max, alpha) => {
@@ -1192,7 +1265,6 @@ dists = {
   };
 }
 ```
-
 
 <!-- }}} -->
 

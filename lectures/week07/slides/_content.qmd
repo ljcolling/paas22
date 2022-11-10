@@ -1092,13 +1092,13 @@ p2 <- ggplot(d2) +
 
 final_plot <- p2 + p1 + plot_annotation(tag_levels = "a")
 
-ggsave(final_plot, file = here::here("image","final_plot.png"), width = 10, height = 3)
+ggsave(final_plot, file = here::here("images","final_plot.png"), width = 10, height = 3)
 
 ```
 <!-- }}} -->
 
 ```{r}
-knitr::include_graphics(here::here("image","final_plot.png"))
+knitr::include_graphics(here::here("images","final_plot.png"))
 ```
 
 So let's calculate the average of the squared deviations and the average of the absolute value of the deviations
