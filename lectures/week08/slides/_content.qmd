@@ -329,8 +329,104 @@ viewof n_players_mult = Inputs.range([1, 400], {
 
 ### Describing normal distributions
 
+
+:::: {.columns}
+
+:::{.column width="50%"}
+
+- The normal distribution has a characteristic bell shape but not all 
+normal distributions are identical
+
+- They can vary in terms of where they are centered and how spread 
+out they are
+
+- Changing $\mu$ and $\simga$ changes the absolute position of
+points on the plot, but not the relative positions measured in 
+units of $\sigma$
+
+- E.g., ~68% of the points will lie between $\mu - \sigma$ and $\mu + \sigma$
+
+:::
+
+:::{.column width="50%"}
+
+```{ojs}
+normal_plot_output = Plot.plot({
+  x: {
+    grid: true,
+    domain: [-4, 4]
+  },
+  y: {
+    grid: true,
+    domain: [0, 0.8]
+  },
+  marks: [
+  // Plot.line(
+  //   normal_plot(
+  //     mean_value - sd_value * s > -4 ? mean_value - sd_value * s : -4,
+  //     mean_value + sd_value * s < 4 ? mean_value + sd_value * s : 4,
+  //     mean_value,
+  //     sd_value
+  //   ),
+  //   {
+  //     x: "x",
+  //     y: "y",
+  //     strokeWidth: 1,
+  //     fill: "blue",
+  //     opacity: show ? 0.5 : 0
+  //   }
+  // ),
+  // Plot.line(fill_limits(s), {
+  //   x: "x",
+  //   y: "y",
+  //   fill: "blue",
+  //   strokeWidth: 1,
+  //   opacity: show ? 0.5 : 0
+  // }),
+    Plot.line(normal_plot(-4, 4, mean_value, sd_value), {
+      x: "x",
+      y: "y",
+      strokeWidth: 4
+    }),
+    Plot.ruleY([0])
+  ]
+})
+```
+
+```{ojs}
+normal_sliders = htl.html`${mean_value_slider}${sd_value_slider}`
+```
+
+```{ojs}
+texmd`This plot shows a normal distribution with a mean ($\mu$) of ${mean_value} and a standard deviation ($\sigma$) of ${sd_value}.`
+```
+
+<!-- add toggle -->
+
+:::
+
+::::
+
 ---
 
+### Describing deviations from the normal distribution 
+
+When looked at the distribution of scores from the second dice game
+we saw that it was **skew**
+
+- **Skew** is a _technical term_ to describe one way in which 
+distributions can deviate from normal
+
+
+
+---
+
+### Describing deviations from the normal distribution 
+
+<!-- kurtosis -->
+
+
+---
 
 <img style="width:100%;height:100%" src="`r xfun::embed_file(here::here("images/mentors.png"))[2]$attribs$href`">
 
