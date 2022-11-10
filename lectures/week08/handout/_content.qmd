@@ -773,10 +773,17 @@ you'll have to make do with the ambiguity of **sufficiently large**!
 
 -->
 
-### The standard deviation of the sampling distribution
+## The standard error of the mean
 
-For the preceding sections 
+We've now had the chance to see a few different sampling distributions. And we've seen
+that sampling distributions of the mean look like normal distributions that have a 
+mean that is equal to the population mean and that they also have a standard deviation
+(the **standard error of the mean**). But how do we work out the **standard error of
+the mean**?
 
+In the Lecture 7, I asked you to try think of two situations where all the samples drawn
+from a population will have idenitical means---or put another way, two situations where
+the standard error of the mean would be 0. 
 
 <!-- Dependencies {{{ -->
 
