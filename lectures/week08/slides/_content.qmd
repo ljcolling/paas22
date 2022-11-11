@@ -340,11 +340,15 @@ normal distributions are identical
 - They can vary in terms of where they are centered and how spread 
 out they are
 
-- Changing $\mu$ and $\simga$ changes the absolute position of
+- Changing $\mu$ and $\sigma$ changes the absolute position of
 points on the plot, but not the relative positions measured in 
 units of $\sigma$
 
-- E.g., ~68% of the points will lie between $\mu - \sigma$ and $\mu + \sigma$
+  - E.g., ~68% of the points will lie between $\mu - \sigma$ and $\mu + \sigma$
+
+```{ojs}
+texmd` - The plot shows a normal distribution with a mean ($\mu$) of ${mean_value} and a standard deviation ($\sigma$) of ${sd_value}.`
+```
 
 :::
 
@@ -361,28 +365,28 @@ normal_plot_output = Plot.plot({
     domain: [0, 0.8]
   },
   marks: [
-  // Plot.line(
-  //   normal_plot(
-  //     mean_value - sd_value * s > -4 ? mean_value - sd_value * s : -4,
-  //     mean_value + sd_value * s < 4 ? mean_value + sd_value * s : 4,
-  //     mean_value,
-  //     sd_value
-  //   ),
-  //   {
-  //     x: "x",
-  //     y: "y",
-  //     strokeWidth: 1,
-  //     fill: "blue",
-  //     opacity: show ? 0.5 : 0
-  //   }
-  // ),
-  // Plot.line(fill_limits(s), {
-  //   x: "x",
-  //   y: "y",
-  //   fill: "blue",
-  //   strokeWidth: 1,
-  //   opacity: show ? 0.5 : 0
-  // }),
+   Plot.line(
+     normal_plot(
+       mean_value - sd_value * s > -4 ? mean_value - sd_value * s : -4,
+       mean_value + sd_value * s < 4 ? mean_value + sd_value * s : 4,
+       mean_value,
+       sd_value
+     ),
+     {
+       x: "x",
+       y: "y",
+       strokeWidth: 1,
+       fill: "blue",
+       opacity: show ? 0.5 : 0
+     }
+   ),
+   Plot.line(fill_limits(s), {
+     x: "x",
+     y: "y",
+     fill: "blue",
+     strokeWidth: 1,
+     opacity: show ? 0.5 : 0
+   }),
     Plot.line(normal_plot(-4, 4, mean_value, sd_value), {
       x: "x",
       y: "y",
@@ -394,14 +398,18 @@ normal_plot_output = Plot.plot({
 ```
 
 ```{ojs}
-normal_sliders = htl.html`${mean_value_slider}${sd_value_slider}`
+//| panel: input
+normal_sliders = htl.html`<div style="font:smaller">${mean_value_slider}${sd_value_slider}</div>`
+viewof show = Inputs.toggle({ label: "Show", value: false })
 ```
 
+
+\
 ```{ojs}
-texmd`This plot shows a normal distribution with a mean ($\mu$) of ${mean_value} and a standard deviation ($\sigma$) of ${sd_value}.`
+s =  1
 ```
 
-<!-- add toggle -->
+
 
 :::
 
@@ -411,6 +419,9 @@ texmd`This plot shows a normal distribution with a mean ($\mu$) of ${mean_value}
 
 ### Describing deviations from the normal distribution 
 
+:::: {.columns}
+
+:::{.column width="50%"}
 When looked at the distribution of scores from the second dice game
 we saw that it was **skew**
 
@@ -418,13 +429,246 @@ we saw that it was **skew**
 distributions can deviate from normal
 
 
+```{ojs}
+skew_desc = md`- This distribution has a **skewness** of ${skew}. It is ${
+  skew == 0 ? "symmetrical" : skew < 0 ? "left-skewed" : "right-skewed"
+}.`
+```
+:::
+
+::: {.column width="50%"}
+```{ojs}
+skew_normal_plot_output = Plot.plot({
+  x: {
+    grid: true
+  },
+  y: {
+    grid: true,
+    domain: [0, 0.8]
+  },
+  marks: [
+    Plot.line(skew_normal_plot(-4, 4, skew), {
+      x: "x",
+      y: "y",
+      strokeWidth: 4
+    }),
+    Plot.ruleY([0])
+  ]
+})
+```
+
+
+```{ojs}
+//| panel: input
+viewof skew = Inputs.range([-10, 10], { label: "Skewness", step: 0.5 })
+```
+
+:::
+
+::::
+
 
 ---
 
 ### Describing deviations from the normal distribution 
 
-<!-- kurtosis -->
+::::{.columns}
 
+:::{.column width="50%"}
+- Another way to deviate from the normal distribution is to 
+have either fatter or skinnier **tails** 
+
+- The _tailedness_ of a distribution is given
+by its **kurtosis**.
+
+-  Kurtosis of a distribution is often specified with reference to the **normal
+   distribution**. This is **excess** kurtosis. 
+
+```{ojs}
+kurtosis_desc = md`- This distribution has an excess kurtosis of ${
+  kurtosis_values[kurtosis_value]
+}. ${
+  kurtosis_values[kurtosis_value] === 0
+    ? "It is a **Mesokurtic distribution**."
+    : kurtosis_values[kurtosis_value] > 0
+    ? "It is a **Leptokurtic distribution**."
+    : "It is a **Platykurtic distribution**."
+}`
+```
+
+:::
+
+:::{.column width="50%"}
+```{ojs}
+kurtosis_plot = Plot.plot({
+  x: {
+    grid: true,
+    domain: [-3, 3]
+  },
+  y: {
+    grid: true,
+    domain: [0, 0.4]
+  },
+  marks: [
+    true
+      ? Plot.line(dists.standard_normal, {
+          x: "x",
+          y: "y",
+          stroke: "grey",
+          strokeWidth: 1
+        })
+      : null,
+    Plot.line(dists[Object.keys(kurtosis)[kurtosis_value]], {
+      x: "x",
+      y: "y",
+      strokeWidth: 4
+    }),
+    Plot.ruleY([0])
+  ]
+})
+```
+
+
+
+```{ojs}
+//|echo: false
+//| panel: input
+viewof kurtosis_value = Inputs.range([0, 6], {
+  step: 1,
+  value: 2,
+  label: "Excess kurtosis",
+  format: (d) => kurtosis_values[d]
+})
+```
+
+
+:::
+::::
+
+---
+
+## Distributions and samples
+
+- We've seen that whenever we look at the distribution of values where the
+  values are produced by **adding up numbers** we got something that looked
+  like a normal distribution
+
+- In Lecture 6, we saw that the formula for the sample mean was as shown in
+in @eq-mean-sum, below:
+
+$$\bar{x}={\displaystyle\sum^{N}_{i=1}{\frac{x_i}{N}}}$$ {#eq-mean-sum}
+
+
+- So to calculate a sample mean, we just **add up a bunch of numbers**
+
+- Let's say I take lots of samples from a population. 
+
+   - And for each sample, I calculate the sample mean.
+
+   - If we had to plot these sample means, then what would the distribution look
+     like? 
+
+---
+
+### The sampling distribution of the mean
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+We can try it out. 
+
+- Let's say that I have a population with a mean of 100 
+
+- And a standard deviation of 15. 
+
+- From this population I can draw samples of `r 5^2` values 
+
+- I'll do this 100,000 times and plot the results in @fig-sampling-r
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| label: fig-sampling-r 
+#| fig.cap: Sample means from 100,000 samples (sample size = 25)
+#| message: false
+require(tidyverse)
+
+mean <- 100
+sd <- 15
+n <- 5^2
+
+samp <- \(x) rnorm(n = n, sd = sd, mean = mean) |> mean() 
+
+d <- parallel::mclapply(1:100000, samp) |> unlist() 
+df <- tibble::tibble(x = d)
+
+ggplot(df, aes(x = x)) + 
+geom_histogram(aes(y = ..density..), bins = 100) +
+geom_function(fun = \(x) dnorm(x, mean,  sd / sqrt(n)), color = "red", size=1) +
+theme_minimal() + 
+labs(x = "sample mean") +
+scale_y_continuous(breaks = NULL, name = "count") +
+theme(panel.grid.major.x = element_blank()) +
+theme(panel.grid.minor.x = element_blank())
+```
+
+:::
+::::
+
+
+
+
+The standard deviation of the sampling distribution of the mean (the plot in
+@fig-sampling-r) has a special name:
+
+_It's called the **standard error of the mean**!_
+
+
+---
+
+::::{.columns}
+:::{.column width="50%"}
+
+
+```{ojs}
+import {viewof poptype} from "@ljcolling/central-limit"
+import {viewof n} from "@ljcolling/central-limit"
+import {pop_hist_plot} from "@ljcolling/central-limit"
+import {sampling_distrubution} from "@ljcolling/central-limit"
+```
+
+```{ojs}
+//| panel: input
+viewof poptype
+
+```
+
+```{ojs}
+//| fig-cap: Distribution of the population
+//| label: fig-pop-central-limit
+pop_hist_plot
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{ojs}
+//| fig-cap: Sampling distribution of the mean (50, 000 samples)
+//| label: fig-sampling-central-limit
+sampling_distrubution
+```
+
+```{ojs}
+//| panel: input
+viewof n
+```
+
+:::
+::::
 
 ---
 
@@ -651,7 +895,7 @@ import { dist } from "@ljcolling/wasm-distributions"
 sd_value_slider = Inputs.range([0.5, 2], {
   value: 1,
   step: 0.25,
-  label: htl.html`standard deviation <br />&#x3C3;`
+  label: htl.html`&#x3C3;`
 })
 ```
 
@@ -663,25 +907,18 @@ import { texmd } from "@kelleyvanevert/katex-within-markdown"
 mean_value_slider = Inputs.range([-3, 3], {
   value: 0,
   step: 0.25,
-  label: htl.html`mean<br />  &#x3BC`
+  label: htl.html`&#x3BC`
 })
 ```
 
-<!--
-```ojs
-viewof show = true//Inputs.toggle({ label: "Show coverage", value: false })
-```
--->
+
 
 ```{ojs}
 sd_value = Generators.input(sd_value_slider)
 ```
 
-<!--
-```ojs
-viewof s = 1//= Inputs.range([0, 3], { step: 0.5 })
-```
--->
+
+
 
 ```{ojs}
 mean_value = Generators.input(mean_value_slider)
@@ -701,8 +938,8 @@ normal_plot = (min, max, mean, sd) => {
 }
 ```
 
-<!--
-```ojs
+
+```{ojs}
 fill_limits = (mult) => {
   let s = sd_value * mult;
   return [
@@ -723,7 +960,7 @@ fill_limits = (mult) => {
   ];
 }
 ```
--->
+
 
 ```{ojs}
 skew_normal_plot = (min, max, alpha) => {

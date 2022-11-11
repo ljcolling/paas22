@@ -609,8 +609,8 @@ kurtosis_desc = md`This distribution has an excess kurtosis of ${
 
 Now that we've talked a little bit about samples and populations (in Lecture 6
 and Lecture 7) and we've also covered distributions, we're going to start
-putting these ideas together. We saw that whenever we looked at the
-distribution of values where the values were produced by **adding up numbers**
+putting these ideas together. We've seen that whenever we look at the
+distribution of values where the values are produced by **adding up numbers**
 we got something that looked like a normal distribution.
 
 When we covered the **sample mean** in Lecture 6, the formula was as shown
