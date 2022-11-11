@@ -848,7 +848,7 @@ Now this is, admittedly, a fairly long winded way to get to what is essentially
 a very simple formula. However, as I have alluded to several times, the
 **standard error of the mean** is a fairly misunderstood concept. Part of the 
 reason for this is that it's often just presented as a formula. I hope that
-getting the there the long way has helped you to build a better intuition of
+getting there the long way has helped you to build a better intuition of
 what the standard error of the mean actually is.
 
 
@@ -856,7 +856,6 @@ what the standard error of the mean actually is.
 
 
 <!-- Dependencies {{{ -->
-
 
 ```{ojs}
 n_heads = jstat(0, coins - 1, coins + 1 - 1)[0].map((v) => {
@@ -1092,21 +1091,9 @@ mean_value_slider = Inputs.range([-3, 3], {
 })
 ```
 
-<!--
-```ojs
-viewof show = true//Inputs.toggle({ label: "Show coverage", value: false })
-```
--->
-
 ```{ojs}
 sd_value = Generators.input(sd_value_slider)
 ```
-
-<!--
-```ojs
-viewof s = 1//= Inputs.range([0, 3], { step: 0.5 })
-```
--->
 
 ```{ojs}
 mean_value = Generators.input(mean_value_slider)
@@ -1125,30 +1112,6 @@ normal_plot = (min, max, mean, sd) => {
   });
 }
 ```
-
-<!--
-```ojs
-fill_limits = (mult) => {
-  let s = sd_value * mult;
-  return [
-    { x: mean_value - s > -4 ? mean_value - s : -4, y: 0 },
-    normal_plot(
-      mean_value - s > -4 ? mean_value - s : -4,
-      mean_value - s > -4 ? mean_value - s : -4,
-      mean_value,
-      sd_value
-    )[0],
-    normal_plot(
-      mean_value + s < 4 ? mean_value + s : 4,
-      mean_value + s < 4 ? mean_value + s : 4,
-      mean_value,
-      sd_value
-    )[0],
-    { x: mean_value + s < 4 ? mean_value + s : 4, y: 0 }
-  ];
-}
-```
--->
 
 ```{ojs}
 skew_normal_plot = (min, max, alpha) => {
@@ -1209,7 +1172,6 @@ kurtosis = {
 kurtosis_values = Object.values(kurtosis).map((v) => Math.round(v * 100) / 100)
 ```
 
-
 ```{ojs}
 dists = {
   return {
@@ -1265,6 +1227,43 @@ dists = {
   };
 }
 ```
+
+<!--
+```ojs
+viewof show = true//Inputs.toggle({ label: "Show coverage", value: false })
+```
+-->
+
+<!--
+```ojs
+viewof s = 1//= Inputs.range([0, 3], { step: 0.5 })
+```
+-->
+
+<!--
+```ojs
+fill_limits = (mult) => {
+  let s = sd_value * mult;
+  return [
+    { x: mean_value - s > -4 ? mean_value - s : -4, y: 0 },
+    normal_plot(
+      mean_value - s > -4 ? mean_value - s : -4,
+      mean_value - s > -4 ? mean_value - s : -4,
+      mean_value,
+      sd_value
+    )[0],
+    normal_plot(
+      mean_value + s < 4 ? mean_value + s : 4,
+      mean_value + s < 4 ? mean_value + s : 4,
+      mean_value,
+      sd_value
+    )[0],
+    { x: mean_value + s < 4 ? mean_value + s : 4, y: 0 }
+  ];
+}
+```
+-->
+
 
 <!-- }}} -->
 

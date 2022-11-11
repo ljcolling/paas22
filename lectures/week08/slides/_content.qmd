@@ -629,6 +629,24 @@ _It's called the **standard error of the mean**!_
 
 ---
 
+## The Central Limit Theorem 
+
+Before we move on to how to calculate the **standard error of the mean** I want
+to assure you something
+
+- You might think that the **sampling distribution of the mean** in
+  @fig-sampling-r is normally distributed because the **population**
+  is normally distributed
+
+- But this is not the case, as your sample size increases, then sampling
+  distribution of the mean will be normally distributed 
+
+- And this will happen even if the **population is not normally distributed**
+
+---
+
+## The Central Limit Theorem 
+
 ::::{.columns}
 :::{.column width="50%"}
 
@@ -670,11 +688,198 @@ viewof n
 :::
 ::::
 
+- If the sample size is large enough, then the **sampling distribution of the
+  mean** will approach a normal distribution. This occurs even if the
+  **population** _isn't_ normally distributed
+
+---
+
+## The standard error of the mean
+
+- In Lecture 7 we started talking about the **spread** of **sample means** around 
+the **population**
+
+```{r}
+
+require(tidyverse)
+require(patchwork)
+# require(plotshow)
+
+### generate 10 sample means
+
+set.seed(123)
+gen1 <- \(x) rnorm(n = 10, sd = 25, mean = 100) |> mean()
+set.seed(123)
+gen2 <- \(x) rnorm(n = 4, sd = 25, mean = 100) |> mean()
+
+d1 <- tibble::tibble(
+  y = parallel::mclapply(X = seq_len(10), gen1) |> unlist(),
+  x = seq_len(10)
+)
+
+d2 <- tibble::tibble(
+  y = parallel::mclapply(X = seq_len(10), gen2) |> unlist(),
+  x = seq_len(10)
+)
+
+
+
+p1 <- ggplot(d1) +
+  geom_point(aes(x = x, y = y)) +
+  geom_hline(yintercept = 100, linetype = 2) +
+  labs(x = "sample number", y = latex2exp::TeX("\\bar{x}")) +
+  scale_x_continuous(breaks = seq(1, 10, 1)) +
+  geom_segment(aes(x = x, y = y, yend = 100, xend = x), linetype = 2) +
+  cowplot::theme_cowplot() +
+  theme_minimal() +
+  ylim(130, 70) +
+  NULL
+
+
+p2 <- ggplot(d2) +
+  geom_point(aes(x = x, y = y)) +
+  geom_hline(yintercept = 100, linetype = 2) +
+  labs(x = "sample number", y = latex2exp::TeX("\\bar{x}")) +
+  scale_x_continuous(breaks = seq(1, 10, 1)) +
+  geom_segment(aes(x = x, y = y, yend = 100, xend = x), linetype = 2) +
+  theme_minimal() +
+  ylim(130, 70) +
+  NULL
+```
+
+```{r}
+#| echo: false 
+#| warning: false
+#| label: fig-se
+#| fig-cap: !expr glue::glue("(a) 10 samples with a standard deviation of {round(sd(d1$y), 2)} (b) 10 samples with a standard deviation of {round(sd(d2$y), 2)}") 
+p1 + p2 + plot_annotation(tag_levels = "a")
+```
+
+\
+I showed you @fig-se (above) where the **average deviation of sample means from
+the population mean** was either small (A) or large (B)
+
+---
+
+## The standard error of the mean
+
+I asked you to image two scenarios: One that was a feature of the
+**population** and one that was a feature of the **samples** where the
+**average deviation of sample means from the population mean** would be small
+(or zero).
+
+If you managed, then great! But if not, then here they are:
+
+1. If the **average (squared) deviation** in the **population** is 0 then the
+**average deviation of sample means from the population mean** would be 0
+
+    - Because all members of the population would be the same, so all
+    samples would be the same, so all sample means would be the same
+
+    - Conversely, if the **average (squared) deviations** in the **population**
+      was larger, then the **average deviations of sample means from the
+      population mean** would be larger
+
+---
+
+## The standard error of the mean
+
+2. If the **sample size** was large (so large to include the entire population)
+   then the **average deviation of sample means from the population mean**
+   would be 0
+
+    - Because every sample would be identical to the population, so every sample
+    mean would be identical to the population mean
+
+    - Conversely, if the sample size was smaller, then the **average deviations 
+    of sample means from the population mean** would be larger
+
+
+Let's put these two ideas together to try come up with a formula for the
+**average (squared) deviations of the sample means from the population mean**
+
+Our formula will include:
+
+- $n$: the sample size
+
+- $\sigma^2$: the average (squared) deviations in the population (aka the
+  variance of the population)
+
+- And we'll call our result $\sigma_{\bar{x}}^2$
+
+---
+
+## The standard error of mean
+
+The only way to combine $n$ and $\sigma^2$ so that:
+
+1. when $n$ is very big $\sigma_{\bar{x}}^2$ will be small (and vice versa) and 
+
+2. when $\sigma^2$ is very small $\sigma_{\bar{x}}^2$  will be small (and vice versa)
+
+is formula is @eq-se-var, below:
+
+$$\sigma_{\bar{x}}^2=\frac{\sigma^2}{n}$${#eq-se-var}
+
+But remember, we don't actually know the true $\sigma^2$ (the variance of the
+population), we only know $s^2$ (the sample variance, which is out estimate of
+the variance in the population). So we'll make a slight change to the formula 
+as in @eq-se-var2
+
+$$s_{\bar{x}}^2=\frac{s^2}{n}$${#eq-se-var2}
+
+---
+
+## The standard error of mean
+
+- There's one final step to get to the formula for the **standard error of the mean**.
+
+- The formula in @eq-se-var2 is framed in terms of the **average (squared)
+  deviations) of sample means from the population mean**---that is, in terms of
+  variance. 
+
+- But the standard error of the mean is the **standard deviation of the
+  sampling distribution**
+
+- The standard deviation is just the square root of the variance, so we just
+  need to take the square root of both sides of @eq-se-var2, to get the
+  equation in @eq-se, below:
+
+$$s_{\bar{x}}=\frac{s}{\sqrt{n}}$${#eq-se}
+
+
+More commonly, however, you'll see $s_{\bar{x}}$ just written as $\mathrm{SEM}$ 
+for **Standard Error of the Mean**
+
+And is the formula for the **standard error of the mean** and where it comes from
+
+---
+
+## The standard error of mean
+
+_This was, admittedly, a fairly long winded way to get to what is essentially a
+very simple formula_
+
+- However, as I have alluded to several times, the **standard error of the
+  mean** is a fairly misunderstood concept
+
+- I hope that getting there the long way has helped you to build a better
+  intuition of what the standard error of the mean actually is
+
+_I dislike talking about misconceptions because I think it can sometimes create
+them_
+
+But it worth talking about **one prominent one**
+
+<font color="red" weight="strong">Misconception</font>
+
+_The SEM tells you how far away the sample mean is (likely) to be from 
+the actual population mean_
+
 ---
 
 <img style="width:100%;height:100%" src="`r xfun::embed_file(here::here("images/mentors.png"))[2]$attribs$href`">
 
-<!-- Dependencies {{{ -->
 
 
 ```{ojs}
@@ -911,14 +1116,9 @@ mean_value_slider = Inputs.range([-3, 3], {
 })
 ```
 
-
-
 ```{ojs}
 sd_value = Generators.input(sd_value_slider)
 ```
-
-
-
 
 ```{ojs}
 mean_value = Generators.input(mean_value_slider)
@@ -937,7 +1137,6 @@ normal_plot = (min, max, mean, sd) => {
   });
 }
 ```
-
 
 ```{ojs}
 fill_limits = (mult) => {
@@ -960,7 +1159,6 @@ fill_limits = (mult) => {
   ];
 }
 ```
-
 
 ```{ojs}
 skew_normal_plot = (min, max, alpha) => {
@@ -1021,7 +1219,6 @@ kurtosis = {
 kurtosis_values = Object.values(kurtosis).map((v) => Math.round(v * 100) / 100)
 ```
 
-
 ```{ojs}
 dists = {
   return {
@@ -1077,6 +1274,4 @@ dists = {
   };
 }
 ```
-
-<!-- }}} -->
 
