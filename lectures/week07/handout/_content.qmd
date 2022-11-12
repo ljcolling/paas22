@@ -13,7 +13,6 @@ learned about how they are different ways of describing the typical value. But
 apart describing the _typical value_, we might also want a way to describe how
 **spread** out the data is around this value. We'll start this week off by
 talking about ways to measure this spread.
-
 ## Measures of spread
 
 If you look at @fig-hist-width you'll see two data sets that are centered at the
