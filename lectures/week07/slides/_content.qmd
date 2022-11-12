@@ -1620,3 +1620,1628 @@ raw_data_ave = {
 ```
 
 <!-- }}} -->
+||||||| (empty tree)
+=======
+```{r}
+#| echo: false
+#| message: false
+require(tidyverse)
+require(cowplot)
+require(patchwork)
+knitr::opts_knit$set(eval.after = "fig.cap")
+```
+
+## Outline for today
+
+- Measures of spread
+  
+  - Range
+
+  - Interquartile range
+
+  - Deviation
+
+  - Variance 
+
+    - Sample Variance and Population Variance
+
+  - Standard Deviation
+
+- The relationship between samples and populations   
+
+
+---
+
+## Measures of spread
+
+Last week we started learning about the tools we can use to describe data.
+Specifically, we learned about the **mean**, **mode**, and **median**. And we
+learned about how they are different ways of describing the typical value.
+
+But apart describing the _typical value_, we might also want a way to describe
+how **spread** out the data is around this value.
+
+---
+
+## Measures of spread
+
+In @fig-hist-width you can see two sets of data. Both the datasets have a mean 0,
+but they have different amounts of spread.
+
+```{r}
+#| echo: false 
+#| warning: false
+#| label: fig-hist-width
+#| fig.align: center
+#| fig-cap: |
+#|  Histogram of two distributions with equal means but different spreads. 
+#|  *N = 10,000* in each case.
+
+set.seed(123)
+dist_narrow <- rnorm(10000, mean = 0, sd = 1)
+dist_wide <- rnorm(10000, mean = 0, sd = 3)
+tibble::tibble(
+  narrrow = dist_narrow,
+  wide = dist_wide
+) |>
+  tidyr::pivot_longer(1:2) |>
+  ggplot2::ggplot(aes(
+    x = value,
+    # group = name,
+    fill = name,
+    alpha = name
+  )) +
+  geom_histogram(color = "black", position = "identity") +
+  scale_alpha_manual(values = c(1, 0.7), guide = "none") +
+  scale_fill_manual(values = c("seagreen", "blue"), guide = "none") +
+  theme_cowplot() + 
+  NULL
+```
+
+
+
+---
+
+### Range
+
+
+- The **range** of a variable is the distance between its smallest and
+largest values. 
+
+- For example, if we gather a sample of 100 participants and the youngest is 17
+  years old, and the oldest is 67 years old, then the range of our age variable
+  in this sample if 67 - 15 = `r 67 - 17` years.
+
+
+
+
+<!-- OHQ Code {{{ -->
+
+
+```{ojs}
+//| echo: false
+data_mean_median(rangeplot, measures[0].fun, "rangeplot")
+```
+
+
+```{ojs}
+//| echo: false
+mutable rangeplot = []
+```
+
+```{ojs}
+//| echo: false
+//| panel: center
+//| layout-ncol: 3
+Inputs.button("Preset 1", {
+  reduce: (d) => {
+  mutable rangeplot = [
+      { x: 14, y: 87 },
+      { x: 462, y: 93 },
+      { x: 161, y: 95 },
+      { x: 289, y: 82 },
+      { x: 224, y: 87 },
+      { x: 268, y: 54 },
+      { x: 178, y: 62 },
+      { x: 52, y: 104 },
+      { x: 352, y: 92 },
+      { x: 271, y: 122 },
+      { x: 177, y: 138 },
+      { x: 125, y: 97 },
+      { x: 412, y: 91 }
+    ].map((v) => {
+      return {x: (v.x * 3) + 400, y: v.y}
+    })
+  }
+})
+
+
+Inputs.button("Preset 2", {
+  reduce: (d) => {
+  mutable rangeplot = [
+  { x: 14, y: 87 },
+  { x: 462, y: 93 },
+  { x: 161, y: 95 },
+  { x: 289, y: 117 },
+  { x: 224, y: 87 },
+  { x: 230, y: 35 },
+  { x: 224, y: 62 },
+  { x: 154, y: 44 },
+  { x: 290, y: 77 },
+  { x: 226, y: 115 },
+  { x: 228, y: 142 },
+  { x: 156, y: 72 },
+  { x: 294, y: 46 }
+    ].map((v) => {
+      return {x: (v.x * 3) + 400, y: v.y}
+    })
+  }
+})
+
+
+
+Inputs.button("Clear", {
+  reduce: (d) => {
+    mutable summary = Object.assign({}, mutable summary, { rangeplot: [] });
+    mutable rangeplot = []
+  }
+})
+```
+
+```{ojs}
+//| echo: false
+md`The range of this data is: ${(d3.max(summary.rangeplot.data) - d3.min(summary.rangeplot.data)) || htl.html`<font color="red">no data</font>`}`
+```
+
+<!-- }}} -->
+
+
+---
+
+### Interquartile range
+
+- A slightly more useful measure than the range is the interquartile range (IQR)
+
+- Involves splitting the data into quarters.
+  - Find the median to split the data in half
+  - Split each of the halves into half again
+
+- The IQR is the range covered by the middle two quarters (50%) of the data
+
+
+
+<!-- OHQ Code {{{ -->
+
+```{ojs}
+//| echo: false
+data_mean_median(iqrplot, measures[1].fun, "iqrplot")
+```
+
+
+```{ojs}
+//| echo: false
+mutable iqrplot = []
+```
+
+
+
+```{ojs}
+//| echo: false
+//| panel: center
+//| layout-ncol: 4
+ Inputs.button("Preset 1", {
+  reduce: (d) =>
+      mutable iqrplot = [
+        { x: 94, y: 42 },
+        { x: 311, y: 51 },
+        { x: 534, y: 26 },
+        { x: 292, y: 104 },
+        { x: 258, y: 48 },
+        { x: 249, y: 113 },
+        { x: 273, y: 84 },
+        { x: 330, y: 78 }
+    ].map((v) => {
+      return {x: (v.x * 3) + 400, y: v.y}
+    })
+    
+})
+
+Inputs.button("Preset 2", {
+  reduce: (d) =>
+      mutable iqrplot = [
+        { x: 94, y: 42 },
+        { x: 416, y: 114 },
+        { x: 534, y: 26 },
+        { x: 362, y: 111 },
+        { x: 183, y: 107 },
+        { x: 247, y: 107 },
+        { x: 296, y: 110 },
+        { x: 476, y: 121 }
+    ].map((v) => {
+      return {x: (v.x * 3) + 400, y: v.y}
+    })
+    
+})
+
+Inputs.button("Preset 3", {
+  reduce: (d) =>
+      mutable iqrplot = [
+        { x: 40, y: 33 },
+        { x: 413, y: 40 },
+        { x: 223, y: 102 },
+        { x: 262, y: 91 },
+        { x: 179, y: 129 }
+    ].map((v) => {
+      return {x: (v.x * 3) + 400, y: v.y}
+    })
+})
+
+
+Inputs.button("Preset 4", {
+  reduce: (d) =>
+      mutable iqrplot = [
+        { x: 150, y: 41 },
+        { x: 282, y: 30 },
+        { x: 223, y: 102 },
+        { x: 262, y: 91 },
+        { x: 179, y: 129 }
+    ].map((v) => {
+      return {x: (v.x * 3) + 400, y: v.y}
+    })
+})
+
+```
+
+```{ojs}
+//| echo: false
+Inputs.button("Clear", {
+  reduce: (d) => {
+    mutable summary = Object.assign({}, mutable summary, { iqrplot: [] });
+    mutable iqrplot = [];
+  }
+})
+```
+
+```{ojs}
+//| echo: false
+md`The interquartile range (IQR) of this data is: ${(d3.quantile(summary.iqrplot.data, 0.75) - d3.quantile(summary.iqrplot.data, 0.25)) || htl.html`<font color="red">no data</font>`}`
+```
+
+
+<!-- }}} -->
+
+---
+
+### Range and IQR
+
+- The range and the IQR only tell us limited information. Two datasets can
+have the same range and IQR but still look very different.
+
+
+<!-- OHQ Code {{{ -->
+
+```{ojs}
+//| echo: false
+data_mean_median(bothplot, measures[1].fun, "bothplot")
+```
+
+
+```{ojs}
+//| echo: false
+mutable bothplot = []
+```
+
+```{ojs}
+//| echo: false
+//| panel: center
+//| layout-ncol: 3
+Inputs.button("Preset 1", {
+  reduce: (d) =>
+      mutable bothplot = 
+        [
+          { x: 14, y: 87 },
+          { x: 462, y: 93 },
+          { x: 161, y: 95 },
+          { x: 289, y: 117 },
+          { x: 224, y: 87 },
+          { x: 230, y: 35 },
+          { x: 224, y: 62 },
+          { x: 154, y: 44 },
+          { x: 290, y: 77 },
+          { x: 226, y: 115 },
+          { x: 228, y: 142 },
+          { x: 156, y: 72 },
+          { x: 294, y: 46 }
+        ].map((v) => {
+          return {x: (v.x * 3) + 400, y: v.y}
+        })
+})
+
+
+
+Inputs.button("Preset 2", {
+  reduce: (d) =>
+      mutable bothplot = 
+      [
+        { x: 14, y: 87 },
+        { x: 462, y: 93 },
+        { x: 161, y: 95 },
+        { x: 289, y: 82 },
+        { x: 224, y: 87 },
+        { x: 268, y: 54 },
+        { x: 178, y: 62 },
+        { x: 52, y: 104 },
+        { x: 352, y: 92 },
+        { x: 271, y: 122 },
+        { x: 177, y: 138 },
+        { x: 125, y: 97 },
+        { x: 412, y: 91 }
+    ].map((v) => {
+      return {x: (v.x * 3) + 400, y: v.y}
+    })
+})
+
+
+Inputs.button("Clear", {
+  reduce: (d) => {
+    mutable summary = Object.assign({}, mutable summary, { bothplot: [] });
+    mutable bothplot = [];
+  }
+})
+```
+
+
+```{ojs}
+//| echo: false
+md`We can compute the statistics for this set of ${
+  summary.bothplot.data.length
+} data points:  
+Range = ${
+summary.bothplot.data.length != 0
+    ? round2(d3.quantile(summary.bothplot.data, 1) - d3.quantile(summary.bothplot.data, 0))
+    : htl.html`<font color="red">no data</font>`
+}   
+IQR = ${
+summary.bothplot.data.length != 0
+    ? round2(d3.quantile(summary.bothplot.data, 0.75) - d3.quantile(summary.bothplot.data, 0.25))
+    : htl.html`<font color="red">no data</font>`
+}
+
+`
+```
+
+
+
+<!-- }}} -->
+
+---
+
+### Deviation
+
+- The range and the IQR depend on only two points. 
+
+- To get a more fine-grained idea of the spread we need to take every
+  data-point into account
+
+- One way to do this is to take each data-point and calculate how far it is away
+from some reference point, such as the **mean**
+
+- This is known as the deviation
+
+
+Mathematically, we can represent deviation with @eq-dev, below:
+
+
+$$D=x_i - \bar{x}$${#eq-dev}
+
+
+
+---
+
+### Deviation 
+
+<!-- OHQ Code {{{ -->
+
+```{ojs}
+//| echo: false
+data_mean_median(deviations, drawlines, "deviations")
+```
+
+```{ojs}
+mutable deviations = []
+```
+
+
+```{ojs}
+//| panel: center
+//| layout-ncol: 3
+Inputs.button("Preset 1", {
+  reduce: (d) => {
+   
+    mutable deviations = [
+    { x: 90, y: 50 },
+    { x: 90, y: 120 },
+    { x: 230, y: 50 },
+    { x: 230, y: 120 }
+  ].map((v) => {
+    return {x: (v.x * 4) + 500, y: v.y}
+  });
+  }
+})
+
+Inputs.button("Preset 2", {
+  reduce: (d) => {
+    mutable deviations = [
+    { x: 40, y: 120 },
+    { x: 140, y: 50 },
+    { x: 180, y: 50 },
+    { x: 280, y: 120 }
+  ].map((v) => {
+    return {x: (v.x * 4) + 500, y: v.y}
+  });
+  }
+})
+
+Inputs.button("Clear", {
+  reduce: (d) => {
+    mutable summary = Object.assign({}, mutable summary, { devations: [] });
+    mutable deviations = []
+  }
+})
+```
+
+
+
+
+```{ojs}
+deviations_opts = [
+  {name: "Devaitions", tag: "dev"},
+  {name: "Squared devaitions", tag: "sqdev"},
+  {name: "Absolute devaitions", tag: "absdev"},
+]
+```
+
+
+```{ojs}
+
+mutable opts =  
+{
+  let devops = deviations_opts.map((x) => x.name).map((x, i) => {
+      let obj = {}
+      obj[deviations_opts[i].tag] =  deviations_show.map((y) => y.name).includes(x)
+      return obj
+
+    }
+    )
+  let opts = {}
+  let keys = devops.map((v) => Object.keys(v))
+  let values = devops.map((v) => Object.values(v))
+  keys.forEach((v,i) => opts[v] = values[i][0])
+  return opts
+}
+
+```
+
+
+```{ojs}
+//| panel: input
+viewof deviations_show = Inputs.checkbox(deviations_opts, {label: "", format: x => x.name})
+```
+
+
+```{ojs}
+//| echo: false
+deviations_summary(mutable opts)
+```
+
+```{ojs}
+deviations_summary = (opts) =>{
+
+
+  let warning = `<font color="red">add data</font>`
+  let d = summary.deviations.data
+  let mean = d3.mean(d)
+  let abs_mean = round2(d3.mean(d.map((x) => Math.abs(x - mean)))) || warning
+  let sq_mean = round2(d3.mean(d.map((x) => (x - mean) ** 2))) || warning
+
+  let abs_sum = round2(d3.sum(d.map((x) => Math.abs(x - mean)))) || warning
+  let sq_sum = round2(d3.sum(d.map((x) => (x - mean) ** 2))) || warning
+
+  let summarytext = ``
+  if(opts.dev){
+    summarytext = summarytext + `**Deviations** Sum = ${d3.sum(d) || 0}; Mean =  0\n\n`
+  }
+
+  if(opts.sqdev){
+    summarytext = summarytext  +`**Squared deviations** Sum =  ${sq_sum}; Mean = ${sq_mean}\n\n`
+  }
+  
+  if(opts.absdev){
+    summarytext = summarytext  +`**Absolute deviations** Sum = ${abs_sum}; Mean = ${abs_mean}\n\n`
+  }
+
+
+  return md`${summarytext}`
+}
+```
+
+<!-- }}} -->
+
+- Once we have the deviation values, then what do we do with them?
+
+- If we **add them up** then the sum will just be bigger whenever we have more
+  data
+
+- But it's possible to have **bunched up large datasets** and **spread out
+  small** datasets and our measure should be able to account for this
+
+
+---
+
+### Deviation
+
+- Instead of **adding up** the deviations we could work out the **average of
+  the deviations**
+
+- But some deviations will be **negative** (smaller than the mean) and some
+  deviations will be **positive** (larger than the mean), so they'll just
+  average up to **0**
+
+```{r}
+d <- c(94, 96, 299)
+tibble::tibble(Value = d)  |>
+  dplyr::mutate(Mean = mean(Value)) |>
+  dplyr::mutate(Deviation = Mean - Value) |>
+  knitr::kable(format = "html")
+```
+
+- For example: 
+```{r, results="asis"}
+adder <- paste0(mean(d) - d, collapse = " + ")
+glue::glue("({adder}) ÷ 3 = {mean(mean(d) - d)}") |> cat()
+```
+
+---
+
+### Squared deviations
+
+- We can make sure all the deviations are positive by squaring the values
+
+
+```{r}
+d <- c(94, 96, 299)
+tibble::tibble(Value = d)  |>
+  dplyr::mutate(Mean = mean(Value)) |>
+  dplyr::mutate(Deviation = Mean - Value) |>
+  dplyr::mutate(`Squared Deviation` = Deviation * Deviation) |>
+  knitr::kable(format = "html")
+```
+
+- For example: 
+```{r, results="asis"}
+adder <- paste0((mean(d) - d)^2, collapse = " + ")
+glue::glue("({adder}) ÷ 3 = {round(mean((mean(d) - d)^2),2)}") |> cat()
+```
+
+- The **mean of the squared deviations** will be the basis for our next measure
+  of spread, the **variance**
+
+---
+
+### Variance
+
+- The **population variance** is the defined as the **mean of the squared
+deviations from the population mean**
+
+$$\mathrm{Var}(X)=\frac{\displaystyle\sum^{N}_{i=1}{(x_i - \mu)^2}}{N}$$ {#eq-popvar}
+
+- But we don't usually know the value of the **population mean**, so can we
+  just use the sample mean instead?
+
+Let's compare what happens when we use the **population mean** and the **sample
+mean**
+
+----
+
+#### Squared deviations from the population mean
+
+- We'll start off with a **population** where we know the **population mean**
+  (100) and the **variance of the population** (`r 15^2`)
+
+- We'll take samples from this population, and work out the **average of the
+  squared deviations from the population mean**
+
+- We'll plot these values for different samples in @fig-var-popmean
+
+
+<!-- OHQ Code {{{ -->
+
+```{ojs}
+data_stream1_raw = {
+  replay_variance_1
+  Promises.delay(1500);
+  var list = []
+  var i = 1
+  while (i < 10000) {
+    var value = { x: i, y: raw_data.samp_var2[i] };
+    list.push(value);
+    i = i + 1;
+    yield Promises.delay(5, list);
+  }
+}
+```
+
+
+```{ojs}
+data_stream1_ave = {
+  replay_variance_1
+  Promises.delay(1500);
+  var list = []
+  var i = 1
+  while (i < 10000) {
+    var value = { x: i, y: raw_data_ave.r_samp_var2[i] };
+    list.push(value);
+    i = i + 1;
+    yield Promises.delay(5, list);
+  }
+}
+```
+
+
+
+```{ojs}
+//| fig-cap: Variance (mean squared deviation from the population mean) calculated for different samples
+//| label: fig-var-popmean
+Plot.plot({
+    height: 200,
+    marginLeft: 80,
+    marks: [
+      Plot.dot(data_stream1_raw, {
+        x: "x",
+        y: "y",
+        clip: true,
+        r: 4,
+        curve: "linear",
+        fill: "black",
+        strokeWidth: 1,
+        stroke: "black",
+        marker: "circle"
+      }),
+      Plot.line(data_stream1_raw, {
+        x: "x",
+        y: "y",
+        clip: true,
+        r: 4,
+        curve: "linear",
+
+        strokeWidth: 1
+      }),
+      Plot.ruleY([225], { strokeOpacity: 0.6, strokeWidth: 1 })
+    ],
+    y: { label: "Variance of sample", domain: [50, 400] },
+    x: {
+      label: "Sample number",
+      domain: [0, 100]
+    }
+  })
+```
+
+<!-- }}} -->
+
+
+The value we calculate varies from sample to sample, but what does it do _on average_?
+
+---
+
+#### Squared deviations from the population mean
+
+- We can repeat what we did with the **sample mean** in Lecture 6 and see what
+happens with the **average squared deviations from the population mean**
+
+- The running average of the **average squared deviations from the population
+  mean** is shown in @fig-var-popmean-running
+
+
+<!-- {{{ -->
+
+```{ojs}
+//| label: fig-var-popmean-running
+//| fig-cap: Running average of the mean squared deviation from the population mean
+Plot.plot({
+  height: 200,
+  width: 1000,
+  marginLeft: 80,
+  marks: [
+    Plot.line(data_stream1_ave, {
+      x: "x",
+      y: "y",
+      clip: true,
+      r: 4,
+      curve: "linear",
+      strokeWidth: 2
+    }),
+    Plot.ruleY([225], { strokeOpacity: 0.6, strokeWidth: 1 })
+  ],
+  y: { label: "Running mean", domain: [200, 250] },
+  x: {
+    label: "Sample number",
+    domain: [0, data_stream1_ave.length + 100]
+  }
+})
+```
+
+
+```{ojs}
+viewof replay_variance_1 = Inputs.button("Replay")
+```
+<!-- }}} -->
+
+_On average_ the average of the mean squared deviation from the population mean
+will be equal to the variance of the population
+
+---
+
+#### Squared deviations from the sample mean
+
+- Now let's repeat the process but use the **deviation from the sample mean** instead
+
+<!-- {{{ -->
+
+```{ojs}
+data_stream2_raw = {
+  replay_variance_2
+  Promises.delay(1500);
+  var list = []
+  var i = 1
+  while (i < 10000) {
+    var value = { x: i, y: raw_data.pop_var[i] };
+    list.push(value);
+    i = i + 1;
+    yield Promises.delay(5, list);
+  }
+}
+```
+
+
+```{ojs}
+data_stream2_ave = {
+  replay_variance_2
+  Promises.delay(1500);
+  var list = []
+  var i = 1
+  while (i < 10000) {
+    var value = { x: i, y: raw_data_ave.r_pop_var[i] };
+    list.push(value);
+    i = i + 1;
+    yield Promises.delay(5, list);
+  }
+}
+```
+
+
+```{ojs}
+//| fig-cap: Variance (mean squared deviation from the sample mean) calculated for different samples
+//| label: fig-samp-mean-dev
+Plot.plot({
+    height: 200,
+    marginLeft: 80,
+    marks: [
+      Plot.dot(data_stream2_raw, {
+        x: "x",
+        y: "y",
+        clip: true,
+        r: 4,
+        curve: "linear",
+        fill: "black",
+        strokeWidth: 1,
+        stroke: "black",
+        marker: "circle"
+      }),
+      Plot.line(data_stream2_raw, {
+        x: "x",
+        y: "y",
+        clip: true,
+        r: 4,
+        curve: "linear",
+
+        strokeWidth: 1
+      }),
+      Plot.ruleY([225], { strokeOpacity: 0.6, strokeWidth: 1 })
+    ],
+    y: { label: "Variance of sample", domain: [50, 400] },
+    x: {
+      label: "Sample number",
+      domain: [0, 100]
+    }
+  })
+```
+
+<!-- }}} -->
+
+
+- Nothing in @fig-samp-mean-dev looks strange...
+
+- But, remember, we want to know how I calculate value behaves **on average**
+
+
+---
+
+#### Squared deviations from the sample mean
+
+- In @fig-sample-mean-dev-running we can see the running average of **average squared 
+deviations from the sample mean**
+
+```{ojs}
+//| label: fig-sample-mean-dev-running
+//| fig-cap: Running average of the mean squared deviation from the sample mean
+Plot.plot({
+  height: 200,
+  width: 1000,
+  marginLeft: 80,
+  marks: [
+    Plot.line(data_stream2_ave, {
+      x: "x",
+      y: "y",
+      clip: true,
+      r: 4,
+      curve: "linear",
+      strokeWidth: 2
+    }),
+    Plot.ruleY([225], { strokeOpacity: 0.6, strokeWidth: 1 })
+  ],
+  y: { label: "Running mean", domain: [200, 250] },
+  x: {
+    label: "Sample number",
+    domain: [0, data_stream2_ave.length + 100]
+  }
+})
+```
+
+```{ojs}
+viewof replay_variance_2 = Inputs.button("Replay")
+```
+
+- Now we can see the problem of using **deviation from the sample mean**
+  instead of **deviation from the population mean**
+
+- Our calculated value will **on average** not be the same as the **variance of
+  the population**
+
+So what's the solution?
+
+
+---
+
+### Sample variance
+
+- When we only have access to information from the sample (e.g., the **sample
+  mean**) then we have to calculate a quantity known as the **sample variance**
+
+- We said **variance** was defined by @eq-popvar:
+
+$$\frac{\displaystyle\sum^{N}_{i=1}{(x_i - \mu)^2}}{N}$$ {#eq-popvar}
+
+- For the **sample variance** we'll make an adjustment so that we have @eq-sampvar
+
+$$\frac{\displaystyle\sum^{N}_{i=1}{(x_i - \bar{x})^2}}{N - 1}$$ {#eq-sampvar}
+
+---
+
+### Sample variance
+
+```{ojs}
+data_stream3_raw = {
+  replay_variance_2
+  Promises.delay(1500);
+  var list = []
+  var i = 1
+  while (i < 10000) {
+    var value = { x: i, y: raw_data.samp_var[i] };
+    list.push(value);
+    i = i + 1;
+    yield Promises.delay(5, list);
+  }
+}
+```
+
+
+```{ojs}
+data_stream3_ave = {
+  replay_variance_2
+  Promises.delay(1500);
+  var list = []
+  var i = 1
+  while (i < 10000) {
+    var value = { x: i, y: raw_data_ave.r_samp_var[i] };
+    list.push(value);
+    i = i + 1;
+    yield Promises.delay(5, list);
+  }
+}
+```
+
+
+- In @fig-sample-variance-running we can see the running average of the
+sample variance.
+
+```{ojs}
+//| label: fig-sample-variance-running
+//| fig-cap: Running average of sample variance
+Plot.plot({
+  height: 200,
+  marginLeft: 80,
+  width: 1000,
+  marks: [
+    Plot.line(data_stream3_ave, {
+      x: "x",
+      y: "y",
+      clip: true,
+      r: 4,
+      curve: "linear",
+      strokeWidth: 2
+    }),
+    Plot.ruleY([225], { strokeOpacity: 0.6, strokeWidth: 1 })
+  ],
+  y: { label: "Running mean", domain: [200, 250] },
+  x: {
+    label: "Sample number",
+    domain: [0, data_stream2_ave.length + 100]
+  }
+})
+```
+
+
+```{ojs}
+viewof replay_variance_3 = Inputs.button("Replay")
+```
+
+\
+
+- Dividing by **N - 1** rather than taking a simple average (dividing by **N**)
+  means that _on average_ the **sample variance** will be equal to the
+  **variance of the population**
+
+---
+
+#### Sample variance and population variance
+
+- If you have access to the entire population (e.g., you can compute the
+  **population mean**) then you can calculate the **population variance**
+  (divide by **N**)
+
+- If you only have access to the sample characteristics (e.g., you can only
+  calculate the **sample mean**) then you **must** calculate the **sample
+  variance** (divide by **N - 1**)
+
+
+But the confusing part is: The **sample variance** is an _unbiased estimator of the
+variance of the population_
+
+- This just means that the **sample variance** will converge to the variance of the population
+
+Using the **population variance formula** with **sample values** is a _biased estimator
+of the variance of the population_
+
+- This just means that it **won't converge** to the variance of the population
+
+Remember, what we really want to know are the features of the **population** (it's **mean**
+and **variance**) but we need to **estimate these from the sample**
+
+---
+
+### Standard Deviation
+
+The **variance** is a good measure of spread, and it's a commonly used measure,
+but it can be a little difficult to interpret
+
+For example, think back to the salary example from Lecture 6:
+
+- If salary is measure in USD 
+
+- Then the variance is measures in USD^2^, whatever that means!
+
+Fortunately, there's an easy solution! Just take the square root of the variance
+
+This measure is called the **standard deviation**. We can represent it
+mathematically with @eq-sampsd
+
+
+$$s=\sqrt{\frac{\displaystyle\sum^{N}_{i=1}{(x_i - \bar{x})^2}}{N - 1}}$$ {#eq-sampsd}
+
+
+---
+
+#### Why the squared deviations and not the absolute value?
+
+Before we continue, we'll just have a brief digression...
+
+- When we worked out the deviations, we squared them to turn the negative values into positive values
+
+- But could we just take the absolute value? (that is, just ignore the sign?)
+
+---
+
+#### Why the squared deviations and not the absolute value?
+
+- Below we have two data sets made up of four data points each
+
+- The data in **A** are more spread out than the data in **B**
+
+<!-- {{{ -->
+```{r}
+#| width: 8
+#| height: 10
+d1 <-  c(90, 90, 230, 230)
+d2 <- c(40, 140, 180, 280)
+
+d1_mean <- mean(d1)
+d2_mean <- mean(d2)
+
+
+
+d1 <- tibble::tibble(
+  x = d1,
+  y = c(1, 2, 1, 2)
+)
+
+d2 <- tibble::tibble(
+  x = d2,
+  y = c(1, 2, 2, 1)
+)
+
+
+p1 <- ggplot(d1) +
+  geom_point(aes(x = x, y = y)) +
+  geom_vline(xintercept = d1_mean, linetype = 1) +
+  labs(x = "vaule", y = NULL) +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(breaks = seq(1, 10, 1)) +
+  geom_segment(aes(x = x, y = y, yend = y, xend = d1_mean), linetype = 2) +
+  cowplot::theme_cowplot() +
+  theme_minimal() +
+  xlim(0, 300) +
+  NULL
+
+
+p2 <- ggplot(d2) +
+  geom_point(aes(x = x, y = y)) +
+  geom_vline(xintercept = d2_mean, linetype = 1) +
+  labs(x = "value", y = NULL) +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(breaks = seq(1, 10, 1)) +
+  geom_segment(aes(x = x, y = y, yend = y, xend = d2_mean), linetype = 2) +
+  theme_minimal() +
+  xlim(0, 300) +
+  NULL
+
+final_plot <- p2 + p1 + plot_annotation(tag_levels = "a")
+
+ggsave(final_plot, file = here::here("images","final_plot.png"), width = 10, height = 3)
+
+```
+<!-- }}} -->
+
+```{r}
+knitr::include_graphics(here::here("images","final_plot.png"))
+```
+
+So let's calculate the average of the squared deviations and the average of the absolute value of the deviations
+
+---
+
+#### Why the squared deviations and not the absolute value?
+
+First for the data in **A**
+
+```{r}
+d2 |> 
+  dplyr::mutate(value = x, 
+  mean = mean(x), 
+  deviation = mean - x, 
+  `absolute deviation` = abs(deviation),
+  `squared deviation` = deviation^2)  -> d2_table
+
+  d2_table |>
+  dplyr::select(3:5) |>
+  knitr::kable(align = c("l", "l")) |>
+  kableExtra::kable_styling(full_width = TRUE, bootstrap_options = "striped")
+```
+
+- The mean of the **absolute deviations** is: `r d2_table |> pull(6) |> mean()`
+
+- The mean of the **squared deviations** is: `r d2_table |> pull(7) |> mean()`
+
+---
+
+#### Why the squared deviations and not the absolute value?
+
+And then for the data in **B**
+
+```{r}
+d1 |> 
+  dplyr::mutate(value = x, 
+  mean = mean(x), 
+  deviation = mean - x, 
+  `absolute deviation` = abs(deviation),
+  `squared deviation` = deviation^2)  -> d1_table
+
+  d1_table |>
+  dplyr::select(3:5) |>
+  knitr::kable(align = c("l", "l")) |>
+  kableExtra::kable_styling(full_width = TRUE, bootstrap_options = "striped")
+```
+
+- The mean of the **absolute deviations** is: `r d1_table |> pull(6) |> mean()`
+
+- The mean of the **squared deviations** is: `r d1_table |> pull(7) |> mean()`
+
+So even though the two sets of data have different amounts of spread, the
+**mean of absolute deviations** doesn't pick it up, but the 
+**mean of the squared deviations** does
+
+## The relationship between samples and populations 
+
+Now that we have tools for describing the centre / typical value of a set of
+measurements (**mean**) and the spread of a set of measurements (**variance** /
+**standard deviation**) we can these two ideas together.
+
+- In lecture 6 we saw that **individual sample means** were spread out around
+  the **population mean**
+
+- We can **quantify** that **spread** using the idea of the **standard deviation**
+
+\
+But we're now no longer calculating the **spread of our sample** or even the
+**spread of the population**
+
+We're now calculating **the spread of sample means around the population mean**
+
+This kind of _standard deviation_ has a special name. It's called:
+
+**The standard error of the mean**
+
+---
+
+## The standard error of the mean
+
+- The **standard error of the mean** in technical terms is *the standard
+  deviation of the **sampling distribution** of the mean*
+
+- To fully appreciate the concept of the **standard error of the mean** we'll
+need to understand the concept of the **sampling distribution**
+
+- And to understand the **sampling distribution** we'll first need to
+  understand what distributions are, what they look like, and why they look the
+  way they do
+
+
+But we get to that I want to return to the problem I left you with **last week**
+
+---
+
+## The standard error of the mean
+
+- Last week I got you to start thinking about the problem how you can know how
+close sample means will be to the population mean _on average_
+
+- You should now be able to recognise this question is about the **standard
+deviation** between **sample means** and the **population mean**
+
+- Or more technically, it's a question about the **standard error of the mean**
+
+
+Without me telling you how to work out the **standard error of the mean** can
+you work out what it's formula might be?
+
+To do this, I want you to think of **two scenarios** where the **standard error
+of the mean** will be very small:
+
+- One of these scenarios has something to do with the nature of the **samples
+  you're collecting**
+
+- The other scenario has something to do with the nature of the **population
+  you're sampling from**
+
+
+
+<!-- Dependencies {{{ -->
+
+```{ojs}
+mutable summary = null
+```
+
+```{ojs}
+round2 = (v) => Math.round(v * 100) / 100
+```
+
+```{ojs}
+import { set } from "@observablehq/synchronized-inputs"
+```
+
+```{ojs}
+import { dist } from "@ljcolling/wasm-distributions"
+```
+
+```{ojs}
+maketable = (data) => {
+  let headers = Object.keys(data[0]).map((v) => html.fragment`<td>${v}</th>`);
+  let body = data.map((r) => {
+    let this_row = Object.values(r).map((v) => html.fragment`<td>${v}</td>`);
+    return html.fragment`<tr>${this_row}</tr>`;
+  });
+  return htl.html`<table class="table table-striped"><thead class="thead-dark"><tr>${headers}</tr></thead><tbody>${body}</tbody></table>`;
+};
+```
+
+```{ojs}
+html = htl.html
+```
+
+
+```{ojs}
+//| echo: false
+measures = [
+  { name: "Range", tag: 0, fun: drawrange },
+  { name: "Interquartile range", tag: 1, fun: drawiqr },
+  { name: "None", tag: 2, fun: () => {} }
+]
+```
+
+
+```{ojs}
+function data_mean_median(data, drawlines, varname) {
+  let height = 400;
+  let xAxisOffest = 0;
+  let radius = 20;
+  var this_summary = {};
+  const pin = (v) => {
+    return v;
+  };
+  const update = () => {
+    let data = svg.selectAll("circle").data();
+    let mean = d3.mean(data.map((v) => v.x));
+    let median = d3.median(data.map((v) => v.x));
+    drawlines(marker, data);
+    return data;
+  };
+
+  function dragstarted(event, d) {
+    d3.select(this).attr("stroke", "green").attr("stroke-width", 5);
+  }
+
+  function dragged(event, d) {
+    d3.select(this)
+      .raise()
+      .attr("cx", d.x = Math.round(event.x))
+      .attr("cy", d.y = Math.round(event.y));
+    data = update();
+
+    var this_summary = {};
+    this_summary[varname] = {
+      mean: d3.mean(data.map((v) => v.x)),
+      median: d3.median(data.map((v) => v.x)),
+      data: data.map((v) => v.x),
+    };
+    summaryupdate(this_summary);
+  }
+
+  function dragended(event, d) {
+    d3.select(this).attr("stroke", null);
+    d3.select(this).attr("r", radius);
+    let data = svg.selectAll("circle").data();
+
+    var this_summary = {};
+    this_summary[varname] = {
+      mean: d3.mean(data.map((v) => v.x)),
+      median: d3.median(data.map((v) => v.x)),
+      data: data.map((v) => v.x),
+    };
+    summaryupdate(this_summary);
+  }
+
+  this_summary[varname] = {
+    mean: d3.mean(data.map((v) => v.x)),
+    median: d3.median(data.map((v) => v.x)),
+    data: data.map((v) => v.x),
+  };
+
+  summaryupdate(this_summary); 
+  let svg = d3
+    .create("svg")
+    .attr("viewBox", [0, 0, width, height])
+    .attr("stroke-width", 2);
+  let marker = svg.append("g");
+  let points = svg.append("g");
+
+  points
+    .selectAll("circle")
+    .data(data)
+    .join("circle")
+    .attr("cx", (d) => d.x)
+    .attr("cy", (d) => d.y)
+    .attr("r", radius)
+    .on("mouseover", function (d, i) {
+      d3.select(this)
+        .transition()
+        .duration("50")
+        .attr("opacity", ".5")
+        .attr("stroke", "blue");
+    })
+    .on("mouseout", function (d, i) {
+      d3.select(this)
+        .transition()
+        .duration("50")
+        .attr("opacity", "1")
+        .attr("stroke", "black");
+    })
+    .call(
+      d3
+        .drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended),
+    );
+
+  marker.selectAll("#labelline").remove();
+  drawlines(marker, data);
+
+  var scale = d3.scaleLinear().domain([0, width]).range([0, width]);
+  var x_axis = d3.axisBottom().scale(scale);
+
+  const clicked = (event, d) => {
+    if (event.defaultPrevented) return; 
+    let x = Math.round(event.offsetX);
+    let y = Math.round(event.offsetY);
+    data.push({ x: x, y: y });
+    var this_summary = {};
+    this_summary[varname] = {
+      mean: d3.mean(data.map((v) => v.x)),
+      median: d3.median(data.map((v) => v.x)),
+      data: data.map((v) => v.x),
+    };
+
+    summaryupdate(this_summary); 
+
+    svg
+      .selectAll("circle")
+      .data(data)
+      .join("circle")
+      .attr("cx", (d) => d.x)
+      .attr("cy", (d) => d.y)
+      .attr("r", radius)
+      .on("mouseover", function (d, i) {
+        d3.select(this)
+          .transition()
+          .duration("50")
+          .attr("opacity", ".5")
+          .attr("stroke", "blue");
+      })
+      .on("mouseout", function (d, i) {
+        d3.select(this)
+          .transition()
+          .duration("50")
+          .attr("opacity", "1")
+          .attr("stroke", "black");
+      })
+      .call(
+        d3
+          .drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended),
+      );
+
+    update();
+  };
+
+  svg.on("click", clicked);
+  svg
+    .append("g")
+    .attr("transform", "translate(" + xAxisOffest + ", " + height * 0.9 + ")")
+    .call(x_axis);
+
+  return svg.node();
+}
+```
+
+
+```{ojs}
+function summaryupdate(this_summary) {
+    mutable summary = Object.assign({}, mutable summary, this_summary);
+}
+```
+
+
+```{ojs}
+drawlines = {
+  return (marker, data) => {
+    let height = 400;
+    marker.selectAll("#labelline").remove();
+    // draw the mean line
+    /*
+    svg
+      .append("line")
+      .attr("id", "labelline")
+      .attr("x1", d3.mean(data.map((v) => v.x)) || -10)
+      .attr("x2", d3.mean(data.map((v) => v.x)) || -10)
+      .attr("y1", 0)
+      .attr("y2", height * 0.9)
+      .attr("stroke", "red")
+      .attr("stroke-width", 5);
+*/
+    // draw the deviation lines
+    marker
+      .selectAll("line")
+      .data(data)
+      .join("line")
+      .attr("id", "labelline")
+      .attr("x1", (d) => d.x)
+      .attr("x2", d3.mean(data.map((v) => v.x)) || -10)
+      .attr("y1", (d) => d.y)
+      .attr("y2", (d) => d.y)
+      .attr("stroke", "red")
+      .style("stroke-dasharray", "3, 3")
+      .attr("stroke-width", 2);
+    marker
+      .append("line")
+      .attr("id", "labelline")
+      .attr("x1", d3.mean(data.map((v) => v.x)) || -10)
+      .attr("x2", d3.mean(data.map((v) => v.x)) || -10)
+      .attr("y1", 0)
+      .attr("y2", height * 0.9)
+      .attr("stroke", "red")
+      .attr("stroke-width", 5);
+  };
+  //end of drawlines
+}
+```
+
+
+```{ojs}
+drawrange = {
+  return (marker, data) => {
+    let height = 400;
+    marker.selectAll("#labelline").remove();
+
+    const max = d3.max(data.map((v) => v.x)) || -10;
+    const min = d3.min(data.map((v) => v.x)) || -10;
+    const width = max - min || 0;
+
+    marker
+      .append("line")
+      .attr("id", "labelline")
+      .attr("x1", min)
+      .attr("x2", min)
+      .attr("y1", 0)
+      .attr("y2", height * 0.9)
+      .attr("stroke", "red")
+      .attr("stroke-width", 5);
+
+    marker
+      .append("line")
+      .attr("id", "labelline")
+      .attr("x1", max)
+      .attr("x2", max)
+      .attr("y1", 0)
+      .attr("y2", height * 0.9)
+      .attr("stroke", "red")
+      .attr("stroke-width", 5);
+
+    marker
+      .append("rect")
+      .attr("id", "labelline")
+      .attr("x", d3.min(data.map((v) => v.x)))
+      .attr("y", 0)
+      .attr("width", width)
+      .attr("height", height * 0.9)
+      .attr("stroke", "red")
+      .attr("fill", "red")
+      .attr("stroke-width", 5)
+      .attr("opacity", 0.5);
+  };
+}
+```
+
+```{ojs}
+calc_iqr_limits = (d) => {
+  const data = d.map((v) => v.x);
+  const quantiles = [0, 0.25, 0.5, 0.75, 1].map((q) => d3.quantile(data, q));
+  const widths = quantiles.slice(0, -1).map((v, i) => {
+    return quantiles[i + 1] - v;
+  });
+
+  const marks = new Map();
+
+  widths.map((v, i) => {
+    const start = quantiles[i];
+    const width = v;
+    marks.set("q" + (i + 1) + "_s", start);
+    marks.set("q" + (i + 1) + "_w", width);
+  });
+
+  return marks;
+}
+```
+
+```{ojs}
+drawiqr = {
+  return (marker, data) => {
+    let height = 400;
+    marker.selectAll("#labelline").remove();
+
+    const max = d3.max(data.map((v) => v.x)) || -10;
+    const min = d3.min(data.map((v) => v.x)) || -10;
+    const width = max - min || 0;
+
+    const quantiles = calc_iqr_limits(data);
+
+
+    for (let i = 1; i < 5; i++) {
+      const start = quantiles.get("q" + i + "_s");
+      const width = quantiles.get("q" + i + "_w");
+
+      marker
+        .append("rect")
+        .attr("id", "labelline")
+        .attr("x", start)
+        .attr("y", 0)
+        .attr("width", width)
+        .attr("height", height * 0.9)
+        .attr("fill", i === 2 || i === 3 ? "red" : "blue")
+        .attr("stroke-width", 0)
+        .attr("opacity", 0.5);
+
+      marker
+        .append("line")
+        .attr("id", "labelline")
+        .attr("x1", start)
+        .attr("x2", start)
+        .attr("y1", 0)
+        .attr("y2", height * 0.9)
+        .attr("stroke", i === 1 ? "blue" : "red")
+        .attr("stroke-width", 2);
+    }
+
+    marker
+      .append("line")
+      .attr("id", "labelline")
+      .attr("x1", max || -10)
+      .attr("x2", max || -10)
+      .attr("y1", 0)
+      .attr("y2", height * 0.9)
+      .attr("stroke", "blue")
+      .attr("stroke-width", 2);
+  };
+
+}
+```
+
+
+
+```{ojs}
+raw_data = {
+  replay_variance_1
+  replay_variance_2
+  replay_variance_3
+  let sample_size = 50;
+  let population_mean = 100;
+  let sd = 15;
+  return dist.rand_normal(population_mean, sd, sample_size, 100);
+}
+```
+
+```{ojs}
+raw_data_ave = {
+  replay_variance_1
+  replay_variance_2
+  replay_variance_3
+
+  let sample_size = 50;
+  let population_mean = 100;
+  let sd = 15;
+  return dist.rand_normal(population_mean, sd, sample_size, 10000);
+}
+```
+
+<!-- }}} -->
+

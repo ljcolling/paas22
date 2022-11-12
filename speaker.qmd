@@ -1,0 +1,27 @@
+---
+title: "Speaker notes"
+---
+
+
+
+[week_01](lectures_week01_slides_index-speaker.html)
+
+[week_02](lectures_week02_slides_index-speaker.html)
+
+[week_03](lectures_week03_slides_index-speaker.html)
+
+[week_04](lectures_week04_slides_index-speaker.html)
+
+[week_05](lectures_week05_slides_index-speaker.html)
+
+[week_06](lectures_week06_slides_index-speaker.html)
+
+[week_07](lectures_week07_slides_index-speaker.html)
+
+[week_08](lectures_week08_slides_index-speaker.html)
+
+[week_09](lectures_week09_slides_index-speaker.html)
+
+[week_10](lectures_week10_slides_index-speaker.html)
+
+[week_11](lectures_week11_slides_index-speaker.html)
