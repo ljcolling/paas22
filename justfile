@@ -19,4 +19,10 @@ week week:
  fd . lectures/{{week}}/handout -e qmd --exclude=_content.qmd --threads=16 -x quarto render {} --to=html 
  fd . lectures/{{week}}/slides -e qmd --exclude=_content.qmd --threads=16 -x quarto render {} --to=sussex-revealjs
 
-  
+slow : 
+  fd . lectures/**/handout -e qmd --exclude=_content.qmd -X quarto render {} --to=html 
+  fd . lectures/**/slides -e qmd --exclude=_content.qmd -X quarto render {} --to=sussex-revealjs
+
+speaker :
+  fd index -e html -x echo {} |  awk '{printf "mv " $1 " _site/"} {gsub("\\.\/","")gsub("\/","_")}1' | xargs -I {} sh -c {}
+  quarto render speaker.qmd

@@ -1,0 +1,1360 @@
+
+## Plan for today 
+
+Today we'll learn about the **sampling distribution**
+
+But before we can do that we need to know what **distributions**
+are, where they come from, and how to describe them
+
+- The binomial distribution
+
+- The normal distribution
+
+  - Processes that produce normal distributions
+
+  - Process that don't produce normal distributions
+
+  - Describing normal distributions
+
+  - Describing departures from the normal distributions
+
+- Distributions and samples
+
+  - The Central Limit Theorem 
+
+- The Standard Error of the Mean
+
+
+---
+
+## The Binomial Distributions
+
+- The binomial distribution is one of the simplest distribution you'll come
+across
+
+- To see where it comes from, we'll just build one!
+
+- We can build one by flipping a coin (multiple times) and counting up the number of
+heads that we get
+
+---
+
+:::: {.columns}
+
+:::{.column width="45%"}
+
+```{ojs}
+//| label: fig-sequences
+//| fig-cap: Possible sequences after ${coins - 1} coin flips
+viewof sequences = {
+  const div = document.createElement("div");
+  div.value = new vega.View(parsedSpec).initialize(div).run();
+  return div;
+}
+```
+
+:::
+
+:::{.column width="45%"}
+
+```{ojs}
+//| panel: fill
+//| label: fig-binomdist
+//| fig-cap: Distribution of number of heads after ${coins - 1} coin flips
+viewof coin_flip_dist = Plot.plot({
+  y: {
+    label: "Sequences",
+    grid: true
+  },
+  x: {
+    label: "Number of heads"
+  },
+  marks: [Plot.barY(n_heads, { x: "x", y: "y" }), Plot.ruleY([0])]
+})
+```
+
+
+:::
+
+::::
+
+```{ojs}
+//| width: 100%
+//| panel: input
+viewof coins = htl.html`<input style="width:300px" type="range" id="coins" min="1" max="7" value="1" class="form-range">`
+
+coins_label = htl.html`<label for="coins" class= "form-label" width="100%">Number of coin flips: ${
+  coins - 1
+}</label>`
+```
+
+- In @fig-sequences we can see the possible sequences of events that can happen if we
+flip a coin (&#9864; = heads and &#9862; = tails)
+@fig-binomdist look very interesting at the moment.
+
+- In @fig-binomdist we just count up the number of sequences that lead to 0 heads, 1 head,
+2 heads, etc
+
+- As we flip more coins the distribution of number of heads takes on a characteristic shape
+
+- This is the **binomial distribution**
+
+---
+
+## The binomial distribution
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+- The binomial distribution is just an **idealised representation** of the
+process that **generates** sequences of heads and tails when we flip a coin
+
+  - Or any other process that gives rise to **binary data**
+
+- It's an **idealisation** but natural processes do give rise to binomial distribution
+
+
+- In the bean machine (@fig-bean) balls fall from the top and bounce off pegs as they fall
+
+  - Balls can bounce one of two directions (left or right; binary outcome)
+
+- Most of the balls collect near the middle, and fewer balls are found at the edges
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+#| message: false
+#| fig.cap: Example of the bean machine
+#| label: fig-bean
+require(htmltools)
+vid <- tags$video(width = "100%", controls = NA)
+# source <- tags$source(src = here::here("images","bean_machine.webm"), type = "video/webm")
+data <- xfun::embed_file(here::here("images/bean_machine.webm"))[2]$attribs$href
+source <- tags$source(src = data, type = "video/webm")
+vid$children = source
+vid
+```
+
+:::
+
+::::
+
+---
+
+## The normal distribution
+
+Flipping coins might seem a long way off anything you might want to study in
+psychology, but the **shape** of the binomial distribution might be familiar to
+you
+
+- The **binomial distribution** has a **shape** that is similar to the **normal
+  distribution**
+
+But there are a few key differences:
+
+1. The binomial distribution is bounded at 0 and n (number of coins)
+
+    - The normal distribution can range from $+\infty$ to $-\infty$
+
+2. The binomial distribution is _discrete_ (0, 1, 2, 3 etc, but no 2.5)
+
+    - The normal distribution is _continuous_
+
+The **normal distribution** is a **mathematical abstraction**, but we can use it as
+**model** of real-life populations that are produced by certain kinds of
+natural processes 
+
+---
+
+### Processes that produce normal distributions
+
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+To see how a natural process can give rise to a normal distribution, let's play
+a board game!
+
+There's only 1 rule: You roll the dice **n** times (number of rounds), add up
+all the values, and move than many spaces. That is your **score**
+
+- We can play any number of rounds 
+
+- And we'll play with friends, because you can't get a **distribution of
+  scores** if you play by yourself!
+
+If we have _enough players_ who play _enough rounds_ then the **distribution of
+scores** across all the players will take on a **characteristic shape**
+
+:::
+
+
+:::{.column width="50%"}
+
+```{ojs}
+//| echo: false
+//| label: fig-dice-dist1
+//| fig-cap: Distribution of players' position from the starting point
+simple_dice_plot = Plot.plot({
+  x: {
+    label: "places from start",
+    domain: d3.sort(dicedata, (d) => d.value).map((d) => d.value)
+  },
+  y: {
+    label: "number of players"
+  },
+  marks: [
+    Plot.barY(dicedata, {
+      x: "value",
+      y: "count",
+      sort: { x: "y", reverse: true }
+    }),
+    Plot.ruleY([0])
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+//| panel: input
+//| layout-ncol: 2
+viewof n_dice = Inputs.range([1, 2000], {
+  step: 1,
+  value: 1,
+  label: "Number of rounds"
+})
+viewof n_players = Inputs.range([1, 10000], {
+  step: 1,
+  value: 1,
+  label: "Number of players"
+})
+```
+
+:::
+
+::::
+
+---
+
+### Processes that produce normal distributions
+
+- A players score on the **dice game** is determined by **adding up** the
+  values of each roll
+
+- So after each roll their score can increase by some amount 
+
+The dice game might look artificial, but it maybe isn't that different to 
+some natural processes 
+
+For example, **developmental processes** might look pretty similar to the dice game
+
+Think about **height**:
+
+- At each **point in time** some **value** can be **added** (growth) or a
+  person's current height
+
+- So if we looked at the distribution of **heights** in the population then we
+  might find something that looks *similar* to a normal distribution
+
+A key factor that results in the **normal distribution** shape is this
+**adding up** of values
+
+---
+
+### Processes that don't produce normal distributions
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+Let's change the rules of the game
+
+- Instead of **adding** up the value of each roll, we'll **multiply** them (
+  e.g., roll a 1, 2, and 4 and your score is `r 1 * 2 * 4`)
+
+
+- The distribution is **skewed** with most player having low scores and
+  a few players have very high scores
+
+- Can you think of a process that operates like this in the real world?
+
+  - How about **interest** or **returns on investments**?
+
+  - Maybe this explains the shape of real world **wealth distributions**...
+
+:::
+
+
+:::{.column width="50%"}
+
+
+```{ojs}
+//| echo: false
+dice_plot_mult = Plot.plot({
+  x: { label: "places from start" },
+  y: { label: "number of players" },
+  marks: [
+    Plot.rectY(d, Plot.binX({ y: "count" }, { x: "x" })),
+    Plot.ruleY([0]),
+  ],
+});
+```
+
+
+```{ojs}
+//| echo: false
+//| panel: input
+//| layout-ncol: 2
+viewof n_dice_mult = Inputs.range([1, 20], {
+  step: 1,
+  value: 1,
+  label: "Number of rounds"
+})
+viewof n_players_mult = Inputs.range([1, 400], {
+  step: 1,
+  value: 1,
+  label: "Number of players"
+})
+```
+
+:::
+
+::::
+
+---
+
+### Describing normal distributions
+
+
+:::: {.columns}
+
+:::{.column width="50%"}
+
+- The normal distribution has a characteristic bell shape but not all 
+normal distributions are identical
+
+- They can vary in terms of where they are centered and how spread 
+out they are
+
+- Changing $\mu$ and $\sigma$ changes the absolute position of
+points on the plot, but not the relative positions measured in 
+units of $\sigma$
+
+  - E.g., ~68% of the points will lie between $\mu - \sigma$ and $\mu + \sigma$
+
+  - This will be a really useful property which we'll make use of later
+
+
+:::
+
+:::{.column width="50%"}
+
+```{ojs}
+normal_plot_output = Plot.plot({
+  x: {
+    grid: true,
+    domain: [-4, 4]
+  },
+  y: {
+    grid: true,
+    domain: [0, 0.8]
+  },
+  marks: [
+   Plot.line(
+     normal_plot(
+       mean_value - sd_value * s > -4 ? mean_value - sd_value * s : -4,
+       mean_value + sd_value * s < 4 ? mean_value + sd_value * s : 4,
+       mean_value,
+       sd_value
+     ),
+     {
+       x: "x",
+       y: "y",
+       strokeWidth: 1,
+       fill: "blue",
+       opacity: show ? 0.5 : 0
+     }
+   ),
+   Plot.line(fill_limits(s), {
+     x: "x",
+     y: "y",
+     fill: "blue",
+     strokeWidth: 1,
+     opacity: show ? 0.5 : 0
+   }),
+    Plot.line(normal_plot(-4, 4, mean_value, sd_value), {
+      x: "x",
+      y: "y",
+      strokeWidth: 4
+    }),
+    Plot.ruleY([0])
+  ]
+})
+```
+
+```{ojs}
+//| panel: input
+normal_sliders = htl.html`<div style="font:smaller">${mean_value_slider}${sd_value_slider}</div>`
+viewof show = Inputs.toggle({ label: "Show", value: false })
+```
+
+
+```{ojs}
+texmd`The plot shows a normal distribution with a mean ($\mu$) of ${mean_value} and a standard deviation ($\sigma$) of ${sd_value}.`
+```
+\
+```{ojs}
+s =  1
+```
+
+
+
+:::
+
+::::
+
+---
+
+### Describing deviations from the normal distribution 
+
+:::: {.columns}
+
+:::{.column width="50%"}
+When looked at the distribution of scores from the second dice game
+we saw that it was **skew**
+
+- **Skew** is a _technical term_ to describe one way in which 
+distributions can deviate from normal
+
+
+```{ojs}
+skew_desc = md`- This distribution has a **skewness** of ${skew}. It is ${
+  skew == 0 ? "symmetrical" : skew < 0 ? "left-skewed" : "right-skewed"
+}.`
+```
+:::
+
+::: {.column width="50%"}
+```{ojs}
+skew_normal_plot_output = Plot.plot({
+  x: {
+    grid: true
+  },
+  y: {
+    grid: true,
+    domain: [0, 0.8]
+  },
+  marks: [
+    Plot.line(skew_normal_plot(-4, 4, skew), {
+      x: "x",
+      y: "y",
+      strokeWidth: 4
+    }),
+    Plot.ruleY([0])
+  ]
+})
+```
+
+
+```{ojs}
+//| panel: input
+viewof skew = Inputs.range([-10, 10], { label: "Skewness", step: 0.5 })
+```
+
+:::
+
+::::
+
+
+---
+
+### Describing deviations from the normal distribution 
+
+::::{.columns}
+
+:::{.column width="50%"}
+- Another way to deviate from the normal distribution is to 
+have either fatter or skinnier **tails** 
+
+- The _tailedness_ of a distribution is given
+by its **kurtosis**.
+
+-  Kurtosis of a distribution is often specified with reference to the **normal
+   distribution**. This is **excess** kurtosis. 
+
+```{ojs}
+kurtosis_desc = md`- This distribution has an excess kurtosis of ${
+  kurtosis_values[kurtosis_value]
+}. ${
+  kurtosis_values[kurtosis_value] === 0
+    ? "It is a **Mesokurtic distribution**."
+    : kurtosis_values[kurtosis_value] > 0
+    ? "It is a **Leptokurtic distribution**."
+    : "It is a **Platykurtic distribution**."
+}`
+```
+
+:::
+
+:::{.column width="50%"}
+```{ojs}
+kurtosis_plot = Plot.plot({
+  x: {
+    grid: true,
+    domain: [-3, 3]
+  },
+  y: {
+    grid: true,
+    domain: [0, 0.4]
+  },
+  marks: [
+    true
+      ? Plot.line(dists.standard_normal, {
+          x: "x",
+          y: "y",
+          stroke: "grey",
+          strokeWidth: 1
+        })
+      : null,
+    Plot.line(dists[Object.keys(kurtosis)[kurtosis_value]], {
+      x: "x",
+      y: "y",
+      strokeWidth: 4
+    }),
+    Plot.ruleY([0])
+  ]
+})
+```
+
+
+
+```{ojs}
+//|echo: false
+//| panel: input
+viewof kurtosis_value = Inputs.range([0, 6], {
+  step: 1,
+  value: 2,
+  label: "Excess kurtosis",
+  format: (d) => kurtosis_values[d]
+})
+```
+
+
+:::
+::::
+
+---
+
+## Distributions and samples
+
+- We've seen that whenever we look at the distribution of values where the
+  values are produced by **adding up numbers** we got something that looked
+  like a normal distribution
+
+- In Lecture 6, we saw that the formula for the sample mean was as shown in
+in @eq-mean-sum, below:
+
+$$\bar{x}={\displaystyle\sum^{N}_{i=1}{\frac{x_i}{N}}}$$ {#eq-mean-sum}
+
+
+- So to calculate a sample mean, we just **add up a bunch of numbers**
+
+- Let's say I take lots of samples from a population. 
+
+   - And for each sample, I calculate the sample mean.
+
+   - If we had to plot these sample means, then what would the distribution look
+     like? 
+
+---
+
+### The sampling distribution of the mean
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+We can try it out. 
+
+- Let's say that I have a population with a mean of 100 
+
+- And a standard deviation of 15. 
+
+- From this population I can draw samples of `r 5^2` values 
+
+- I'll do this 100,000 times and plot the results in @fig-sampling-r
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| label: fig-sampling-r 
+#| fig.cap: Sample means from 100,000 samples (sample size = 25)
+#| message: false
+require(tidyverse)
+
+mean <- 100
+sd <- 15
+n <- 5^2
+
+samp <- \(x) rnorm(n = n, sd = sd, mean = mean) |> mean() 
+
+d <- parallel::mclapply(1:100000, samp) |> unlist() 
+df <- tibble::tibble(x = d)
+
+ggplot(df, aes(x = x)) + 
+geom_histogram(aes(y = ..density..), bins = 100) +
+geom_function(fun = \(x) dnorm(x, mean,  sd / sqrt(n)), color = "red", size=1) +
+theme_minimal() + 
+labs(x = "sample mean") +
+scale_y_continuous(breaks = NULL, name = "count") +
+theme(panel.grid.major.x = element_blank()) +
+theme(panel.grid.minor.x = element_blank())
+```
+
+:::
+::::
+
+
+
+
+The standard deviation of the sampling distribution of the mean (the plot in
+@fig-sampling-r) has a special name:
+
+_It's called the **standard error of the mean**!_
+
+
+---
+
+## The Central Limit Theorem 
+
+Before we move on to how to calculate the **standard error of the mean** I want
+to assure you something
+
+- You might think that the **sampling distribution of the mean** in
+  @fig-sampling-r is normally distributed because the **population**
+  is normally distributed
+
+- But this is not the case, as your sample size increases, then sampling
+  distribution of the mean will be normally distributed 
+
+- And this will happen even if the **population is not normally distributed**
+
+---
+
+## The Central Limit Theorem 
+
+::::{.columns}
+:::{.column width="50%"}
+
+
+```{ojs}
+import {viewof poptype} from "@ljcolling/central-limit"
+import {viewof n} from "@ljcolling/central-limit"
+import {pop_hist_plot} from "@ljcolling/central-limit"
+import {sampling_distrubution} from "@ljcolling/central-limit"
+```
+
+```{ojs}
+//| panel: input
+viewof poptype
+
+```
+
+```{ojs}
+//| fig-cap: Distribution of the population
+//| label: fig-pop-central-limit
+pop_hist_plot
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{ojs}
+//| fig-cap: Sampling distribution of the mean (50, 000 samples)
+//| label: fig-sampling-central-limit
+sampling_distrubution
+```
+
+```{ojs}
+//| panel: input
+viewof n
+```
+
+:::
+::::
+
+- If the sample size is large enough, then the **sampling distribution of the
+  mean** will approach a normal distribution. This occurs even if the
+  **population** _isn't_ normally distributed
+
+---
+
+## The standard error of the mean
+
+- In Lecture 7 we started talking about the **spread** of **sample means** around 
+the **population**
+
+```{r}
+
+require(tidyverse)
+require(patchwork)
+# require(plotshow)
+
+### generate 10 sample means
+
+set.seed(123)
+gen1 <- \(x) rnorm(n = 10, sd = 25, mean = 100) |> mean()
+set.seed(123)
+gen2 <- \(x) rnorm(n = 4, sd = 25, mean = 100) |> mean()
+
+d1 <- tibble::tibble(
+  y = parallel::mclapply(X = seq_len(10), gen1) |> unlist(),
+  x = seq_len(10)
+)
+
+d2 <- tibble::tibble(
+  y = parallel::mclapply(X = seq_len(10), gen2) |> unlist(),
+  x = seq_len(10)
+)
+
+
+
+p1 <- ggplot(d1) +
+  geom_point(aes(x = x, y = y)) +
+  geom_hline(yintercept = 100, linetype = 2) +
+  labs(x = "sample number", y = latex2exp::TeX("\\bar{x}")) +
+  scale_x_continuous(breaks = seq(1, 10, 1)) +
+  geom_segment(aes(x = x, y = y, yend = 100, xend = x), linetype = 2) +
+  cowplot::theme_cowplot() +
+  theme_minimal() +
+  ylim(130, 70) +
+  NULL
+
+
+p2 <- ggplot(d2) +
+  geom_point(aes(x = x, y = y)) +
+  geom_hline(yintercept = 100, linetype = 2) +
+  labs(x = "sample number", y = latex2exp::TeX("\\bar{x}")) +
+  scale_x_continuous(breaks = seq(1, 10, 1)) +
+  geom_segment(aes(x = x, y = y, yend = 100, xend = x), linetype = 2) +
+  theme_minimal() +
+  ylim(130, 70) +
+  NULL
+```
+
+```{r}
+#| echo: false 
+#| warning: false
+#| label: fig-se
+#| fig-cap: !expr glue::glue("(a) 10 samples with a standard deviation of {round(sd(d1$y), 2)} (b) 10 samples with a standard deviation of {round(sd(d2$y), 2)}") 
+p1 + p2 + plot_annotation(tag_levels = "a")
+```
+
+\
+I showed you @fig-se (above) where the **average deviation of sample means from
+the population mean** was either small (A) or large (B)
+
+---
+
+## The standard error of the mean
+
+I asked you to image two scenarios: One that was a feature of the
+**population** and one that was a feature of the **samples** where the
+**average deviation of sample means from the population mean** would be small
+(or zero).
+
+If you managed, then great! But if not, then here they are:
+
+1. If the **average (squared) deviation** in the **population** is 0 then the
+**average deviation of sample means from the population mean** would be 0
+
+    - Because all members of the population would be the same, so all
+    samples would be the same, so all sample means would be the same
+
+    - Conversely, if the **average (squared) deviations** in the **population**
+      was larger, then the **average deviations of sample means from the
+      population mean** would be larger
+
+---
+
+## The standard error of the mean
+
+2. If the **sample size** was large (so large to include the entire population)
+   then the **average deviation of sample means from the population mean**
+   would be 0
+
+    - Because every sample would be identical to the population, so every sample
+    mean would be identical to the population mean
+
+    - Conversely, if the sample size was smaller, then the **average deviations 
+    of sample means from the population mean** would be larger
+
+
+Let's put these two ideas together to try come up with a formula for the
+**average (squared) deviations of the sample means from the population mean**
+
+Our formula will include:
+
+- $n$: the sample size
+
+- $\sigma^2$: the average (squared) deviations in the population (aka the
+  variance of the population)
+
+- And we'll call our result $\sigma_{\bar{x}}^2$
+
+---
+
+## The standard error of mean
+
+The only way to combine $n$ and $\sigma^2$ so that:
+
+1. when $n$ is very big $\sigma_{\bar{x}}^2$ will be small (and vice versa) and 
+
+2. when $\sigma^2$ is very small $\sigma_{\bar{x}}^2$  will be small (and vice versa)
+
+is formula is @eq-se-var, below:
+
+$$\sigma_{\bar{x}}^2=\frac{\sigma^2}{n}$${#eq-se-var}
+
+But remember, we don't actually know the true $\sigma^2$ (the variance of the
+population), we only know $s^2$ (the sample variance, which is out estimate of
+the variance in the population). So we'll make a slight change to the formula 
+as in @eq-se-var2
+
+$$s_{\bar{x}}^2=\frac{s^2}{n}$${#eq-se-var2}
+
+---
+
+## The standard error of mean
+
+- There's one final step to get to the formula for the **standard error of the mean**.
+
+- The formula in @eq-se-var2 is framed in terms of the **average (squared)
+  deviations) of sample means from the population mean**---that is, in terms of
+  variance. 
+
+- But the standard error of the mean is the **standard deviation of the
+  sampling distribution**
+
+- The standard deviation is just the square root of the variance, so we just
+  need to take the square root of both sides of @eq-se-var2, to get the
+  equation in @eq-se, below:
+
+$$s_{\bar{x}}=\frac{s}{\sqrt{n}}$${#eq-se}
+
+
+More commonly, however, you'll see $s_{\bar{x}}$ just written as $\mathrm{SEM}$ 
+for **Standard Error of the Mean**
+
+And is the formula for the **standard error of the mean** and where it comes from
+
+---
+
+## The standard error of mean
+
+_This was, admittedly, a fairly long winded way to get to what is essentially a
+very simple formula_
+
+- However, as I have alluded to several times, the **standard error of the
+  mean** is a fairly misunderstood concept
+
+- I hope that getting there the long way has helped you to build a better
+  intuition of what the standard error of the mean actually is
+
+_I dislike talking about misconceptions because I think it can sometimes create
+them_
+
+But it worth talking about **one prominent one**
+
+<font color="red" weight="strong">Misconception</font>
+
+_The SEM tells you how far away the sample mean is (likely) to be from 
+the actual population mean_
+
+
+But it doesn't tell you anything about **the sample mean**... at least
+not **your sample mean** that you have calculated for your particular 
+sample
+
+---
+
+## The standard error of mean
+
+The _standard error of the mean_ is just what we're defined it as:
+
+**The standard deviation of the sampling distribution**
+
+So what does this tell you?
+
+- It tells you how far **on averages** sample **means** (not your sample mean) 
+will be from the **population mean**
+
+- Your sample mean might be close to the population mean, it might be far
+away from the population mean. But the SEM doesn't quantity this
+
+Your sample mean **is either close** or **it is far** from **population mean** 
+
+- The SEM tells you something about the _consequences of a **sampling
+  process**_
+
+- Not something about **your sample**
+
+
+
+_So why is it even useful?_
+
+---
+
+## Using the sampling distribution
+
+As I've already **emphasised**, you don't know the value of the **population
+mean**
+
+- But you can **hypotheses** a value, and then use the **SEM** to **construct a
+sampling distribution**
+
+- The **sampling distribution** will just be a **normal distribution** with a
+mean of your **hypothesised value** and a standard deviation equal to the
+**SEM**
+
+
+- Because it's a **normal distribution**, we know that ~68% **of sample means**
+  will be within ±1 SEM from our **hypothesised** population mean (if our
+  hypothesis is correct)^[See Slide 9]
+
+
+- If **our sample** is **very far** (e.g., 2 or 3 SEMs) away from **our
+  hypothesised population mean** then this would be "surprising"
+
+
+
+---
+
+## Using the sampling distribution
+
+How to make sense of the observation that our **sample mean** is _surprisingly_
+far away from our **hypothesised population mean** is complex
+
+You'll learn more about it next year... but for now one way to think about it
+is as follows:
+
+
+If we ran the experiment again:
+
+- and we **kept on observing sample means that were surprisingly far** from our **hypothesised
+population mean** 
+
+- that might give us a reason to **revise our hypothesis** about what we think
+  the **population mean might be**
+
+
+
+
+---
+
+
+<img style="width:100%;height:100%" src="`r xfun::embed_file(here::here("images/mentors.png"))[2]$attribs$href`">
+
+
+
+```{ojs}
+n_heads = jstat(0, coins - 1, coins + 1 - 1)[0].map((v) => {
+  return {
+    x: v,
+    y: jstat.binomial.pdf(v, coins - 1, 0.5) * 2 ** (coins - 1)
+  };
+})
+```
+
+```{ojs}
+vega = require("https://cdn.jsdelivr.net/npm/vega@5/build/vega.js")
+```
+
+```{ojs}
+coin_data = [
+  { name: "START", id: 1, parent: "", color: "red" },
+  ...d3.range(2, 2 ** coins).map((i) => {
+    return {
+      name: i % 2 ? "T" : "H",
+      id: i,
+      parent: Math.floor(i / 2)
+    };
+  })
+].map((x) => {
+  let colors = { H: "black", T: "white", START: "red" };
+  x.color = colors[x.name];
+  return x;
+})
+```
+
+```{ojs}
+parsedSpec = {
+  return vega.parse(spec3);
+}
+```
+
+```{ojs}
+spec3 = {
+  return {
+    $schema: "https://vega.github.io/schema/vega/v5.0.json",
+    padding: 0,
+    width: 500,
+    height: 100,
+    layout: {
+      padding: 0,
+      columns: 1
+    },
+    marks: [
+      {
+        type: "group",
+        encode: {
+          update: {
+            width: {
+              value: 1000
+            },
+            height: {
+              value: 130
+            }
+          }
+        },
+        data: [
+          {
+            name: "tree",
+            values: coin_data,
+            transform: [
+              {
+                type: "stratify",
+                key: "id",
+                parentKey: "parent"
+              },
+              {
+                type: "tree",
+                method: "tidy",
+                size: [500, 200],
+                as: ["x", "y", "depth", "children"]
+              }
+            ]
+          },
+          {
+            name: "links",
+            source: "tree",
+            transform: [
+              {
+                type: "treelinks",
+                key: "id"
+              },
+              {
+                type: "linkpath",
+                orient: "horizontal",
+                shape: "line"
+              }
+            ]
+          }
+        ],
+        scales: [
+          {
+            name: "color",
+            domain: [0, 1, 2, 3, 4, 5],
+            type: "sequential",
+            range: "ramp"
+          }
+        ],
+        marks: [
+          {
+            type: "path",
+            from: {
+              data: "links"
+            },
+            encode: {
+              update: {
+                path: {
+                  field: "path"
+                },
+                stroke: {
+                  value: "black"
+                }
+              }
+            }
+          },
+          {
+            type: "symbol",
+            from: {
+              data: "tree"
+            },
+            encode: {
+              enter: {
+                size: {
+                  value: 50
+                },
+                stroke: {
+                  value: "black"
+                }
+              },
+              update: {
+                x: {
+                  field: "x"
+                },
+                y: {
+                  field: "y"
+                },
+                fill: {
+                  field: "color"
+                }
+              }
+            }
+          },
+          {
+            type: "text",
+            from: {
+              data: "tree"
+            },
+            encode: {
+              enter: {
+                text: {
+                  field: "name"
+                },
+                fontSize: {
+                  value: 0
+                },
+                baseline: {
+                  value: "bottom"
+                }
+              },
+              update: {
+                x: {
+                  field: "x"
+                },
+                y: {
+                  field: "y"
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  };
+}
+```
+
+```{ojs}
+jstat = require("https://bundle.run/jstat@1.9.4")
+```
+
+```{ojs}
+dicedata = {
+  return d3.sort(
+    dist.six_dice_roll_histogram(n_dice, n_players).counts,
+    (d) => d.value
+  );
+}
+
+```
+
+```{ojs}
+d = {
+  return Array(n_players_mult)
+    .fill(0)
+    .map((x) => {
+      return {
+        x: Number(
+          Array.from(dist.six_dice_roll(1, n_dice_mult)).reduce(
+            (state, item) => state * item
+          )
+        )
+      };
+    });
+}
+```
+
+```{ojs}
+import { dist } from "@ljcolling/wasm-distributions"
+```
+
+```{ojs}
+sd_value_slider = Inputs.range([0.5, 2], {
+  value: 1,
+  step: 0.25,
+  label: htl.html`&#x3C3;`
+})
+```
+
+```{ojs}
+import { texmd } from "@kelleyvanevert/katex-within-markdown"
+```
+
+```{ojs}
+mean_value_slider = Inputs.range([-3, 3], {
+  value: 0,
+  step: 0.25,
+  label: htl.html`&#x3BC`
+})
+```
+
+```{ojs}
+sd_value = Generators.input(sd_value_slider)
+```
+
+```{ojs}
+mean_value = Generators.input(mean_value_slider)
+```
+
+```{ojs}
+// jStat.normal.pdf( x, mean, std )
+normal_plot = (min, max, mean, sd) => {
+  // jStat.normal.pdf(x, mean, sd)
+
+  return d3.ticks(min, max, 501).map((v) => {
+    return {
+      x: v,
+      y: dist.dnorm(v, mean, sd)
+    };
+  });
+}
+```
+
+```{ojs}
+fill_limits = (mult) => {
+  let s = sd_value * mult;
+  return [
+    { x: mean_value - s > -4 ? mean_value - s : -4, y: 0 },
+    normal_plot(
+      mean_value - s > -4 ? mean_value - s : -4,
+      mean_value - s > -4 ? mean_value - s : -4,
+      mean_value,
+      sd_value
+    )[0],
+    normal_plot(
+      mean_value + s < 4 ? mean_value + s : 4,
+      mean_value + s < 4 ? mean_value + s : 4,
+      mean_value,
+      sd_value
+    )[0],
+    { x: mean_value + s < 4 ? mean_value + s : 4, y: 0 }
+  ];
+}
+```
+
+```{ojs}
+skew_normal_plot = (min, max, alpha) => {
+  // jStat.normal.pdf(x, mean, sd)
+
+  return d3.ticks(min, max, 201).map((v) => {
+    return {
+      x: v,
+      y: dsn(v, alpha)
+    };
+  });
+}
+```
+
+```{ojs}
+dsn = (x, alpha) => {
+  // set the defaults
+
+  const xi = 0;
+  const omega = 1;
+  const tau = 0;
+
+  let z = (x - xi) / omega;
+
+  let logN = -Math.log(Math.sqrt(2 * Math.PI)) - 0 - Math.pow(z, 2) / 2;
+
+  let logS = Math.log(
+    jStat.normal.cdf(tau * Math.sqrt(1 + Math.pow(alpha, 2)) + alpha * z, 0, 1)
+  );
+
+  let logPDF = logN + logS - Math.log(jStat.normal.cdf(tau, 0, 1));
+
+  return Math.exp(logPDF);
+}
+```
+
+```{ojs}
+// import jStat library
+jStat = require("jStat")
+```
+
+```{ojs}
+kurtosis = {
+  return {
+    uniform: -(6 / 5),
+    raised_cosine: (6 * (90 - Math.PI ** 4)) / (5 * (Math.PI ** 2 - 6) ** 2),
+    standard_normal: 0,
+    t_dist30: 6 / (30 - 4),
+    t_dist20: 6 / (20 - 4),
+    t_dist10: 6 / (10 - 4),
+    t_dist7: 6 / (7 - 5),
+    t_dist5: 6 / (5 - 4)
+  };
+}
+```
+
+```{ojs}
+kurtosis_values = Object.values(kurtosis).map((v) => Math.round(v * 100) / 100)
+```
+
+```{ojs}
+dists = {
+  return {
+    raised_cosine: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.raised_cosine(v, 0, 2.5)
+      };
+    }),
+    standard_normal: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dnorm(v, 0, 1)
+      };
+    }),
+    t_dist30: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 30)
+      };
+    }),
+    t_dist20: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 20)
+      };
+    }),
+    t_dist10: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 10)
+      };
+    }),
+    t_dist7: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 7)
+      };
+    }),
+    t_dist5: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 5)
+      };
+    }),
+
+    uniform: d3.ticks(-2.1, 2.1, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dunif(v, -2, 2)
+      };
+    })
+  };
+}
+```
+
