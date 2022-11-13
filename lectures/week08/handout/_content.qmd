@@ -444,6 +444,8 @@ $\sigma$ of the **normal distribution**, the **relative position of points (in
 units of $\sigma$**) doesn't change, even though the absolute position of
 points on the plot do change. 
 
+<!--
+
 This is rather a mouthful. So let's break down what it actually means.  If we
 take a normal distribution with $\mu$ = 0 and $\sigma$ = 1, then about 68% of
 the plot lies between -1 and 1. In units of $\sigma$ this means that about 68%
@@ -455,6 +457,8 @@ $\sigma$, -2 is just -1 $\sigma$ from $\mu$ (2 [$\mu$] - 4 [$\sigma$] = 2), and
 matter how we change $\mu$ and $\sigma$, 68% of the plot will always be between
 $\mu$ - $\sigma$ and $\mu$ + $\sigma$. This will be the case with all normal
 distributions. 
+
+-->
 
 But sometimes we see distributions that aren't normal distributions. They've
 departed from this **normal** distribution shape in some way. There are

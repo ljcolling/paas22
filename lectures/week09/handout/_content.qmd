@@ -1,6 +1,661 @@
-# Lecture 9
-<!-- TODO: Probably need to standard errors here again in the begin -->
+In last week's lecture we started learning a little bit about distributions.
+We learned about the normal distribution, and where it comes from. And we
+also learned a little bit about the sampling distribution, and why knowing
+the sampling distribution might be useful.
 
-<!-- TODO: Thing that influence the width of the sampling distribution -->
+This week we'll talk a little bit more about distributions and why the normal
+distribution is particularly useful.
 
-<!-- TODO: This is where I'll do the two dice roll games -->
+## The shape of things
+
+```{r}
+#| echo: false
+#| message: false
+require(ggplot2)
+require(cowplot)
+set.seed(124)
+df <- tibble::tibble(x = rnorm(n = 1000, mean = 0, sd = 1) |>
+scale() |> as.numeric())
+df_og <- df
+df$x <- df$x * 10
+df$x <- df$x + 165
+df_m <- df$x |> mean()
+df_s <- df$x |> sd()
+range <- glue::glue("{round(df_m - df_s  * 1)}--{round(df_m + df_s * 1)}")
+p <- ggplot(df, aes(x = x)) +
+  geom_histogram(binwidth = 5, boundary = 130) +
+  labs(x = "height in cm") +
+  theme_cowplot() +
+  NULL
+```
+
+For example, if we were to measure the height of `r df$x |> length()` women and
+plot the values then we might get something like the plot in
+@fig-height-histogram. As you can see, the vast majority of the measured
+heights are in the `r range` centimetre range. Only a small number of people
+fall outside of this range. You can also see that the distribution is roughly
+symmetrical around its mean (`r round(df_m)` cm) and it has a shape
+characteristic of a normal distribution.
+
+
+```{r}
+#| echo: false
+#| label: fig-height-histogram
+#| fig.cap: |
+#|    Distribution of heights in a sample of 1000 women. Not real
+#|    data.
+p
+```
+
+Of course it doesn't look exactly like a normal distribution, because, as we 
+saw in Lecture 8, a normal distribution is smooth line. Our plot is a histogram
+where we've just counted up the number of people that fall into each 5 centimetre 
+bin. However, we could image measuring the heights of more and more people and 
+making the bins narrower and narrower. In @fig-height-histogram2 we can 
+see what the histogram might look like if we were to measure 100,000 women.
+
+```{r}
+#| echo: false
+#| label: fig-height-histogram2
+#| fig.cap: |
+#|    Distribution of heights in a sample of 100,000 women (Not real
+#|    data) and the corresponding normal distribution
+df <- tibble::tibble(x = rnorm(n = 100000, mean = 0, sd = 1) |>
+scale() |> as.numeric())
+df$x <- df$x * 10
+df$x <- df$x + 165
+df_m <- df$x |> mean()
+df_s <- df$x |> sd()
+ideal <- \(x) (dnorm(x, df_m, df_s) / dnorm(df_m, df_m, df_s)) * ((195 / 5) * 100)
+ggplot(df, aes(x)) +
+  geom_histogram(binwidth = 1, boundary = 130) +
+  geom_density(col = "grey20", size = 2, aes(y = ..count.. )) +
+  geom_function(fun = ideal, col = "blue", size = 2) +
+  labs(y = "count", x = "height in cm") +
+  theme_cowplot()
+```
+
+In @fig-height-histogram2 you can also see the what the corresponding normal
+distribution looks like. This idealised representation is a normal distribution
+with a mean of `r df_m` and a standard deviation of `r df_s`. Although the
+**normal distribution** is an idealisation, or an abstraction, we can use it to
+do some very useful things.
+
+## The standard normal distribution
+
+When we were first introduced to the normal distribution last week we saw that
+there were two **parameters** that we could change ($\mu$ and $\sigma$) that
+changed where the normal distribution was centered and how spread out it was.
+When $\mu=0$ and $\sigma=1$, then the normal distribution is called the
+**standard normal distribution**. You can explore the normal distribution again
+in @exm-normal.
+
+
+
+I said in Lecture 8 that when you adjust the $\mu$ and $\sigma$ values then the
+absolute positions of points on the plot change, but the **relative position**
+doesn't change. 
+
+To understand what I mean by this, we'll use an example. Let's take the
+heights of people that we plotted in @fig-height-histogram.  In this example we 
+measures height in centimeters. It should be pretty obvious that your height
+doesn't change depending on the units you measure it in. You're the same height
+whether you get measured in centimetres, metres, millimetres, feet, or inches.
+
+If we measured height of the sample of women in metres instead of
+centimetres, the shape of the plot should remain the same. You can see
+this in @fig-height-histogram-new. 
+
+```{r}
+#| echo: false
+#| label: fig-height-histogram-new
+#| fig-cap: |
+#|    Distribution of heights in a sample of 1000 women. Not real
+#|    data.
+#| fig-subcap:
+#|    - "Measured in centimetres"
+#|    - "Measured in metres"
+#| layout-ncol: 2
+# require(ggplot2)
+# require(plotshow)
+require(cowplot)
+set.seed(124)
+df <- tibble::tibble(x = rnorm(n = 1000, mean = 0, sd = 1) |>
+scale() |> as.numeric())
+df$x <- df$x * 10
+df$x <- df$x + 165
+df_m <- df$x |> mean()
+df_s1 <- df$x |> sd()
+range <- glue::glue("{round(df_m - df_s  * 1)}--{round(df_m + df_s * 1)}")
+ggplot(df, aes(x = x)) +
+  geom_histogram(binwidth = 5, boundary = 130) +
+  labs(x = "height in cm") +
+  theme_cowplot() +
+  NULL
+
+
+set.seed(124)
+df <- tibble::tibble(x = rnorm(n = 1000, mean = 0, sd = 1) |>
+scale() |> as.numeric())
+df$x <- df$x * (10 / 100)
+df$x <- df$x + (165 / 100)
+df_m <- df$x |> mean()
+df_s2 <- df$x |> sd()
+range <- glue::glue("{round(df_m - df_s  * 1)}--{round(df_m + df_s * 1)}")
+ggplot(df, aes(x = x)) +
+  geom_histogram(binwidth = 5 / 100, boundary = 130 / 100) +
+  labs(x = "height in m") +
+  theme_cowplot() +
+  NULL
+```
+
+
+The distribution in @fig-height-histogram-new-1 has a standard deviation
+of `r df_s1` while the distribution in @fig-height-histogram-new-2 has a
+standard deviation of `r df_s2`. But as you can see, they're they same
+distributions---they're just displaced on **different scales**
+(centimetres versus metres).
+
+
+:::{.callout-note}
+
+Changing the **scale** changes the **standard deviation**. This is why
+the **standard deviation** is sometimes referred to as the **scale
+parameter** for the distribution.
+
+:::
+
+
+We've seen how we can change the **scale** of the distribution, by
+measuring it in metres instead of centimetres. But we can also change
+the where the distribution is centred. We can see an example of this in
+@fig-height-histogram-new-location.
+
+
+
+```{r}
+#| echo: false
+#| label: fig-height-histogram-new-location
+#| fig-cap: |
+#|    Distribution of heights in a sample of 1000 women. Not real
+#|    data.
+#| fig-subcap:
+#|    - "Measured in centimetres"
+#|    - "Measured in difference from the average height"
+#| layout-ncol: 2
+# require(ggplot2)
+# require(plotshow)
+require(cowplot)
+set.seed(124)
+df <- tibble::tibble(x = rnorm(n = 1000, mean = 0, sd = 1) |>
+scale() |> as.numeric())
+df$x <- df$x * 10
+df$x <- df$x + 165 
+df_m <- df$x |> mean()
+df_s1 <- df$x |> sd()
+range <- glue::glue("{round(df_m - df_s  * 1)}--{round(df_m + df_s * 1)}")
+ggplot(df, aes(x = x)) +
+  geom_histogram(binwidth = 5, boundary = 130) +
+  labs(x = "height in cm") +
+  theme_cowplot() +
+  NULL
+
+
+set.seed(124)
+df <- tibble::tibble(x = rnorm(n = 1000, mean = 0, sd = 1) |>
+scale() |> as.numeric())
+df$x <- df$x * (10 )
+df$x <- df$x + (165 - 165)
+df_m <- df$x |> mean()
+df_s2 <- df$x |> sd()
+range <- glue::glue("{round(df_m - df_s  * 1)}--{round(df_m + df_s * 1)}")
+ggplot(df, aes(x = x)) +
+  geom_histogram(binwidth = 5,  boundary = 130 - 165) +
+  labs(x = "difference from average height in cm") +
+  theme_cowplot() +
+  NULL
+```
+
+In @fig-height-histogram-new-location-1 we can see the same distribution
+as before. But in @fig-height-histogram-new-location-2 we can see a
+distribution that is now centred at 0. In this distribution we've just
+changed where the centred is **located**, but the distribution is still
+the same.
+
+:::{.callout-note}
+
+Changing the **mean** changes where the centre of the distribution is
+**located**. This is why the mean is sometimes referred to as the
+**location parameter** for the distribution.
+
+:::
+
+
+The fact that the relative positions of points don't change is a useful
+property. In the standard normal distribution, ~68% of the distribution
+falls between -1 and +1. Or, put into relative terms, ±1 $\sigma$ from $\mu$.
+And ~68% of the distribution will always fall between ±1 $\sigma$ from $\mu$
+no matter what value you set for $\sigma$ and $\mu$. You can explore this in 
+@exm-normal.
+
+
+
+:::{.callout-tip icon="false" appearance="simple"}
+
+:::{#exm-normal}
+#### The normal distribution
+:::
+
+
+```{ojs}
+normal_plot_output = Plot.plot({
+  x: {
+    grid: true,
+    domain: [-4, 4]
+  },
+  y: {
+    grid: true,
+    domain: [0, 0.8]
+  },
+  marks: [
+   Plot.line(
+     normal_plot(
+       mean_value - sd_value * s > -4 ? mean_value - sd_value * s : -4,
+       mean_value + sd_value * s < 4 ? mean_value + sd_value * s : 4,
+       mean_value,
+       sd_value
+     ),
+     {
+       x: "x",
+       y: "y",
+       strokeWidth: 1,
+       fill: "blue",
+       opacity: show ? 0.5 : 0
+     }
+   ),
+   Plot.line(fill_limits(s), {
+     x: "x",
+     y: "y",
+     fill: "blue",
+     strokeWidth: 1,
+     opacity: show ? 0.5 : 0
+   }),
+    Plot.line(normal_plot(-4, 4, mean_value, sd_value), {
+      x: "x",
+      y: "y",
+      strokeWidth: 4
+    }),
+    Plot.ruleY([0])
+  ]
+})
+```
+
+```{ojs}
+normal_sliders = htl.html`${mean_value_slider}${sd_value_slider}`
+```
+
+
+```{ojs}
+{
+  if(mean_value === 0 & sd_value === 1) {
+    return texmd`This plot shows the **standard normal** distribution.`
+  } else {
+    return texmd`This plot shows a normal distribution with a mean ($\mu$) of ${mean_value} and a standard deviation ($\sigma$) of ${sd_value}.`
+
+  }
+
+}
+```
+
+You can make adjustments to $\mu$ and $\sigma$ to change the centre and scale
+of the normal distribution.
+
+
+```{ojs}
+viewof show = Inputs.toggle({ label: "Show coverage", value: false })
+```
+
+```{ojs}
+viewof s = Inputs.range([0, 3], { step: 0.5, value: 1 })
+```
+
+\
+```{ojs}
+texmd`Approximately ~68% of the distribution will fall between ±1 $\sigma$ of $\mu$.
+Toggle **Show coverage** to highlight the region corresponding to ±$ ${s} $\sigma$ 
+from $\mu$.
+
+Make adjustments to $\mu$ and $\sigma$. See how the highlighted region covers
+the region from ${mean_value - s * sd_value} to ${mean_value + s * sd_value}, or
+(${mean_value} - [${s} × ${sd_value}]) to (${mean_value} + [${s} × ${sd_value}]).
+`
+```
+
+::::
+
+
+## Transformations
+
+In @fig-height-histogram-new and @fig-height-histogram-new-location we saw how
+we could **transform** a variable so that the shape of the distribution stayed
+the same, but the **mean** and the **standard deviation** changed. These two
+kinds of **transformations** are known as **centring** and **scaling**.
+
+
+### Centering 
+
+Centring is performed by **subtracting** a fixed value from each observation in
+our dataset. This has the effect of shifting the distribution of our  variable
+_along the x-axis_. You can technically centre a variable but subtracting _any
+value_ from it but the most frequently used method is **mean-centring**.
+
+
+This is shown in @eq-center, below:
+
+$$x_i - \bar{x}$${#eq-center}
+
+
+:::{.callout-tip}
+
+Applying this transformation results in shifting the variable so that
+it's mean is at the zero point and the individual values of the
+mean-centred variable tell us how far that observation is from the mean
+of the entire variable.
+
+:::
+
+
+It's crucially important to understand that mean-centring **does not
+alter the shape of the variable, nor does it change the scale at which
+the variable is measured**. It only **changes the interpretation** of
+the values from the raw scores to differences from the mean.
+
+
+
+### Scaling
+
+Scaling is performed by **dividing** each observation by some fixed
+value. This has the effect of stretching or compressing the variable
+*along the x-axis*.
+
+Just like centring, you can technically scaled a variable by dividing it
+by *any* value. For example, we created @fig-height-histogram-new-2 by
+taking the values in @fig-height-histogram-new-1 and dividing them by
+100 to transform the height in centimetres to a height in metres.
+However, the most frequent method of scaling is by dividing values by
+the standard deviation of the dataset. This is shown in @eq-scale,
+below:
+
+$$\frac{x_i}{s}$${#eq-scale}
+
+Just like with centring, the fundamental shape of the variable's
+distribution did not change as a result of scaling. After 
+scaling the data by the standard deviation the values would
+now be measured in units of sd. 
+
+:::{.callout-tip}
+
+Unlike centring, however, scaling does change the **scale**, or units, on which
+the variable is measured. After all, that's why it's called scaling.
+
+:::
+
+
+### The *z*-transform
+
+The combination of first mean-centering a variable and then scaling the
+variable by it's standard deviation is known as the **z**-transform. The
+formula for this is shown in @eq-z, below:
+
+$$z(x) = \frac{x_i - \bar{x}}{s}$${#eq-z}
+
+
+```{r}
+set.seed(555)
+d <- rnorm(10, 5, 2) |> round()
+
+
+```
+
+We can see an example of how to z-transform some data in @tbl-z. The 10
+values in @tbl-z have a mean of `r mean(d)` and a standard deviation
+of `r sd(d) |> round(2)`. In the column labelled **centred**, the `r mean(d)`
+has been subtracted from the raw values. If we were to work 
+out the mean of this column the value would be 0. The
+column labelled **scaled** contains the values in **centred**
+but divided by `r sd(d) |> round(2)`. If you were to work out
+the mean of this column is would still be 0. And if you were to work
+out the standard deviation of this column it would now be 1.^[I 
+won't include the `R` code for how you might z score some data in 
+a `tibble`. Instead, I'll leave that are an exercise for you to figure out]
+
+```{r}
+#| label: tbl-z
+#| tbl-cap: z transformed data
+tibble::tibble(r = d) |>
+  dplyr::mutate(centred = d - mean(d)) |>
+  dplyr::mutate(scaled = centred / sd(d)) |>
+  magrittr::set_colnames(
+c("Raw values",
+"Centred",
+"Scaled")) |>
+knitr::kable(digits = 2)
+```
+
+When we've _z_-transformed data^[Also called
+**standardising**, because the *mean* is 0 and the *standard deviation* is 1, just
+like the **standard normal distribution**] we can now interpret the data in terms 
+of **distance from the mean in units of standard deviation**.  
+
+
+Being able to do
+this makes it easier to make comparisons. 
+
+
+
+
+
+
+<!-- dependencies  -->
+
+
+```{ojs}
+vega = require("https://cdn.jsdelivr.net/npm/vega@5/build/vega.js")
+```
+
+
+
+```{ojs}
+jstat = require("https://bundle.run/jstat@1.9.4")
+```
+
+
+
+```{ojs}
+import { dist } from "@ljcolling/wasm-distributions"
+```
+
+```{ojs}
+sd_value_slider = Inputs.range([0.5, 2], {
+  value: 1,
+  step: 0.25,
+  label: htl.html`standard deviation <br />&#x3C3;`
+})
+```
+
+```{ojs}
+import { texmd } from "@kelleyvanevert/katex-within-markdown"
+```
+
+```{ojs}
+mean_value_slider = Inputs.range([-3, 3], {
+  value: 0,
+  step: 0.25,
+  label: htl.html`mean<br />  &#x3BC`
+})
+```
+
+```{ojs}
+sd_value = Generators.input(sd_value_slider)
+```
+
+```{ojs}
+mean_value = Generators.input(mean_value_slider)
+```
+
+```{ojs}
+// jStat.normal.pdf( x, mean, std )
+normal_plot = (min, max, mean, sd) => {
+  // jStat.normal.pdf(x, mean, sd)
+
+  return d3.ticks(min, max, 501).map((v) => {
+    return {
+      x: v,
+      y: dist.dnorm(v, mean, sd)
+    };
+  });
+}
+```
+
+```{ojs}
+skew_normal_plot = (min, max, alpha) => {
+  // jStat.normal.pdf(x, mean, sd)
+
+  return d3.ticks(min, max, 201).map((v) => {
+    return {
+      x: v,
+      y: dsn(v, alpha)
+    };
+  });
+}
+```
+
+```{ojs}
+dsn = (x, alpha) => {
+  // set the defaults
+
+  const xi = 0;
+  const omega = 1;
+  const tau = 0;
+
+  let z = (x - xi) / omega;
+
+  let logN = -Math.log(Math.sqrt(2 * Math.PI)) - 0 - Math.pow(z, 2) / 2;
+
+  let logS = Math.log(
+    jStat.normal.cdf(tau * Math.sqrt(1 + Math.pow(alpha, 2)) + alpha * z, 0, 1)
+  );
+
+  let logPDF = logN + logS - Math.log(jStat.normal.cdf(tau, 0, 1));
+
+  return Math.exp(logPDF);
+}
+```
+
+```{ojs}
+// import jStat library
+jStat = require("jStat")
+```
+
+```{ojs}
+kurtosis = {
+  return {
+    uniform: -(6 / 5),
+    raised_cosine: (6 * (90 - Math.PI ** 4)) / (5 * (Math.PI ** 2 - 6) ** 2),
+    standard_normal: 0,
+    t_dist30: 6 / (30 - 4),
+    t_dist20: 6 / (20 - 4),
+    t_dist10: 6 / (10 - 4),
+    t_dist7: 6 / (7 - 5),
+    t_dist5: 6 / (5 - 4)
+  };
+}
+```
+
+```{ojs}
+kurtosis_values = Object.values(kurtosis).map((v) => Math.round(v * 100) / 100)
+```
+
+```{ojs}
+dists = {
+  return {
+    raised_cosine: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.raised_cosine(v, 0, 2.5)
+      };
+    }),
+    standard_normal: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dnorm(v, 0, 1)
+      };
+    }),
+    t_dist30: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 30)
+      };
+    }),
+    t_dist20: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 20)
+      };
+    }),
+    t_dist10: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 10)
+      };
+    }),
+    t_dist7: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 7)
+      };
+    }),
+    t_dist5: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 5)
+      };
+    }),
+
+    uniform: d3.ticks(-2.1, 2.1, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dunif(v, -2, 2)
+      };
+    })
+  };
+}
+```
+
+
+```{ojs}
+fill_limits = (mult) => {
+  let s = sd_value * mult;
+  return [
+    { x: mean_value - s > -4 ? mean_value - s : -4, y: 0 },
+    normal_plot(
+      mean_value - s > -4 ? mean_value - s : -4,
+      mean_value - s > -4 ? mean_value - s : -4,
+      mean_value,
+      sd_value
+    )[0],
+    normal_plot(
+      mean_value + s < 4 ? mean_value + s : 4,
+      mean_value + s < 4 ? mean_value + s : 4,
+      mean_value,
+      sd_value
+    )[0],
+    { x: mean_value + s < 4 ? mean_value + s : 4, y: 0 }
+  ];
+}
+```
+
+
+<!-- }}} -->
+
+>>>>>>> 6a3ff13 (updated)
