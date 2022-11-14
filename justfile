@@ -8,7 +8,8 @@ deploy:
 copy :
   cp -r ./images/ _site/images/
 
-all : render deploy
+all : slow speaker deploy
+  
 
 quick :
  quarto render index.qmd
@@ -26,3 +27,5 @@ slow :
 speaker :
   fd index -e html -x echo {} |  awk '{printf "mv " $1 " _site/"} {gsub("\\.\/","")gsub("\/","_")}1' | xargs -I {} sh -c {}
   quarto render speaker.qmd
+
+

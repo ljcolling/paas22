@@ -444,6 +444,8 @@ $\sigma$ of the **normal distribution**, the **relative position of points (in
 units of $\sigma$**) doesn't change, even though the absolute position of
 points on the plot do change. 
 
+<!--
+
 This is rather a mouthful. So let's break down what it actually means.  If we
 take a normal distribution with $\mu$ = 0 and $\sigma$ = 1, then about 68% of
 the plot lies between -1 and 1. In units of $\sigma$ this means that about 68%
@@ -455,6 +457,8 @@ $\sigma$, -2 is just -1 $\sigma$ from $\mu$ (2 [$\mu$] - 4 [$\sigma$] = 2), and
 matter how we change $\mu$ and $\sigma$, 68% of the plot will always be between
 $\mu$ - $\sigma$ and $\mu$ + $\sigma$. This will be the case with all normal
 distributions. 
+
+-->
 
 But sometimes we see distributions that aren't normal distributions. They've
 departed from this **normal** distribution shape in some way. There are
@@ -1269,3 +1273,70 @@ fill_limits = (mult) => {
 <!-- }}} -->
 
 
+## Check your understanding
+
+Use this quiz to make sure that you've understood the key concepts.
+
+```{r}
+#| echo: false
+#| message: false
+
+require(niceQuiz)
+
+sem <- function(x) {
+  s <- sd(x)
+  n <- length(x)
+  s / sqrt(n)
+}
+
+quiz(
+  caption = "",
+  question(
+    "The mean of a set of numbers is 10, the variance is 25, and the sample size is 15. <br />What is the standard error of the mean?",
+    numericanswer(sqrt(25)/sqrt(16)),
+    type = "fillin")
+    )
+```
+
+```{r}
+quiz(
+caption = "",
+question(
+  "A distribution with fatter tails than a normal distribution is called?",
+  answer("Mesokurtic"),
+  answer("Platykurtic"),
+  answer("Leptokurtic", correct = TRUE)),
+
+question(
+  "A distribution with skewness of -1.5 is:",
+  answer("Right-skewed"),
+  answer("Left-skewed", correct = TRUE)),
+
+question("The sampling distribution of the mean with have what kind of distributions?",
+answer("A normal distribution", correct = TRUE),
+answer("The same distribution as the population"),
+answer("A distribution that is more skewed than the population distribution")
+)
+
+
+
+
+
+)
+
+```
+
+## Leave a comment {.unnumbered .unlisted}
+
+If you'd like to leave a comment or ask a question about this week's lecture
+then you can use the comment box below. Note that comments will be accessible to
+the lecturer but won't be displayed until they have been approved.
+
+```{r}
+#| echo: false
+form_url <- "https://docs.google.com/forms/d/e/1FAIpQLSdcA0B4oOoPXNQdkNCcu7wQHTlg1ynAbS5aqxjZbFtGqJqYnQ/formResponse"
+comment_id <- "entry.2112951534"
+label_id <- "entry.2046375008"
+lecture <- "lecture8"
+commentr::commentr(form_url = form_url, comment_id = comment_id, label_id = label_id, lecture = lecture)
+```

@@ -345,7 +345,7 @@ out they are
 points on the plot, but not the relative positions measured in 
 units of $\sigma$
 
-  - E.g., ~68% of the points will lie between $\mu - \sigma$ and $\mu + \sigma$
+  <!-- - E.g., ~68% of the points will lie between $\mu - \sigma$ and $\mu + \sigma$ -->
 
   - This will be a really useful property which we'll make use of later
 
@@ -908,8 +908,9 @@ Your sample mean **is either close** or **it is far** from **population mean**
 - Not something about **your sample**
 
 
+_So why is it even useful?_ More on that next week!
 
-_So why is it even useful?_
+<!--
 
 ---
 
@@ -957,7 +958,7 @@ population mean**
 
 
 
-
+-->
 ---
 
 
