@@ -908,9 +908,9 @@ Your sample mean **is either close** or **it is far** from **population mean**
 - Not something about **your sample**
 
 
+_So why is it even useful?_ More on that next week!
 
-_So why is it even useful?_
-
+<!--
 ---
 
 ## Using the sampling distribution
@@ -957,7 +957,7 @@ population mean**
 
 
 
-
+-->
 ---
 
 

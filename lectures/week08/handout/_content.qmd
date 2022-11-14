@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 In the previous lecture, we started talking about something called the
 **standard error of the mean**. We said that the **standard error of the mean**
 told us something about how spread out the **sample means** would be if we took
@@ -1273,3 +1274,70 @@ fill_limits = (mult) => {
 <!-- }}} -->
 
 
+## Check your understanding
+
+Use this quiz to make sure that you've understood the key concepts.
+
+```{r}
+#| echo: false
+#| message: false
+
+require(niceQuiz)
+
+sem <- function(x) {
+  s <- sd(x)
+  n <- length(x)
+  s / sqrt(n)
+}
+
+quiz(
+  caption = "",
+  question(
+    "The mean of a set of numbers is 10, the variance is 25, and the sample size is 15. <br />What is the standard error of the mean?",
+    numericanswer(sqrt(25)/sqrt(16)),
+    type = "fillin")
+    )
+```
+
+```{r}
+quiz(
+caption = "",
+question(
+  "A distribution with fatter tails than a normal distribution is called?",
+  answer("Mesokurtic"),
+  answer("Platykurtic"),
+  answer("Leptokurtic", correct = TRUE)),
+
+question(
+  "A distribution with skewness of -1.5 is:",
+  answer("Right-skewed"),
+  answer("Left-skewed", correct = TRUE)),
+
+question("The sampling distribution of the mean with have what kind of distributions?",
+answer("A normal distribution", correct = TRUE),
+answer("The same distribution as the population"),
+answer("A distribution that is more skewed than the population distribution")
+)
+
+
+
+
+
+)
+
+```
+
+## Leave a comment {.unnumbered .unlisted}
+
+If you'd like to leave a comment or ask a question about this week's lecture
+then you can use the comment box below. Note that comments will be accessible to
+the lecturer but won't be displayed until they have been approved.
+
+```{r}
+#| echo: false
+form_url <- "https://docs.google.com/forms/d/e/1FAIpQLSdcA0B4oOoPXNQdkNCcu7wQHTlg1ynAbS5aqxjZbFtGqJqYnQ/formResponse"
+comment_id <- "entry.2112951534"
+label_id <- "entry.2046375008"
+lecture <- "lecture8"
+commentr::commentr(form_url = form_url, comment_id = comment_id, label_id = label_id, lecture = lecture)
+```
