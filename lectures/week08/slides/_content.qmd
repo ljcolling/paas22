@@ -876,12 +876,12 @@ But it worth talking about **one prominent one**
 
 <font color="red" weight="strong">Misconception</font>
 
-_The SEM tells you how far away the sample mean is (likely) to be from 
-the actual population mean_
+~~_The SEM tells you how far away the sample mean is (likely) to be from 
+the actual population mean_~~
 
 
 But it doesn't tell you anything about **the sample mean**... at least
-not **your sample mean** that you have calculated for your particular 
+not **_your_ sample mean** that you have calculated for _your_ particular 
 sample
 
 ---
