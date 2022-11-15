@@ -447,29 +447,115 @@ When we've _z_-transformed data^[Also called
 like the **standard normal distribution**] we can now interpret the data in terms 
 of **distance from the mean in units of standard deviation**.  
 
+Being able to do this makes it easier to make comparisons. And making comparisons
+is where we turn our attention to next.
 
-Being able to do
-this makes it easier to make comparisons. 
+## Making comparisons 
+
+### Comparing groups
+
+```{r}
+sport_data <- tibble::tribble(
+  ~group, ~mean, ~sd,
+  "amateur", 500, 30,
+  "sport", 460, 15
+)
 
 
+ama_mean <- sport_data |>
+  dplyr::filter(group == "amateur") |>
+  dplyr::pull(mean)
+spo_mean <- sport_data |>
+  dplyr::filter(group == "sport") |>
+  dplyr::pull(mean)
+
+N <- 500
+
+set.seed(123)
+sport_tib <- purrr::pmap_df(sport_data, function(group, mean, sd) {
+  d <- rnorm(N, mean, sd) |> scale() |> as.numeric()
+  tibble::tibble(group = group, x = mean + (d * sd))
+})
+```
+
+When we talk about comparing groups on some variable in the context of
+quantitative research we are most often talking about looking at the
+**average difference** in the variable between the groups. In other
+words, we are asking, how different the groups are *on average*.
+
+Let's make it concrete with an example. Suppose we're interested in
+amateur and professional sportspeople on a simple target detection task
+where participants simply have to press a button as quickly as possible
+when a particular stimulus appears on computer screen. We get 500
+amateur and 500 professional sportspeople to participant in this
+experiment. The results of this experiment show that amateurs have a 
+mean reaction time of `r ama_mean` ms and professionals have a mean 
+reaction time of `r spo_mean` ms. @fig-sport-histogram shows the 
+histogram of these data. 
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: fig-sport-histogram
+#| fig.align: center
+#| fig.cap: |
+#|    Distribution of reaction times in a sample of amateur (green) and
+#|    500 professional (blue) sportspeople. Group means are indicated
+#|    with the vertical lines.
+require(ggplot2)
+
+ggplot2::ggplot(sport_tib, aes(x = x, 
+  fill = group,
+  group = group,
+  alpha = group,
+  color = group,
+  size = group)) +
+  geom_histogram(bins = 50, boundary = 100, position = "identity") +
+  scale_alpha_manual(values = c(1, 0.7), guide = "none") +
+  scale_fill_manual(values = c("seagreen", "blue"), guide = "none") +
+  scale_color_manual(values = c("white", "white"), guide = "none") +
+  scale_size_manual(values = c(.2, .2), guide = "none") +
+  geom_vline(xintercept = ama_mean, color = "seagreen", size = 1.5) +
+  geom_vline(xintercept = spo_mean, color = "blue", size = 1.5) +
+  ggplot2::annotate(geom = "text", x = ama_mean, y = 60,
+  label = expression(bar('X')[amateur]), hjust = -0.3, color = "seagreen") +
+  ggplot2::annotate(geom = "text", x = spo_mean, y = 60,
+  label = expression(bar('X')[pro]), hjust = -0.3, color = "blue") +
+  theme_cowplot() +
+  labs(x = "reaction time (ms)", y = "count") +
+  NULL
+
+```
+
+In this example we can see that there is a lot of overlap between the
+two groups. However, we can also clearly see that there is a difference
+in the *average* reaction times between amateur and professional
+sportspeople. To quantify this difference, all we would need to do is to
+**subtract the mean of one group from the mean of the other group**.
+
+So for our example in @fig-sport-histogram, the mean of the amateurs is 
+`r ama_mean` ms and the mean of the professionals is `r spo_mean`, so the mean
+**difference** is just `r ama_mean`ms - `r spo_mean`ms = `r ama_mean -
+spo_mean`ms. Because this difference is positive, the amateurs have a
+reaction time that is `r ama_mean - spo_mean`ms higher (slower) than the
+professionals.
 
 
+The sign indicates the direction of the difference. If the number is
+positive, that means that the first group's mean is larger than that of the
+second group. If the number is negative, the opposite is true. Of course, it
+is completely arbitrary which group is *first* and which is *second*.
 
-
-<!-- dependencies  -->
+### Comparison across groups
 
 
 ```{ojs}
 vega = require("https://cdn.jsdelivr.net/npm/vega@5/build/vega.js")
 ```
 
-
-
 ```{ojs}
 jstat = require("https://bundle.run/jstat@1.9.4")
 ```
-
-
 
 ```{ojs}
 import { dist } from "@ljcolling/wasm-distributions"
@@ -632,7 +718,6 @@ dists = {
 }
 ```
 
-
 ```{ojs}
 fill_limits = (mult) => {
   let s = sd_value * mult;
@@ -656,6 +741,5 @@ fill_limits = (mult) => {
 ```
 
 
-<!-- }}} -->
 
->>>>>>> 6a3ff13 (updated)
+
