@@ -400,7 +400,6 @@ the variable is measured. After all, that's why it's called scaling.
 
 :::
 
-
 ### The *z*-transform
 
 The combination of first mean-centering a variable and then scaling the
@@ -548,6 +547,282 @@ is completely arbitrary which group is *first* and which is *second*.
 
 ### Comparison across groups
 
+In the example above, the comparison was easy to make because the two 
+measurements were measured on the same scale. But sometimes we want 
+to compare measurements that are measured on different scales.
+
+Suppose you're interested in comparing the performance of two children on a
+puzzle completion tasks. One child is 8 years old and the other is 14 years
+old. Because 8-year-olds and 14-years-olds are at different developmental stages
+there are two versions of the task that are scored in slightly different ways.
+Because we now have two tests that might have a different number of items, and
+that might be scored in different ways, we can't just compare the two numbers
+to see which is bigger. So what do we do instead? We'll explore this with
+and example.
+
+```{r}
+#| echo: false
+stats <- tibble::tribble(
+  ~age, ~mean, ~sd,
+  "8", 80, 2,
+  "14", 120, 8,
+  )
+
+a_z <- 3
+b_z <- .5
+a_child <- stats$mean[1] + (stats$sd[1] * a_z)
+b_child <- stats$mean[2] + (stats$sd[2] * b_z)
+
+
+```
+
+Ahorangi is 8 years old, and she got a score of `r a_child`. Benjamin is
+14 years old, and he got a score of `r b_child`. We an easily tell that
+Benjamin got a higher score than Ahorangi. But the scores are not
+directly comparable, because they're measured on different scales. So
+how can we compare them? What we need to do instead is look at how each
+of them performed **relative** to their age groups. Is
+Ahorangi better performing relative to 8-year-olds than Benjamin is
+relative to 14-year-olds?
+
+To answer this question we can use the *z*-scores we learned about earlier. By
+standardising the time variable across each group, we get variables that are on
+the same scale. Do do this, we'll need to know the **mean** and **standard
+deviation** for each of the age groups. We can see these details in
+@tbl-age-means.
+
+
+```{r}
+#| echo: false
+#| label: tbl-age-means
+#| tbl-cap: |
+#|      Means and Standard deviations for the 8-year-old and
+#|      14-year-old age groups
+stats |>
+  dplyr::mutate(age = dplyr::case_when(
+    age == 8 ~ "8-year-olds",
+    age == "14" ~ "14-year-olds")) |>
+  knitr::kable(col.names = c("Age group", "Mean", "Standard deviation"))
+```
+
+
+Let's use this formula to calculate Ahorangi and Benjamin's *z*-score. First,
+for Ahorangi:
+
+$$`r a_z` = \frac{`r a_child` - `r stats$mean[1]`}{`r stats$sd[1]`}$$
+
+And next for Benjamin:
+
+
+$$`r b_z` = \frac{`r b_child` - `r stats$mean[2]`}{`r stats$sd[2]`}$$
+
+So we now know that Ahorangi's *z*-score is `r a_z`, and that Benjamin's
+*z*-score is `r b_z`. This means that Ahorangi's score is `r a_z` standard
+deviations *higher* than the average 8-year-old. Benjamin's *z*-score is `rb_z` 
+*higher* than the average 14-year-old. That means, that Ahorangi, despite
+having a lower score, actually scored very high for an 8-year-old. Benjamin, on
+the other hand, only scored a little higher than the average 14-year-old.
+
+### Making comparisons with the sampling distribution
+
+The final kind of comparison we'll talk about is the comparison between 
+our sample and the sampling distribution. Last we learned about the sampling
+distribution, and we learned that the sampling distribution of the mean will
+be centred at the population mean and have a standard deviation that is
+equal to the standard error of the mean.
+
+As I've already **emphasised**, you don't know the value of the **population
+mean**, which means that we won't know what the sampling distribution of 
+the mean looks like for our particular population. So what use then is 
+the sampling distribution?
+
+Although we won't know the population mean we can generate a hypothesis about
+what we think the population mean might be. We can then use this hypothesis 
+about the population mean value, together with the standard error, to generate 
+a sampling distribution. The sampling distribution describes what would happen
+if we were to repeatedly take samples from the population and work out the mean.
+
+```{r}
+#| echo: false
+#| message: false
+require(tidyverse)
+# require(plotshow)
+set.seed(123)
+n <- 50
+face_celeb <- rnorm(n, 506, 50)
+face_family <- rnorm(n, 650, 45)
+subject_id <- seq(1, n)
+df <- tibble::tibble(face_celeb, face_family, subject_id)
+
+df |>
+  tidyr::pivot_longer(1:2,
+    names_to = "condition",
+          values_to = "rt")|>
+  dplyr::group_by(subject_id) |>
+  dplyr::arrange(condition) |>
+  dplyr::summarise(diff = diff(rt)) |>
+  dplyr::ungroup() -> df
+
+sum_stats <- df  |>
+  dplyr::summarise(
+    mean_rt = mean(diff),
+    sd_rt = sd(diff),
+    n = n()
+)
+
+
+
+
+```
+
+I'll make this concrete by way of an example. Let's say that interested in
+whether people are quicker at recognising the faces of family members versus
+the faces of celebrities. You get your participants to perform a task whether
+they are shown faces and they have to press a button whenever the recognise
+them. You find that the mean difference between these two conditions is 
+`r sum_stats$mean_rt |> round(2)` ms. But this is just the mean difference is your sample. The
+mean difference in the population might be some other value that is smaller or
+larger.
+
+Now we don't know the population mean difference, but we could hypothesise a
+value. For example, we might hypothesise that the population mean difference is
+100 ms, or 50 ms, or 0 ms. Once we have hypothesised a value, we can generate a
+sampling distribution. Our sampling distribution will be centered at our
+hypothesised value, and it'll have a standard deviation equal to the standard
+error of the mean. For our experiment, we had `r sum_stats$n` participants,
+so our sample size is `r sum_stats$n`. Our sample also had a standard
+deviation of `r sum_stats$sd_rt |> round(2)`. Together we can work out a standard error
+of the mean that is equal to $\frac{`r sum_stats$sd_rt |> round(2)`}{\sqrt{50}}$ or
+`r round(sum_stats$sd_rt / sqrt(sum_stats$n), 2)`.
+
+Now that we have a hypothesis about the population mean, and we have an
+estimate of the standard error of the mean, we can create a sampling
+distribution that tells us what would happen if we were to run the experiment
+many times.
+
+
+```{r}
+require(tidyverse)
+require(plotshow)
+
+args <- sum_stats |>
+  magrittr::set_colnames(
+    c("mean", "sd", "n")
+) |>
+  dplyr::mutate(sd = sd / sqrt(n)) |>
+  dplyr::mutate(mean = 0) |>
+  dplyr::select(-n) |> as.list()
+
+ggplot() +
+  geom_function(fun = dnorm, args = args) +
+  xlim(args$mean - 4 * args$sd, args$mean + 4 * args$sd)
+
+
+```
+
+```{ojs}
+{
+
+  let mu_hypothesis = 0
+  let sem = 8.8
+  let domain = 
+  return  Plot.plot({
+      x: {
+        grid: true,
+        domain: [-4, 4]
+      },
+      y: {
+        grid: true,
+        domain: [0, 0.8]
+      },
+      marks: [
+       Plot.line(
+         normal_plot(
+           mean_value - sd_value * s > -4 ? mean_value - sd_value * s : -4,
+           mean_value + sd_value * s < 4 ? mean_value + sd_value * s : 4,
+           mean_value,
+           sd_value
+         ),
+         {
+           x: "x",
+           y: "y",
+           strokeWidth: 1,
+           fill: "blue",
+           opacity: show ? 0.5 : 0
+         }
+       ),
+       Plot.line(fill_limits(s), {
+         x: "x",
+         y: "y",
+         fill: "blue",
+         strokeWidth: 1,
+         opacity: show ? 0.5 : 0
+       }),
+        Plot.line(normal_plot(-4, 4, mean_value, sd_value), {
+          x: "x",
+          y: "y",
+          strokeWidth: 4
+        }),
+        Plot.ruleY([0])
+      ]
+    })
+}
+```
+
+
+
+
+
+
+<!-- TODO: Continue
+
+---
+
+## Using the sampling distribution
+
+
+- But you can **hypotheses** a value, and then use the **SEM** to **construct a
+sampling distribution**
+
+- The **sampling distribution** will just be a **normal distribution** with a
+mean of your **hypothesised value** and a standard deviation equal to the
+**SEM**
+
+
+- Because it's a **normal distribution**, we know that ~68% **of sample means**
+  will be within ±1 SEM from our **hypothesised** population mean (if our
+  hypothesis is correct)^[See Slide 9]
+
+
+- If **our sample** is **very far** (e.g., 2 or 3 SEMs) away from **our
+  hypothesised population mean** then this would be "surprising"
+
+
+
+---
+
+## Using the sampling distribution
+
+How to make sense of the observation that our **sample mean** is _surprisingly_
+far away from our **hypothesised population mean** is complex
+
+You'll learn more about it next year... but for now one way to think about it
+is as follows:
+
+
+If we ran the experiment again:
+
+- and we **kept on observing sample means that were surprisingly far** from our **hypothesised
+population mean** 
+
+- that might give us a reason to **revise our hypothesis** about what we think
+  the **population mean might be**
+
+
+-->
+
+
+---
 
 ```{ojs}
 vega = require("https://cdn.jsdelivr.net/npm/vega@5/build/vega.js")
