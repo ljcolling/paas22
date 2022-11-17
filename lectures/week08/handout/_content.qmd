@@ -1292,7 +1292,7 @@ sem <- function(x) {
 quiz(
   caption = "",
   question(
-    "The mean of a set of numbers is 10, the variance is 25, and the sample size is 15. <br />What is the standard error of the mean?",
+    "The mean of a set of numbers is 10, the variance is 25, and the sample size is 16. <br />What is the standard error of the mean?",
     numericanswer(sqrt(25)/sqrt(16)),
     type = "fillin")
     )
