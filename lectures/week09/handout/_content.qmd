@@ -322,13 +322,21 @@ viewof s = Inputs.range([0, 3], { step: 0.5, value: 1 })
 \
 ```{ojs}
 texmd`Approximately ~68% of the distribution will fall between ±1 $\sigma$ of $\mu$.
+
 Toggle **Show coverage** to highlight the region corresponding to ±$ ${s} $\sigma$ 
-from $\mu$.
+from $\mu$. This covers ~${coverage(s)}% of the distribution.
 
 Make adjustments to $\mu$ and $\sigma$. See how the highlighted region covers
 the region from ${mean_value - s * sd_value} to ${mean_value + s * sd_value}, or
 (${mean_value} - [${s} × ${sd_value}]) to (${mean_value} + [${s} × ${sd_value}]).
 `
+```
+
+```{ojs}
+function coverage(s) {
+let cov = jstat.normal.cdf(s, 0, 1) * 2 - 1
+return Math.round(cov * 100)
+}
 ```
 
 ::::
@@ -698,12 +706,14 @@ of the mean that is equal to $\frac{`r sum_stats$sd_rt |> round(2)`}{\sqrt{50}}$
 Now that we have a hypothesis about the population mean, and we have an
 estimate of the standard error of the mean, we can create a sampling
 distribution that tells us what would happen if we were to run the experiment
-many times.
+many times. In @fig-sampling we can see what the sampling distribution would
+look like if the population mean were 0.
 
 
 ```{r}
+#| label: fig-sampling
+#| fig-cap: The sampling distribution with a mean of 0 and a SEM of 8.8
 require(tidyverse)
-require(plotshow)
 
 args <- sum_stats |>
   magrittr::set_colnames(
@@ -713,61 +723,21 @@ args <- sum_stats |>
   dplyr::mutate(mean = 0) |>
   dplyr::select(-n) |> as.list()
 
+
+
 ggplot() +
   geom_function(fun = dnorm, args = args) +
-  xlim(args$mean - 4 * args$sd, args$mean + 4 * args$sd)
-
+  xlim(args$mean - 4 * args$sd, args$mean + 4 * args$sd) +
+  cowplot::theme_cowplot() +
+  labs(y = NULL, x = "sample mean")
 
 ```
 
-```{ojs}
-{
+We can now compare out particular sample mean of `r sum_stats$mean_rt |> round(2)`ms 
+to this sampling distribution. Because the sampling distribution is a normal distribution
+we known that ~68% of the time the sample means will fall between ±1 SEM of the population
+mean. Or, between -8.8 ms and 8.8ms. And ~90% of the time they'll fall between
 
-  let mu_hypothesis = 0
-  let sem = 8.8
-  let domain = 
-  return  Plot.plot({
-      x: {
-        grid: true,
-        domain: [-4, 4]
-      },
-      y: {
-        grid: true,
-        domain: [0, 0.8]
-      },
-      marks: [
-       Plot.line(
-         normal_plot(
-           mean_value - sd_value * s > -4 ? mean_value - sd_value * s : -4,
-           mean_value + sd_value * s < 4 ? mean_value + sd_value * s : 4,
-           mean_value,
-           sd_value
-         ),
-         {
-           x: "x",
-           y: "y",
-           strokeWidth: 1,
-           fill: "blue",
-           opacity: show ? 0.5 : 0
-         }
-       ),
-       Plot.line(fill_limits(s), {
-         x: "x",
-         y: "y",
-         fill: "blue",
-         strokeWidth: 1,
-         opacity: show ? 0.5 : 0
-       }),
-        Plot.line(normal_plot(-4, 4, mean_value, sd_value), {
-          x: "x",
-          y: "y",
-          strokeWidth: 4
-        }),
-        Plot.ruleY([0])
-      ]
-    })
-}
-```
 
 
 
@@ -872,7 +842,7 @@ normal_plot = (min, max, mean, sd) => {
   return d3.ticks(min, max, 501).map((v) => {
     return {
       x: v,
-      y: dist.dnorm(v, mean, sd)
+      y: dnorm(v, mean, sd)
     };
   });
 }
@@ -949,7 +919,7 @@ dists = {
     standard_normal: d3.ticks(-3, 3, 500).map((v) => {
       return {
         x: v,
-        y: dist.dnorm(v, 0, 1)
+        y: dnorm(v, 0, 1)
       };
     }),
     t_dist30: d3.ticks(-3, 3, 500).map((v) => {
@@ -1015,6 +985,10 @@ fill_limits = (mult) => {
 }
 ```
 
-
+```{ojs}
+function dnorm(x, mean, sd) {
+  return jstat.normal.pdf(x, mean, sd);
+}
+```
 
 
