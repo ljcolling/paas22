@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 In the previous lecture, we started talking about something called the
 **standard error of the mean**. We said that the **standard error of the mean**
 told us something about how spread out the **sample means** would be if we took
@@ -1113,7 +1112,7 @@ normal_plot = (min, max, mean, sd) => {
   return d3.ticks(min, max, 501).map((v) => {
     return {
       x: v,
-      y: dist.dnorm(v, mean, sd)
+      y: dnorm(v, mean, sd)
     };
   });
 }
@@ -1190,7 +1189,7 @@ dists = {
     standard_normal: d3.ticks(-3, 3, 500).map((v) => {
       return {
         x: v,
-        y: dist.dnorm(v, 0, 1)
+        y: dnorm(v, 0, 1)
       };
     }),
     t_dist30: d3.ticks(-3, 3, 500).map((v) => {
@@ -1293,7 +1292,7 @@ sem <- function(x) {
 quiz(
   caption = "",
   question(
-    "The mean of a set of numbers is 10, the variance is 25, and the sample size is 15. <br />What is the standard error of the mean?",
+    "The mean of a set of numbers is 10, the variance is 25, and the sample size is 16. <br />What is the standard error of the mean?",
     numericanswer(sqrt(25)/sqrt(16)),
     type = "fillin")
     )
@@ -1340,4 +1339,12 @@ comment_id <- "entry.2112951534"
 label_id <- "entry.2046375008"
 lecture <- "lecture8"
 commentr::commentr(form_url = form_url, comment_id = comment_id, label_id = label_id, lecture = lecture)
+```
+
+
+
+```{ojs}
+function dnorm(x, mean, sd) {
+  return jstat.normal.pdf(x, mean, sd);
+}
 ```
