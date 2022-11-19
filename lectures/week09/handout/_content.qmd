@@ -29,7 +29,7 @@ p <- ggplot(df, aes(x = x)) +
   NULL
 ```
 
-For example, if we were to measure the height of `r df$x |> length()` women and
+If we were to measure the height of `r df$x |> length()` women and
 plot the values then we might get something like the plot in
 @fig-height-histogram. As you can see, the vast majority of the measured
 heights are in the `r range` centimetre range. Only a small number of people
@@ -89,8 +89,6 @@ changed where the normal distribution was centered and how spread out it was.
 When $\mu=0$ and $\sigma=1$, then the normal distribution is called the
 **standard normal distribution**. You can explore the normal distribution again
 in @exm-normal.
-
-
 
 I said in Lecture 8 that when you adjust the $\mu$ and $\sigma$ values then the
 absolute positions of points on the plot change, but the **relative position**
@@ -153,7 +151,7 @@ ggplot(df, aes(x = x)) +
 The distribution in @fig-height-histogram-new-1 has a standard deviation
 of `r df_s1` while the distribution in @fig-height-histogram-new-2 has a
 standard deviation of `r df_s2`. But as you can see, they're they same
-distributions---they're just displaced on **different scales**
+distributions---they're just displayed on **different scales**
 (centimetres versus metres).
 
 
@@ -353,7 +351,7 @@ kinds of **transformations** are known as **centring** and **scaling**.
 ### Centering 
 
 Centring is performed by **subtracting** a fixed value from each observation in
-our dataset. This has the effect of shifting the distribution of our  variable
+our dataset. This has the effect of shifting the distribution of our variable
 _along the x-axis_. You can technically centre a variable but subtracting _any
 value_ from it but the most frequently used method is **mean-centring**.
 
@@ -411,7 +409,7 @@ the variable is measured. After all, that's why it's called scaling.
 ### The *z*-transform
 
 The combination of first mean-centering a variable and then scaling the
-variable by it's standard deviation is known as the **z**-transform. The
+variable by its standard deviation is known as the **z**-transform. The
 formula for this is shown in @eq-z, below:
 
 $$z(x) = \frac{x_i - \bar{x}}{s}$${#eq-z}
@@ -492,7 +490,7 @@ words, we are asking, how different the groups are *on average*.
 
 Let's make it concrete with an example. Suppose we're interested in
 amateur and professional sportspeople on a simple target detection task
-where participants simply have to press a button as quickly as possible
+where participants have to press a button as quickly as possible
 when a particular stimulus appears on computer screen. We get 500
 amateur and 500 professional sportspeople to participant in this
 experiment. The results of this experiment show that amateurs have a 
@@ -542,8 +540,8 @@ sportspeople. To quantify this difference, all we would need to do is to
 
 So for our example in @fig-sport-histogram, the mean of the amateurs is 
 `r ama_mean` ms and the mean of the professionals is `r spo_mean`, so the mean
-**difference** is just `r ama_mean`ms - `r spo_mean`ms = `r ama_mean -
-spo_mean`ms. Because this difference is positive, the amateurs have a
+**difference** is just `r ama_mean`ms - `r spo_mean`ms = `r ama_mean - spo_mean`ms. 
+Because this difference is positive, the amateurs have a
 reaction time that is `r ama_mean - spo_mean`ms higher (slower) than the
 professionals.
 
@@ -585,7 +583,7 @@ b_child <- stats$mean[2] + (stats$sd[2] * b_z)
 ```
 
 Ahorangi is 8 years old, and she got a score of `r a_child`. Benjamin is
-14 years old, and he got a score of `r b_child`. We an easily tell that
+14 years old, and he got a score of `r b_child`. We can easily tell that
 Benjamin got a higher score than Ahorangi. But the scores are not
 directly comparable, because they're measured on different scales. So
 how can we compare them? What we need to do instead is look at how each
@@ -631,11 +629,11 @@ deviations *higher* than the average 8-year-old. Benjamin's *z*-score is `rb_z`
 having a lower score, actually scored very high for an 8-year-old. Benjamin, on
 the other hand, only scored a little higher than the average 14-year-old.
 
-### Making comparisons with the sampling distribution
+## Making comparisons with the sampling distribution
 
 The final kind of comparison we'll talk about is the comparison between 
-our sample and the sampling distribution. Last we learned about the sampling
-distribution, and we learned that the sampling distribution of the mean will
+our sample and the sampling distribution. Last week learned about the sampling
+distribution. And we learned that the sampling distribution of the mean will
 be centred at the population mean and have a standard deviation that is
 equal to the standard error of the mean.^[This is a slight simplification. 
 The standard error of the mean is an _estimate_ of the standard deviation 
@@ -694,13 +692,13 @@ whether people are quicker at recognising the faces of family members versus
 the faces of celebrities. You get your participants to perform a task whether
 they are shown faces and they have to press a button whenever the recognise
 them. You find that the mean difference between these two conditions is 
-`r sum_stats$mean_rt |> round(2)` ms. But this is just the mean difference is your sample. The
+`r sum_stats$mean_rt |> round(2)`ms. But this is just the mean difference is your sample. The
 mean difference in the population might be some other value that is smaller or
 larger.
 
 Now we don't know the population mean difference, but we could hypothesise a
 value. For example, we might hypothesise that the population mean difference is
-100 ms, or 50 ms, or 0 ms. Once we have hypothesised a value, we can generate a
+100 ms, 50 ms, 0 ms, or some other value. Once we have hypothesised a value, we can generate a
 sampling distribution. Our sampling distribution will be centered at our
 hypothesised value, and it'll have a standard deviation equal to the standard
 error of the mean. For our experiment, we had `r sum_stats$n` participants,
@@ -740,7 +738,7 @@ ggplot() +
 
 We can now compare our particular sample mean of `r sum_stats$mean_rt |> round(2)`ms 
 to this sampling distribution. Because the sampling distribution is a normal distribution
-we known that ~68% of the time the sample means will fall between ±1 SEM of the population
+we know that ~68% of the time the sample means will fall between ±1 SEM of the population
 mean. Or, between `r round(sum_stats$se, 2) * -1`ms and `r round(sum_stats$se, 2)`ms.
 And ~95% of the time sample means will fall between `r round(sum_stats$se, 2) * -2`ms
 and `r round(sum_stats$se, 2) * 2`ms. 
