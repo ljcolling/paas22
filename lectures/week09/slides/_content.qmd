@@ -1,0 +1,29 @@
+## Outline for today
+
+- The standard normal distribution
+
+- Transformations
+
+    - Centering
+
+    - Scaling
+
+    - The *z*-transform
+
+- Making comparisons
+
+  - Comparing groups
+
+  - Comparing across groups
+
+  - Making comparisons with the sampling distribution 
+
+---
+
+## The shape of things
+
+Last week we started learning a little bit about distributions.
+
+- We covered the **normal distribution**
+
+- And we started learning about the **sampling distribution**

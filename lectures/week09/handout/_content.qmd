@@ -637,7 +637,12 @@ The final kind of comparison we'll talk about is the comparison between
 our sample and the sampling distribution. Last we learned about the sampling
 distribution, and we learned that the sampling distribution of the mean will
 be centred at the population mean and have a standard deviation that is
-equal to the standard error of the mean.
+equal to the standard error of the mean.^[This is a slight simplification. 
+The standard error of the mean is an _estimate_ of the standard deviation 
+of the sampling distribution. This estimate is biased, so in reality
+you would make a slight modification to the normal distribution to 
+correct for this bias. You'll learn about this next year when you cover
+the _t_-test.]
 
 As I've already **emphasised**, you don't know the value of the **population
 mean**, which means that we won't know what the sampling distribution of 
@@ -657,8 +662,8 @@ require(tidyverse)
 # require(plotshow)
 set.seed(123)
 n <- 50
-face_celeb <- rnorm(n, 506, 50)
-face_family <- rnorm(n, 650, 45)
+face_celeb <- rnorm(n, 500, 50)
+face_family <- rnorm(n, 520, 45)
 subject_id <- seq(1, n)
 df <- tibble::tibble(face_celeb, face_family, subject_id)
 
@@ -675,7 +680,8 @@ sum_stats <- df  |>
   dplyr::summarise(
     mean_rt = mean(diff),
     sd_rt = sd(diff),
-    n = n()
+    n = n(),
+    se = sd_rt / sqrt(n)
 )
 
 
@@ -709,19 +715,18 @@ distribution that tells us what would happen if we were to run the experiment
 many times. In @fig-sampling we can see what the sampling distribution would
 look like if the population mean were 0.
 
-
 ```{r}
 #| label: fig-sampling
-#| fig-cap: The sampling distribution with a mean of 0 and a SEM of 8.8
+#| fig-cap: !expr glue::glue("The sampling distribution with a mean of 0 and a SEM of {sum_stats$se |> round(2)}")
 require(tidyverse)
 
 args <- sum_stats |>
   magrittr::set_colnames(
-    c("mean", "sd", "n")
+    c("mean", "sd", "n","se")
 ) |>
   dplyr::mutate(sd = sd / sqrt(n)) |>
   dplyr::mutate(mean = 0) |>
-  dplyr::select(-n) |> as.list()
+  dplyr::select(-n, -se) |> as.list()
 
 
 
@@ -733,66 +738,112 @@ ggplot() +
 
 ```
 
-We can now compare out particular sample mean of `r sum_stats$mean_rt |> round(2)`ms 
+We can now compare our particular sample mean of `r sum_stats$mean_rt |> round(2)`ms 
 to this sampling distribution. Because the sampling distribution is a normal distribution
 we known that ~68% of the time the sample means will fall between ±1 SEM of the population
-mean. Or, between -8.8 ms and 8.8ms. And ~90% of the time they'll fall between
+mean. Or, between `r round(sum_stats$se, 2) * -1`ms and `r round(sum_stats$se, 2)`ms.
+And ~95% of the time sample means will fall between `r round(sum_stats$se, 2) * -2`ms
+and `r round(sum_stats$se, 2) * 2`ms. 
+
+If we look at our particular mean we see that it falls 
+`r round(sum_stats$mean_rt / sum_stats$se, 2)` SEM from our hypothesised
+population mean. What can we make of this? From this we can conclude that if
+the population mean were in fact 0, then we have observed something rare. That
+is, if the population mean were in fact 0, it would be rare for a sample mean
+(calculated from a sample drawn from this population) to be that far away from
+the population mean. Observing something rare does not in itself tell us that
+our hypothesis about the population mean is wrong. After all rare events, like
+people winning the lottery, happen every day. On a more mundane level, we
+might be confident that men are (on average) taller than women. But as 
+anybody who has attended a professional netball will tell you, it can
+certainly happen that you come across a group of people were all the women 
+are taller than the men, although it would be rare and surprising. 
+
+The same goes for our sample. Observing something rare (according to our
+hypothesised population mean) might just mean we've observed some rare. But if
+we were to run our experiments again and again, and we continued to observe
+rare events then we would probably have a good reason to update our hypothesis. 
+
+This process, where we compared our sample value to the sampling distributed
+constructed from a hypothesised value is known as *null hypothesis significance
+testing*, will be a major topic that you'll cover next year. 
+
+
+
+## Check your understanding
+
+Use this quiz to make sure that you've understood the key concepts.
+
+```{r}
+#| eval: false
+#| echo: false
+#| message: false
+
+require(niceQuiz)
+
+sem <- function(x) {
+  s <- sd(x)
+  n <- length(x)
+  s / sqrt(n)
+}
+
+quiz(
+  caption = "",
+  question(
+    "The mean of a set of numbers is 10, the variance is 25, and the sample size is 16. <br />What is the standard error of the mean?",
+    numericanswer(sqrt(25)/sqrt(16)),
+    type = "fillin")
+    )
+```
+
+```{r}
+#| eval: false
+quiz(
+caption = "",
+question(
+  "A distribution with fatter tails than a normal distribution is called?",
+  answer("Mesokurtic"),
+  answer("Platykurtic"),
+  answer("Leptokurtic", correct = TRUE)),
+
+question(
+  "A distribution with skewness of -1.5 is:",
+  answer("Right-skewed"),
+  answer("Left-skewed", correct = TRUE)),
+
+question("The sampling distribution of the mean with have what kind of distributions?",
+answer("A normal distribution", correct = TRUE),
+answer("The same distribution as the population"),
+answer("A distribution that is more skewed than the population distribution")
+)
 
 
 
 
 
+)
 
+```
 
-<!-- TODO: Continue
+## Leave a comment {.unnumbered .unlisted}
 
----
+If you'd like to leave a comment or ask a question about this week's lecture
+then you can use the comment box below. Note that comments will be accessible to
+the lecturer but won't be displayed until they have been approved.
 
-## Using the sampling distribution
-
-
-- But you can **hypotheses** a value, and then use the **SEM** to **construct a
-sampling distribution**
-
-- The **sampling distribution** will just be a **normal distribution** with a
-mean of your **hypothesised value** and a standard deviation equal to the
-**SEM**
-
-
-- Because it's a **normal distribution**, we know that ~68% **of sample means**
-  will be within ±1 SEM from our **hypothesised** population mean (if our
-  hypothesis is correct)^[See Slide 9]
-
-
-- If **our sample** is **very far** (e.g., 2 or 3 SEMs) away from **our
-  hypothesised population mean** then this would be "surprising"
+```{r}
+#| echo: false
+form_url <- "https://docs.google.com/forms/d/e/1FAIpQLSdcA0B4oOoPXNQdkNCcu7wQHTlg1ynAbS5aqxjZbFtGqJqYnQ/formResponse"
+comment_id <- "entry.2112951534"
+label_id <- "entry.2046375008"
+lecture <- "lecture9"
+commentr::commentr(form_url = form_url, comment_id = comment_id, label_id = label_id, lecture = lecture)
+```
 
 
 
----
-
-## Using the sampling distribution
-
-How to make sense of the observation that our **sample mean** is _surprisingly_
-far away from our **hypothesised population mean** is complex
-
-You'll learn more about it next year... but for now one way to think about it
-is as follows:
 
 
-If we ran the experiment again:
-
-- and we **kept on observing sample means that were surprisingly far** from our **hypothesised
-population mean** 
-
-- that might give us a reason to **revise our hypothesis** about what we think
-  the **population mean might be**
-
-
--->
-
-
----
 
 ```{ojs}
 vega = require("https://cdn.jsdelivr.net/npm/vega@5/build/vega.js")
