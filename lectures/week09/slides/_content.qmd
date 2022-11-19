@@ -1,0 +1,1057 @@
+## Outline for today
+
+- The standard normal distribution
+
+- Transformations
+
+    - Centering
+
+    - Scaling
+
+    - The *z*-transform
+
+- Making comparisons
+
+  - Comparing groups
+
+  - Comparing across groups
+
+  - Making comparisons with the sampling distribution 
+
+---
+
+## The shape of things
+
+
+```{r}
+#| echo: false
+#| message: false
+require(ggplot2)
+require(cowplot)
+set.seed(124)
+df <- tibble::tibble(x = rnorm(n = 1000, mean = 0, sd = 1) |>
+scale() |> as.numeric())
+df_og <- df
+df$x <- df$x * 10
+df$x <- df$x + 165
+df_m <- df$x |> mean()
+df_s <- df$x |> sd()
+range <- glue::glue("{round(df_m - df_s  * 1)}--{round(df_m + df_s * 1)}")
+p <- ggplot(df, aes(x = x)) +
+  geom_histogram(binwidth = 5, boundary = 130) +
+  labs(x = "height in cm") +
+  theme_cowplot() +
+  NULL
+```
+
+- If we measured the height of `r df$x |> length()` women and plotted the
+  values then we might get something like @fig-height-histogram. 
+
+- Most heights are in the `r range` centimetre range. 
+
+- The distribution is roughly symmetrical around its mean (`r round(df_m)` cm)
+  and it has a shape characteristic of a normal distribution.
+
+```{r}
+#| echo: false
+#| label: fig-height-histogram
+#| fig.cap: |
+#|    Distribution of heights in a sample of 1000 women. Not real
+#|    data.
+p
+```
+
+---
+
+## The shape of things
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+- Of course the plot in @fig-height-histogram doesn't look exactly like a normal
+distribution 
+
+- But if we measured more and more (e.g., 100, 000 people) then we might get something like 
+@fig-height-histogram2
+
+- @fig-height-histogram2 also shows the corresponding normal distribution with
+  a mean of `r df_m` and a standard deviation of `r df_s`
+
+- Although the **normal distribution** is an idealisation, or an abstraction,
+  we can use it to do some very useful things
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+#| label: fig-height-histogram2
+#| fig.cap: |
+#|    Distribution of heights in a sample of 100,000 women (Not real
+#|    data) and the corresponding normal distribution
+df <- tibble::tibble(x = rnorm(n = 100000, mean = 0, sd = 1) |>
+scale() |> as.numeric())
+df$x <- df$x * 10
+df$x <- df$x + 165
+df_m <- df$x |> mean()
+df_s <- df$x |> sd()
+ideal <- \(x) (dnorm(x, df_m, df_s) / dnorm(df_m, df_m, df_s)) * ((195 / 5) * 100)
+ggplot(df, aes(x)) +
+  geom_histogram(binwidth = 1, boundary = 130) +
+  geom_density(col = "grey20", size = 2, aes(y = ..count.. )) +
+  geom_function(fun = ideal, col = "blue", size = 2) +
+  labs(y = "count", x = "height in cm") +
+  theme_cowplot()
+```
+
+:::
+
+::::
+
+---
+
+## The standard normal distribution 
+
+
+- In lecture 8 I said that **two parameters**, $\mu$ and $\sigma$ changed where
+  the normal distributions were centred and how spread out they were
+
+- When $\mu = 0$ and $\sigma = 1$, then it is called the **standard normal
+  distribution**
+
+- I said that changing these values didn't change the **relative position**
+  of points on the plot. The overall shape remains the same
+
+- All normal distributions have the same **overall shape** as the **standard
+  normal distribution** even if they're centered in a different place and are
+  more or less spread out
+
+To see what I mean by this, we'll take our heights of 1000 people, but 
+instead of displaying in centimetres we'll display it in metres 
+
+---
+
+
+```{r}
+#| echo: false
+#| label: fig-height-histogram-new
+#| fig-cap: |
+#|    Distribution of heights in a sample of 1000 women. Not real
+#|    data.
+#| fig-subcap:
+#|    - "Measured in centimetres"
+#|    - "Measured in metres"
+#| layout-ncol: 2
+# require(ggplot2)
+# require(plotshow)
+require(cowplot)
+set.seed(124)
+df <- tibble::tibble(x = rnorm(n = 1000, mean = 0, sd = 1) |>
+scale() |> as.numeric())
+df$x <- df$x * 10
+df$x <- df$x + 165
+df_m <- df$x |> mean()
+df_s1 <- df$x |> sd()
+range <- glue::glue("{round(df_m - df_s  * 1)}--{round(df_m + df_s * 1)}")
+ggplot(df, aes(x = x)) +
+  geom_histogram(binwidth = 5, boundary = 130) +
+  labs(x = "height in cm") +
+  theme_cowplot() +
+  NULL
+
+
+set.seed(124)
+df <- tibble::tibble(x = rnorm(n = 1000, mean = 0, sd = 1) |>
+scale() |> as.numeric())
+df$x <- df$x * (10 / 100)
+df$x <- df$x + (165 / 100)
+df_m <- df$x |> mean()
+df_s2 <- df$x |> sd()
+range <- glue::glue("{round(df_m - df_s  * 1)}--{round(df_m + df_s * 1)}")
+ggplot(df, aes(x = x)) +
+  geom_histogram(binwidth = 5 / 100, boundary = 130 / 100) +
+  labs(x = "height in m") +
+  theme_cowplot() +
+  NULL
+```
+
+Changing the scale on which you're measured doesn't actually change
+your height relative to other people
+
+---
+
+- The distribution in @fig-height-histogram-new-1 has a standard deviation
+of `r df_s1` 
+
+- The distribution in @fig-height-histogram-new-2 has a standard deviation of
+  `r df_s2`.
+
+But as you can see, they're they same distributions---they're just displayed on
+**different scales** (centimetres versus metres).
+
+
+\
+Changing the **scale** changes the **standard deviation**. This is why
+the **standard deviation** is sometimes referred to as the **scale
+parameter** for the distribution.
+
+---
+
+
+- In addition to changing the scale, we can change where the distribution
+is centred
+
+
+```{r}
+#| echo: false
+#| label: fig-height-histogram-new-location
+#| fig-cap: |
+#|    Distribution of heights in a sample of 1000 women. Not real
+#|    data.
+#| fig-subcap:
+#|    - "Measured in centimetres"
+#|    - "Measured in difference from the average height"
+#| layout-ncol: 2
+# require(ggplot2)
+# require(plotshow)
+require(cowplot)
+set.seed(124)
+df <- tibble::tibble(x = rnorm(n = 1000, mean = 0, sd = 1) |>
+scale() |> as.numeric())
+df$x <- df$x * 10
+df$x <- df$x + 165 
+df_m <- df$x |> mean()
+df_s1 <- df$x |> sd()
+range <- glue::glue("{round(df_m - df_s  * 1)}--{round(df_m + df_s * 1)}")
+ggplot(df, aes(x = x)) +
+  geom_histogram(binwidth = 5, boundary = 130) +
+  labs(x = "height in cm") +
+  theme_cowplot() +
+  NULL
+
+
+set.seed(124)
+df <- tibble::tibble(x = rnorm(n = 1000, mean = 0, sd = 1) |>
+scale() |> as.numeric())
+df$x <- df$x * (10 )
+df$x <- df$x + (165 - 165)
+df_m <- df$x |> mean()
+df_s2 <- df$x |> sd()
+range <- glue::glue("{round(df_m - df_s  * 1)}--{round(df_m + df_s * 1)}")
+ggplot(df, aes(x = x)) +
+  geom_histogram(binwidth = 5,  boundary = 130 - 165) +
+  labs(x = "difference from average height in cm") +
+  theme_cowplot() +
+  NULL
+```
+
+- In @fig-height-histogram-new-location-1 we can see the same distribution
+as before. In @fig-height-histogram-new-location-2 we can see a
+distribution that is now centred at 0. 
+
+---
+
+### The normal distribution
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+- The fact that the relative positions of points don't change is a useful
+property. 
+
+- For the standard normal distribution, ~68% of the distribution
+falls between -1 and +1. 
+
+- Put into relative terms this is ±1 $\sigma$ from $\mu$.
+
+
+```{ojs}
+texmd`- The highlighted region covers the region from $\mu$ -${s} $\sigma$ to $\mu$ + ${s} $\sigma$
+
+- Or ${mean_value - s * sd_value} to ${mean_value + s * sd_value} 
+
+- This covers ~${coverage(s)}% of the distribution not what the value of $\mu$ and $\sigma$
+
+`
+```
+
+```{ojs}
+function coverage(s) {
+let cov = jstat.normal.cdf(s, 0, 1) * 2 - 1
+return Math.round(cov * 100)
+}
+```
+
+
+:::
+
+:::{.column width="50%"}
+
+
+```{ojs}
+normal_plot_output = Plot.plot({
+  x: {
+    grid: true,
+    domain: [-4, 4]
+  },
+  y: {
+    grid: true,
+    domain: [0, 0.8]
+  },
+  marks: [
+   Plot.line(
+     normal_plot(
+       mean_value - sd_value * s > -4 ? mean_value - sd_value * s : -4,
+       mean_value + sd_value * s < 4 ? mean_value + sd_value * s : 4,
+       mean_value,
+       sd_value
+     ),
+     {
+       x: "x",
+       y: "y",
+       strokeWidth: 1,
+       fill: "blue",
+       opacity: true ? 0.5 : 0
+     }
+   ),
+   Plot.line(fill_limits(s), {
+     x: "x",
+     y: "y",
+     fill: "blue",
+     strokeWidth: 1,
+     opacity: true ? 0.5 : 0
+   }),
+    Plot.line(normal_plot(-4, 4, mean_value, sd_value), {
+      x: "x",
+      y: "y",
+      strokeWidth: 4
+    }),
+    Plot.ruleY([0])
+  ]
+})
+```
+
+```{ojs}
+//| panel: input
+normal_sliders = htl.html`${mean_value_slider}${sd_value_slider}`
+viewof s = Inputs.range([0, 3], { step: 0.5, value: 1 })
+```
+
+
+:::
+
+::::
+
+
+---
+
+## Transformation
+
+- In @fig-height-histogram-new and @fig-height-histogram-new-location we saw 
+that we could **transform** a variable so that it had a new **location** (mean)
+or **scale** (standard deviation) without changing the shape
+
+- These two kinds of **transformations** are known as **centering** and **scaling**
+
+### Centering 
+
+
+- To centre a set of measurements, you **subtract** a fixed value from each observation in
+our dataset. 
+
+- This has the effect of shifting the distribution of our variable _along the
+  x-axis_
+
+- You can technically centre a variable but subtracting _any value_ from it but
+  the most frequently used method is **mean-centring**
+
+This is shown in @eq-center, below:
+
+$$x_i - \bar{x}$${#eq-center}
+
+---
+
+### Mean centering
+
+- Mean entering a variable shifts it so that the new mean is at the zero point
+
+- The individual values of a mean-centred variable tell us how far that observation is
+from the mean of the entire set of measures
+
+- It doesn't alter the **shape** of the distribution, or change the scale that it's 
+measured
+
+- It only changes the interpretation of the values to _differences from the mean_
+
+---
+
+### Scaling
+
+- Scaling is performed by **dividing** each observation by some fixed value
+
+-  This has the effect of stretching or compressing the variable _along the x-axis_
+
+- You can scale a variable by dividing it by **any** value
+
+    - We created @fig-height-histogram-new-2 by taking the values in
+    @fig-height-histogram-new-1 and dividing them by 100 (to transform cm to m)
+
+- But typically scaling is done by dividing values by
+the standard deviation of the dataset. 
+
+This is shown in @eq-scale, below:
+
+$$\frac{x_i}{s}$${#eq-scale}
+
+- Scaling doesn't change the fundamental shape of the variable's distribution
+
+- But after scaling the data by the standard deviation the values would now be
+  measured in _units of sd_
+
+---
+
+### The *z* transform
+
+- The combination of first mean-centering a variable and then scaling it by its
+  standard deviation is known as the **z**-transform
+
+
+The formula for this is shown in @eq-z, below:
+
+$$z(x) = \frac{x_i - \bar{x}}{s}$${#eq-z}
+
+
+---
+
+### The *z* transform
+
+```{r}
+set.seed(555)
+d <- rnorm(10, 5, 2) |> round()
+```
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+- The 10 values in @tbl-z have a mean of `r mean(d)` and a standard deviation
+of `r sd(d) |> round(2)`. 
+
+- To **z**transform the data in @tbl-z. We would do the following steps
+
+  1.  We'd subtract `r mean(d)` from each value and put them in the **Centred** column 
+
+  2. Then we'd divide each value in **Centred** by `r sd(d) |> round(2)`
+
+- We can now interpret the data in terms of **distance from the mean in units
+  of standard deviation**
+
+The **z** transform will come in handy when it comes to making comparisons
+
+:::
+
+:::{.column width="50%"}
+
+
+```{r}
+#| label: tbl-z
+#| tbl-cap: z transformed data
+tibble::tibble(r = d) |>
+  dplyr::mutate(centred = d - mean(d)) |>
+  dplyr::mutate(scaled = centred / sd(d)) |>
+  magrittr::set_colnames(
+c("Raw values",
+"Centred",
+"Scaled")) |>
+knitr::kable(digits = 2)
+```
+
+:::
+
+::::
+
+
+---
+
+## Comparing groups
+
+```{r}
+sport_data <- tibble::tribble(
+  ~group, ~mean, ~sd,
+  "amateur", 500, 30,
+  "sport", 460, 15
+)
+
+
+ama_mean <- sport_data |>
+  dplyr::filter(group == "amateur") |>
+  dplyr::pull(mean)
+spo_mean <- sport_data |>
+  dplyr::filter(group == "sport") |>
+  dplyr::pull(mean)
+
+N <- 500
+
+set.seed(123)
+sport_tib <- purrr::pmap_df(sport_data, function(group, mean, sd) {
+  d <- rnorm(N, mean, sd) |> scale() |> as.numeric()
+  tibble::tibble(group = group, x = mean + (d * sd))
+})
+```
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+In the context of **quantitative research** we're often looking at the
+**average difference** in a variable between group
+In the @fig-sport-histogram we can see measurements from a reaction time task. 
+
+- Amateurs sportspeople have a mean reaction time of `r ama_mean` ms and professionals have a mean 
+reaction time of `r spo_mean` ms.
+
+- There is overlap between the two groups but there is clearly a difference in **average** reaction
+time between two
+
+
+- To quantify the difference, just **subtract the mean of
+  group from the mean of the other**^[In later years you'll learn how to
+  quantify differences like this in standardised unit---that is, units of
+  standard deviation]
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: fig-sport-histogram
+#| fig.align: center
+#| fig.cap: |
+#|    Distribution of reaction times in a sample of amateur (green) and
+#|    500 professional (blue) sportspeople. Group means are indicated
+#|    with the vertical lines.
+require(ggplot2)
+
+ggplot2::ggplot(sport_tib, aes(x = x, 
+  fill = group,
+  group = group,
+  alpha = group,
+  color = group,
+  size = group)) +
+  geom_histogram(bins = 50, boundary = 100, position = "identity") +
+  scale_alpha_manual(values = c(1, 0.7), guide = "none") +
+  scale_fill_manual(values = c("seagreen", "blue"), guide = "none") +
+  scale_color_manual(values = c("white", "white"), guide = "none") +
+  scale_size_manual(values = c(.2, .2), guide = "none") +
+  geom_vline(xintercept = ama_mean, color = "seagreen", size = 1.5) +
+  geom_vline(xintercept = spo_mean, color = "blue", size = 1.5) +
+  ggplot2::annotate(geom = "text", x = ama_mean, y = 60,
+  label = expression(bar('X')[amateur]), hjust = -0.3, color = "seagreen") +
+  ggplot2::annotate(geom = "text", x = spo_mean, y = 60,
+  label = expression(bar('X')[pro]), hjust = -0.3, color = "blue") +
+  theme_cowplot() +
+  labs(x = "reaction time (ms)", y = "count") +
+  NULL
+
+```
+
+
+- The mean **difference** is just `r ama_mean`ms - `r spo_mean`ms = `r ama_mean - spo_mean`ms.
+
+
+:::
+
+::::
+
+
+---
+
+## Comparing across groups
+
+- The previous example the comparisons were easy because the measurements were
+  on the same scale (milliseconds)
+
+- But let's say that you want to compare two children on a puzzle completion task
+
+    - One child is 8 years old and the other is 14 years old
+
+    - They do slightly different versions of the task and the task are score differently 
+
+- Because we have two different tests that might have a different number of
+  items etc we can't just compare the **raw numbers** to see which is bigger
+
+
+Let's look at an example...
+
+---
+
+### Comparing across groups
+
+
+```{r}
+#| echo: false
+stats <- tibble::tribble(
+  ~age, ~mean, ~sd,
+  "8", 80, 2,
+  "14", 120, 8,
+  )
+
+a_z <- 3
+b_z <- .5
+a_child <- stats$mean[1] + (stats$sd[1] * a_z)
+b_child <- stats$mean[2] + (stats$sd[2] * b_z)
+
+
+```
+
+Let's take two children:
+
+- Ahorangi is 8 years old and scored `r a_child` on the task
+
+- Benjamin is 14 years old and scored `r b_child` on the task
+
+We can easily tell that Benjamin's score is higher than Ahorangi's score
+
+But the scores are not directly comparable...so what do we do?
+
+- We have to look at how each performed **relative** to their age groups.
+
+- Is Ahorangi better performing relative to 8-year-olds than Benjamin is
+  relative is 14-year-olds?
+
+- To answer this question we can use the **z** transform
+
+---
+
+### Comparing across groups
+
+To do the **z**-transform we need to know the **mean** and **standard deviation** 
+for each age group
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+#| label: tbl-age-means
+#| tbl-cap: |
+#|      Means and Standard deviations for the 8-year-old and
+#|      14-year-old age groups
+stats |>
+  dplyr::mutate(age = dplyr::case_when(
+    age == 8 ~ "8-year-olds",
+    age == "14" ~ "14-year-olds")) |>
+  knitr::kable(col.names = c("Age group", "Mean", "Standard deviation"))
+```
+
+:::
+
+:::{.column width="50%"}
+
+We can calculate Ahorangi's z-score as follows:
+
+$$`r a_z` = \frac{`r a_child` - `r stats$mean[1]`}{`r stats$sd[1]`}$$
+
+And for Benjamin:
+
+
+$$`r b_z` = \frac{`r b_child` - `r stats$mean[2]`}{`r stats$sd[2]`}$$
+
+:::
+
+::::
+
+That means, that Ahorangi, despite having a lower score, actually scored very
+high for an 8-year-old. Benjamin, on the other hand, only scored a little
+higher than the average 14-year-old.
+
+---
+
+## Making comparisons with the sampling distribution
+
+The final comparison we'll talk about is comparisons against the **sampling distribution**
+
+- From last week we learned that the **sampling distribution of the mean** will be
+
+    - Centred at the **population mean**
+
+    - Have a standard deviation equal to the **standard error of the mean**
+
+- But remember, we don't know the value of the **population mean** so we won't
+  actually know what the **sampling distribution** looks like
+
+Although we don't know the value of the **population mean** we can generate a **hypothesis**
+about what we think the population mean might be...
+
+We can then generate a **hypothetical sampling distribution** based on our **hypothesised value**
+of the population mean
+
+---
+
+### Making comparisons with the sampling distribution
+
+```{r}
+#| echo: false
+#| message: false
+require(tidyverse)
+# require(plotshow)
+set.seed(123)
+n <- 50
+face_celeb <- rnorm(n, 500, 50)
+face_family <- rnorm(n, 520, 45)
+subject_id <- seq(1, n)
+df <- tibble::tibble(face_celeb, face_family, subject_id)
+
+df |>
+  tidyr::pivot_longer(1:2,
+    names_to = "condition",
+          values_to = "rt")|>
+  dplyr::group_by(subject_id) |>
+  dplyr::arrange(condition) |>
+  dplyr::summarise(diff = diff(rt)) |>
+  dplyr::ungroup() -> df
+
+sum_stats <- df  |>
+  dplyr::summarise(
+    mean_rt = mean(diff),
+    sd_rt = sd(diff),
+    n = n(),
+    se = sd_rt / sqrt(n)
+)
+
+
+
+
+```
+
+I'll make it concrete with an example:
+
+- Let's say I get a group of people to perform a task where they have to try
+  and quickly recognise two sets of faces. Either famous faces or faces of
+  their family members.
+
+- I find that the mean difference between these two conditions is `r sum_stats$mean_rt |> round(2)`ms
+
+- But this is just the difference in my **sample**. The population mean
+  difference might be some other value
+
+- Although we don't know the population mean, we could hypothesis that it is
+  100 ms, 50 ms, 0 ms, or some other value. Let's just pick 0 ms for now. 
+
+- Now we can generate a sampling distribution using our hypothesised
+  **population mean** and the **standard error of the mean** we estimate from
+  the sample (let's say it's `r round(sum_stats$sd_rt / sqrt(sum_stats$n), 2)`)
+
+---
+
+### Making comparisons with the sampling distribution
+
+In @fig-sampling we can see what the sampling distribution would
+look like if the population mean were 0.
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+- We can compare our particular sample mean of `r sum_stats$mean_rt |> round(2)`ms 
+to the sampling distribution
+
+- Because the sampling distribution is normal distribution we know that 
+ ~68% of the time the sample means will fall between ±1 SEM of the population
+mean (`r round(sum_stats$se, 2) * -1`ms to `r round(sum_stats$se, 2)`ms)
+
+- And ~95% of the time sample means will fall between `r round(sum_stats$se, 2) * -2`ms
+and `r round(sum_stats$se, 2) * 2`ms. 
+
+
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| label: fig-sampling
+#| fig-cap: !expr glue::glue("The sampling distribution with a mean of 0 and a SEM of {sum_stats$se |> round(2)}")
+require(tidyverse)
+
+args <- sum_stats |>
+  magrittr::set_colnames(
+    c("mean", "sd", "n","se")
+) |>
+  dplyr::mutate(sd = sd / sqrt(n)) |>
+  dplyr::mutate(mean = 0) |>
+  dplyr::select(-n, -se) |> as.list()
+
+
+
+ggplot() +
+  geom_function(fun = dnorm, args = args) +
+  xlim(args$mean - 4 * args$sd, args$mean + 4 * args$sd) +
+  cowplot::theme_cowplot() +
+  labs(y = NULL, x = "sample mean")
+
+```
+
+:::
+
+::::
+
+
+Our particular mean we see that it falls `r round(sum_stats$mean_rt / sum_stats$se, 2)` SEM 
+from our hypothesised population mean
+
+What can we make of this?
+
+---
+
+### Making comparisons with the sampling distribution
+
+- We can conclude that if the population mean were in fact 0 then we have observed something rare
+
+- If the population mean were in fact 0, then it would be rare for a sample mean to be that 
+far away from the population mean
+
+Observing something rare doesn't tell us that our hypothesis is wrong 
+
+Rare things happen all the time!
+
+- But if we were to run our experiments again and again, and we continued to observe
+rare events then we would probably have a good reason to update our hypothesis. 
+
+This process of comparing our sample to the sampling distribution is known as
+*null hypothesis significance testing*
+
+And it will be a major topic that you'll cover next year. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{ojs}
+vega = require("https://cdn.jsdelivr.net/npm/vega@5/build/vega.js")
+```
+
+```{ojs}
+jstat = require("https://bundle.run/jstat@1.9.4")
+```
+
+```{ojs}
+import { dist } from "@ljcolling/wasm-distributions"
+```
+
+```{ojs}
+sd_value_slider = Inputs.range([0.5, 2], {
+  value: 1,
+  step: 0.25,
+  label: htl.html`standard deviation <br />&#x3C3;`
+})
+```
+
+```{ojs}
+import { texmd } from "@kelleyvanevert/katex-within-markdown"
+```
+
+```{ojs}
+mean_value_slider = Inputs.range([-3, 3], {
+  value: 0,
+  step: 0.25,
+  label: htl.html`mean<br />  &#x3BC`
+})
+```
+
+```{ojs}
+sd_value = Generators.input(sd_value_slider)
+```
+
+```{ojs}
+mean_value = Generators.input(mean_value_slider)
+```
+
+```{ojs}
+// jStat.normal.pdf( x, mean, std )
+normal_plot = (min, max, mean, sd) => {
+  // jStat.normal.pdf(x, mean, sd)
+
+  return d3.ticks(min, max, 501).map((v) => {
+    return {
+      x: v,
+      y: dnorm(v, mean, sd)
+    };
+  });
+}
+```
+
+```{ojs}
+skew_normal_plot = (min, max, alpha) => {
+  // jStat.normal.pdf(x, mean, sd)
+
+  return d3.ticks(min, max, 201).map((v) => {
+    return {
+      x: v,
+      y: dsn(v, alpha)
+    };
+  });
+}
+```
+
+```{ojs}
+dsn = (x, alpha) => {
+  // set the defaults
+
+  const xi = 0;
+  const omega = 1;
+  const tau = 0;
+
+  let z = (x - xi) / omega;
+
+  let logN = -Math.log(Math.sqrt(2 * Math.PI)) - 0 - Math.pow(z, 2) / 2;
+
+  let logS = Math.log(
+    jStat.normal.cdf(tau * Math.sqrt(1 + Math.pow(alpha, 2)) + alpha * z, 0, 1)
+  );
+
+  let logPDF = logN + logS - Math.log(jStat.normal.cdf(tau, 0, 1));
+
+  return Math.exp(logPDF);
+}
+```
+
+```{ojs}
+// import jStat library
+jStat = require("jStat")
+```
+
+```{ojs}
+kurtosis = {
+  return {
+    uniform: -(6 / 5),
+    raised_cosine: (6 * (90 - Math.PI ** 4)) / (5 * (Math.PI ** 2 - 6) ** 2),
+    standard_normal: 0,
+    t_dist30: 6 / (30 - 4),
+    t_dist20: 6 / (20 - 4),
+    t_dist10: 6 / (10 - 4),
+    t_dist7: 6 / (7 - 5),
+    t_dist5: 6 / (5 - 4)
+  };
+}
+```
+
+```{ojs}
+kurtosis_values = Object.values(kurtosis).map((v) => Math.round(v * 100) / 100)
+```
+
+```{ojs}
+dists = {
+  return {
+    raised_cosine: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.raised_cosine(v, 0, 2.5)
+      };
+    }),
+    standard_normal: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dnorm(v, 0, 1)
+      };
+    }),
+    t_dist30: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 30)
+      };
+    }),
+    t_dist20: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 20)
+      };
+    }),
+    t_dist10: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 10)
+      };
+    }),
+    t_dist7: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 7)
+      };
+    }),
+    t_dist5: d3.ticks(-3, 3, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dt(v, 5)
+      };
+    }),
+
+    uniform: d3.ticks(-2.1, 2.1, 500).map((v) => {
+      return {
+        x: v,
+        y: dist.dunif(v, -2, 2)
+      };
+    })
+  };
+}
+```
+
+```{ojs}
+fill_limits = (mult) => {
+  let s = sd_value * mult;
+  return [
+    { x: mean_value - s > -4 ? mean_value - s : -4, y: 0 },
+    normal_plot(
+      mean_value - s > -4 ? mean_value - s : -4,
+      mean_value - s > -4 ? mean_value - s : -4,
+      mean_value,
+      sd_value
+    )[0],
+    normal_plot(
+      mean_value + s < 4 ? mean_value + s : 4,
+      mean_value + s < 4 ? mean_value + s : 4,
+      mean_value,
+      sd_value
+    )[0],
+    { x: mean_value + s < 4 ? mean_value + s : 4, y: 0 }
+  ];
+}
+```
+
+```{ojs}
+function dnorm(x, mean, sd) {
+  return jstat.normal.pdf(x, mean, sd);
+}
+```
+
+
