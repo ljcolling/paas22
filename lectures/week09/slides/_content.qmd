@@ -512,9 +512,7 @@ In the @fig-sport-histogram we can see measurements from a reaction time task.
 - Amateurs sportspeople have a mean reaction time of `r ama_mean` ms and professionals have a mean 
 reaction time of `r spo_mean` ms.
 
-- There is overlap between the two groups but there is clearly a difference in **average** reaction
-time between two
-
+- There is overlap between the two groups, but there is a difference between the **averages**
 
 - To quantify the difference, just **subtract the mean of
   group from the mean of the other**^[In later years you'll learn how to
