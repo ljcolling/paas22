@@ -32,3 +32,20 @@ type: slides
 
 {{< include _content.qmd >}}
 
+
+<style>
+.reveal .slide {
+  border: solid;
+  border-width: 0px;
+  padding: 3rem;
+  margin: -3rem;
+}
+
+section.slide {
+  background-color: #f6f6f6
+}
+
+.reveal {
+  background-color: #f6f6f6
+}
+</style>

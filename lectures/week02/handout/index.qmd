@@ -11,6 +11,7 @@ bibliography: refs.bib
 csl: apa.csl
 format:
   html:
+    echo: false
     navbar: false
     page-layout: article
     toc: true
@@ -18,8 +19,6 @@ format:
     date: 03 Oct 2022
     date-format: "D MMMM, YYYY"
   pdf:
-    cite-method: biblatex
-    biblio-style: apa6
     toc: false
     date: 03 Oct 2022
     date-format: "D MMMM, YYYY"

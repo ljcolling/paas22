@@ -7,8 +7,11 @@ author:
     affiliation: School of Psychology, University of Sussex
     affiliation-url: https://profiles.sussex.ac.uk/p488921-lincoln-colling
 week: 3
+bibliography: refs.bib
+csl: apa.csl
 format:
   html:
+    echo: false
     navbar: false
     page-layout: article
     toc: true

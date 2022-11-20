@@ -11,6 +11,7 @@ bibliography: refs.bib
 csl: apa.csl
 format:
   html:
+    echo: false
     navbar: false
     page-layout: article
     toc: true
@@ -32,7 +33,6 @@ format:
     include-before-body:
       text: |
         \renewcommand*{\marginnote}[1]{\footnote{#1}}
-        \setcounter{section}{6}
 reading-time: |
   `r 
   words <- system("pandoc --lua-filter wordcount.lua _content.qmd --from=markdown", intern = TRUE) |> as.numeric();

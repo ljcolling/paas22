@@ -33,9 +33,7 @@ type: slides
 {{< include _content.qmd >}}
 
 
-
-```{css}
-/*
+<style>
 .reveal .slide {
   border: solid;
   border-width: 0px;
@@ -44,11 +42,10 @@ type: slides
 }
 
 section.slide {
-  background-color: white;
+  background-color: #f6f6f6
 }
 
 .reveal {
-  background-color: #e3e3e3
+  background-color: #f6f6f6
 }
-*/
-```
+</style>

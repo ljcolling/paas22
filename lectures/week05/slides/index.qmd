@@ -4,7 +4,6 @@ author-meta: "Dr Lincoln Colling"
 format: 
   sussex-revealjs:
     center-title-slide: false
-    auto-stretch: false
     multiplex: true
 navbar: true
 week: 5
@@ -20,6 +19,7 @@ type: slides
 
 <br>
 <br>
+
 <h3 style="color:black;font-weight:normal">Dr Lincoln Colling</h3>
 
 <h3 style="color:black;font-weight:normal">24 Oct 2022</h3>
@@ -33,4 +33,19 @@ type: slides
 {{< include _content.qmd >}}
 
 
+<style>
+.reveal .slide {
+  border: solid;
+  border-width: 0px;
+  padding: 3rem;
+  margin: -3rem;
+}
 
+section.slide {
+  background-color: #f6f6f6
+}
+
+.reveal {
+  background-color: #f6f6f6
+}
+</style>
