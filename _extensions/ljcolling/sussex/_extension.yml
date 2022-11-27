@@ -17,3 +17,4 @@ contributes:
       min-scale: .5
       fig-cap-location: bottom
       navigation-mode: linear
+      code-fold: true
