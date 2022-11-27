@@ -5,6 +5,7 @@ format:
   sussex-revealjs:
     center-title-slide: false
     multiplex: true
+    code-fold: true
 navbar: true
 week: 10
 type: slides
