@@ -130,15 +130,15 @@ df <- here::here("data/movies_tidy.csv") |> readr::read_csv()
 tbl1_data <- df |>
   filter(n_ratings >= 5000) |>
   select(title, continent) |>
-  distinct() |>
+  dplyr::distinct() |>
   mutate(total = unique(title) |> length()) |>
   group_by(continent, total) |>
   summarise(N = n(), .groups= "drop") |>
   mutate(`%` = round((N / total) * 100,1)) |>
   select(-total) |>
   rename(Continent = continent)
-kbl(tbl1_data, align = "c") %>%
-  kable_classic(full_width = TRUE) %>%
+kbl(tbl1_data, align = "c") |>
+  kable_classic(full_width = TRUE) |>
   footnote(general = "Here is a general comments of the table. ",
            number = c("Footnote 1; ", "Footnote 2; "),
            alphabet = c("Footnote A; ", "Footnote B; "),
@@ -535,8 +535,8 @@ tr {
 #| fig-cap: A histogram of the distribution of average viewer ratings in the sample
 #| code-fold: true
 
-df %>%
-  dplyr::distinct(title, .keep_all = TRUE) %>%
+df |>
+  dplyr::distinct(title, .keep_all = TRUE) |>
   ggplot2::ggplot(aes(x = rating)) +
   ggplot2::geom_bar(fill = "steelblue") +
   ggplot2::labs(x = "Mean viewer rating", y = "Count") +
@@ -559,12 +559,12 @@ df %>%
 #| fig-cap: Density plots provide a smoother representation of the distribution of a variable
 #| code-fold: true
 
-df %>%
-  distinct(title, .keep_all = T) %>%
-  ggplot(aes(x = rating)) +
-  geom_density(fill = "#3d755b88", colour = "#3d755b") +
-  labs(x = "Mean viewer rating", y = "Density") +
-  scale_x_continuous(breaks = 1:10)
+df |>
+  dplyr::distinct(title, .keep_all = T) |>
+  ggplot2::ggplot(aes(x = rating)) +
+  ggplot2::geom_density(fill = "#3d755b88", colour = "#3d755b") +
+  ggplot2::labs(x = "Mean viewer rating", y = "Density") +
+  ggplot2::scale_x_continuous(breaks = 1:10)
 ```
 
 ---
@@ -590,13 +590,13 @@ df %>%
 #| fig-cap: A bar chart showing the number of films produced within a region
 #| code-fold: true
 
-df %>%
-  distinct(title, country, .keep_all = T) %>%
-  mutate(region = factor(region)) %>%
-  ggplot(aes(x = region)) +
-  geom_bar(fill = "#00356888", colour="#003568") +
-  labs(x = "Region", y = "Count") +
-  theme(axis.text.x = element_text(angle = 30, vjust = 1, hjust=1))
+df |>
+  dplyr::distinct(title, country, .keep_all = T) |>
+  dplyr::mutate(region = factor(region)) |>
+  ggplot2::ggplot(aes(x = region)) +
+  ggplot2::geom_bar(fill = "#00356888", colour="#003568") +
+  ggplot2::labs(x = "Region", y = "Count") +
+  ggplot2::theme(axis.text.x = element_text(angle = 30, vjust = 1, hjust=1))
 ```
 
 <small>
@@ -618,19 +618,19 @@ Categorisation of countries into regions is based on World Bank Development Indi
 #| fig-cap: Bar charts can also show distributions of ordinal variables
 #| code-fold: true
 
-df %>%
-  distinct(title, .keep_all=T) %>%
-  mutate(cert = forcats::fct_explicit_na(cert)) %>%
-  ggplot(aes(x = cert, fill = cert, colour = cert)) +
-  geom_bar() +
-  labs(x = "BBFC Certificate", y = "Count") +
-  scale_fill_manual(values = c("#2aa832", "#fab900", "#ef7910",
+df |>
+  dplyr::distinct(title, .keep_all=T) |>
+  dplyr::mutate(cert = forcats::fct_explicit_na(cert)) |>
+  ggplot2::ggplot(aes(x = cert, fill = cert, colour = cert)) +
+  ggplot2::geom_bar() +
+  ggplot2::labs(x = "BBFC Certificate", y = "Count") +
+  ggplot2::scale_fill_manual(values = c("#2aa832", "#fab900", "#ef7910",
                                "#ef7910", "#ec5692", "#d8011e", "#007ec8", "#aaaaaa"),
                     guide=F) +
-  scale_color_manual(values = c("#2aa832", "#fab900", "#ef7910",
+  ggplot2::scale_color_manual(values = c("#2aa832", "#fab900", "#ef7910",
                                 "#ef7910", "#ec5692", "#d8011e", "#007ec8", "#aaaaaa"),
                      guide=F) +
-  geom_hline(yintercept = rep(seq(500, 2000, by = 500), 2), size = 2, colour = "white")
+  ggplot2::geom_hline(yintercept = rep(seq(500, 2000, by = 500), 2), size = 2, colour = "white")
 ```
 
 <small>
@@ -654,16 +654,16 @@ df %>%
 #| fig-cap: An example of a horizontal bar chart with grid lines
 #| code-fold: true
 
-df %>%
-  distinct(title, genre, .keep_all = T) %>%
-  mutate(genre = factor(genre) %>%
-           forcats::fct_infreq() %>%
-           forcats::fct_rev()) %>%
-  ggplot(aes(x = genre)) +
-  geom_bar(fill = "#3d755b88", colour = "#3d755b") +
-  coord_flip() +
-  labs(x = "Genre", y = "Count") +
-  theme(panel.grid.major.x = element_line(size=0.1, colour = "#00000044"),
+df |>
+  dplyr::distinct(title, genre, .keep_all = T) |>
+  dplyr::mutate(genre = factor(genre) |>
+           forcats::fct_infreq() |>
+           forcats::fct_rev()) |>
+  ggplot2::ggplot(aes(x = genre)) +
+  ggplot2::geom_bar(fill = "#3d755b88", colour = "#3d755b") +
+  ggplot2::coord_flip() +
+  ggplot2::labs(x = "Genre", y = "Count") +
+  ggplot2::theme(panel.grid.major.x = element_line(size=0.1, colour = "#00000044"),
         panel.grid.minor.x = element_line(size=0.1, colour = "#00000022"))
 ```
 
@@ -696,15 +696,15 @@ df %>%
 #| fig-cap: A box plot gives a more detailed info about a variable's distribution and basic descriptive statistics
 #| code-fold: true
 
-df %>%
-  distinct(title, .keep_all = T) %>%
-  ggplot(aes(x = rating)) +
-  geom_boxplot(outlier.fill = "#e20000", outlier.shape = 21, width = 0.2) +
-  annotate("line", x = c(6.4, 6.4), y = c(-0.1, 0.1), colour = "#007ec8", size = 1.5) +
-  labs(x = "Mean viewer rating", y = "") +
-  coord_cartesian(ylim = c(-0.3, 0.3)) +
-  scale_x_continuous(breaks = 0:11) +
-  theme(axis.ticks.y = element_blank(),
+df |>
+  dplyr::distinct(title, .keep_all = T) |>
+  ggplot2::ggplot(aes(x = rating)) +
+  ggplot2::geom_boxplot(outlier.fill = "#e20000", outlier.shape = 21, width = 0.2) +
+  ggplot2::annotate("line", x = c(6.4, 6.4), y = c(-0.1, 0.1), colour = "#007ec8", size = 1.5) +
+  ggplot2::labs(x = "Mean viewer rating", y = "") +
+  ggplot2::coord_cartesian(ylim = c(-0.3, 0.3)) +
+  ggplot2::scale_x_continuous(breaks = 0:11) +
+  ggplot2::theme(axis.ticks.y = element_blank(),
         axis.text.y = element_blank(), axis.line.y = element_blank())
 ```
 
@@ -724,21 +724,21 @@ df %>%
 #| fig-cap: A box plot gives a more detailed info about a variable's distribution and basic descriptive statistics
 #| code-fold: true
 
-df %>%
-  distinct(title, .keep_all = T) %>%
-  ggplot(aes(x = rating)) +
-  geom_boxplot(outlier.fill = "#e20000", outlier.shape = 21, width = 0.2) +
-  labs(x = "Mean viewer rating", y = "") +
-  annotate("text", x = 6.4, y = -0.18, label="Median", size = 7, colour="#007ec8") +
-  annotate("text", x = 2.4, y = 0.12, label="Outliers", size = 7, colour = "#e20000") +
-  annotate("text", x = 6.5, y = 0.23, label="IQR", size = 6, colour="black") +
-  annotate("line", x = c(5.8, 7.1), y = c(0.15, 0.15), colour = "black") +
-  annotate("line", x = c(5.8, 5.8), y = c(0.12, 0.15), colour = "black") +
-  annotate("line", x = c(7.1, 7.1), y = c(0.12, 0.15), colour = "black") +
-  annotate("line", x = c(6.4, 6.4), y = c(-0.1, 0.1), colour = "#007ec8", size = 1.5) +
-  coord_cartesian(ylim = c(-0.3, 0.3)) +
-  scale_x_continuous(breaks = 0:11) +
-  theme(axis.ticks.y = element_blank(),
+df |>
+  dplyr::distinct(title, .keep_all = T) |>
+  ggplot2::ggplot(aes(x = rating)) +
+  ggplot2::geom_boxplot(outlier.fill = "#e20000", outlier.shape = 21, width = 0.2) +
+  ggplot2::labs(x = "Mean viewer rating", y = "") +
+  ggplot2::annotate("text", x = 6.4, y = -0.18, label="Median", size = 7, colour="#007ec8") +
+  ggplot2::annotate("text", x = 2.4, y = 0.12, label="Outliers", size = 7, colour = "#e20000") +
+  ggplot2::annotate("text", x = 6.5, y = 0.23, label="IQR", size = 6, colour="black") +
+  ggplot2::annotate("line", x = c(5.8, 7.1), y = c(0.15, 0.15), colour = "black") +
+  ggplot2::annotate("line", x = c(5.8, 5.8), y = c(0.12, 0.15), colour = "black") +
+  ggplot2::annotate("line", x = c(7.1, 7.1), y = c(0.12, 0.15), colour = "black") +
+  ggplot2::annotate("line", x = c(6.4, 6.4), y = c(-0.1, 0.1), colour = "#007ec8", size = 1.5) +
+  ggplot2::coord_cartesian(ylim = c(-0.3, 0.3)) +
+  ggplot2::scale_x_continuous(breaks = 0:11) +
+  ggplot2::theme(axis.ticks.y = element_blank(),
         axis.text.y = element_blank(), axis.line.y = element_blank())
 ```
 
@@ -756,12 +756,12 @@ df %>%
 #| fig-cap: Boxplots are useful to compare distributions of a variable between groups
 #| code-fold: true
 
-df %>%
-  distinct(title, continent, .keep_all = T) %>%
-  ggplot(aes(x = continent, y = rating)) +
-  geom_boxplot(outlier.fill = "#e20000", outlier.shape = 21, varwidth = T) +
-  labs(x = "Continent", y = "Mean viewer rating") +
-  theme(panel.grid.major.y = element_line(colour = "#00000033"),
+df |>
+  dplyr::distinct(title, continent, .keep_all = T) |>
+  ggplot2::ggplot(aes(x = continent, y = rating)) +
+  ggplot2::geom_boxplot(outlier.fill = "#e20000", outlier.shape = 21, varwidth = T) +
+  ggplot2::labs(x = "Continent", y = "Mean viewer rating") +
+  ggplot2::theme(panel.grid.major.y = element_line(colour = "#00000033"),
         panel.grid.minor.y = element_line(colour = "#00000010"))
 ```
 
@@ -779,21 +779,21 @@ df %>%
 #| fig-cap: Violin plots with inserted box plots showing mean viewer rating by different levels of BBFC certificate
 #| code-fold: true
 
-df %>%
-  distinct(title, .keep_all = T) %>%
-  mutate(cert = forcats::fct_explicit_na(cert)) %>%
-  ggplot(aes(x = cert, y = rating, fill = cert)) +
-  geom_violin(draw_quantiles = T, trim = F) +
-  geom_boxplot(width = 0.1, outlier.size = 2, fill = "white") +
-  labs(x = "BBFC Certificate", y = "Mean viewer rating") +
-  scale_fill_manual(
+df |>
+  dplyr::distinct(title, .keep_all = T) |>
+  dplyr::mutate(cert = forcats::fct_explicit_na(cert)) |>
+  ggplot2::ggplot(aes(x = cert, y = rating, fill = cert)) +
+  ggplot2::geom_violin(draw_quantiles = T, trim = F) +
+  ggplot2::geom_boxplot(width = 0.1, outlier.size = 2, fill = "white") +
+  ggplot2::labs(x = "BBFC Certificate", y = "Mean viewer rating") +
+  ggplot2::scale_fill_manual(
     values = c(
       "#2aa832", "#fab900", "#ef7910",
       "#ef7910", "#ec5692", "#d8011e", "#007ec8", "#aaaaaa"
     ),
     guide = F
   ) +
-  theme(
+  ggplot2::theme(
     panel.grid.major.y = element_line(colour = "#00000033"),
     panel.grid.minor.y = element_line(colour = "#00000010")
   )
@@ -832,17 +832,17 @@ df %>%
 #| fig-cap: Errorbar plot showing mean estimated budget of movies by level of BBFC certificate
 #| code-fold: true
 
-df %>%
-  distinct(title, .keep_all = T) %>%
-  mutate(cert = forcats::fct_explicit_na(cert)) %>%
-  ggplot(aes(x = cert, y = budget/1000000, fill = cert)) + 
-  stat_summary(fun.data = mean_se, geom = "errorbar", width=0.1, fun.args = 2) +
-  stat_summary(fun.y = mean, geom = "point", pch=23, size = 4) + 
-  labs(x = "BBFC Certificate", y = "Budget in millions of USD") +
-  scale_fill_manual(values = c("#2aa832", "#fab900", "#ef7910",
+df |>
+  dplyr::distinct(title, .keep_all = T) |>
+  dplyr::mutate(cert = forcats::fct_explicit_na(cert)) |>
+  ggplot2::ggplot(aes(x = cert, y = budget/1000000, fill = cert)) + 
+  ggplot2::stat_summary(fun.data = mean_se, geom = "errorbar", width=0.1, fun.args = 2) +
+  ggplot2::stat_summary(fun.y = mean, geom = "point", pch=23, size = 4) + 
+  ggplot2::labs(x = "BBFC Certificate", y = "Budget in millions of USD") +
+  ggplot2::scale_fill_manual(values = c("#2aa832", "#fab900", "#ef7910",
                                "#ef7910", "#ec5692", "#d8011e", "#007ec8", "#aaaaaa"),
                     guide=F) +
-  theme(panel.grid.major.y = element_line(colour = "#00000033"),
+  ggplot2::theme(panel.grid.major.y = element_line(colour = "#00000033"),
         panel.grid.minor.y = element_line(colour = "#00000010"))
 ```
 
@@ -864,24 +864,24 @@ df %>%
 #| fig-cap: Errorbar plot showing mean estimated budget of movies by level of BBFC certificate
 #| code-fold: true
 
-df %>%
-  distinct(title, .keep_all = T) %>%
-  mutate(cert = forcats::fct_explicit_na(cert)) %>%
-  ggplot(aes(x = cert, y = budget/1000000, fill = cert)) + 
-  stat_summary(fun.data = function (x, mult = 1) {
+df |>
+  dplyr::distinct(title, .keep_all = T) |>
+  dplyr::mutate(cert = forcats::fct_explicit_na(cert)) |>
+  ggplot2::ggplot(aes(x = cert, y = budget/1000000, fill = cert)) + 
+  ggplot2::stat_summary(fun.data = function (x, mult = 1) {
     x <- stats::na.omit(x)
     sd <- stats::sd(x)
     mean <- mean(x)
     ggplot2:::new_data_frame(list(y = mean, ymin = mean - sd, ymax = mean + 
                                     sd), n = 1)},
     geom = "errorbar", width=0.1) +
-  stat_summary(fun.y = mean, geom = "point", pch=23, size = 4) + 
-  labs(x = "BBFC Certificate", y = "Budget in millions of USD") +
-  scale_fill_manual(values = c("#2aa832", "#fab900", "#ef7910", 
+  ggplot2::stat_summary(fun.y = mean, geom = "point", pch=23, size = 4) + 
+  ggplot2::labs(x = "BBFC Certificate", y = "Budget in millions of USD") +
+  ggplot2::scale_fill_manual(values = c("#2aa832", "#fab900", "#ef7910", 
                                "#ef7910", "#ec5692", "#d8011e", "#007ec8", "#aaaaaa"),
                     guide=F) +
-  scale_y_continuous(breaks = seq(0, 160, by = 20)) +
-  theme(panel.grid.major.y = element_line(colour = "#00000033"),
+  ggplot2::scale_y_continuous(breaks = seq(0, 160, by = 20)) +
+  ggplot2::theme(panel.grid.major.y = element_line(colour = "#00000033"),
         panel.grid.minor.y = element_line(colour = "#00000010"))
 ```
 <small>
@@ -905,12 +905,12 @@ df %>%
 #| fig-cap: The relationship between a film's budget and it's opening week box office performance
 #| code-fold: true
 
-df %>%
-  distinct(title, .keep_all = T) %>%
-  ggplot(aes(x = budget/1000000, y = opening_week/1000000)) + 
-  geom_point(colour = "orangered", size = 2, alpha = .2,
+df |>
+  dplyr::distinct(title, .keep_all = T) |>
+  ggplot2::ggplot(aes(x = budget/1000000, y = opening_week/1000000)) + 
+  ggplot2::geom_point(colour = "orangered", size = 2, alpha = .2,
              position = position_jitter(width = 1, height = 1)) +
-  labs(x = "Budget in millions of USD", y = "Opening week grossing\n(millions of USD)")
+  ggplot2::labs(x = "Budget in millions of USD", y = "Opening week grossing\n(millions of USD)")
 ```
 
 ---
@@ -929,15 +929,15 @@ df %>%
 #| fig-cap: Average film runtime over time in the second decade of the 21<sup>st</sup> century
 #| code-fold: true
 
-df %>%
-  distinct(title, continent, .keep_all = T) %>%
-  ggplot(aes(x = ordered(year), y = runtime, group=1)) + 
-  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, lty = 1) +
-  stat_summary(fun = mean, geom = "line") + 
-  stat_summary(fun = mean, geom = "point", size = 4, colour="steelblue") + 
-  labs(x = "Year of release", y = "Runtime in minutes") +
-  coord_cartesian(ylim=c(105, 115)) +
-  scale_y_continuous(breaks = 105:115)
+df |>
+  dplyr::distinct(title, continent, .keep_all = T) |>
+  ggplot2::ggplot(aes(x = ordered(year), y = runtime, group=1)) + 
+  ggplot2::stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, lty = 1) +
+  ggplot2::stat_summary(fun = mean, geom = "line") + 
+  ggplot2::stat_summary(fun = mean, geom = "point", size = 4, colour="steelblue") + 
+  ggplot2::labs(x = "Year of release", y = "Runtime in minutes") +
+  ggplot2::coord_cartesian(ylim=c(105, 115)) +
+  ggplot2::scale_y_continuous(breaks = 105:115)
 ```
 
 <small>
@@ -956,18 +956,18 @@ df %>%
 #| fig-cap: Mean number of IMDB viewer rating of films by continent over time
 #| code-fold: true
 
-df %>%
-  distinct(title, continent, .keep_all = T) %>%
-  ggplot(aes(x = ordered(year), y = n_ratings/100000,
+df |>
+  dplyr::distinct(title, continent, .keep_all = T) |>
+  ggplot2::ggplot(aes(x = ordered(year), y = n_ratings/100000,
              group = continent, fill = continent, shape = continent)) + 
-  stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, lty = 1) +
-  stat_summary(fun.y = mean, geom = "line") + 
-  stat_summary(fun.y = mean, geom = "point", size = 3) + 
-  labs(x = "Year of release", y = "Number of IMDB ratings\n(in 100k)") +
-  scale_shape_manual(values=21:25, name="Continent") +
-  scale_fill_brewer(palette = "Set1", name="Continent") +
-  theme(legend.position = c(.77, 0.74)) +
-  coord_cartesian(ylim = c(0, 4.1))
+  ggplot2::stat_summary(fun.data = "mean_se", geom = "errorbar", width = 0, lty = 1) +
+  ggplot2::stat_summary(fun.y = mean, geom = "line") + 
+  ggplot2::stat_summary(fun.y = mean, geom = "point", size = 3) + 
+  ggplot2::labs(x = "Year of release", y = "Number of IMDB ratings\n(in 100k)") +
+  ggplot2::scale_shape_manual(values=21:25, name="Continent") +
+  ggplot2::scale_fill_brewer(palette = "Set1", name="Continent") +
+  ggplot2::theme(legend.position = c(.77, 0.74)) +
+  ggplot2::coord_cartesian(ylim = c(0, 4.1))
 ```
 
 <small>
