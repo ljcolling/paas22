@@ -132,8 +132,8 @@ roulette and lotteries
 We can sum it up as follows:
 
 > If we have an (exhaustive) list of **events** that can be produce by some
-> (exhaustive) list of equiprobable outcomes (the number of events and outcomes
-> need not be the same), the the **probability** of a particular event
+> (exhaustive) list of equally possible outcomes (the number of events and outcomes
+> need not be the same), the **probability** of a particular event
 > occurring is just **the proportion of outcomes that produce that event**.
 
 To make it concrete we'll think about flipping coins. If we flip two coins the
@@ -159,7 +159,7 @@ what counts as a possible outcome.
 
 E.g., When playing the lottery, how many outcomes are there? 
 
-- Two outcomes? You pick the correct numbers or you don't? So the the
+- Two outcomes? You pick the correct numbers or you don't? So the 
   probability of winning is `\(\frac{1}{2}\)`?
 
 - Of course not! There's 45,057,474 possible outcomes, and 1 leads to you

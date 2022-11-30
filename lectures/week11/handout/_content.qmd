@@ -1,0 +1,236 @@
+
+A good understanding of _probability_ is important not only for understanding
+science but also for understanding and making sense of the world. Unfortunately,
+probability is poorly understood and, as a result, people tend to reason quite 
+poorly about probabilities. Some of this faulty reasoning can have real world
+impacts. Therefore, it's important that you understand probability correctly,
+so that you don't also fall for these fallacies.
+
+We'll start off this lecture by asking a seemingly simple question.
+
+## Different views of probability
+
+What do we mean by "probability"?
+
+It might seem like there's an easy answer to this question, but there's _at
+least_ three senses of **probability**. 
+
+These different senses after often employed in different contexts, because they
+make more sense in some contexts and not others
+
+The three I'll cover are:
+
+- The **classical view** of probability
+
+- The **frequency view** of probability
+
+- The **subjective view** of probability
+
+### The classical view of probability
+
+
+The _classical view_ is often used in the context of games of chance like
+roulette and lotteries 
+
+We can sum it up as follows:
+
+> If we have an (exhaustive) list of **events** that can be produce by some
+> (exhaustive) list of equally possible outcomes (the number of events and outcomes
+> need not be the same), the **probability** of a particular event
+> occurring is just **the proportion of outcomes that produce that event**.
+
+To make it concrete we can think about flipping coins. If we flip two coins
+then the possible outcomes that can occur are:
+
+1. Heads and then heads
+
+2. Heads and then tails
+
+3. Tails and then heads
+
+4. Tails and then tails
+
+
+If we're interested in a particular event–for example, the event of "obtaining
+at least one head from two flips"—then we just count the number of outcomes
+that produce that event. For example, let's take the four outcomes above and
+see which of them lead to _at least one head_.
+
+1. Heads and then heads: 2 heads
+
+2. Heads and then tails: 1 head
+
+3. Tails and then heads: 1 head
+
+4. ~~Tails and then tails~~: 0 heads
+
+Three out of four outcomes would produce the event of "at least one head", so
+the probability is $\frac{3}{4}$ or 0.75. 
+
+If you're viewing probability like this, it's very important to be clear about
+what counts as a possible outcome. For example, when you're playing the
+lottery, how many outcomes are there?
+
+Is it two? Either you pick the correct numbers or you don't? So the probability
+of winning is $\frac{1}{2}$? Of course not! There's 45,057,474 possible
+outcomes. And 1 leads to you winning, with 45,057,473 leading to you not
+winning!
+
+### The frequency view of probability
+
+
+When you take a frequency view of probability you're making a claim about **how
+often, over some long period of time** some event occurs. The frequency view is
+often the view that we take in science. The _frequency view_ of probability is 
+also the view of probability that we most often use in the context of **sampling
+distribution**.
+
+Think about the following statement: There's `r 100 * round(integrate(dnorm, -2,
+2)$value, 2)`% probability that the sample mean will be less than 2 standard 
+errors from the population mean.
+
+What this statement **means** is that if you draw lots of samples from the same
+population then **95% of the time** the sample mean will be within 2 standard
+errors of the population mean.
+
+Or, for example, consider assigning a probability to the claim "drug X lowers
+depression", we can't just think of each possible outcomes that **could** occur
+when people take Drug X and then count up how many lead to lower depression and
+how many do not, as we would do with the classical view. Because there's no way
+to make an exhaustive list of every possible outcome! So instead what we need
+to do is to run an experiment where we give Drug X and see whether it lowers
+depression. And we can repeat this many many times. After this we count up the
+proportion of experiments in which depression was lowered, and this is then the
+probability that Drug X lowers depression.
+
+### The subjective view of probability (credences)
+
+Final view we'll discuss is the _subjective view_ of probability where
+probabilities refer to credences. To understand what this means, consider 
+the following statements:
+
+> The Australian cricket team will lose the upcoming test series against
+> South Africa.
+
+There is a sense in which you can assign a probability to this. But it isn't
+the classical kind—we can't just enumerate all the possible outcomes that lead
+to this event. Nor is it the frequency kind—we can't repeat the 2022/2023
+cricket tour over and over and see how often Australia lose.
+
+When we talk about probability in this context mean something like _degree of
+belief_, _credence_, or _subjective probability_. Probability in this context
+is the answer to the question "how sure are you that the Australian cricket
+team will lose the upcoming test series against South Africa?"
+
+The viewing probabilities are credences is something that is common in our
+everyday thinking. For example, consider jurors that are required to make
+a decision about the guilt or innocence of a defendant. To make this decision
+jurors need to assign probabilities to the two propositions: 1) The defendant
+is guilty or 2) The defendant is innocent. And, in the case of criminal trials,
+the probability assigned to 1 must be greater than 2 by some threshold amount.
+^[In criminal trials the threshold is termed "beyond reasonable doubt". In 
+civil trials, the probability of one must just be greater than the probability
+of the other, and there is no requirement that the probability of one exceeds
+the probability of the other by some threshold amount.]
+
+The classical view of probability and the frequency view of probability are, in
+many respects, similar to each other, at least when compared to the subjective
+view. But you might ask, why do these differences matter?
+
+One reason for discussing these differences is that the frequency view is the
+view you'll most commonly encounter within what's known as Frequentist
+statistics.This is the kind of statistics you'll be learning in your
+undergraduate courses^[An alternative to Frequentist statistics is an approach
+known as Bayesian statistics. You won't learn Bayesian statistics in your
+undergraduate courses (at least not in very much detail), but if you are
+interested in learning more then I do teach a course on it at Masters level,
+which you'll be able to take in a few years time.]. The frequency view is,
+however, not that common in our every day thinking. As the juror example is
+meant to demonstrate, the credence/subjective view is more common. As a result
+this can lead to some confusions. Specifically, people get confused and think
+that the results of statistical tests tell people what they should "believe"—that
+is, what subjective probabilities they should assign to hypotheses. But they
+don't. 
+
+<!--
+Think about our frequency example again. We made the statement:
+
+> There's `r 100 * round(integrate(dnorm, -2,
+2)$value, 2)`% probability that the sample mean will be less than 2 standard 
+errors from the population mean.
+
+And we said that what this really means is that if we repeatedly sample from 
+the population then **95% of the time** the sample mean will be less than
+2 standard errors from the population mean. That is, a **frequency**
+interpretation. 
+
+However, a common mistake is for people to interpret this probability as a
+credence or subjective probability. And therefore, they might interpret this
+statement as saying:
+
+> I'm `r 100 * round(integrate(dnorm, -2, 2)$value, 2)`% sure that the sample 
+mean is within 2 standard errors of the population mean.
+
+The problem with this inte
+-->
+
+## Calculating with probability
+
+The different views of probability have got to do with what the numbers
+**mean**, but once we have the numbers there's no real disagreements about how
+we do calculations with those numbers^[Probabilities don't always have to have
+**numbers** attached. There is a sense in which something can be **more
+probable** than something else without numbers being attached.].
+
+### Some properties of probabilities
+
+There are some rule that probabilities need to obey. When we attach numbers to
+probabilities those numbers must range from 0 to 1. We assign a probability of
+0 to an event if that event is impossible (that is, it will **never occur**).
+And we assign 1 to an event if it's guaranteed (that is, it will **always
+occur**)
+
+These two simple rules can help us to check our calculations with
+probabilities. If we get a value more than 1 or a value less than 0, then
+something has gone wrong!
+
+:::{.callout-note}
+
+#### A first note about _notation_.
+
+There's lots of notation that goes along with probability theory. We'll learn more
+about this notion as we go long. But for now, we'll just start off simple.
+
+It's common to use P or Pr to refer to probability. To refer to the probability
+of some event the P is followed by brackets containing a symbol. For example, if you
+wanted to refer to the probability of getting Heads on a coin flip then you might right
+P(Heads). Or if you wanted to refer to the probability that somebody is sick then you
+might right P(Sick). 
+
+:::
+
+### The addition law
+
+The addition law states that whenever two events are _mutually exclusive_:
+
+  > The probability that at least one them occurs is the **sum** of the their
+  > individual probabilities
+
+If we flip a coin, one of two things can happen. It can land Heads, or it can
+land Tails. It can't land heads **and** tails (this is what is meant by
+_mutually exclusive_), and one of those things must happen (it's a list of all
+possible events).
+
+What's the probability that at least one of the those events happens? Since
+one of those events must happen the probability must be 1.
+
+
+
+But we can work it out from the individual probabilities and by using the **addition 
+law**.
+
+1. $\frac{1}{2}$ possible outcomes produces Heads—P(Heads) = 0.50
+
+2. $\frac{1}{2}$ possible outcomes produces Tails—P(Tails) = 0.50
+
+The probabilities of at least one of **Heads** or **Tails** occurring is 0.5 + 0.5 = 1  
