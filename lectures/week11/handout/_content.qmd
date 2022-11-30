@@ -150,7 +150,9 @@ meant to demonstrate, the credence/subjective view is more common. As a result
 this can lead to some confusions. Specifically, people get confused and think
 that the results of statistical tests tell people what they should "believe"—that
 is, what subjective probabilities they should assign to hypotheses. But they
-don't. 
+don't. At least not by themselves. We can use them to help us form beliefs 
+about hypotheses, but only with the help of some extra information that comes,
+for example, from scientific theories and so on.
 
 <!--
 Think about our frequency example again. We made the statement:
@@ -221,16 +223,273 @@ land Tails. It can't land heads **and** tails (this is what is meant by
 _mutually exclusive_), and one of those things must happen (it's a list of all
 possible events).
 
-What's the probability that at least one of the those events happens? Since
-one of those events must happen the probability must be 1.
+What's the probability that at least one of the those events happens? Since one
+of those events must happen the probability must be 1. But we can also work it
+out from the individual probabilities using the **addition law**.
+
+1. $\frac{1}{2}$ possible outcomes produce Heads—P(Heads) = 0.50
+
+2. $\frac{1}{2}$ possible outcomes produce Tails—P(Tails) = 0.50
+
+The probabilities of at least one of **Heads** or **Tails** occurring is 0.5 + 0.5 = 1
+
+:::{.callout-note}
+
+#### Another note about _notation_
+
+Another set of symbols that you'll see when dealing with probability are $\cup$
+(union) and $\cap$ (intersection).
+
+If we have two events $A$ and $B$ that occur with $P(A)$ and $P(B)$ then
+the probability or **either A or B** occurring is $P(A \cup B)$.
+
+The addition law tells us that if **A** and **B** are **mutually exclusive**
+(they can't both occur at the same time) then $P(A \cup B) = P(A) + P(B)$.
+
+While we use $P(A \cup B)$ to denote A **or** B occurring we use $\cap$ to
+denote A **and** B occurring. That is, the probability of A **and** B occurring
+is denoted as $P(A \cap B)$. If A and B are mutually exclusive then 
+$P(A \cap B) = 0$.
+
+:::
+
+:::{.callout}
+
+#### Explore mutually exclusive events
+
+```{ojs}
+viewof plot = html`
+<svg class="image" xmlns="http://www.w3.org/2000/svg" width="${
+  (44 * 10) + 44
+  }" height="${
+  40 * Math.ceil((44 + 44 + 44) / 10) 
+}">
+${[
+  full_grid.slice(0, red).map((pt) => circle(pt[0], pt[1], "red", "red")),
+  full_grid
+    .slice(red, red + blue)
+    .map((pt) => circle(pt[0], pt[1], "blue", "blue")),
+  full_grid
+    .slice(red + blue, red + blue + green)
+    .map((pt) => circle(pt[0], pt[1], "green", "green"))
+].join("")}
+</svg>`
+```
+
+```{ojs}
+//| panel: input
+viewof red = Inputs.range([0, 30], {
+  label: "Number of red cirlces",
+  step: 1,
+  value: 10
+})
+
+viewof blue = Inputs.range([0, 30], 
+  {label: "Number of blue circles",
+  step: 1, 
+  value: 10})
+
+viewof green = Inputs.range([0, 30], {
+  label: "Number of green circles",
+  step: 1,
+  value: 10
+})
+```
+
+```{ojs}
+viewof t3 = md`The display shows ${red} red circles, ${blue} circles, and ${green} circles.
+This means that there's a total of ${red + blue + green} circles. If we were to 
+select one circle at random then we can work out the probability that it'll
+be green, blue or red.
+
+- The probability of selecting a red circle is ${tex`\frac{${red}}{${
+  red + green + blue
+}}`} or ${round3(red / (red + green + blue))}
+
+- The probability of selecting a blue circle is ${tex`\frac{${blue}}{${
+  red + green + blue
+}}`} or ${round3(blue / (red + green + blue))}
+
+- The probability of selecting a green circle is ${tex`\frac{${green}}{${
+  red + green + blue
+}}`} or ${round3(green / (red + green + blue))}
+
+Selecting **blue** and selecting **red** are **mutually exclusive**. 
+This means that if you select **only one circle**, that circle can't be both 
+blue **and** red. But we could ask about the probability of selecting, 
+for example, a circle that is blue **or** red.
+
+To work out this probability we apply the **addition rule**.
+
+Mathematically, we can say:
+${tex`P (A \cup B) = P(A) + P(B)`}
+
+Let's put some numbers to it:\
+`
+
+
+```
+
+```{ojs}
+//| panel: input
+viewof colors = Inputs.checkbox(
+  ["red", "blue", "green"],
+  { value: ["red", "blue"], label: "Colours"}, { value: ["red", "blue"]}
+)
+```
+
+```{ojs}
+function give_selection(x) {
+
+  if(_.isEmpty(x)) {
+    return "**None**"
+  }
+
+  return colors.map((x, i) => `${i >= 1 ? " and " : ""}**${x}**`)
+
+}
+```
+
+```{ojs}
+md`Select two colours using the selectors above. You've selected: ${give_selection(colors)}.
+
+${
+  _.isEmpty(colors)
+    ? ""
+    : md`The probability of selecting ${colors.map(
+        (x, i) => `${x}${i + 1 < colors.length ? " **or** " : " is:"}`
+      )}`
+}
+
+${
+  _.isEmpty(colors)
+    ? "Use the checkboxes above to select the colours."
+    : md`${tex`P(${colors
+        .map((x) => `\\mathrm{${x}}`)
+        .join("\\cup{}")})`}  = ${colors
+        .map((x) => round3(getvalue(x) / (red + blue + green)))
+        .join(" + ")} = ${round3(
+        _.sum(colors.map((x) => getvalue(x))) / (red + blue + green)
+      )}`
+} 
 
 
 
-But we can work it out from the individual probabilities and by using the **addition 
-law**.
+${
+  _.isEmpty(colors)
+    ? ""
+    : md`
+We can work this out just by counting:
 
-1. $\frac{1}{2}$ possible outcomes produces Heads—P(Heads) = 0.50
+${colors.map((x) => `${round3(getvalue(x))} (number of ${x} circles)`).join(" + ")} = ${_.sum(
+        colors.map((x) => getvalue(x))
+      )}
 
-2. $\frac{1}{2}$ possible outcomes produces Tails—P(Tails) = 0.50
+${_.sum(colors.map((x) => getvalue(x)))} ÷ ${
+        red + blue + green
+      } (total number of circles) = ${round3(
+        _.sum(colors.map((x) => getvalue(x))) / (red + blue + green)
+      )}
+`
+}
 
-The probabilities of at least one of **Heads** or **Tails** occurring is 0.5 + 0.5 = 1  
+`
+
+```
+
+
+:::
+
+
+### Mutually and non mutually exclusive events
+
+When we flip a coin the two outcomes are mutually exclusive. That is, they
+can't both happen at the same time. But not everything is like this. Consider
+drawing a card from a deck of cards:
+
+1. What is the probability of pulling out a Spade ♠ or a Club ♣?
+
+2. What is the probability of pulling out a Spade ♠ or an Ace 🃁?
+
+In situation (1) the events are mutually exclusive (or disjoint). A card can't
+be a Spade and a Club. It will either be a Spade, a Club, or something else. In
+this case, the **addition law** applies.
+
+In situation (2) the events are not mutually exclusive. A card can be both a 
+Spade and an Ace. Because a card can be both a Spade and an Ace we have to 
+make sure that we don't double count these cards. So we just modify the addition
+law so that we have @eq-add below:
+
+$$P(A \cup B) = P(A) + P(B) - P(A \cap B)$${#eq-add}
+
+We can put numbers to this for the card example:
+
+There are 52 cards in a deck of cards. Of these, 13 are \mathrm{Spade}s. So
+the probability of selecting a \mathrm{Spade} is $P(\mathrm{Spade}) = \frac{13}{52}$.
+Exactly 4 of the 52 will be \mathrm{Ace}s, so the probability of selecting
+an \mathrm{Ace} is $P(\mathrm{Ace}) = \frac{4}{52}$. And finally, exactly 1 card 
+is both an \mathrm{Ace} and a \mathrm{Spade}. So the probability of selecting a
+card that is both is $P(\mathrm{Ace} \cap \mathrm{Spade}) = \frac{1}{52}$. With all
+these we can now work out the probability of selecting a card that
+is an Ace or a Spade.
+
+$P(\mathrm{Ace} \cup \mathrm{Spade}) = P(\mathrm{Ace}) + P(\mathrm{Spade}) - P(\mathrm{Ace} \cup \mathrm{Spade})$
+
+$P(\mathrm{Ace} \cup \mathrm{Spade}) = `r round(4 / 52,2)` + `r round(13 / 52,2)` - `r round(1 / 52,2)`$
+
+
+
+You can explore non-mutually exclusive events in 
+
+::: {.callout}
+
+
+:::
+
+### Two or more events
+
+In the previous example we were 
+
+
+
+<!-- Dependencies -->
+
+```{ojs}
+function circle(x, y, fill, stroke) {
+  return `<circle cx="${x}" cy="${y}" r="20" stroke="none" fill="${fill}" stroke-width="0"></circle>
+<circle cx="${x}" cy="${y}" r="10" stroke="${fill}" fill="${stroke}" stroke-width="0"></circle>`;
+}
+```
+
+```{ojs}
+full_grid = _.flatten(
+  _.range(10).map((y) =>
+    _.range(10)
+      .map((x) => 44 * (x + 1))
+      .map((x) => [x, 44 * (y + 1)])
+  )
+)
+```
+
+```{ojs}
+function round3(x) {
+  return Math.round(x * 1000) / 1000;
+}
+```
+
+```{ojs}
+function getvalue(x) {
+  if (x === "red") {
+    return red;
+  }
+
+  if (x === "blue") {
+    return blue;
+  }
+
+  if (x === "green") {
+    return green;
+  }
+}
+
+```

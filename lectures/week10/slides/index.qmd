@@ -5,7 +5,6 @@ format:
   sussex-revealjs:
     center-title-slide: false
     multiplex: true
-    code-fold: true
 navbar: true
 week: 10
 type: slides
@@ -48,9 +47,5 @@ section.slide {
 
 .reveal {
   background-color: #f6f6f6
-}
-
-.reveal small {
-  font-size: 85% !important;
 }
 </style>

@@ -6,11 +6,11 @@ website:
   title: "Psychology As A Science"
   navbar:
     background: primary
-    # right:
-    #   - href: handouts.qmd
-    #     text: Lecture handouts
-    #   - href: slides.qmd
-    #     text: Lecture slides
+    right:
+      - href: handouts.qmd
+        text: Lecture handouts
+      - href: slides.qmd
+        text: Lecture slides
 
 format:
   html:
