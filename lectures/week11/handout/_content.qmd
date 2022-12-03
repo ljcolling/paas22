@@ -253,9 +253,14 @@ $P(A \cap B) = 0$.
 
 :::
 
-:::{.callout}
 
-#### Explore mutually exclusive events
+You can explore mutually exclusive events in @exm-mutual.
+
+:::{.callout-tip icon="false" appearance="simple"}
+
+:::{#exm-mutual}
+#### Mutually exclusive events
+:::
 
 ```{ojs}
 viewof plot = html`
@@ -401,7 +406,7 @@ ${_.sum(colors.map((x) => getvalue(x)))} ÷ ${
 :::
 
 
-### Mutually and non mutually exclusive events
+## Mutually and non mutually exclusive events
 
 When we flip a coin the two outcomes are mutually exclusive. That is, they
 can't both happen at the same time. But not everything is like this. Consider
@@ -433,24 +438,863 @@ card that is both is $P(\mathrm{Ace} \cap \mathrm{Spade}) = \frac{1}{52}$. With 
 these we can now work out the probability of selecting a card that
 is an Ace or a Spade.
 
-$P(\mathrm{Ace} \cup \mathrm{Spade}) = P(\mathrm{Ace}) + P(\mathrm{Spade}) - P(\mathrm{Ace} \cup \mathrm{Spade})$
+$P(\mathrm{Ace} \cup \mathrm{Spade}) = P(\mathrm{Ace}) + P(\mathrm{Spade}) - P(\mathrm{Ace} \cap \mathrm{Spade})$
 
 $P(\mathrm{Ace} \cup \mathrm{Spade}) = `r round(4 / 52,2)` + `r round(13 / 52,2)` - `r round(1 / 52,2)`$
 
 
 
-You can explore non-mutually exclusive events in 
+You can explore non-mutually exclusive events in @exm-non-mutual.
 
-::: {.callout}
+:::{.callout-tip icon="false" appearance="simple"}
+
+:::{#exm-non-mutual}
+#### Non-mutually exclusive events
+:::
+
+In @exm-mutual we had circles of three different colours (red, blue, and green). In
+this example, we'll still have coloured circles, but some of the circles will
+also have a white dot. We'll only have two colours (blue and red), but some blue 
+circles will have white dots and others will not, and some red circles will have
+white dots and others will not.
+
+
+First we can set how many of each colour we have.
+```{ojs}
+//| panel: input
+viewof blue2_ = Inputs.bind(
+  Inputs.range([1, 30], { label: "Number of blue", step: 1, value: 15 }),
+  viewof blue2
+)
+
+
+viewof red2_ = Inputs.bind(
+  Inputs.range([1, 30], { label: "Number of red", step: 1, value: 15 }),
+  viewof red2
+)
+```
+
+Then we can set how many of each color will have white dots.
+
+```{ojs}
+//| panel: input
+viewof blue2_with_ = Inputs.bind(
+  Inputs.range([1, blue2], { label: "Number of blue with dots", step: 1 }),
+  viewof blue2_with
+)
+viewof red2_with_ = Inputs.bind(
+  Inputs.range([1, red2], {
+    label: "Number of red with dots",
+    step: 1
+  }),
+  viewof red2_with
+)
+```
+
+```{ojs}
+md`
+This display has ${red2} red circles and ${blue2} blue circles.
+Out of the ${red2} red circles, ${red2_with} also have a white dot.
+Out of the ${blue2} blue circles, ${blue2_with} also have a white dot.
+`
+
+```
+
+```{ojs}
+viewof plot2 = html`
+<svg class="image" xmlns="http://www.w3.org/2000/svg" width="${
+  (44 * 10) + 44
+  }" height="${
+  25 * Math.ceil((44 + 44 + 44) / 10) 
+}">
+${[
+  full_grid
+    .slice(0, red2_with)
+    .map((pt) => circle(pt[0], pt[1], colors2.red.w[0], colors2.red.w[1])),
+  full_grid
+    .slice(red2_with, red2)
+    .map((pt) => circle(pt[0], pt[1], colors2.red.n[0], colors2.red.n[1])),
+  full_grid
+    .slice(red2, red2 + blue2_with)
+    .map((pt) => circle(pt[0], pt[1], colors2.blue.w[0], colors2.blue.w[1])),
+  full_grid
+    .slice(red2 + blue2_with, red2 + blue2)
+    .map((pt) => circle(pt[0], pt[1], colors2.blue.n[0], colors2.blue.n[1]))
+].join("")}
+</svg>`
+```
+
+
+We can now as a question like: What is the probability of 
+selecting a circle that is Red **or** has a white dot.
+
+```{ojs}
+texmd`
+First we need to know P(Red). To do this, we just count
+up the number of circles that are red. 
+${red2} of the ${red2 + blue2} cirlces are red, 
+so $P(\mathrm{Red})$ = ${frac(red2/(red2 + blue2),red2 + blue2)}.
+
+Next we need to know P(Dot). To do this, we just count
+up the number of circles that have white dot.
+${red2_with + blue2_with} of the ${red2 + blue2} 
+circles have white dots, so $P(\mathrm{Dot})$ = 
+${frac((red2_with + blue2_with) / (red2 + blue2), red2 + blue2)}.
+
+We can't just add these two numbers, because we'll double count some 
+of the circles.
+
+Click the toggle below to see which circles get counted twice.
+`
+```
+
+```{ojs}
+//| panel: input
+viewof show_double_count = Inputs.toggle({ label: "Show double counted", value: false })
+```
+
+```{ojs}
+texmd`Because some the red circles with white dots get counted twice, we need to 
+subtract this amount.
+First we work out $P(\mathrm{Red})$ + $P(\mathrm{Dot})$.Using the numbers above
+this gives us ${frac(((red2 + red2_with + blue2_with))/(blue2 + red2), blue2 + red2)}.
+Then we subtract ${frac(red2_with / (blue2 + red2), blue2 + red2)}. This gives us
+$P(\mathrm{Red} \cup \mathrm{Dot})$ = ${frac((red2 + blue2_with)/(blue2 + red2), blue2 + red2)}.
+`
+```
+
+But if all that maths is too difficult, that we can just work out the probability by counting!
+All we need to do is to count up all the circles that are either Red or have a dot. And
+we just divide that by the total number of circles. If you click the toggle below, then
+you can see which circles you need to count.
+
+```{ojs}
+//| panel: input
+viewof show_count = Inputs.toggle({ label: md`Show Red ∪ Dot`, value: false })
+```
+
+
+
+```{ojs}
+colors2 = {
+  let c = {
+    "red" : { "w" : [ "red", "white" ], "n" : [ "red", "red" ] },
+    "blue" : { "w" : [ "blue", "white" ], "n" : [ "blue", "blue" ] }
+  }
+
+  if(show_double_count) {
+    c.red["n"] = ["white","white"]
+    c.blue["w"] = ["white", "white"]
+    c.blue["n"] = ["white", "white"]
+  }
+  if(show_count) {
+    c.red["n"] = ["red", "red"]
+    c.red["w"] = ["red","white"]
+    c.blue["w"] = ["blue", "white"]
+    c.blue["n"] = ["grey", "grey"]
+  }
+
+
+  return c
+
+}
+
+```
 
 
 :::
 
-### Two or more events
+## Two or more events
 
-In the previous example we were 
+In the previous example we were only making one selection, but the things we
+were selecting from had two features: The circles had a **colour** and they
+could have a **dot** (or not). But sometimes we want to deal with two or more
+selections. A simple example of this is when we flip coins multiple times. For
+example, if we flip a coin three times, we might want to work out the
+probability of getting, for example, **Heads**, then **Tails**, and then
+**Heads** again.
+
+When we have a problem like this, we can't just **add** up the probabilities.
+If we did, then we'd get $\frac{1}{2}$ + $\frac{1}{2}$ + $\frac{1}{2}$ =
+$\frac{3}{2}$. But, remember, probabilities have to be between 0 and 1, so
+obviously this answer is wrong.
+
+Before we get to how to work it out mathematically, we'll just work it out
+by counting. In @fig-sequences, we can see the possible sequences of
+events if we flip a coin a particular number of times. Set the slider
+to 3 to see what happens if we flip the coin 3 times. In @fig-sequences
+the black circles mean getting Heads, and the white circles mean getting
+Tails. Now just count up how many sequences go Black, White, Black.
+And now count up how many sequences there are in total. And that's the 
+probability of getting Heads, Tails, Heads in three coin flips.
 
 
+```{ojs}
+//| label: fig-sequences
+//| fig-cap: Possible sequences after ${coins - 1} coin flips
+viewof sequences = {
+  const div = document.createElement("div");
+  div.value = new vega.View(parsedSpec).initialize(div).run();
+  return div;
+}
+```
+
+```{ojs}
+//| width: 100%
+//| panel: input
+viewof coins = htl.html`<input style="width:300px" type="range" id="coins" min="1" max="7" value="1" class="form-range">`
+
+coins_label = htl.html`<label for="coins" class= "form-label" width="100%">Number of coin flips: ${
+  coins - 1
+}</label>`
+```
+
+If you don't want to count, and you just want to work it out mathematically, then
+you can do this by just multiplying together the probability for each of the event.
+Doing this gives us the following: $\frac{1}{2}$ × $\frac{1}{2}$ × $\frac{1}{2}$ =
+$\frac{1}{8}$.
+
+## Independence and non-independence
+
+The coin flipping example, the **three flips** are independent. **Independent**
+means that, for example, the probability of getting Heads/Tails on the second
+flip doesn't change depending on what you get on the first flip. This means that
+if I were to ask you to work out the probability of *getting heads on the 
+second flip* you answer wouldn't change if I told you what I got on the first
+flip.
+
+But it is often the case the finding out a bit of information does change your
+probability calculation. To see how, let's change things up a bit. Let's say
+that we're going to roll a dice. But instead of just rolling a dice, we'll
+first **select** one of two dice. The set up is as follows: First, pick either
+a **20-sided** dice (D-20) or a **6-sided** dice (D-6). Second, roll the dice.
+
+Unlike the coin flip example, where knowing what happened on the first flip
+won't change how you calculate the probability for the second flip, knowing
+whether I picked a D-6 or D-20 will change your calculations. For example, the
+probability of rolling a **20** will depend on which dice I pick in the first
+step. If I told you that I picked a D-6, then the probability that I rolled a
+**20** would be 0, because it would be impossible! If told you that I picked a
+D-20, then the probability that I rolled a **20** would be
+$\frac{1}{20}$.
+
+In a situation like this, we say that the probability of rolling a **20**
+is **conditional** on the selection in the first step.
+
+:::{.callout-note}
+
+### Conditional probability _notation_.
+
+We deal with probability of one event that is conditional on other event,
+then we call this a **conditional probability**. There is a special 
+notation for this. Using the dice roll example above, we'd use $P(\mathrm{Roll\ 20})$
+to refer to the probability of rolling a **20**. And we'd use 
+$P(\mathrm{Pick\ 6-sided})$ to refer to the probability of selecting the **6-sided**
+dice. 
+
+If wanted to refer to the probability of *rolling a 20* **given that** (conditional on)
+we selected a *6-sided* dice then we'd use the following notation:
+
+$$P(\mathrm{Roll\ 20}|\mathrm{Pick\ 6-sided})$$
+
+The $|$ is read as "conditional on" or "given that".
+
+:::
+
+## Working with conditional probabilities
+
+We often encounter conditional probabilities in every day life. However, reasoning
+about conditional probabilities can be difficult and as a result people make a lot of
+mistakes when dealing with them.
+
+The most common mistake that you'll encounter is the confusion being P(A|B) and
+P(B|A). Or, as in the dice example, P(Roll 20 | Pick 20-sided) and P(Pick 20-sided |
+Roll 20). We know from above that P(Roll 20 | Pick 20-sided) is $\frac{1}{20}$.
+But what is the probability of P(Pick 20-sided | Roll 20). In our scenario,
+where we could either of rolled a D-20 or a D-6, then given the fact that we rolled
+a 20, it must have been the D-20 that we rolled. So P(Pick 20-sided | Roll 20) 
+must be 1!
+
+The other typical confusion is confusing the condition probabilities P(A|B) and
+P(B|A) for the *unconditional probabilities* P(A) and P(B). To see this problem
+with this, consider the following statement:
+
+> What is the probability that a randomly selected person lives in London?
+
+There's about 9 Billion people in the world and only 9 Million of them live
+in London. So the probability is pretty low at only 0.1%. But now consider
+this statement:
+
+> What is the probability that a randomly selected person lives in London
+> **given** that the person's names is King Charles III?
+
+The answer to this is obviously 1, because King Charles III lives in London.
+So, conditional on the randomly selected person being King Charles III then
+that person must live in London.
+
+In the first statement we're working out P(Lives in London) and in the 
+second we're working P(Lives in London | Is King Charles). We could
+also work out P(Is King Charles | Lives in London). There's 9 Million
+people in London but only 1 of them is King Charles. So the probably
+for this is very small at less than 0.0001%!
+
+There's a mathematical formula that relates P(A|B) to P(B|A). This formula is
+known as **Bayes theorem** and it's incredibly useful for helping us work out
+the probability of something once we've been given a new bit of information.
+
+## Bayes theorem
+
+The classic example that is usually used to introduce Bayes theorem is a 
+problem like the following:
+
+There is a test for an illness. The test has the following properties.
+
+1. About 80% of people that **actually have the illness** will test positive.
+
+2. Only about ~5% of people that **don't have the illness** will test positive
+
+Somebody, who may be sick or healthy, takes the test and tests positive. Is
+that person actually sick?
+
+Before we get to Bayes theorem remember that we can work out probabilities 
+just by counting. So we'll first try to get an answer to our question that
+way before we do the maths. We can explore this question in @exm-sick below.
+
+
+:::{.callout-tip icon="false" appearance="simple"}
+
+:::{#exm-sick}
+### Is the person sick or healthy?
+:::
+
+```{ojs}
+viewof figure = html`
+<svg class="image" xmlns="http://www.w3.org/2000/svg" width="420" height="${320}">
+${[
+  functions.full_grid
+    .slice(0, _.sum(data.g.slice(0, 1)))
+    .map((pt) =>
+      functions.circle(pt[0], pt[1], data.colours[0][0], data.colours[0][1])
+    ),
+  functions.full_grid
+    .slice(_.sum(data.g.slice(0, 1)), _.sum(data.g.slice(0, 2)))
+    .map((pt) =>
+      functions.circle(pt[0], pt[1], data.colours[1][0], data.colours[1][1])
+    ),
+  functions.full_grid
+    .slice(_.sum(data.g.slice(0, 2)), _.sum(data.g.slice(0, 3)))
+    .map((pt) =>
+      functions.circle(pt[0], pt[1], data.colours[2][0], data.colours[2][1])
+    ),
+  functions.full_grid
+    .slice(_.sum(data.g.slice(0, 3)), _.sum(data.g.slice(0, 4)))
+    .map((pt) =>
+      functions.circle(pt[0], pt[1], data.colours[3][0], data.colours[3][1])
+    )
+].join("")}
+</svg>`
+```
+
+
+In this example, the Red circle represent people that are sick and the Green
+circles represent people that are healthy. 
+
+```{ojs}
+md`
+If a circle has a black dot, then that means the person tested positive for the
+disease. I said that 80% of people that actually have the disease will
+test positive. Select the option below to *only show the sick people*.
+Now just count up how many of the Red circles have Black dots. 
+There are ${data.g[0] + data.g[1]} sick people and ${functions.frac(
+  data.conds.dot_red,
+  data.g[0] + data.g[1]
+)} or ${functions.round3(
+  data.conds.dot_red * 100
+)}% of the
+sick people test **positive**`
+```
+
+```{ojs}
+md`
+Next we want to count up the healthy people that test positive.
+Select the option below to *only show the healthy people*.
+Now just count up how many of the Green circles have Black Dots.
+There are ${data.g[2] + data.g[3]} healthly people, and only
+ ${functions.frac(
+  data.conds.dot_green,
+  data.g[2] + data.g[3]
+)} or ${functions.round3(
+  data.conds.dot_green * 100
+)}% of healthy people test **postive**.
+ `
+```
+
+This matches the information I gave you about how the test works. But 
+what we really want to know is, *given somebody tests positive, what's
+the probability that they're sick?*. To work this out, we need
+to focus our attention only on the people that test positive. Select
+the option below to *only show the positive tests*.
+
+```{ojs}
+md`
+
+There are ${data.g[1] + data.g[2]} people that test positive. Of these 
+${functions.frac(
+  data.g[1] / (data.g[1] + data.g[2]),
+  data.g[1] + data.g[2]
+)} or ${functions.round3(
+  (data.g[1] / (data.g[1] + data.g[2])) * 100
+)}% are sick and ${functions.frac(
+  data.g[2] / (data.g[1] + data.g[2]),
+  data.g[1] + data.g[2]
+)} or ${functions.round3((data.g[2] / (data.g[1] + data.g[2])) * 100)}%
+are healthy.
+This means that a person that tests **positive** is more likely to be ${
+  data.g[1] / (data.g[1] + data.g[2]) > data.g[2] / (data.g[1] + data.g[2])
+    ? "**sick**"
+    : "**healthy!**"
+}`
+
+```
+
+
+
+```{ojs}
+//| panel: input
+viewof positive_tests = Inputs.radio(
+  new Map([
+    ["All people", "all"],
+    ["Only sick people", "sick"],
+    ["Only healthy people", "health"],
+    ["Only positive tests", "pos"]
+  ]),
+  { value: "all", label: "Show" }
+)
+
+```
+
+```{ojs}
+{
+  if(data.conds.red < 0.5) {
+    return md` This might seem like an odd conclusion! But it's right 
+    there in the circles and dots that you counted. To make sense of
+    it, I'll give you another key bit of information`
+  }
+  return md``
+
+}
+
+```
+```{ojs}
+md`The key bit of information I didn't tell you is that 
+in this example, the disease is **${
+  data.conds.red > 0.5 ? "COMMON" : "RARE"
+}** with an incidence of ${data.conds.red * 100}%.
+
+But we can change this. Use the selection below to change whether the 
+disease is **COMMON** or **RARE** and then read through the
+example again.
+`
+```
+
+```{ojs}
+//| panel: input
+viewof incidence = Inputs.radio(
+  new Map([
+    ["Common", "common"],
+    ["Rare", "rare"]
+  ]),
+  { value: "rare", label: "Incidence" }
+)
+```
+
+Note that when you change the disease from **RARE** to **COMMON** the facts about
+the test don't change. It's still the case that 80% of sick people will get
+a positive test and about 5% of healthy people will get a positive test. But
+what we can can conclude from a positive test (whether a person receiving
+a positive test is sick or healthy) changes **dramatically** between the
+two examples. In one we conclude that's it's more likely that the person
+is healthy and in the other we conclude that it's more likely that the
+person is sick.
+
+
+
+
+```{ojs}
+functions = {
+  return {
+    circle: (x, y, fill, stroke) => {
+      return `<circle cx="${x}" cy="${y}" r="14" stroke="none" fill="${fill}" stroke-width="0"></circle>
+<circle cx="${x}" cy="${y}" r="5" stroke="${fill}" fill="${stroke}" stroke-width="0"></circle>`;
+    },
+    full_grid: _.flatten(
+      _.range(10).map((y) =>
+        _.range(10)
+          .map((x) => 30 * (x + 1))
+          .map((x) => [x, 30 * (y + 1)])
+      )
+    ),
+    round3: (x) => Math.round(x * 1000) / 1000,
+    frac: (decimal, den) => {
+      const n = Math.round(decimal * den);
+      return md`${tex`\frac{${n}}{${den}}`}`;
+    }
+  };
+}
+```
+
+```{ojs}
+data = {
+  let proportions = incidence === "rare" ? [5, 95] : [80, 20];
+  let percentages = incidence === "rare" ? [4 / 5, 1 / 20] : [8 / 10, 6 / 90];
+  let g = [
+    Math.round(proportions[0] * (1 - percentages[0])),
+    Math.round(proportions[0] * percentages[0]),
+    Math.round(proportions[1] * percentages[1]),
+    Math.round(proportions[1] * (1 - percentages[1]))
+  ];
+
+  let all = [
+    ["red", "red"],
+    ["red", "black"],
+    ["green", "black"],
+    ["green", "green"]
+  ];
+
+  let pos = [
+    ["white", "white"],
+    ["red", "black"],
+    ["green", "black"],
+    ["white", "white"]
+  ];
+
+  let sick = [
+    ["red", "red"],
+    ["red", "black"],
+    ["white", "white"],
+    ["white", "white"]
+  ]
+
+  let health = [
+    ["white", "white"],
+    ["white", "white"],
+    ["green", "black"],
+    ["green", "green"]
+  ];
+
+
+  let colors = {"all" : all, "sick": sick, "pos": pos, "health": health}
+
+  let conds = {
+    red_dot: g[1] / (g[1] + g[2]),
+    dot_red: g[1] / (g[1] + g[0]),
+    red: (g[0] + g[1]) / _.sum(g),
+    dot: (g[1] + g[2]) / _.sum(g),
+    green: 1 - (g[0] + g[1]) / _.sum(g),
+    dot_green: g[2] / (g[3] + g[2])
+  };
+
+  return {
+    proportions: proportions,
+    percentages: percentages,
+    g: g,
+    conds: conds,
+    colours: colors[positive_tests]
+  };
+}
+```
+:::
+
+
+Although worked out the answer to our question just by counting the dots,
+we can also use Bayes theorem to do it. 
+Bayes theorem is given as the @eq-bayes, below:
+
+$$P(A|B) = \frac{P(B|A) \times P(A)}{P(B)}$${#eq-bayes}
+
+Instead of using **A**s  and **B**s, we'll make it a little more readable by
+using ✅ to indicate that the person tested positive and 🤮 to indicate that
+the person is actually sick. It now looks like @eq-bayes-emoji.
+
+$$P(🤮\ |\ ✅) = \frac{P(✅\ |\ 🤮) \times P(🤮)}{P(✅)}$${#eq-bayes-emoji}
+
+
+$P(✅\ |\ 🤮)$ is the probability that a sick person tests positive. 
+$P(🤮)$ is the incidence of the illness (whether is it common or rare).
+And $P(✅)$ is the probability of testing positive irrespective of 
+whether you're sick or healthy. I didn't tell you this number, 
+but you can work it out using the equation in @eq-marginal.
+
+$$P(✅) = P(✅\ |\ 🤮) × P(🤮) + P(✅\ |\ 😁) × P(😁)$${#eq-marginal}
+
+Where 😁 means that the person is healthy. 
+
+Now we can put numbers to it. In the case where the disease was rare we had
+the following values:
+
+1. P(😁) = 95/100 (95% of people are healthy)
+2. P(🤮) = 5/100 (5% of people are sick)
+3. P(✅\ |\ 😁) = 5/95 (`r round(5/95 * 100, 2)`% of healthy people test positive)
+4. P(✅\ |\ 🤮) = 4/5 (`r round(4/5 * 100, 2)`% of sick people test positive)
+
+Now we can put those numbers together to work out the value we wanted to know---
+that is, P(🤮\ |\ ✅).
+
+You can work it out yourself, and if you do then you'll get `r round(((4/5) * (5/100)) / (((4/5) * (5/100)) + ((5/95) * (95/100))) * 100, 2) `%
+just as we did above.
+
+We can also do it for the case where the disease is common. Then we can the following
+values.
+
+
+1. P(😁) = 20/100 (20% of people are healthy)
+2. P(🤮) = 80/100 (80% of people are sick)
+3. P(✅\ |\ 😁) = 1/20 (`r round(1/20 * 100, 2)`% of healthy people test positive)
+4. P(✅\ |\ 🤮) = 64/80 (`r round(64/80 * 100, 2)`% of sick people test positive)
+
+Now we can put those numbers together to work out the value we wanted to know---
+that is, P(🤮\ |\ ✅). If you do then you'll get `r round(64/65 * 100, 2)`%
+just as we did above.
+
+Reasoning about conditional probabilities can be difficult because people
+often forget about the P(🤮) part. But if we ignore it can be any to make
+mistakes, as we saw in the example above. But these kinds of mistakes 
+are common and they can have dangerous consequences. I could a number
+of examples to show this, but I'll just pick three.
+
+### Errors in reasoning about conditional probabilities
+
+You might have the following statistic in the media/online.
+
+> 50% of people that die from Covid have been vaccinated
+
+I've seen this figure on social media along with the claim that it 
+*shows that the Covid vaccine doesn't work*. Let's assume that
+the statistic is accurate. Does this mean that the vaccine doesn't
+work?
+
+First, we have to think about what this figure refers to and
+whether it is what we want to know. If it's not, then we have to 
+work out what it is that we do what to know. 
+
+First, what is this figure? To get this number we're looking only
+at the people that have died. It's a probability **conditional**
+on the person dying. That means this figure refers to P(Vaccinated | Death).
+But if we want to know if the vaccine works, then what we actually
+want to know is, *if the person is vaccinated, then what is the probability
+that they will die*. That is, we want to know the probability **conditional**
+on them being vaccinated, or P(Death | Vaccinated).
+
+So straight away, we know that this 50% probability is not actually the
+number we want to know. But more importantly, this 50% is perfectly 
+consistent with an effective vaccine if the vaccination rate is high.
+If the vaccine is effective, but the vaccination rate is low, this
+this number would be lower. So the 50% doesn't give us the information
+we need to make the judgement about whether the vaccine is effective.
+We'd also need to know the vaccinate rate and the probability of 
+dying if you contract Covid irrespective of your vaccine status.
+
+The next example concerns a policy that has been proposed in the USA.
+Essentially the policy states that welfare recipients should be drug
+tests, and their benefits removed if the test comes back positive.
+But does a positive test mean that the person is actually a drug
+user? The answer to this question all depends on the rates of
+drug use among welfare recipients. It turns out that this
+is actually rather low. So let's put some numbers to it.
+
+First, we'll set the properties of the test. We'll say it's 
+fairly accurate, so the probability of testing positive
+given drug use, or P(✅|💉), will be high.
+
+```{ojs}
+//| panel: input
+viewof p_d = Inputs.range([0, 1], {step: 0.01, value: 0.99, label: "P(✅|💉)"})
+```
+
+And we'll say that it's not that common for somebody to test positive
+if they're not a drug user. So we can set P(✅|😇) to a low number.
+
+```{ojs}
+//| panel: input
+viewof p_n = Inputs.range([0, 1], {step: 0.05, value: 0.05, label: "P(✅|😇)"})
+```
+
+Finally, because drug use is not common amongst welfare receipts we'll
+set P(💉) to a low number.
+
+
+```{ojs}
+//| panel: input
+viewof d = Inputs.range([0, 1], {step: 0.01, value: 0.01, label: "P(💉)"})
+```
+
+With all this information we can work out the number we want to know. That
+is, P(💉|✅). We'll use Bayes theorem as follows:
+
+$$P(💉|✅) = \frac{P(✅|💉) × P(💉)}{P(✅)}$$
+
+But since I haven't given you P(✅), we'll just work it out as follows:
+
+$$P(✅|💉) × P(💉) + P(✅|😇) × (1 - P(💉))$$
+
+Or with numbers: 
+
+```{ojs}
+texmd`
+P(✅) = ${p_d} × ${d} + ${p_n} × (1 - ${d}) = ${Math.round(p_d * d + p_n * (1 - d) * 100)/100}
+`
+```
+
+And now the full formula:
+
+```{ojs}
+texmd`P(💉|✅)=(${p_d} × ${d}) ÷ ${Math.round(p_d * d + p_n * (1 - d) * 100)/100} = 
+${Math.round((p_d * d) / (p_d * d + p_n * (1 - d)) * 100)/100}
+
+This means that given our settings there's only a ${Math.round((p_d * d) / (p_d * d + p_n * (1 - d)) * 100)}%
+chance that somebody that tests postive for drugs is drug user. Obviously there's
+a clear ethical/moral arguments to be made against removing the welfare benefits 
+from somebody who tests positive for drugs. But if our settings are correct,
+then there's also a clear **mathematical** argument to be made for it being 
+a bad idea.
+`
+```
+
+The final argument concerns a (now retracted) paper that was published a few years
+ago. According to the study, there was no **racial bias** in police shooting.
+What was the evidence for this claim? The researchers looked at a large sample
+of police shooting and showed that in this sample of police shootings a higher
+proportion of victims were White than Black. 
+
+This was picked by by the conservative media (e.g., Fox news) to show that
+organisations like BLM were fighting against a problem that didn't exist.
+But is the reasoning correct, and do the data actually show what the
+authors claim?
+
+As you've probably guessed the results certainly don't support the
+claim. But why not?
+
+First, let's look at the data the authors present. I'll simply it somewhat,
+so that it's easier for use to do the calculations, but the general gist
+is the same. In @fig-1 we can see the data they present. These are all
+the victors of the police shootings. 
+The probability that a person is White (P(White|Shot)) is $\frac{20}{30}$ or `r round(20/30*100,2)`%
+and the probability that a person is Black (P(Black|Shot)) is $\frac{10}{30}$ or `r round(10/30*100,2)`%.
+These are the two probabilities that the authors looked at. You'll notice that they're
+actually two **conditional probabilities**. But are they the correct ones?
+
+```{r}
+#| label: fig-1
+#| fig-cap: Sample of police shooting. Pink circles correspond to White victims and Black circles to Black victims
+#| out.width: 50%
+knitr::include_graphics("slide1.png")
+```
+
+Let's add some additional data. In @fig-2 we can see all the people that have 
+*encounters* with the police, but not get shot. Black people are a racial
+minority in the USA, so we would expect police to encounter police less
+often on their day-to-day rounds.
+
+```{r}
+#| label: fig-2
+#| fig-cap: Sample of all people encountered by the police without getting shot. Pink circles correspond to White people and Black circles to Black people
+#| out.width: 50%
+knitr::include_graphics("slide2.png")
+```
+
+Now let's put it all together. In @fig-3 we've just combined the data from @fig-1 and @fig-2.
+This shows all the people that come into contact with police including those people that
+fall victim to a police shoot (red dot) and those that do not (no dot)
+
+
+```{r}
+#| label: fig-3
+#| fig-cap: Sample of all people encountered by the police. Pink circles correspond to White people and Black circles to Black people. Red dots correspond to shooting victims.
+#| out.width: 50%
+knitr::include_graphics("slide3.png")
+```
+
+With everything on a single plot we can now focus in on the numbers we actually
+want to know. We want to know, given a person is *a particular race* what is
+the probability of them being a victim of a police shooting. That is, we want
+to know P(Shot | White) and P(Shot | Black), not P(White | Shot) and P(Black |
+Shot) as reported in the study.
+
+To this, we'll just focus on people who are Black. We can see this in @fig-4.
+This allows us to see P(Shot|Black), which gives $\frac{10}{20}$ or 50%.
+
+```{r}
+#| label: fig-4
+#| fig-cap: Sample of all Black people encountered by the police. Red dots correspond to shooting victims.
+#| out.width: 50%
+knitr::include_graphics("slide4.png")
+```
+
+Next, we'll just focus on the people who are White. We can see this in @fig-5.
+This allows use to see P(Shot|White), which gives $\frac{20}{80}$ or 
+`r round(20/80*100,2)`%.
+
+```{r}
+#| label: fig-5
+#| fig-cap: Sample of all White people encountered by the police. Red dots correspond to shooting victims.
+#| out.width: 50%
+knitr::include_graphics("slide5.png")
+```
+
+Because P(Shot | Black) is higher than P(Shot | White) then this suggests
+that there is in fact racial bias in police shooting. However, 
+to reach this conclusion I had to make an assumption that wasn't
+reported in the paper. I had to assume that people come across 
+more White people than Black people in their daily activities. 
+This is reasonable given that Black people are a racial minority. 
+But it might not actually be true. It might be the case that
+police encounter Black people more often. For example, the 
+real data might look like @fig-6. Comparing the first
+example, which gave P(Shot|Black) = `r round(10/20,2)` 
+and P(Shot|White) = `r round(20/80,2)`
+this new data gives P(Shot|Black) = `r round(10/70,2)` 
+and P(Shot|White) = `r round(20/30,2)`.
+So this is consistent with a racial bias against White people.
+
+
+```{r}
+#| label: fig-6
+#| fig-cap: Sample of all people encountered by the police. Pink circles correspond to White people and Black circles to Black people. Red dots correspond to shooting victims.
+#| out.width: 50%
+knitr::include_graphics("slide6.png")
+```
+
+The point here isn't to argue whether there is or isn't a racial
+bias in police shooting. Rather the point is that the data
+presented in this study is consistent with both conclusions. And
+because the authors reasoning was faulty they didn't collect the
+data they needed to actually answer the question they posed.
+
+What makes matter worse is that this study was used to delegitimise 
+protest movements against what is a very real problem. It had very
+real negative consequences. This study has now been retracted, but
+not before it did a lot of damage.
+
+I hope this serves as a sobering message for just how important research
+methods (including probability theory) is in your training. You might one day
+be in the position to make policies for governments so I hope you don't fall
+victim to faulty reasoning when you do!
+
+
+## Leave a comment {.unnumbered .unlisted}
+
+If you'd like to leave a comment or ask a question about this week's lecture
+then you can use the comment box below. Note that comments will be accessible to
+the lecturer but won't be displayed until they have been approved.
+
+```{r}
+#| echo: false
+form_url <- "https://docs.google.com/forms/d/e/1FAIpQLSdcA0B4oOoPXNQdkNCcu7wQHTlg1ynAbS5aqxjZbFtGqJqYnQ/formResponse"
+comment_id <- "entry.2112951534"
+label_id <- "entry.2046375008"
+lecture <- "lecture11"
+commentr::commentr(form_url = form_url, comment_id = comment_id, label_id = label_id, lecture = lecture)
+```
 
 <!-- Dependencies -->
 
@@ -493,3 +1337,207 @@ function getvalue(x) {
 }
 
 ```
+
+
+```{ojs}
+viewof blue2 = Inputs.input(10)
+```
+
+```{ojs}
+viewof red2 = Inputs.input(10)
+```
+
+```{ojs}
+viewof blue2_with = Inputs.input(5)
+```
+
+```{ojs}
+viewof red2_with = Inputs.input(5)
+```
+
+
+```{ojs}
+function frac(decimal, den) {
+  const n = Math.round(decimal * den);
+
+  return md`${tex`\frac{${n}}{${den}}`}`;
+}
+```
+
+```{ojs}
+import { texmd } from "@kelleyvanevert/katex-within-markdown"
+```
+
+```{ojs}
+parsedSpec = {
+  return vega.parse(spec3);
+}
+```
+
+
+```{ojs}
+spec3 = {
+  return {
+    $schema: "https://vega.github.io/schema/vega/v5.0.json",
+    padding: 0,
+    width: 500,
+    height: 100,
+    layout: {
+      padding: 0,
+      columns: 1
+    },
+    marks: [
+      {
+        type: "group",
+        encode: {
+          update: {
+            width: {
+              value: 1000
+            },
+            height: {
+              value: 130
+            }
+          }
+        },
+        data: [
+          {
+            name: "tree",
+            values: coin_data,
+            transform: [
+              {
+                type: "stratify",
+                key: "id",
+                parentKey: "parent"
+              },
+              {
+                type: "tree",
+                method: "tidy",
+                size: [500, 200],
+                as: ["x", "y", "depth", "children"]
+              }
+            ]
+          },
+          {
+            name: "links",
+            source: "tree",
+            transform: [
+              {
+                type: "treelinks",
+                key: "id"
+              },
+              {
+                type: "linkpath",
+                orient: "horizontal",
+                shape: "line"
+              }
+            ]
+          }
+        ],
+        scales: [
+          {
+            name: "color",
+            domain: [0, 1, 2, 3, 4, 5],
+            type: "sequential",
+            range: "ramp"
+          }
+        ],
+        marks: [
+          {
+            type: "path",
+            from: {
+              data: "links"
+            },
+            encode: {
+              update: {
+                path: {
+                  field: "path"
+                },
+                stroke: {
+                  value: "black"
+                }
+              }
+            }
+          },
+          {
+            type: "symbol",
+            from: {
+              data: "tree"
+            },
+            encode: {
+              enter: {
+                size: {
+                  value: 50
+                },
+                stroke: {
+                  value: "black"
+                }
+              },
+              update: {
+                x: {
+                  field: "x"
+                },
+                y: {
+                  field: "y"
+                },
+                fill: {
+                  field: "color"
+                }
+              }
+            }
+          },
+          {
+            type: "text",
+            from: {
+              data: "tree"
+            },
+            encode: {
+              enter: {
+                text: {
+                  field: "name"
+                },
+                fontSize: {
+                  value: 0
+                },
+                baseline: {
+                  value: "bottom"
+                }
+              },
+              update: {
+                x: {
+                  field: "x"
+                },
+                y: {
+                  field: "y"
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  };
+}
+```
+
+```{ojs}
+vega = require("https://cdn.jsdelivr.net/npm/vega@5/build/vega.js")
+```
+
+```{ojs}
+coin_data = [
+  { name: "START", id: 1, parent: "", color: "red" },
+  ...d3.range(2, 2 ** coins).map((i) => {
+    return {
+      name: i % 2 ? "T" : "H",
+      id: i,
+      parent: Math.floor(i / 2)
+    };
+  })
+].map((x) => {
+  let colors = { H: "black", T: "white", START: "red" };
+  x.color = colors[x.name];
+  return x;
+})
+```
+
+

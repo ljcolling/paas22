@@ -4,7 +4,7 @@ listing:
   sort-ui: false
   page-size: 12
   contents:
-  - "lectures/**/slides/*.qmd"
+  - "lectures/**/slides/landing.qmd"
   type: table
   fields: [week, title, author]
   field-display-names:

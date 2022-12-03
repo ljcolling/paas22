@@ -5,8 +5,8 @@ What do we mean by "probability"?
 It might seem like there's an easy answer to this question, but there's _at
 least_ three senses of **probability**. 
 
-These different senses after often employed in different contexts, because they
-make more sense in some contexts and not others
+These different senses are often employed in different contexts, because some
+make more sense in some contexts relative to others
 
 The three I'll cover are:
 
@@ -27,7 +27,7 @@ We can sum it up as follows:
 
 > If we have an (exhaustive) list of **events** that can be produce by some
 > (exhaustive) list of equiprobable outcomes (the number of events and outcomes
-> need not be the same), the the **probability** of a particular event
+> need not be the same), the **probability** of a particular event
 > occurring is just **the proportion of outcomes that produce that event**.
 
 To make it concrete we'll think about flipping coins. If we flip two coins the
@@ -46,15 +46,15 @@ that produce that event.
 > **HH**, **HT**, **TH**, TT 
 
 Three out of four outcomes would produce the event of "at least one head", so
-the probability is `\(\frac{3}{4}\)` or 0.75
+the probability is $\frac{3}{4}$ or 0.75
 
 If you're viewing probability like this, it's very important to be clear about
 what counts as a possible outcome. 
 
 E.g., When playing the lottery, how many outcomes are there? 
 
-- Two outcomes? You pick the correct numbers or you don't? So the the
-  probability of winning is `\(\frac{1}{2}\)`?
+- Two outcomes? You pick the correct numbers or you don't? So the
+  probability of winning is $\frac{1}{2}$?
 
 - Of course not! There's 45,057,474 possible outcomes, and 1 leads to you
   winning with 45,057,473 leading to you not winning!
@@ -63,17 +63,18 @@ E.g., When playing the lottery, how many outcomes are there?
 
 ### The frequency view 
 
-When you take a frequency view of probability you're making a claim about **how often, over some long period of time** some event occurs. 
+When you take a frequency view of probability you're making a claim about **how
+often, over some long period of time** some event occurs. 
 
 - The frequency view is often the view that we take in science. If we wanted to
   assign a probability to the claim "drug X lowers depression", we can't just
-  think of each possible outcomes that **could** occur when people take Drug
+  think of each possible outcome that **could** occur when people take Drug
   X and then count up how many lead to lower depression and how many do not.
 
 - No way to make an exhaustive list of every possible outcome!
 
 - But we can run an experiment where we give Drug X and see whether it lowers
-  depression. And we can repeat this many many times. Then we count up the
+  depression. And we can repeat this many times. Then we count up the
   proportion of experiments in which depression was lowered. 
 
 - That is then the probability that Drug X lowers depression.
@@ -84,33 +85,34 @@ When you take a frequency view of probability you're making a claim about **how 
 
 Consider the following statement:
 
-> The England cricket team will lose the upcoming test series against South
-> Africa
+> The Australian cricket team will lose the upcoming test series against South Africa
 
 There is a sense in which you can assign a probability to this
 
 - But it isn't the classical kind—we can't just enumerate all the possible
   outcomes that lead to this event
 
-- Nor is it the frequency kind—we can't repeat the 2020/2021 cricket tour over
-  and over and see how often England lose.
+- Nor is it the frequency kind—we can't repeat the 2022/2023 cricket tour over
+  and over and see how often Australia lose.
 
 When we talk about probability in this context mean something like _degree of
 belief_, _credence_, or _subjective probability_. 
 
 Probability in this context is the answer to the question "how sure are you
-that the England cricket team will lose the upcoming test series against
-Australia?"
+that the Australian cricket team will lose the upcoming test series against
+South Africa?"
 
 ---
 
 ## Calculating with probability 
 
 The different views of probability have got to do with what the numbers
-**mean**, but once we have the have the numbers there's no real disagreements
-about how we do calculations with those numbers<sup>1</sup>
+**mean**, but once we have the numbers there's no real disagreements about how
+we do calculations with those numbers ^[Probabilities don't always have to have
+**numbers** attached. There is a sense in which something can be **more
+probable** than something else without numbers being attached.]
 
-**Some properties of probabilities**
+**Some properties of probabilities** will help us to do calculations
 
 When we attach numbers to probabilities those numbers must range from 0 to 1
 
@@ -122,32 +124,27 @@ These two simple rules can help us to check our calculations with
 probabilities. If we get a value more than 1 or a value less than 0, then
 something has gone wrong!
 
-
-.footnote[<sup>1</sup>Probabilities don't always have to have **numbers**
-attached. There is a sense in which something can be **more probably** than
-something else with numbers being attached.]
-
 ---
 
 ### The addition law
 
 Whenever two events are _mutually exclusive_:
 
-  > The probability that at least one them occurs is the **sum** of the their
-  > individual probabilities
+> The probability that at least one of them occurs is the **sum** of their
+> individual probabilities
 
 If we flip a coin, one of two things can happen. It can land Heads, or it can
-land Tails. It's can't land heads **and** tails (_mutually exclusive_), and one
+land Tails. It can't land heads **and** tails (_mutually exclusive_), and one
 of those things must happen (it's a list of all possible events)
 
-- What's the probability that at least one of the those events happens? Since
+- What's the probability that at least one of those events happens? Since
   one of those events must happen the probability must be 1
 
 - But we can work it out from the individual probabilities
 
-1. `\(\frac{1}{2}\)` possible outcomes produces Heads—P(Heads) = 0.50
+1. $\frac{1}{2}$ possible outcomes produces Heads—P(Heads) = 0.50
 
-2. `\(\frac{1}{2}\)` possible outcomes produces Tails—P(Tails) = 0.50
+2. $\frac{1}{2}$ possible outcomes produces Tails—P(Tails) = 0.50
 
 The probabilities of at least one of **Heads** or **Tails** occurring is 0.5 + 0.5 = 1  
 
@@ -159,107 +156,169 @@ Consider a deck of cards:
 
 1. What is the probability pulling out a Spade or a Club?
 
-2. What is the probability of pulling out a Spade or a Ace
+2. What is the probability of pulling out a Spade or an Ace
 
 In situation (1) the events are *mutually exclusively* or *disjoint*. A card
 can't be a Spade AND a Club. It will either be a Space, a Club, or something
-else. The addition rule applies:
+else.
+
+The addition rule applies:
+
 -  P(Spade) + P(Club) = Probability of selecting a spade or a club. 
+
 
 In situation (2) the events are **not** mutually exclusive. A card out be both
 a Spade and an Ace.
+
 - So we need a different rules 
 
 To make this clear, we'll take a look at an example
 
+---
+
+::::{.columns}
+
+:::{.column width="50%"}
+First we can set how many of each colour we have.
+```{ojs}
+//| panel: input
+//| echo: false
+viewof blue2_ = Inputs.bind(
+  Inputs.range([1, 30], { label: "Number of blue", step: 1, value: 15 }),
+  viewof blue2
+)
+
+
+viewof red2_ = Inputs.bind(
+  Inputs.range([1, 30], { label: "Number of red", step: 1, value: 15 }),
+  viewof red2
+)
+```
+
+Then we can set how many of each color will have white dots.
+
+```{ojs}
+//| echo: false
+//| panel: input
+viewof blue2_with_ = Inputs.bind(
+  Inputs.range([1, blue2], { label: "Number of blue with dots", step: 1 }),
+  viewof blue2_with
+)
+viewof red2_with_ = Inputs.bind(
+  Inputs.range([1, red2], {
+    label: "Number of red with dots",
+    step: 1
+  }),
+  viewof red2_with
+)
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{ojs}
+viewof plot2 = html`
+<svg class="image" xmlns="http://www.w3.org/2000/svg" width="${
+  (44 * 10) + 44
+  }" height="${
+  22 * Math.ceil((44 + 44 + 44) / 10) 
+}">
+${[
+  full_grid
+    .slice(0, red2_with)
+    .map((pt) => circle(pt[0], pt[1], colors2.red.w[0], colors2.red.w[1])),
+  full_grid
+    .slice(red2_with, red2)
+    .map((pt) => circle(pt[0], pt[1], colors2.red.n[0], colors2.red.n[1])),
+  full_grid
+    .slice(red2, red2 + blue2_with)
+    .map((pt) => circle(pt[0], pt[1], colors2.blue.w[0], colors2.blue.w[1])),
+  full_grid
+    .slice(red2 + blue2_with, red2 + blue2)
+    .map((pt) => circle(pt[0], pt[1], colors2.blue.n[0], colors2.blue.n[1]))
+].join("")}
+</svg>`
+```
+
+```{ojs}
+//| panel: input
+viewof show_double_count = Inputs.toggle({ label: "Show double counted", value: false })
+```
+
+:::
+::::
+We can now ask a question like: What is the probability of 
+selecting a circle that is Red **or** has a white dot?
+
+```{ojs}
+texmd`
+$P(\mathrm{Red})$ = ${frac(red2/(red2 + blue2),red2 + blue2)} and
+$P(\mathrm{Dot})$ = ${frac((red2_with + blue2_with) / (red2 + blue2), red2 + blue2)}.
+We can't just add these two numbers, because we'll double count some 
+of the circles. So after we add up the two numbers, we'll need to subtract
+the number of double counted circles.
+`
+```
 
 ---
 
-.pull-left[
-<div id="observablehq-viewof-plot-967c31b1"></div>
-<div id="observablehq-viewof-red-967c31b1"></div>
-<div id="observablehq-viewof-green-967c31b1"></div>
-<div id="observablehq-viewof-blue-967c31b1"></div>
-]
-.pull-right[
-<div id="observablehq-viewof-t3-967c31b1"></div>]
-<div id="observablehq-viewof-colors-967c31b1"></div>
-<div id="observablehq-viewof-t4-967c31b1"></div>
+#### Not double counting
 
-<script type="module">
-import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-import define from "https://api.observablehq.com/d/fd2a99360e65cf5f.js?v=3";
-new Runtime().module(define, name => {
-  if (name === "viewof t3") return new Inspector(document.querySelector("#observablehq-viewof-t3-967c31b1"));
-  if (name === "viewof plot") return new Inspector(document.querySelector("#observablehq-viewof-plot-967c31b1"));
-  if (name === "viewof red") return new Inspector(document.querySelector("#observablehq-viewof-red-967c31b1"));
-  if (name === "viewof blue") return new Inspector(document.querySelector("#observablehq-viewof-blue-967c31b1"));
-  if (name === "viewof green") return new Inspector(document.querySelector("#observablehq-viewof-green-967c31b1"));
-  if (name === "viewof colors") return new Inspector(document.querySelector("#observablehq-viewof-colors-967c31b1"));
-  if (name === "viewof t4") return new Inspector(document.querySelector("#observablehq-viewof-t4-967c31b1"));
-  return ["getvalue"].includes(name);
-});
-</script>
----
+```{ojs}
+texmd`
+- The red circles with white dots get counted twice
 
-.pull-left[
-<div id="observablehq-viewof-plot2-b78dc1e7"></div>
-<div id="observablehq-viewof-blue2_-b78dc1e7"></div>
-<div id="observablehq-viewof-blue2_with_-b78dc1e7"></div>
-<div id="observablehq-viewof-red2_-b78dc1e7"></div>
-<div id="observablehq-viewof-red2_with_-b78dc1e7"></div>
-<div id="observablehq-viewof-plot2_selectors-b78dc1e7"></div>
+- So we need to subtract this amount.
 
-]
+First we work out $P(\mathrm{Red})$ + $P(\mathrm{Dot})$.
 
-.pull-right[
-<div id="observablehq-viewof-plot2_pre-b78dc1e7"></div>]
-<div id="observablehq-viewof-part2-b78dc1e7"></div>
+- Using the numbers on the previous slide this gives us ${frac(((red2 + red2_with + blue2_with))/(blue2 + red2), blue2 + red2)}.
 
-<div style="display:none" id="observablehq-viewof-blue2-b78dc1e7"></div>
-<div style="display:none" id="observablehq-viewof-red2-b78dc1e7"></div>
-<div style="display:none" id="observablehq-viewof-red2_with-b78dc1e7"></div>
-<div style="display:none" id="observablehq-viewof-blue2_with-b78dc1e7"></div>
-<div style="display:none" id="observablehq-probs-b78dc1e7"></div>
-<div style="display:none" id="observablehq-full_grid-b78dc1e7"></div>
-<div style="display:none" id="observablehq-viewof-hide-b78dc1e7"></div>
-<div style="display:none" id="observablehq-circle-b78dc1e7"></div>
-<div style="display:none" id="observablehq-colors2-b78dc1e7"></div>
-<div style="display:none" id="observablehq-viewof-colors2_-b78dc1e7"></div>
-<div style="display:none" id="observablehq-set-b78dc1e7"></div>
-<div style="display:none" id="observablehq-frac-b78dc1e7"></div>
-<div style="display:none" id="observablehq-round3-b78dc1e7"></div>
-<div style="display:none" id="observablehq-nu_-b78dc1e7"></div>
+- Then we subtract ${frac(red2_with / (blue2 + red2), blue2 + red2)}. 
+
+- This gives us $P(\mathrm{Red} \cup \mathrm{Dot})$ = ${frac((red2 + blue2_with)/(blue2 + red2), blue2 + red2)}.
+`
+```
+
+*But if all that maths is too difficult, then we can just work out the probability by counting!
+All we need to do is to count up all the circles that are either Red or have a dot. And
+we just divide that by the total number of circles.*
+
+```{ojs}
+//| panel: input
+viewof show_count = Inputs.toggle({ label: md`Show Red ∪ Dot`, value: false })
+```
 
 
-<script type="module">
-import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-import define from "https://api.observablehq.com/d/58a2fa86e64cc92f.js?v=3";
-new Runtime().module(define, name => {
-  if (name === "viewof plot2_pre") return new Inspector(document.querySelector("#observablehq-viewof-plot2_pre-b78dc1e7"));
-  if (name === "viewof plot2_selectors") return new Inspector(document.querySelector("#observablehq-viewof-plot2_selectors-b78dc1e7"));
-  if (name === "viewof plot2") return new Inspector(document.querySelector("#observablehq-viewof-plot2-b78dc1e7"));
-  if (name === "viewof part2") return new Inspector(document.querySelector("#observablehq-viewof-part2-b78dc1e7"));
-  if (name === "probs") return new Inspector(document.querySelector("#observablehq-probs-b78dc1e7"));
-  if (name === "viewof blue2") return new Inspector(document.querySelector("#observablehq-viewof-blue2-b78dc1e7"));
-  if (name === "viewof red2") return new Inspector(document.querySelector("#observablehq-viewof-red2-b78dc1e7"));
-  if (name === "viewof red2_with") return new Inspector(document.querySelector("#observablehq-viewof-red2_with-b78dc1e7"));
-  if (name === "viewof blue2_with") return new Inspector(document.querySelector("#observablehq-viewof-blue2_with-b78dc1e7"));
-  if (name === "full_grid") return new Inspector(document.querySelector("#observablehq-full_grid-b78dc1e7"));
-  if (name === "viewof hide") return new Inspector(document.querySelector("#observablehq-viewof-hide-b78dc1e7"));
-  if (name === "circle") return new Inspector(document.querySelector("#observablehq-circle-b78dc1e7"));
-  if (name === "colors2") return new Inspector(document.querySelector("#observablehq-colors2-b78dc1e7"));
-  if (name === "viewof colors2_") return new Inspector(document.querySelector("#observablehq-viewof-colors2_-b78dc1e7"));
-  if (name === "set") return new Inspector(document.querySelector("#observablehq-set-b78dc1e7"));
-  if (name === "frac") return new Inspector(document.querySelector("#observablehq-frac-b78dc1e7"));
-  if (name === "round3") return new Inspector(document.querySelector("#observablehq-round3-b78dc1e7"));
-  if (name === "nu_") return new Inspector(document.querySelector("#observablehq-nu_-b78dc1e7"));
-  if (name === "viewof blue2_") return new Inspector(document.querySelector("#observablehq-viewof-blue2_-b78dc1e7"));
-  if (name === "viewof blue2_with_") return new Inspector(document.querySelector("#observablehq-viewof-blue2_with_-b78dc1e7"));
-  if (name === "viewof red2_") return new Inspector(document.querySelector("#observablehq-viewof-red2_-b78dc1e7"));
-  if (name === "viewof red2_with_") return new Inspector(document.querySelector("#observablehq-viewof-red2_with_-b78dc1e7"));
-});
-</script>
+
+```{ojs}
+colors2 = {
+  let c = {
+    "red" : { "w" : [ "red", "white" ], "n" : [ "red", "red" ] },
+    "blue" : { "w" : [ "blue", "white" ], "n" : [ "blue", "blue" ] }
+  }
+
+  if(show_double_count) {
+    c.red["n"] = ["white","white"]
+    c.blue["w"] = ["white", "white"]
+    c.blue["n"] = ["white", "white"]
+  }
+  if(show_count) {
+    c.red["n"] = ["red", "red"]
+    c.red["w"] = ["red","white"]
+    c.blue["w"] = ["blue", "white"]
+    c.blue["n"] = ["grey", "grey"]
+  }
+
+
+  return c
+
+}
+
+```
+
+
 
 ---
 
@@ -268,281 +327,162 @@ new Runtime().module(define, name => {
 In the last example we asked about the probability of selecting a **red
 circle** or a **circle with a white dot**
 
-In this example we're dealing with an event that only produces **one** outcome.
+In that example we're dealing single event where we could, for example, select:
 
-- Selecting a circle that is red
-- Selecting a circle with a white dot
-- Selecting a circle that is blue
+- A circle that is red
+- A circle with a white dot
+- A circle that is blue
 
-But we can make things more complex so that we're dealing with events that
-produce **multiple** outcomes.
+But sometimes we have to deal with multiple events.
 
-There's a few different scenarios that can happen when we're dealing with
-multiple events, so we'll start simple and then get more complex... 
+We've already seen an example with **coin flipping**
 
 
 ---
-
-<div class = "center" id="observablehq-viewof-plot3a-fe790251"></div>
-<div class = "center" id="observablehq-viewof-plot3b-fe790251"></div>
-
-<div id="observablehq-viewof-txt-fe790251"></div>
-
-Here our event can produce outcomes such as:
-
-- Selecting a blue circle and a red circle
-
-- Selecting a green circle and yellow circle etc
-
-<script type="module">
-import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-import define from "https://api.observablehq.com/d/68a110bf79317ac4.js?v=3";
-new Runtime().module(define, name => {
-  if (name === "viewof txt") return new Inspector(document.querySelector("#observablehq-viewof-txt-fe790251"));
-  if (name === "viewof plot3b") return new Inspector(document.querySelector("#observablehq-viewof-plot3b-fe790251"));
-  if (name === "viewof plot3a") return new Inspector(document.querySelector("#observablehq-viewof-plot3a-fe790251"));
-});
-</script>
-
----
-
 
 ### Two or more events
 
-<iframe height=268 width=750 scrolling="off" style="border:none" src="https://paas-embed.netlify.app/coins/"></iframe>
+::::{.columns}
+:::{.column width="50%"}
+Let's say we flip a coin three times, we might want to work out the
+probability of getting, for example, **Heads**, then **Tails**, and then
+**Heads** again
 
-- We can also just count when we're dealing with multiple events
+- We can't just **add** up the probabilities, because we'd get 
+$\frac{1}{2}$ + $\frac{1}{2}$ + $\frac{1}{2}$ = $\frac{3}{2}$. 
 
-- But this is often easier to do when we draw probability trees
+- Before we work it out mathematically, we'll work it out by counting
+:::
+
+:::{.column width="50%"}
+
+```{ojs}
+//| label: fig-sequences
+//| fig-cap: Possible sequences after ${coins - 1} coin flips
+viewof sequences = {
+  const div = document.createElement("div");
+  div.value = new vega.View(parsedSpec).initialize(div).run();
+  return div;
+}
+```
+
+```{ojs}
+//| width: 100%
+//| panel: input
+viewof coins = htl.html`<input style="width:300px" type="range" id="coins" min="1" max="7" value="1" class="form-range">`
+
+coins_label = htl.html`<label for="coins" class= "form-label" width="100%">Number of coin flips: ${
+  coins - 1
+}</label>`
+```
+
+:::
+
+::::
+
+If you don't want to count, and you just want to work it out mathematically, then
+you can do this by just multiplying together the probability for each of the events.
+Doing this gives us the following:
+
+$\frac{1}{2}$ × $\frac{1}{2}$ × $\frac{1}{2}$ = $\frac{1}{8}$
 
 ---
 
-### Independence
+## Independence and non-independence
 
 In the previous example, the two choices were **independent**
 
-This just means that the outcome of either choice doesn't influence the
-probability of the other choice
+- This means that knowing whether you got Heads/Tails on the first flip didn't
+  impact how you calculated the probability of getting Heads/Tails on the
+  second flip
 
-That is, we can calculate the probability of each event without considering
+- We can calculate the probability of each event without considering
 **anything about the other event**
 
-When this is the case, we can calculate the probabilities of both events
-occurring just by multiplying the two probabilities
-
-But sometimes this isn't the case... sometimes the probability of a second
-event is **dependent** on the first event
+But sometimes this isn't the case... sometimes knowing what happened on the
+first event changes how to calculate the probability of for the second event
 
 Let us look at a simple example...
 
-In these examples, rather than selecting **two** circles we'll ask about the 
-probability of a single circle having **two** features
+---
+
+### Conditional probability
+
+Let's say we're going to roll a die.
+
+But instead of **just** rolling a die, we'll first **select** one of two dice.
+The set up is as follows: 
+
+1. First, pick either a **20-sided** dice (D-20) or a **6-sided** dice (D-6)
+
+2. Second, roll the dice.
+
+If I ask you, what is the probability of **rolling a 20** then answer
+you give will change **if I tell you which die you picked**
+
+- For the coin flip, being told about the first flip doesn't change your
+  calculation for the second
+
+- For the dice roll, being told you picked the D-20 or D-6 **does** change you
+  calculation
+
+  - If you picked a D-20 then the probability that you rolled a 20 is $\frac{1}{20}$
+
+  - If you picked a D-6 then the probability that you rolled a 20 is 0
 
 ---
 
-#### Conditional probability
+## Working with conditional probabilities
 
-.pull-left[
-<div id="observablehq-viewof-plot2-74292087"></div>
-]
+- We often encounter conditional probabilities in every day life where we use
+  some bit of information to help us work out the probability of something.
 
-.pull-right[
-<div id="observablehq-viewof-conditional-74292087"></div>
-]
+- However, reasoning about conditional probabilities can be difficult and as a
+  result people make a lot of mistakes when dealing with them.
 
-<div style="display:none" id="observablehq-viewof-plot2_selectors-74292087"></div>
-<div style="display:none" id="observablehq-viewof-plot2_pre-74292087"></div>
-<div style="display:none" id="observablehq-viewof-part2-74292087"></div>
-<div style="display:none" id="observablehq-probs-74292087"></div>
-<div style="display:none" id="observablehq-viewof-blue2-74292087"></div>
-<div style="display:none" id="observablehq-viewof-red2-74292087"></div>
-<div style="display:none" id="observablehq-viewof-blue2_with-74292087"></div>
-<div style="display:none" id="observablehq-viewof-red2_with-74292087"></div>
-<div style="display:none" id="observablehq-full_grid-74292087"></div>
-<div style="display:none" id="observablehq-viewof-hide-74292087"></div>
-<div style="display:none" id="observablehq-circle-74292087"></div>
-<div style="display:none" id="observablehq-colors2-74292087"></div>
-<div style="display:none" id="observablehq-viewof-colors2_-74292087"></div>
-<div style="display:none" id="observablehq-set-74292087"></div>
-<div style="display:none" id="observablehq-frac-74292087"></div>
-<div style="display:none" id="observablehq-round3-74292087"></div>
-<div style="display:none" id="observablehq-nu_-74292087"></div>
-<div style="display:none" id="observablehq-viewof-blue2_-74292087"></div>
-<div style="display:none" id="observablehq-viewof-blue2_with_-74292087"></div>
-<div style="display:none" id="observablehq-viewof-red2_-74292087"></div>
-<div style="display:none" id="observablehq-viewof-red2_with_-74292087"></div>
+The most common mistake that you'll encounter is the confusion being P(A|B) and
+P(B|A).
 
-<script type="module">
-import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-import define from "https://api.observablehq.com/d/58a2fa86e64cc92f.js?v=3";
-new Runtime().module(define, name => {
-  if (name === "viewof conditional") return new Inspector(document.querySelector("#observablehq-viewof-conditional-74292087"));
-  if (name === "viewof plot2_selectors") return new Inspector(document.querySelector("#observablehq-viewof-plot2_selectors-74292087"));
-  if (name === "viewof plot2") return new Inspector(document.querySelector("#observablehq-viewof-plot2-74292087"));
-  if (name === "viewof plot2_pre") return new Inspector(document.querySelector("#observablehq-viewof-plot2_pre-74292087"));
-  if (name === "viewof part2") return new Inspector(document.querySelector("#observablehq-viewof-part2-74292087"));
-  if (name === "probs") return new Inspector(document.querySelector("#observablehq-probs-74292087"));
-  if (name === "viewof blue2") return new Inspector(document.querySelector("#observablehq-viewof-blue2-74292087"));
-  if (name === "viewof red2") return new Inspector(document.querySelector("#observablehq-viewof-red2-74292087"));
-  if (name === "viewof blue2_with") return new Inspector(document.querySelector("#observablehq-viewof-blue2_with-74292087"));
-  if (name === "viewof red2_with") return new Inspector(document.querySelector("#observablehq-viewof-red2_with-74292087"));
-  if (name === "full_grid") return new Inspector(document.querySelector("#observablehq-full_grid-74292087"));
-  if (name === "viewof hide") return new Inspector(document.querySelector("#observablehq-viewof-hide-74292087"));
-  if (name === "circle") return new Inspector(document.querySelector("#observablehq-circle-74292087"));
-  if (name === "colors2") return new Inspector(document.querySelector("#observablehq-colors2-74292087"));
-  if (name === "viewof colors2_") return new Inspector(document.querySelector("#observablehq-viewof-colors2_-74292087"));
-  if (name === "set") return new Inspector(document.querySelector("#observablehq-set-74292087"));
-  if (name === "frac") return new Inspector(document.querySelector("#observablehq-frac-74292087"));
-  if (name === "round3") return new Inspector(document.querySelector("#observablehq-round3-74292087"));
-  if (name === "nu_") return new Inspector(document.querySelector("#observablehq-nu_-74292087"));
-  if (name === "viewof blue2_") return new Inspector(document.querySelector("#observablehq-viewof-blue2_-74292087"));
-  if (name === "viewof blue2_with_") return new Inspector(document.querySelector("#observablehq-viewof-blue2_with_-74292087"));
-  if (name === "viewof red2_") return new Inspector(document.querySelector("#observablehq-viewof-red2_-74292087"));
-  if (name === "viewof red2_with_") return new Inspector(document.querySelector("#observablehq-viewof-red2_with_-74292087"));
-});
-</script>
+Or as in the dice example:
+
+- P(Roll 20 | D20), which is 1/20
+
+- P(D20 | Roll 20), which is 1
+
 
 ---
 
-### Conditional probabilities
+## Working with conditional probabilities
 
-In the last example I introduced the idea of a **conditional probability**
+The other common mistake is confusing the **conditional** probabilities
+for the unconditional probabilities 
 
-- We knew P(Blue):  The probability of a circle being blue *independently of
-  whether it had a dot or not*
+That is, confusing, for example, P(A|B) and P(A)
 
-- And P(Dot): The probability of a circle having a dot *independently of
-  whether it was red or not*
+Or in the dice example:
 
-- But to answer our question we needed to know a conditional probability
+- P(D20 | Roll 20), which is 1
 
+- P(D20) which is 0.5
 
-P(Blue) × P(Blue|Dot): `\(\frac{20}{35} \times \frac{15}{20} = \frac{15}{35}\)`
+There is a mathematically formula that relates all these quantities together.
 
-We could of also done it the other
+This is known as **Bayes theorem**
 
-P(Dot) × P(Dot|Blue): `\(\frac{20}{35} \times \frac{15}{20} = \frac{15}{35}\)`
+- **Bayes theorem** allows us to update our probability calculations when we
+  find out new information
 
-Or we could just count the number of circles (out of all the circles) that
-are both Blue **and** have a white dot
-
-This example makes it seem like conditional probability is pretty easy (it's all 
-about counting the correct circles!), but it can be tricky to understand!
-
----
-
-### Conditional probabilities and independence
-
-Although it didn't seem like it, the first example with the **two sets** of
-circles also involved conditional probabilities
-
-However, P(Green) was equal to P(Green|Yellow) and P(Yellow) was equal to
-P(Yellow|Green)
-
-- The probability of picking Green didn't change given that we'd already picked
-  Yellow 
-
-- And the probability of picking Yellow didn't change given that we'd already
-  picked Green
-
-This is the **mathematical definition of independence**
-
----
-
-
-### Working with conditional probabilities 
-
-
-In our blue circle white dot example we saw that P(Blue|Dot) and P(Dot|Blue)
-were equal
-
-- P(Blue|Dot) = `\(\frac{15}{20}\)`
-
-- P(Dot|Blue) = `\(\frac{15}{20}\)`
-
-But conditional probabilities and their inverse are not always equal
-
-- P(Red|Dot) = `\(\frac{5}{20}\)`
-
-- P(Dot|Red) = `\(\frac{5}{15}\)`
-
-.pull-left[
-<div style="" id="observablehq-viewof-plot2-6c56f186"></div>
-]
-.pull-right[
-<div style="" id="observablehq-viewof-plot2_selectors-6c56f186"></div>
-<br />
-<div style="" id="observablehq-viewof-plot2_buttonsb-6c56f186"></div>
-]
-
-<div style="display:none" id="observablehq-viewof-conditional-6c56f186"></div>
-<div style="display:none" id="observablehq-viewof-plot2_selectorsb-6c56f186"></div>
-<div style="display:none" id="observablehq-viewof-plot2_pre-6c56f186"></div>
-<div style="display:none" id="observablehq-viewof-part2-6c56f186"></div>
-<div style="display:none" id="observablehq-probs-6c56f186"></div>
-<div style="display:none" id="observablehq-viewof-blue2-6c56f186"></div>
-<div style="display:none" id="observablehq-viewof-red2-6c56f186"></div>
-<div style="display:none" id="observablehq-viewof-blue2_with-6c56f186"></div>
-<div style="display:none" id="observablehq-viewof-red2_with-6c56f186"></div>
-<div style="display:none" id="observablehq-full_grid-6c56f186"></div>
-<div style="display:none" id="observablehq-viewof-hide-6c56f186"></div>
-<div style="display:none" id="observablehq-circle-6c56f186"></div>
-<div style="display:none" id="observablehq-colors2-6c56f186"></div>
-<div style="display:none" id="observablehq-viewof-colors2_-6c56f186"></div>
-<div style="display:none" id="observablehq-set-6c56f186"></div>
-<div style="display:none" id="observablehq-frac-6c56f186"></div>
-<div style="display:none" id="observablehq-round3-6c56f186"></div>
-<div style="display:none" id="observablehq-nu_-6c56f186"></div>
-<div style="display:none" id="observablehq-viewof-blue2_-6c56f186"></div>
-<div style="display:none" id="observablehq-viewof-blue2_with_-6c56f186"></div>
-<div style="display:none" id="observablehq-viewof-red2_-6c56f186"></div>
-<div style="display:none" id="observablehq-viewof-red2_with_-6c56f186"></div>
-
-<script type="module">
-import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-import define from "https://api.observablehq.com/d/58a2fa86e64cc92f.js?v=3";
-new Runtime().module(define, name => {
-  if (name === "viewof conditional") return new Inspector(document.querySelector("#observablehq-viewof-conditional-6c56f186"));
-  if (name === "viewof plot2_selectors") return new Inspector(document.querySelector("#observablehq-viewof-plot2_selectors-6c56f186"));
-  if (name === "viewof plot2_selectorsb") return new Inspector(document.querySelector("#observablehq-viewof-plot2_selectorsb-6c56f186"));
-  if (name === "viewof plot2") return new Inspector(document.querySelector("#observablehq-viewof-plot2-6c56f186"));
-  if (name === "viewof plot2_buttonsb") return new Inspector(document.querySelector("#observablehq-viewof-plot2_buttonsb-6c56f186"));
-  if (name === "viewof plot2_pre") return new Inspector(document.querySelector("#observablehq-viewof-plot2_pre-6c56f186"));
-  if (name === "viewof part2") return new Inspector(document.querySelector("#observablehq-viewof-part2-6c56f186"));
-  if (name === "probs") return new Inspector(document.querySelector("#observablehq-probs-6c56f186"));
-  if (name === "viewof blue2") return new Inspector(document.querySelector("#observablehq-viewof-blue2-6c56f186"));
-  if (name === "viewof red2") return new Inspector(document.querySelector("#observablehq-viewof-red2-6c56f186"));
-  if (name === "viewof blue2_with") return new Inspector(document.querySelector("#observablehq-viewof-blue2_with-6c56f186"));
-  if (name === "viewof red2_with") return new Inspector(document.querySelector("#observablehq-viewof-red2_with-6c56f186"));
-  if (name === "full_grid") return new Inspector(document.querySelector("#observablehq-full_grid-6c56f186"));
-  if (name === "viewof hide") return new Inspector(document.querySelector("#observablehq-viewof-hide-6c56f186"));
-  if (name === "circle") return new Inspector(document.querySelector("#observablehq-circle-6c56f186"));
-  if (name === "colors2") return new Inspector(document.querySelector("#observablehq-colors2-6c56f186"));
-  if (name === "viewof colors2_") return new Inspector(document.querySelector("#observablehq-viewof-colors2_-6c56f186"));
-  if (name === "set") return new Inspector(document.querySelector("#observablehq-set-6c56f186"));
-  if (name === "frac") return new Inspector(document.querySelector("#observablehq-frac-6c56f186"));
-  if (name === "round3") return new Inspector(document.querySelector("#observablehq-round3-6c56f186"));
-  if (name === "nu_") return new Inspector(document.querySelector("#observablehq-nu_-6c56f186"));
-  if (name === "viewof blue2_") return new Inspector(document.querySelector("#observablehq-viewof-blue2_-6c56f186"));
-  if (name === "viewof blue2_with_") return new Inspector(document.querySelector("#observablehq-viewof-blue2_with_-6c56f186"));
-  if (name === "viewof red2_") return new Inspector(document.querySelector("#observablehq-viewof-red2_-6c56f186"));
-  if (name === "viewof red2_with_") return new Inspector(document.querySelector("#observablehq-viewof-red2_with_-6c56f186"));
-});
-</script>
+For example, we can **update** our calculation for **rolling a 20** when we
+find out that we selected a D-20
 
 ---
 
 ### Bayes theorem
 
-There's a mathematical formula that related P(A|B) to P(B|A). This formula is
-know as **Bayes theorem**.
-
-
-Bayes theorem is very useful for thinking about conditional probabilities,
-because conditional probabilities can sometimes be incredibly *unintuitive*  
+**Bayes theorem** can help us think through conditional probabilities, because
+sometimes conditional probabilities can be very unintuitive
 
 Consider the following example:
-
 
 #### Does a positive test mean somebody is actually sick?
 
@@ -560,58 +500,151 @@ Is that person actually sick?
 
 ---
 
-### Does a positive test mean somebody is actually sick?
+#### Does a positive test mean somebody is actually sick?
 
-<div class="center" style="margin-top:-1em;" id="observablehq-viewof-figure-188cde01"></div>
+::::{.columns}
+
+:::{.column width="50%"}
+
+Let's say a sample of 100 people
+
+```{ojs}
+viewof figure = html`
+<svg class="image" xmlns="http://www.w3.org/2000/svg" width="420" height="${320}">
+${[
+  functions.full_grid
+    .slice(0, _.sum(data.g.slice(0, 1)))
+    .map((pt) =>
+      functions.circle(pt[0], pt[1], data.colours[0][0], data.colours[0][1])
+    ),
+  functions.full_grid
+    .slice(_.sum(data.g.slice(0, 1)), _.sum(data.g.slice(0, 2)))
+    .map((pt) =>
+      functions.circle(pt[0], pt[1], data.colours[1][0], data.colours[1][1])
+    ),
+  functions.full_grid
+    .slice(_.sum(data.g.slice(0, 2)), _.sum(data.g.slice(0, 3)))
+    .map((pt) =>
+      functions.circle(pt[0], pt[1], data.colours[2][0], data.colours[2][1])
+    ),
+  functions.full_grid
+    .slice(_.sum(data.g.slice(0, 3)), _.sum(data.g.slice(0, 4)))
+    .map((pt) =>
+      functions.circle(pt[0], pt[1], data.colours[3][0], data.colours[3][1])
+    )
+].join("")}
+</svg>`
+```
 
 
-.pull-left[
-<div id="observablehq-viewof-incidence-188cde01"></div>
-<div id="observablehq-viewof-positive_tests-188cde01"></div>
-]
+```{ojs}
+//| panel: input
+viewof positive_tests = Inputs.radio(
+  new Map([
+    ["All people", "all"],
+    ["Only sick people", "sick"],
+    ["Only healthy people", "health"],
+    ["Only positive tests", "pos"]
+  ]),
+  { value: "all", label: "Show" }
+)
 
-<div id="observablehq-viewof-short_description-188cde01"></div>
+```
 
-The probability of the person actually being sick **depends** on the incidence
-of the disease. 
+```{ojs}
+//| panel: input
+viewof incidence = Inputs.radio(
+  new Map([
+    ["Common", "common"],
+    ["Rare", "rare"]
+  ]),
+  { value: "rare", label: "Incidence" }
+)
+```
+:::
 
-If the disease is rare then there's a low probability that the 
-person is actually sick  
-If the disease is common then there's a high probability that the 
-person is actually sick
+:::{.column width="50%"}
+
+```{ojs}
+md`- ${data.g[0] + data.g[1]} sick people and ${functions.frac(
+  data.conds.dot_red,
+  data.g[0] + data.g[1]
+)} or ${functions.round3(
+  data.conds.dot_red * 100
+)}% test **positive**`
+```
+
+```{ojs}
+md`- ${data.g[2] + data.g[3]} healthly people, and only
+ ${functions.frac(
+  data.conds.dot_green,
+  data.g[2] + data.g[3]
+)} or ${functions.round3(
+  data.conds.dot_green * 100
+)}%  test **postive**.`
+```
+
+```{ojs}
+md`
+
+- There are ${data.g[1] + data.g[2]} people that test positive. 
+
+  - ${functions.frac(
+  data.g[1] / (data.g[1] + data.g[2]),
+  data.g[1] + data.g[2]
+)} or ${functions.round3(
+  (data.g[1] / (data.g[1] + data.g[2])) * 100
+)}% are sick
+
+  - ${functions.frac(
+    data.g[2] / (data.g[1] + data.g[2]),
+    data.g[1] + data.g[2]
+  )} or ${functions.round3((data.g[2] / (data.g[1] + data.g[2])) * 100)}%
+  are healthy.
+
+- A person testing **positive** is more likely to be ${
+  data.g[1] / (data.g[1] + data.g[2]) > data.g[2] / (data.g[1] + data.g[2])
+    ? "**sick**"
+    : "**healthy!**"
+}
+`
+
+```
+:::
+
+::::
 
 ---
 
 #### Bayes theorem
 
 
-We can work out the answer to the previous question just by counting the dots, but we can also use Bayes theorem. 
+We can work out the answer to the previous question just by counting the dots,
+but we can also use Bayes theorem. 
 
 Bayes theorem is given as:
 
-`$$P(A|B) = \frac{P(B|A) \times P(A)}{P(B)}$$`
+$$P(A|B) = \frac{P(B|A) \times P(A)}{P(B)}$$
 
 or 
 
-`$$P(🤮\ |\ ✅) = \frac{P(✅\ |\ 🤮) \times P(🤮)}{P(✅)}$$`
-
-and when we put numbers to it... 
-
-`$$\frac{4}{9} = \frac{\frac{4}{5} \times \frac{5}{100}}{ \frac{9}{100} }$$`
+$$P(🤮\ |\ ✅) = \frac{P(✅\ |\ 🤮) \times P(🤮)}{P(✅)}$$
 
 
-Note that the crucial values here are P(🤮) and P(✅ ). These are sometimes
-referred to as the prior probabilities or unconditional probabilities. 
+Note that the crucial values here are P(🤮 ) and P(✅ ). These are sometimes
+referred to as the prior probabilities or unconditional probabilities.
 
-If you change the value of P(🤮) then you're changing how rare or common the
+If you change the value of P(🤮 ) then you're changing how rare or common the
 disease
+
+And P(✅ ) is function of the P(✅| 🤮 ), P(✅| 😁 ), and P(🤮 )
 
 ---
 
 #### Reasoning with Bayes theorem and conditional probabilities
 
 - Reasoning about conditional probabilities like the testing example can be
-difficult between people often forget about the P(🤮) and P(✅ ) bits.
+difficult because people often forget about the P(🤮) and P(✅ ) bits.
 
 - But we ignore P(🤮) and P(✅ ) we can see it's easy to make mistakes!
 
@@ -637,61 +670,75 @@ I'll just pick out two more examples to finish on...
 
 You might have heard the following statistic in the media/online
 
-> 50% of people die from Covid have been vaccinated
+> 50% of the people that die from Covid have been vaccinated
 
 I've seen this stat on social media along with the claim that it *shows that the
 Covid vaccine doesn't work*
 
-Let's assume the stat is accurate. Does what does this mean the vaccine
+Let's assume the stat is accurate. Does this mean that the vaccine
 doesn't work?
 
 ---
 
 ### Does the Covid vaccine work?
 
-<div class="center" style="margin-top:-1em;" id="observablehq-viewof-figure-c5409792"></div>
 
+::::{.columns}
 
-.pull-left[
-<div id="observablehq-viewof-incidence-c5409792"></div>
-<div id="observablehq-viewof-positive_tests-c5409792"></div>
-]
+:::{.column width="50%"}
 
-.pull-right[
-<div style="font-size:.7em;margin-top:-.5em;" id="observablehq-viewof-short_description-c5409792"></div>
-]
+- Green circles are the **vaccinated** and the orange circles are the
+  **unvaccinated**
 
-In this example we're keeping the vaccine efficacy constant (50% chance of
-dying in not vaccinated and 10% chance of dying if vaccinated). The vaccinate 
-doesn't prevent all deaths, but it does offer protection!
+- A red dot means the person **died of covid**
 
+```{ojs}
+import {viewof figure as covid} from "@ljcolling/covid"
+import {viewof short_description as covid_desc} from "@ljcolling/covid"
+import {viewof positive_tests as covid_pos} from "@ljcolling/covid"
+import {viewof incidence as vax_rate} from "@ljcolling/covid"
+viewof covid
+```
 
-<script type="module">
-import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-import define from "https://api.observablehq.com/d/3129604bde1835fd.js?v=3";
-new Runtime().module(define, name => {
-  if (name === "viewof incidence") return new Inspector(document.querySelector("#observablehq-viewof-incidence-c5409792"));
-  if (name === "viewof figure") return new Inspector(document.querySelector("#observablehq-viewof-figure-c5409792"));
-  if (name === "viewof positive_tests") return new Inspector(document.querySelector("#observablehq-viewof-positive_tests-c5409792"));
-  if (name === "viewof short_description") return new Inspector(document.querySelector("#observablehq-viewof-short_description-c5409792"));
-  return ["data"].includes(name);
-});
-</script>
+```{ojs}
+//| panel: input
+viewof covid_pos
+viewof vax_rate
+```
 
+:::
 
-<script type="module">
-import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-import define from "https://api.observablehq.com/d/a739c27cc057c132.js?v=3";
-new Runtime().module(define, name => {
-  if (name === "viewof figure") return new Inspector(document.querySelector("#observablehq-viewof-figure-188cde01"));
-  if (name === "viewof incidence") return new Inspector(document.querySelector("#observablehq-viewof-incidence-188cde01"));
-  if (name === "viewof positive_tests") return new Inspector(document.querySelector("#observablehq-viewof-positive_tests-188cde01"));
-  if (name === "viewof short_description") return new Inspector(document.querySelector("#observablehq-viewof-short_description-188cde01"));
-  return ["data","viewof description"].includes(name);
-});
-</script>
+:::{.column width="50%"}
+```{ojs}
+viewof covid_desc
+```
+:::
+
+::::
+
+In this example we're keeping the vaccine efficacy constant (50% chance
+of dying in unvaccinated and 10% change of dying the vaccinated) and
+we're only changing the **vaccination rate**
 
 ---
+
+### Does the Covid vaccine work?
+
+- The Covid vaccine example is an example of people confusing P(A|B) for
+  P(B|A)
+
+- What you want to know is $P(💀\ | 💉)$
+
+- But on social media people were talking about $P(💉\ | 💀)$
+
+A high value for $P(💉\ |💀)$ is consistent with a low
+value $P(💀\ |💉)$ if $P(💉)$ is high!
+
+This is an example from social media, but some scientists
+make this error too!
+
+---
+
 
 ### Racial bias in police shootings
 
@@ -710,104 +757,519 @@ But is the reasoning correct, and do the data show what Johnson *et al* claim?
 
 **NO!**
 
-Johnson *et al*, the journal reviewers, the journal editors<sup>1</sup>, and the media were
-looking at whether P(Black|Shot) was larger than P(White|Shot) when they should've
-been looking at whether P(Shot|Black) was larger than P(Shot|White)
+---
+
+### Racial bias in police shootings
+
+Johnson *et al*, the journal reviewers, the journal editors
+and the media were
+looking at
+
+- Whether P(Black|Shot) was larger than P(White|Shot) 
+
+- Should've been looking at whether P(Shot|Black) was larger than P(Shot|White)
 
 
-.footnote[<sup>1</sup>This paper has now been retracted from the journal after
-a campaign that started on twitter, but the damage is maybe already done]
+*This paper has now been retracted from the journal after a campaign that
+started on twitter, but the damage is maybe already done*
+
+But let's step through it to find the errors...
 
 ---
 
 ### Racial bias in police shootings
 
-Let's firt look at the data<sup>1</sup> Johnson *et al* present
+Let's first look at the data Johnson *et al* present
 
-.center[<img src="slide1.png"></img>]
+```{r}
+#| label: fig-1
+#| fig-cap: Sample of police shooting. Pink circles correspond to White victims and Black circles to Black victims
+#| out.width: 50%
+knitr::include_graphics(here::here("images/slide1.png"))
+```
 
-In graphic shows the people shot by the police. 
+@fig-1 shows the people shot by the police. 
 
-The probablity that a person is White (P(White|Shot)) is $\frac{20}{30}$ or `r round(20/30*100,2)`%
+The probability that a person is White (P(White|Shot)) is $\frac{20}{30}$ or `r round(20/30*100,2)`%
 
-The probablity that a person is Black (P(Black|Shot)) is $\frac{10}{30}$ or `r round(10/30*100,2)`% 
+The probability that a person is Black (P(Black|Shot)) is $\frac{10}{30}$ or `r round(10/30*100,2)`% 
 
-These are the two probabilities that Johnson *et al* look at.
+These are the two probabilities that Johnson *et al* looked at
 
-.footnote[<sup>1</sup>These aren't the actual data, but I'm simplified it to
-make things easier]
+<aside>These aren't the actual data. I've simplified it to
+make things easier</aside>
 
 ---
 
 ### Racial bais in police shootings
 
-But let's add some additional data. These are the people that have had 
-*encounters* will police that **didn't** end in a shooting
+::::{.columns}
 
-.center[<img src="slide2.png"></img>]
+:::{.column width="50%"}
 
-Jonson *et al* didn't report this data, so I'm made this up for illustration
+- But let's add some additional data. These are the people that have had 
+*encounters* with police that **didn't** end in a shooting
 
-We need this data, because instead of looking at P(Black|Shot)/P(White|Shot) we
+- Jonson *et al* didn't report this data, so I'm made this up for illustration
+
+- We need this data, because instead of looking at P(Black|Shot)/P(White|Shot) we
 need to look at P(Shot|Black) and P(Shot|White)
 
+:::
+
+:::{.column width="50%"}
+```{r}
+#| label: fig-2
+#| fig-cap: Sample of all people encountered by the police without getting shot. Pink circles correspond to White people and Black circles to Black people
+#| out.width: 50%
+knitr::include_graphics(here::here("images","slide2.png"))
+```
+:::
+
+::::
 
 ---
 
 ### Racial bais in police shootings
 
+::::{.columns}
+
+:::{.column width="50%"}
 Putting the it all together we see this:
 
-.center[<img width="50%" src="slide3.png"></img>]
+```{r}
+#| label: fig-3
+#| fig-cap: Sample of all people encountered by the police. Pink circles correspond to White people and Black circles to Black people. Red dots correspond to shooting victims.
+#| out.width: 50%
+knitr::include_graphics(here::here("images","slide3.png"))
+```
+:::
 
+
+:::{.column width="50%"}
 These are all the *encounters* that occurred between the police and civilans
-including those that ended in the police shooting a civilans and those that did
+including those that ended in the police shooting a civilian and those that did
 not.
 
----
+- If we focus just on the people who are Black then P(Shot|Black) = 50%
 
-### Racial bais in police shootings
+- If we focus just on the people who are White then P(Shot|White) = 25%
 
-Now we **condition on being Black**
+So the data presented by Johnson et al is consistent with a racial bias
+in police shooting **assuming my assumptions are correct**
 
-.center[<img width="50%" src="slide4.png"></img>]
 
-This allows us to see P(Shot|Black), which gives $\frac{10}{20}$ or 50%
+:::
 
----
+::::
 
-### Racial bais in police shootings
-
-And **condition on being White**
-
-.center[<img width="50%" src="slide5.png"></img>]
-
-Which allows us to see P(Shot|White), which gives $\frac{20}{80}$ or `r round(20/80*100,2)`%
-
-These data, at least, suggest there is a bias in Police shooting
+My **assumptions** could, however, be incorrect but Johnson et al
+didn't collect this data because of their faulty logic meant they didn't
+realise it was important...
 
 ---
 
 ### Racial bais in police shootings
 
-Unfortunately, Johsnon *et al* didn't collect the data they need to draw their
-collusions
+How important? Both these images are **consistent** with the
+data reported by Johnson et al
 
-.pull-left[.center[<img width="50%" src="slide3.png" />
-]]
+::::{.columns}
 
-.pull-right[.center[<img width="50%" src="slide6.png" />
-]]
+:::{.column width="50%"}
+```{r}
+#| fig-align: center
+knitr::include_graphics(here::here("images/slide3.png"))
+```
+:::
+
+
+:::{.column width="50%"}
+```{r}
+#| fig-align: center
+knitr::include_graphics(here::here("images/slide6.png"))
+```
+:::
+::::
 
 - Both figures above as consistent with P(Black|Shot) = `r round(10/30,2)` and
   P(White|Shot) = `r round(20/30,2)`
-
 
 - But one give P(Shot|Black) = `r round(10/20,2)` and P(Shot|White) = `r round(20/80,2)`
 
 - And the other gives P(Shot|Black) = `r round(10/70,2)` and P(Shot|White) = `r round(20/30,2)`
 
-Either one of these *could*<sup>1</sup> be the case, but Johnson *et al*'s data
-can't tell us this and therefore, they have absolutely no basis to support their claim
+Either one of these *could* be the case, but Johnson *et al*'s data
+can't tell us which and therefore, they have absolutely no basis to support their claim
 
-.footnote[<sup>1</sup>Give the racial makeup of the US the first seems more plausible than the second]
+---
+
+## Final thoughts
+
+
+*I hope this serves as a sobering message for just how important research
+methods (including probability theory) is in your training*
+
+- You might one day be in the position to make policies for governments so I
+  hope you don't fall victim to faulty reasoning when you do!
+
+- And that you know how to access and interpret research correctly
+
+---
+
+## The exam
+
+The final assessment of this course is the final exam
+
+The final exam is worth 50% of your grade and it covers the material from the
+12 weekly lectures only
+
+- Doesn't include material on R and RStudio
+
+- Doesn't include material from the ethics lecture
+
+- The exam will be **online** (This is specific to PAAS. Your other exams are
+  probably in person)
+
+
+#### **Format**
+
+- **Mostly** multi-choice, with a few questions where you have to enter in
+  *numbers*
+
+- Some of the numeric questions will just involve finding the correct number in
+  a table, but some will involve **calculating a number**
+
+- A sample exam will be made available on Canvas in the next couple of days
+
+
+
+<!-- Dependencies -->
+
+```{ojs}
+function circle(x, y, fill, stroke) {
+  return `<circle cx="${x}" cy="${y}" r="20" stroke="none" fill="${fill}" stroke-width="0"></circle>
+<circle cx="${x}" cy="${y}" r="10" stroke="${fill}" fill="${stroke}" stroke-width="0"></circle>`;
+}
+```
+
+```{ojs}
+full_grid = _.flatten(
+  _.range(10).map((y) =>
+    _.range(10)
+      .map((x) => 44 * (x + 1))
+      .map((x) => [x, 44 * (y + 1)])
+  )
+)
+```
+
+```{ojs}
+function round3(x) {
+  return Math.round(x * 1000) / 1000;
+}
+```
+
+```{ojs}
+//| eval: false
+function getvalue(x) {
+  if (x === "red") {
+    return red;
+  }
+
+  if (x === "blue") {
+    return blue;
+  }
+
+  if (x === "green") {
+    return green;
+  }
+}
+
+```
+
+
+```{ojs}
+viewof blue2 = Inputs.input(10)
+```
+
+```{ojs}
+viewof red2 = Inputs.input(10)
+```
+
+```{ojs}
+viewof blue2_with = Inputs.input(5)
+```
+
+```{ojs}
+viewof red2_with = Inputs.input(5)
+```
+
+
+```{ojs}
+function frac(decimal, den) {
+  const n = Math.round(decimal * den);
+
+  return md`${tex`\frac{${n}}{${den}}`}`;
+}
+```
+
+```{ojs}
+import { texmd } from "@kelleyvanevert/katex-within-markdown"
+```
+
+```{ojs}
+parsedSpec = {
+  return vega.parse(spec3);
+}
+```
+
+
+```{ojs}
+spec3 = {
+  return {
+    $schema: "https://vega.github.io/schema/vega/v5.0.json",
+    padding: 0,
+    width: 500,
+    height: 100,
+    layout: {
+      padding: 0,
+      columns: 1
+    },
+    marks: [
+      {
+        type: "group",
+        encode: {
+          update: {
+            width: {
+              value: 1000
+            },
+            height: {
+              value: 130
+            }
+          }
+        },
+        data: [
+          {
+            name: "tree",
+            values: coin_data,
+            transform: [
+              {
+                type: "stratify",
+                key: "id",
+                parentKey: "parent"
+              },
+              {
+                type: "tree",
+                method: "tidy",
+                size: [500, 200],
+                as: ["x", "y", "depth", "children"]
+              }
+            ]
+          },
+          {
+            name: "links",
+            source: "tree",
+            transform: [
+              {
+                type: "treelinks",
+                key: "id"
+              },
+              {
+                type: "linkpath",
+                orient: "horizontal",
+                shape: "line"
+              }
+            ]
+          }
+        ],
+        scales: [
+          {
+            name: "color",
+            domain: [0, 1, 2, 3, 4, 5],
+            type: "sequential",
+            range: "ramp"
+          }
+        ],
+        marks: [
+          {
+            type: "path",
+            from: {
+              data: "links"
+            },
+            encode: {
+              update: {
+                path: {
+                  field: "path"
+                },
+                stroke: {
+                  value: "black"
+                }
+              }
+            }
+          },
+          {
+            type: "symbol",
+            from: {
+              data: "tree"
+            },
+            encode: {
+              enter: {
+                size: {
+                  value: 50
+                },
+                stroke: {
+                  value: "black"
+                }
+              },
+              update: {
+                x: {
+                  field: "x"
+                },
+                y: {
+                  field: "y"
+                },
+                fill: {
+                  field: "color"
+                }
+              }
+            }
+          },
+          {
+            type: "text",
+            from: {
+              data: "tree"
+            },
+            encode: {
+              enter: {
+                text: {
+                  field: "name"
+                },
+                fontSize: {
+                  value: 0
+                },
+                baseline: {
+                  value: "bottom"
+                }
+              },
+              update: {
+                x: {
+                  field: "x"
+                },
+                y: {
+                  field: "y"
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  };
+}
+```
+
+```{ojs}
+vega = require("https://cdn.jsdelivr.net/npm/vega@5/build/vega.js")
+```
+
+```{ojs}
+coin_data = [
+  { name: "START", id: 1, parent: "", color: "red" },
+  ...d3.range(2, 2 ** coins).map((i) => {
+    return {
+      name: i % 2 ? "T" : "H",
+      id: i,
+      parent: Math.floor(i / 2)
+    };
+  })
+].map((x) => {
+  let colors = { H: "black", T: "white", START: "red" };
+  x.color = colors[x.name];
+  return x;
+})
+```
+
+
+```{ojs}
+functions = {
+  return {
+    circle: (x, y, fill, stroke) => {
+      return `<circle cx="${x}" cy="${y}" r="14" stroke="none" fill="${fill}" stroke-width="0"></circle>
+<circle cx="${x}" cy="${y}" r="5" stroke="${fill}" fill="${stroke}" stroke-width="0"></circle>`;
+    },
+    full_grid: _.flatten(
+      _.range(10).map((y) =>
+        _.range(10)
+          .map((x) => 30 * (x + 1))
+          .map((x) => [x, 30 * (y + 1)])
+      )
+    ),
+    round3: (x) => Math.round(x * 1000) / 1000,
+    frac: (decimal, den) => {
+      const n = Math.round(decimal * den);
+      return md`${tex`\frac{${n}}{${den}}`}`;
+    }
+  };
+}
+```
+
+```{ojs}
+data = {
+  let proportions = incidence === "rare" ? [5, 95] : [80, 20];
+  let percentages = incidence === "rare" ? [4 / 5, 1 / 20] : [8 / 10, 6 / 90];
+  let g = [
+    Math.round(proportions[0] * (1 - percentages[0])),
+    Math.round(proportions[0] * percentages[0]),
+    Math.round(proportions[1] * percentages[1]),
+    Math.round(proportions[1] * (1 - percentages[1]))
+  ];
+
+  let all = [
+    ["red", "red"],
+    ["red", "black"],
+    ["green", "black"],
+    ["green", "green"]
+  ];
+
+  let pos = [
+    ["white", "white"],
+    ["red", "black"],
+    ["green", "black"],
+    ["white", "white"]
+  ];
+
+  let sick = [
+    ["red", "red"],
+    ["red", "black"],
+    ["white", "white"],
+    ["white", "white"]
+  ]
+
+  let health = [
+    ["white", "white"],
+    ["white", "white"],
+    ["green", "black"],
+    ["green", "green"]
+  ];
+
+
+  let colors = {"all" : all, "sick": sick, "pos": pos, "health": health}
+
+  let conds = {
+    red_dot: g[1] / (g[1] + g[2]),
+    dot_red: g[1] / (g[1] + g[0]),
+    red: (g[0] + g[1]) / _.sum(g),
+    dot: (g[1] + g[2]) / _.sum(g),
+    green: 1 - (g[0] + g[1]) / _.sum(g),
+    dot_green: g[2] / (g[3] + g[2])
+  };
+
+  return {
+    proportions: proportions,
+    percentages: percentages,
+    g: g,
+    conds: conds,
+    colours: colors[positive_tests]
+  };
+}
+```

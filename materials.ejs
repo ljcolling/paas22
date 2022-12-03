@@ -2,6 +2,10 @@
 
 <%
 
+let recordings_raw = include("./recordings.json")
+
+let recordings = JSON.parse(recordings_raw)
+
 var materials = {}
 
 for (let week = 1; week < 12; week++) {
@@ -10,6 +14,7 @@ for (let week = 1; week < 12; week++) {
     .filter((x) => x.type === "slides")
   materials[week]['handout'] = items.filter((x) => x.week === week)
     .filter((x) => x.type === "handout")
+  materials[week]['recordings'] = recordings[week]
 
 }
 
@@ -31,16 +36,16 @@ const print_handout = (materials, week) => {
   }
 }
 
-const print_week = (materials, week) => {
+const print_week = (recordings, materials, week) => {
 
   const has_handout = Object.keys(materials[week]["handout"])[0] === "0" ? `<li><a href=${materials[week]["handout"][0].path}>Lecture handout</a></li>` : "Currently unavailable"
   const has_slides = Object.keys(materials[week]["slides"])[0] === "0" ? `<li><a href=${materials[week]["slides"][0].path}>Lecture slides</a></li>` : "Currently unavailable"
-
+  const has_recording = recordings.hasOwnProperty(week) ? `<li><a href=${recordings[week]}>Lecture Recording</a></li>` : "Currently unavailable"
   if (has_handout === has_slides) {
     return "Currently unavailable"
   }
 
-  return `${has_handout}${has_slides}`
+  return `${has_handout}${has_slides}${has_recording}`
 
 
 }
@@ -51,7 +56,7 @@ const print_week = (materials, week) => {
 <% for (let week = 1; week < 12; week++) { %>
 <h3>Week <%= week %></h3>
 <ul>
-<%= print_week(materials, week) %>
+<%= print_week(recordings, materials, week) %>
 </ul>
 <% } %>
 

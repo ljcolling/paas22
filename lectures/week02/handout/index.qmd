@@ -18,21 +18,6 @@ format:
     toc-location: right
     date: 03 Oct 2022
     date-format: "D MMMM, YYYY"
-  pdf:
-    toc: false
-    date: 03 Oct 2022
-    date-format: "D MMMM, YYYY"
-    documentcalss: scrartcl
-    papersize: a4
-    geometry:
-      - left=30mm
-      - right=30mm
-    include-in-header: 
-      text: |
-        \usepackage{marginnote}
-    include-before-body:
-      text: |
-        \renewcommand*{\marginnote}[1]{\footnote{#1}}
 reading-time: |
   `r 
   words <- system("pandoc --lua-filter wordcount.lua _content.qmd --from=markdown", intern = TRUE) |> as.numeric();

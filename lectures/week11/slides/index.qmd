@@ -42,10 +42,10 @@ type: slides
 }
 
 section.slide {
-  background-color: white
+  background-color: #f6f6f6
 }
 
 .reveal {
-  background-color: black
+  background-color: #f6f6f6
 }
 </style>
