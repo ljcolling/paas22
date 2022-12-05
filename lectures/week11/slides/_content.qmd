@@ -69,7 +69,7 @@ often, over some long period of time** some event occurs.
 - The frequency view is often the view that we take in science. If we wanted to
   assign a probability to the claim "drug X lowers depression", we can't just
   think of each possible outcome that **could** occur when people take Drug
-  X and then count up how many lead to lower depression and how many do not.
+  X and then count up how many lead to lower depression and how many did not.
 
 - No way to make an exhaustive list of every possible outcome!
 
@@ -95,8 +95,8 @@ There is a sense in which you can assign a probability to this
 - Nor is it the frequency kind—we can't repeat the 2022/2023 cricket tour over
   and over and see how often Australia lose.
 
-When we talk about probability in this context mean something like _degree of
-belief_, _credence_, or _subjective probability_. 
+When we talk about probability in this context we mean something like _degree of
+belief_, _credence_, or _subjective probability_.
 
 Probability in this context is the answer to the question "how sure are you
 that the Australian cricket team will lose the upcoming test series against
@@ -104,11 +104,11 @@ South Africa?"
 
 ---
 
-## Calculating with probability 
+## Calculating with probability
 
 The different views of probability have got to do with what the numbers
-**mean**, but once we have the numbers there's no real disagreements about how
-we do calculations with those numbers ^[Probabilities don't always have to have
+**mean**, but once we have the numbers there are no real disagreements about how
+we do calculations with those numbers^[Probabilities don't always have to have
 **numbers** attached. There is a sense in which something can be **more
 probable** than something else without numbers being attached.]
 
@@ -146,20 +146,20 @@ of those things must happen (it's a list of all possible events)
 
 2. $\frac{1}{2}$ possible outcomes produces Tails—P(Tails) = 0.50
 
-The probabilities of at least one of **Heads** or **Tails** occurring is 0.5 + 0.5 = 1  
+The probability of at least one of **Heads** or **Tails** occurring is 0.5 + 0.5 = 1
 
 ---
 
-#### Mutually exclusive and non mutually exclusive events
+#### Mutually exclusive and non-mutually exclusive events
 
 Consider a deck of cards:
 
-1. What is the probability pulling out a Spade or a Club?
+1. What is the probability of pulling out a Spade or a Club?
 
 2. What is the probability of pulling out a Spade or an Ace
 
-In situation (1) the events are *mutually exclusively* or *disjoint*. A card
-can't be a Spade AND a Club. It will either be a Space, a Club, or something
+In situation (1) the events are *mutually exclusive* or *disjoint*. A card
+can't be a Spade **AND** a Club. It will either be a Space, a Club, or something
 else.
 
 The addition rule applies:
@@ -167,10 +167,10 @@ The addition rule applies:
 -  P(Spade) + P(Club) = Probability of selecting a spade or a club. 
 
 
-In situation (2) the events are **not** mutually exclusive. A card out be both
+In situation (2) the events are **not** mutually exclusive. A card **can** be both
 a Spade and an Ace.
 
-- So we need a different rules 
+- So we need different rules
 
 To make this clear, we'll take a look at an example
 
@@ -179,7 +179,8 @@ To make this clear, we'll take a look at an example
 ::::{.columns}
 
 :::{.column width="50%"}
-First we can set how many of each colour we have.
+First, we can set how many of each colour we have.
+
 ```{ojs}
 //| panel: input
 //| echo: false
@@ -248,7 +249,7 @@ viewof show_double_count = Inputs.toggle({ label: "Show double counted", value: 
 
 :::
 ::::
-We can now ask a question like: What is the probability of 
+We can now ask a question like: What is the probability of
 selecting a circle that is Red **or** has a white dot?
 
 ```{ojs}
@@ -327,11 +328,11 @@ colors2 = {
 In the last example we asked about the probability of selecting a **red
 circle** or a **circle with a white dot**
 
-In that example we're dealing single event where we could, for example, select:
+In that example we're dealing with a single event where we could, for example, select:
 
-- A circle that is red
+- A red circle
 - A circle with a white dot
-- A circle that is blue
+- A blue circle
 
 But sometimes we have to deal with multiple events.
 
@@ -381,7 +382,7 @@ coins_label = htl.html`<label for="coins" class= "form-label" width="100%">Numbe
 ::::
 
 If you don't want to count, and you just want to work it out mathematically, then
-you can do this by just multiplying together the probability for each of the events.
+you can do this by multiplying together the probability for each of the events.
 Doing this gives us the following:
 
 $\frac{1}{2}$ × $\frac{1}{2}$ × $\frac{1}{2}$ = $\frac{1}{8}$
@@ -400,7 +401,7 @@ In the previous example, the two choices were **independent**
 **anything about the other event**
 
 But sometimes this isn't the case... sometimes knowing what happened on the
-first event changes how to calculate the probability of for the second event
+first event changes how to calculate the probability of the second event
 
 Let us look at a simple example...
 
@@ -408,22 +409,22 @@ Let us look at a simple example...
 
 ### Conditional probability
 
-Let's say we're going to roll a die.
+Let's say we're going to roll a die...
 
 But instead of **just** rolling a die, we'll first **select** one of two dice.
-The set up is as follows: 
+The setup is as follows: 
 
 1. First, pick either a **20-sided** dice (D-20) or a **6-sided** dice (D-6)
 
 2. Second, roll the dice.
 
-If I ask you, what is the probability of **rolling a 20** then answer
+If I ask you, what is the probability of **rolling a 20**? The answer
 you give will change **if I tell you which die you picked**
 
 - For the coin flip, being told about the first flip doesn't change your
   calculation for the second
 
-- For the dice roll, being told you picked the D-20 or D-6 **does** change you
+- For the dice roll, being told you picked the D-20 or D-6 **does** change your
   calculation
 
   - If you picked a D-20 then the probability that you rolled a 20 is $\frac{1}{20}$
@@ -434,7 +435,7 @@ you give will change **if I tell you which die you picked**
 
 ## Working with conditional probabilities
 
-- We often encounter conditional probabilities in every day life where we use
+- We often encounter conditional probabilities in everyday life where we use
   some bit of information to help us work out the probability of something.
 
 - However, reasoning about conditional probabilities can be difficult and as a
@@ -455,7 +456,7 @@ Or as in the dice example:
 ## Working with conditional probabilities
 
 The other common mistake is confusing the **conditional** probabilities
-for the unconditional probabilities 
+for the unconditional probabilities
 
 That is, confusing, for example, P(A|B) and P(A)
 
@@ -465,7 +466,7 @@ Or in the dice example:
 
 - P(D20) which is 0.5
 
-There is a mathematically formula that relates all these quantities together.
+There is a mathematical formula that relates all these quantities together.
 
 This is known as **Bayes theorem**
 
@@ -484,23 +485,21 @@ sometimes conditional probabilities can be very unintuitive
 
 Consider the following example:
 
-#### Does a positive test mean somebody is actually sick?
-
+#### Does a positive test mean somebody is sick?
 
 There is a test for an illness. The test has the following properties:
 
-1. About 80% of people that **actually have the illness** will test positive
+1. About 80% of people that **have the illness** will test positive
 
-2. Only ~5% of people **that don't have the illness** will  test positive
+2. Only ~5% of people **that don't have the illness** will test positive
 
 Somebody, who may be sick or healthy, takes the test and tests positive...
 
-Is that person actually sick?
-
+Is that person sick?
 
 ---
 
-#### Does a positive test mean somebody is actually sick?
+#### Does a positive test mean somebody is sick?
 
 ::::{.columns}
 
@@ -575,7 +574,7 @@ md`- ${data.g[0] + data.g[1]} sick people and ${functions.frac(
 ```
 
 ```{ojs}
-md`- ${data.g[2] + data.g[3]} healthly people, and only
+md`- ${data.g[2] + data.g[3]} healthy people, and only
  ${functions.frac(
   data.conds.dot_green,
   data.g[2] + data.g[3]
@@ -660,7 +659,7 @@ P(🤮|✅) = P(✅|🤮)
 The media and (the scientific literature) is unfortunately littered with examples
 of people getting muddled with conditional probabilities
 
-And some of these confusions can actually be **dangerous**!
+And some of these confusions can be **dangerous**!
 
 I'll just pick out two more examples to finish on...
 
@@ -716,8 +715,8 @@ viewof covid_desc
 
 ::::
 
-In this example we're keeping the vaccine efficacy constant (50% chance
-of dying in unvaccinated and 10% change of dying the vaccinated) and
+In this example, we're keeping the vaccine efficacy constant (50% chance
+of dying in the unvaccinated and 10% chance of dying in the vaccinated) and
 we're only changing the **vaccination rate**
 
 ---
@@ -732,7 +731,7 @@ we're only changing the **vaccination rate**
 - But on social media people were talking about $P(💉\ | 💀)$
 
 A high value for $P(💉\ |💀)$ is consistent with a low
-value $P(💀\ |💉)$ if $P(💉)$ is high!
+value for $P(💀\ |💉)$ if $P(💉)$ is high!
 
 This is an example from social media, but some scientists
 make this error too!
@@ -743,7 +742,7 @@ make this error too!
 ### Racial bias in police shootings
 
 A few years ago Johnson *et al* published a study (in a very prestigious journal) 
-about **racial bias** in **police** shooting. 
+about **racial bias** in **police** shooting.
 
 Their finding can be summed up as follows:
 
@@ -751,7 +750,7 @@ Their finding can be summed up as follows:
 > more likely to be White than Black
 
 This was picked up by the conservative media (e.g., Fox news) to show that 
-organisations like BLM were fighting against a problem that didn't exist!
+movements like BLM were fighting against a problem that didn't exist!
 
 But is the reasoning correct, and do the data show what Johnson *et al* claim?
 
@@ -771,7 +770,7 @@ looking at
 
 
 *This paper has now been retracted from the journal after a campaign that
-started on twitter, but the damage is maybe already done*
+started on Twitter, but the damage may already be done*
 
 But let's step through it to find the errors...
 
@@ -783,7 +782,7 @@ Let's first look at the data Johnson *et al* present
 
 ```{r}
 #| label: fig-1
-#| fig-cap: Sample of police shooting. Pink circles correspond to White victims and Black circles to Black victims
+#| fig-cap: Sample of police shootings. Pink circles correspond to White victims and Black circles to Black victims
 #| out.width: 50%
 knitr::include_graphics(here::here("images/slide1.png"))
 ```
@@ -801,7 +800,7 @@ make things easier</aside>
 
 ---
 
-### Racial bais in police shootings
+### Racial bias in police shootings
 
 ::::{.columns}
 
@@ -812,7 +811,7 @@ make things easier</aside>
 
 - Jonson *et al* didn't report this data, so I'm made this up for illustration
 
-- We need this data, because instead of looking at P(Black|Shot)/P(White|Shot) we
+- We need this data because instead of looking at P(Black|Shot)/P(White|Shot) we
 need to look at P(Shot|Black) and P(Shot|White)
 
 :::
@@ -830,12 +829,12 @@ knitr::include_graphics(here::here("images","slide2.png"))
 
 ---
 
-### Racial bais in police shootings
+### Racial bias in police shootings
 
 ::::{.columns}
 
 :::{.column width="50%"}
-Putting the it all together we see this:
+Putting it all together we see this:
 
 ```{r}
 #| label: fig-3
@@ -847,7 +846,7 @@ knitr::include_graphics(here::here("images","slide3.png"))
 
 
 :::{.column width="50%"}
-These are all the *encounters* that occurred between the police and civilans
+These are all the *encounters* that occurred between the police and civilians
 including those that ended in the police shooting a civilian and those that did
 not.
 
@@ -855,7 +854,7 @@ not.
 
 - If we focus just on the people who are White then P(Shot|White) = 25%
 
-So the data presented by Johnson et al is consistent with a racial bias
+So the data presented by Johnson et al are consistent with a racial bias
 in police shooting **assuming my assumptions are correct**
 
 
@@ -864,12 +863,12 @@ in police shooting **assuming my assumptions are correct**
 ::::
 
 My **assumptions** could, however, be incorrect but Johnson et al
-didn't collect this data because of their faulty logic meant they didn't
+didn't collect this data because their faulty logic meant they didn't
 realise it was important...
 
 ---
 
-### Racial bais in police shootings
+### Racial bias in police shootings
 
 How important? Both these images are **consistent** with the
 data reported by Johnson et al
@@ -892,15 +891,15 @@ knitr::include_graphics(here::here("images/slide6.png"))
 :::
 ::::
 
-- Both figures above as consistent with P(Black|Shot) = `r round(10/30,2)` and
+- Both figures above are consistent with P(Black|Shot) = `r round(10/30,2)` and
   P(White|Shot) = `r round(20/30,2)`
 
-- But one give P(Shot|Black) = `r round(10/20,2)` and P(Shot|White) = `r round(20/80,2)`
+- But one gives P(Shot|Black) = `r round(10/20,2)` and P(Shot|White) = `r round(20/80,2)`
 
 - And the other gives P(Shot|Black) = `r round(10/70,2)` and P(Shot|White) = `r round(20/30,2)`
 
 Either one of these *could* be the case, but Johnson *et al*'s data
-can't tell us which and therefore, they have absolutely no basis to support their claim
+can't tell us which and therefore, they have no basis to support their claim
 
 ---
 
@@ -910,10 +909,10 @@ can't tell us which and therefore, they have absolutely no basis to support thei
 *I hope this serves as a sobering message for just how important research
 methods (including probability theory) is in your training*
 
-- You might one day be in the position to make policies for governments so I
+- You might one day be in the position to make policies for governments, so I
   hope you don't fall victim to faulty reasoning when you do!
 
-- And that you know how to access and interpret research correctly
+- And that you know how to assess and interpret research correctly
 
 ---
 
@@ -922,7 +921,7 @@ methods (including probability theory) is in your training*
 The final assessment of this course is the final exam
 
 The final exam is worth 50% of your grade and it covers the material from the
-12 weekly lectures only
+12 weekly lectures
 
 - Doesn't include material on R and RStudio
 
@@ -931,6 +930,7 @@ The final exam is worth 50% of your grade and it covers the material from the
 - The exam will be **online** (This is specific to PAAS. Your other exams are
   probably in person)
 
+---
 
 #### **Format**
 
