@@ -921,7 +921,7 @@ methods (including probability theory) is in your training*
 The final assessment of this course is the final exam
 
 The final exam is worth 50% of your grade and it covers the material from the
-12 weekly lectures
+11 weekly lectures
 
 - Doesn't include material on R and RStudio
 
