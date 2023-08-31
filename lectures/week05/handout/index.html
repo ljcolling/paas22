@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr Lazaros Gonidis">
+
+<title>Psychology As A Science - Lecture 5: Open Science</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../../../site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="../../../site_libs/niceQuiz-0.0.1/styles.css" rel="stylesheet">
+<script src="../../../site_libs/niceQuiz-0.0.1/lib.js"></script>
+<script src="../../../site_libs/quiz-binding-0.1.0/quiz.js"></script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Psychology As A Science</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../handouts.html" rel="" target="">
+ <span class="menu-text">Lecture handouts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../slides.html" rel="" target="">
+ <span class="menu-text">Lecture slides</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-replication-crisis" id="toc-the-replication-crisis" class="nav-link active" data-scroll-target="#the-replication-crisis">The replication crisis</a></li>
+  <li><a href="#bias-in-publishing" id="toc-bias-in-publishing" class="nav-link" data-scroll-target="#bias-in-publishing">Bias in Publishing</a></li>
+  <li><a href="#bias-in-statistical-procedures" id="toc-bias-in-statistical-procedures" class="nav-link" data-scroll-target="#bias-in-statistical-procedures">Bias in statistical procedures</a></li>
+  <li><a href="#pre-registration-and-combating-bias" id="toc-pre-registration-and-combating-bias" class="nav-link" data-scroll-target="#pre-registration-and-combating-bias">Pre-registration and combating bias</a></li>
+  <li><a href="#registered-reports-in-action" id="toc-registered-reports-in-action" class="nav-link" data-scroll-target="#registered-reports-in-action">Registered reports in action</a></li>
+  <li><a href="#the-reproducibility-crisis" id="toc-the-reproducibility-crisis" class="nav-link" data-scroll-target="#the-reproducibility-crisis">The reproducibility crisis</a></li>
+  <li><a href="#finding-out-more" id="toc-finding-out-more" class="nav-link" data-scroll-target="#finding-out-more">Finding out more</a></li>
+  <li><a href="#test-your-knowledge" id="toc-test-your-knowledge" class="nav-link" data-scroll-target="#test-your-knowledge">Test your knowledge</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 5: Open Science</h1>
+<p class="subtitle lead">Preregistration and the lab report</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <a href="mailto:L.Gonidis@sussex.ac.uk">Dr Lazaros Gonidis</a> 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://profiles.sussex.ac.uk/p596170-lazaros-gonidis">
+            School of Psychology, University of Sussex
+            </a>
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2 November, 2023</p>
+    </div>
+  </div>
+    
+  
+  </div>
+  
+
+</header>
+
+<p>Today’s lecture comes in two parts. In the first part of the lecture, we’ll discuss a few contemporary issues in psychological research, specifically around what’s known as the replication crisis and the <strong>open science</strong> movement that has emerged to address some of the shortcomings of how science is done. Some of the practices in the <strong>open science</strong> movement, particularly something known as <strong>pre-registration</strong> are the inspiration for the <strong>lab report</strong> that you’ll complete this term.</p>
+<p>While the first part of the lecture will tell you about the motivation behind the lab report, the second part will cover some of the practicalities. Specifically, it will cover some of the details of exactly what is expected from you.</p>
+<p>This style of lab report will probably be new for all of you. So if it looks like something you’ve never done before then don’t worry. You’re all in the same boat.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Some terminology
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We’ll be using the terms <strong>replicability</strong> and <strong>reproducibility</strong> in this lecture. There isn’t a <em>universal agreement</em> on what these two terms mean, and sometimes people use them as <strong>synonyms</strong>. This is probably because both terms refer to cases where researchers <strong>try to obtain the same results</strong> as earlier researchers. To avoid any confusion, I’ll explain the usage that I think is most common in the literature and the way I’ll be using them in this lecture.</p>
+<p><strong>Reproducibility</strong> refers to getting the same results by using the <strong>same (statistical) methods</strong> on the <strong>same dataset</strong>. A study is reproducible if you can take the original data from an earlier study by different researchers and <strong>reproduce</strong> the numbers/statistics reported in the original journal article.</p>
+<p>This might sound like it’s trivial, but it turns out that it isn’t! One of the reasons you’re learning <code>R</code> and <code>Quarto</code> in this course is so that you can learn how to do <strong>reproducible</strong> science.</p>
+<p><strong>Replicability</strong> refers to getting the same results by using the <strong>same methods</strong> on a <strong>new dataset</strong> that you collect. A study is replicable if you can repeat the study using the same methods (e.g., experimental design, analysis) to produce a new dataset that produces the same conclusions as the original study.</p>
+</div>
+</div>
+<section id="the-replication-crisis" class="level2">
+<h2 class="anchored" data-anchor-id="the-replication-crisis">The replication crisis</h2>
+<p>Several large-scale studies in the early part of the last decade <span class="citation" data-cites="open2 open1">(see <a href="#ref-open2" role="doc-biblioref">Open Science Collaboration, 2012</a>, <a href="#ref-open1" role="doc-biblioref">2015</a>)</span> attempted to replicate some classic findings in the psychology literature. That is, researchers tried to run the studies again to see if they could produce the same results and conclusions as the original studies. This turned out to be spectacularly <strong>unsuccessful</strong>. Some estimates suggest that possibly 50% or more of these classic findings (the kind of findings that support the theories you read about in your textbooks) could not be replicated. This has prompted some to claim that psychology is in a state of <strong>crisis</strong>.</p>
+<p>Identifying that the crisis exists, however, is only the first step. Several researchers have tried to understand the causes of this crisis. It’s probably the case that there isn’t a single cause of the replication crisis. Rather, there are likely <strong>several</strong> related causes that might be to blame.</p>
+<p>These causes might include how <strong>statistics</strong> and <strong>statistical procedures</strong> are used and abused in psychology. Incentives in the publishing and university system that might favour <em>flashy findings</em> above <em>methodological rigour</em>. And the lack of clearly defined theories in psychological science. That is, theories that make unambiguous predictions about what should happen in experiments (see Lecture 2).</p>
+<p>When we designed the psychology methods courses at Sussex, many of these issues were at the forefront of our minds. I won’t be able to go into all of these possible causes in detail in this lecture, so instead, I’ll try and pull out some of the issues that were most relevant to our thinking about the lab report.</p>
+</section>
+<section id="bias-in-publishing" class="level2">
+<h2 class="anchored" data-anchor-id="bias-in-publishing">Bias in Publishing</h2>
+<p>If we look specifically at the published literature in psychology we’ll notice something odd. The <strong>vast majority</strong> of published papers in psychology journals report findings that <strong>support</strong> the <em>tested hypotheses</em> (see <a href="#fig-bad">Figure&nbsp;1</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-bad" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../../../images/much_positive.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Psychology researchers find support for their theories more often than researchers in other fields. <span class="citation" data-cites="muchpos">(image from <a href="#ref-muchpos" role="doc-biblioref">Yong, 2012</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>But how is this possible? It could be psychology researchers as psychic, and they only test hypotheses that turn out to be true. Or it could be that the hypotheses they test are <em>trivial</em>. But remember in Lecture 2, I said that theories in psychology often make probabilistic claims, so even if they are true then we might not expect <strong>every</strong> experiment that tests a specific theory to show evidence for that theory. Rather, it seems plausible that there may be some sort of <strong>bias</strong> in the kinds of papers that get published.</p>
+<p>One source of <strong>bias in the publishing</strong> of psychology studies that people have argued exists is that <strong>journal editors</strong> and <strong>peer reviewers</strong> might not want to publish studies when they don’t like the results. They might not like the results for a variety of reasons, but one, in particular, might be that if studies don’t show support for the tested hypothesis then reviewers might believe that the results are <strong>less reliable</strong>. And this belief might be particularly strong in cases where new studies fail to find support for <strong>famous</strong> or <strong>influential</strong> theories.</p>
+<p>If a new study <strong>doesn’t find support</strong> for a <em>famous or influential theory</em> then editors/reviewers might be <em>more likely</em> to suspect there’s <em>some kind of problem with the new study</em>, and they might choose not to publish it.</p>
+<p>Bias might also happen at the level of the researcher in deciding what to submit for publication in the first place. For example, if a researcher fails to find support for the theory they’ve tested then they might not even try to have it published at all.</p>
+</section>
+<section id="bias-in-statistical-procedures" class="level2">
+<h2 class="anchored" data-anchor-id="bias-in-statistical-procedures">Bias in statistical procedures</h2>
+<p>In addition to bias in publishing, there are also certain practices that researchers can engage in that can invalidate the results of their studies. These practices are collectively known as questionable research practices or QPRs. One group of QPRs, known as <strong>p-hacking</strong> can make it so that researchers are more likely to find statistical results that support the tested hypothesis even if the tested hypothesis is not true. Some of these practices are very subtle and may occur without researchers deliberately trying to engage in any form of malpractice. One such practice can occur when researchers repeatedly run their statistical tests after adding more and more participants to their sample.</p>
+<p>We’ll learn more about the theory that explains the problems with this practice in later lectures, but for now, it will probably be easier to explain by way of an example. Let’s say you have a theory that says that people from West Sussex are taller than people from East Sussex. But let’s also say that theory isn’t true. However, you decide to test it by measuring a random group of 10 people from West Sussex and a random group of 10 people from East Sussex. The heights of these people won’t be exactly the same, so you might find that the East Sussex people are slightly taller. If you added another random group of 20 people, the heights of these people will again not be identical. As a result, you might find that the West Sussex people are now slightly taller. But you might equally find the opposite.</p>
+<p>Whether you find that West Sussex people are taller or East Sussex people are taller is just due to random variation in your sample. That is, because of this random variation, even though West Sussex people aren’t taller, you’ll <strong>sometimes</strong> find that they are. And you’ll <strong>sometimes</strong> find that people from East Sussex are taller. If you decide to continue adding more people to your study and checking the results after each batch of people, then you can just decide to stop your study whenever your results happen to show what you want. And it can be easy for you, as a researcher, to justify this to yourself by simply saying that before the point where you decided to stop, you simply hadn’t measured enough people for your sample to be representative.</p>
+<!--
+-->
+<p>But if there is bias in what studies get published, and if it can be easy for researchers to engage in practices that invalidate their statistical procedures, then what is the solution? One proposed solution is <em>pre-registration</em>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Pre-registration in the media
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The idea of pre-registration has been covered in popular media. For example, it’s been written about in <em>The Guardian</em> on several occasions. Some examples include:</p>
+<ul>
+<li><p><a href="https://www.theguardian.com/science/blog/2013/jun/05/trust-in-science-study-pre-registration"><em>Trust in science would be improved by study pre-registration</em></a></p></li>
+<li><p><a href="https://www.theguardian.com/science/head-quarters/2014/may/20/psychology-registration-revolution"><em>Psychology’s ‘registration revolution’</em></a></p></li>
+<li><p><a href="https://www.theguardian.com/science/sifting-the-evidence/2013/may/15/psychology-registered-replication-reports-reliability"><em>Psychology uses ‘registered replication reports’ to improve reliability</em></a></p></li>
+<li><p><a href="https://www.theguardian.com/lifeandstyle/2016/nov/27/the-psychology-behind-a-nice-cup-of-tea"><em>The psychology behind a nice cup of tea</em></a></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="pre-registration-and-combating-bias" class="level2">
+<h2 class="anchored" data-anchor-id="pre-registration-and-combating-bias">Pre-registration and combating bias</h2>
+<p><strong>Preregistration</strong> means that <strong>before</strong> conducting a study, researchers plan their study in detail. This involves specifying the theory they plan to test and specifying all their hypotheses. They also specify details such as the number of participants they intend to sample, and the statistical procedures that they intend to use. Additionally, this plan is made publicly accessible in some way so that there is a record of what the researcher intended to do.</p>
+<p>By doing this, preregistration might improve the reliability of published research by combating certain kinds of <strong>researcher bias</strong>, such as the example of <em>p-hacking</em> outlined above. Additionally, because the hypotheses are specified before the data are collected, this also means that researchers can’t <strong>change their hypotheses</strong> to make them fit whatever their data happened to show (think about <em>falsification</em> and infinitely flexible theories from Lecture 2). All this helps to ensure that the results of studies are more reliable.</p>
+<p>Preregistration can also help combat bias at the publishing stage. Because researchers outline their plans in detail, peer reviewers and journal editors can judge whether the methods are scientifically rigorous and whether the study is likely to produce reliable results. And, importantly, they can make these decisions before seeing the results of a study.</p>
+<p>In a special form of preregistration, known as a <strong>registered report</strong>, editors and reviewers can accept studies for publication <strong>before the data are collected</strong>. This can happen because the detailed research plans allow editors and reviewers to judge whether the study will be scientifically sound before the results are known. And they can make these decisions without being influenced by the actual results.</p>
+</section>
+<section id="registered-reports-in-action" class="level2">
+<h2 class="anchored" data-anchor-id="registered-reports-in-action">Registered reports in action</h2>
+<p>To see an example of a registered report in action, we’ll take a look at a study by <span class="citation" data-cites="collingfischer">Colling et al. (<a href="#ref-collingfischer" role="doc-biblioref">2020</a>)</span>. Our story starts with a paper published by <span class="citation" data-cites="fischer">Fischer et al. (<a href="#ref-fischer" role="doc-biblioref">2003</a>)</span>. In this, they reported a study that claimed to show that <em>merely looking at numbers</em> would cause a <em>shift in attention</em> to either the left or the right side of space depending on whether the number was big (6-10) or small (1-4).</p>
+<p>The exact details of the study and the theories that the data was used to support aren’t vitally important for our purposes. The key point, however, was that this finding was <strong>very influential</strong>, with more than 700 subsequent studies citing this finding or building on this work. Because this finding was influential, it’s not surprising that some researchers tried to replicate it. That is, they tried to run a study using the same methods as the original experiment to see if they could get the same results. Most of these studies were <strong>successful</strong>—that is, they found results that were broadly in agreement with what <span class="citation" data-cites="fischer">Fischer et al. (<a href="#ref-fischer" role="doc-biblioref">2003</a>)</span> had shown. A few <strong>published</strong> studies failed to replicate it, but these were in the minority.</p>
+<p>But is the finding true? Does merely looking at numbers cause you to shift your attention to the left or the right? If you looked just at the <strong>published studies</strong> you would certainly have reason to believe that it is true. But if you spoke to people at scientific conferences then many researchers would tell you that they <strong>couldn’t</strong> successfully replicate it. This just wasn’t reflected in the <strong>scientific literature</strong>. But how did it come to be like this?</p>
+<p>Knowing exactly how it came to be like this is difficult (probably impossible) to know. But possible reasons might be that the original finding was published in an <strong>extremely prestigious journal</strong> (Nature Neuroscience), and that it quickly became a very influential finding. This means that it probably got accepted as something like an <strong>established fact</strong>.</p>
+<p>Once a finding is accepted as something like an <strong>established fact</strong> then journal editors and reviewers might be reluctant to publish studies that don’t support the original finding. This is not totally surprising. If something is an established fact, and a new study comes along trying to overturn it then what is more likely? That the established fact is wrong? Or that there’s something wrong with the new study?</p>
+<p>For example, let’s say that I ran a study that showed that gravity didn’t exist. What is more likely, that gravity doesn’t exist or that there is a problem with my study. It’s reasonable to conclude that there is a problem with my study. But with other theories, it might be the case that the established theory is wrong. The best way to decide this is to try to judge the study on its methods rather than being influenced by what the study found. A <strong>registered report</strong> makes this possible.</p>
+<p>With a <strong>registered report</strong>, you actually <strong>submit</strong> your <strong>research plan</strong> to a journal before you run the study. The journal <strong>reviews the plan</strong> and agrees to publish the study when it’s done, provided that you do the study exactly how you said you would.</p>
+<p>Knowing whether the findings by <span class="citation" data-cites="fischer">Fischer et al. (<a href="#ref-fischer" role="doc-biblioref">2003</a>)</span> were true or not was something I was curious about. As mentioned, there was this disconnect between what people said at conferences and what you could read in journals. So I decided to put together a <strong>registered report</strong> where I would attempt to <strong>replicate</strong> the study by <span class="citation" data-cites="fischer">Fischer et al. (<a href="#ref-fischer" role="doc-biblioref">2003</a>)</span> (I also added in a few extra tasks, so that if I could replicate it then I would also be able to get a better idea of the exact mechanisms that are responsible for the effect).</p>
+<p>The plan that I put together contained a lot of detail. It specified exactly who would be recruited to take part as participants. It specified exactly how the data would be collected, and it described all the tasks in detail. It also described all the statistical analyses that would be performed on the data, and what conclusions I would draw based on the results of these analyses.</p>
+<p>After planning the study in detail, I then approached a journal <strong>with this plan</strong> to see if they were willing to publish the study if I did it according to the plan. The plan went out to reviewers to check (including people involved with the original study), and once everyone was happy the journal agreed that they would publish it.</p>
+<p>I then gathered together 30+ psychological scientists from 17 different universities around the world, and we ran the experiment on over 1300 participants. This sample size was nearly 100 times bigger than the original study. So what did we find?</p>
+<p>We found <strong>absolutely no evidence</strong> for the original finding. We found <strong>no evidence</strong> that the <strong>additional manipulations</strong> that we included, manipulations that people thought might <em>modulate the size of the effect</em>, modulated the size of the effect.</p>
+<p>This finding is now no longer accepted as true. But a lot of resources might have been wasted studying this non-existent effect. Think of all the people that tried to replicate it, but failed, and then couldn’t get their studies published. This finding is by no means a unique case. There are likely to be many <strong>zombie findings</strong> in psychology, and that is why things like <strong>registered reports</strong> are so important. The concept of the <strong>registered report</strong> is the inspiration for the lab report that you’ll be doing this year.</p>
+</section>
+<section id="the-reproducibility-crisis" class="level2">
+<h2 class="anchored" data-anchor-id="the-reproducibility-crisis">The reproducibility crisis</h2>
+<p>This lecture is primarily about the replication crisis and registered reports. But it’s also worth (very briefly) touching on reproducibility because reproducibility is the inspiration for why you’re learning about <code>R</code> and <code>R Studio</code> in the practical classes.</p>
+<p>Replication is the idea that we should be able to run a study again and find the same results. Reproducibility is the idea that we should be able to take a dataset that was collected for a study, run the analysis described in the journal article, and re-produce the same numbers that we see in the published paper.</p>
+<p>This might seem like it’s something that should be easy to do. If you have the data from the original study, you should just be able to run the analysis that is described in the journal article. And if you do this, then you <strong>should</strong> get the same numbers.</p>
+<p>My colleagues and I decided to test this out <span class="citation" data-cites="cruwell">(see <a href="#ref-cruwell" role="doc-biblioref">Crüwell et al., in press</a>)</span>. Sharing data from studies is relatively rare. More commonly, when researchers publish papers, only the results of the analysis are reported in the article, and they don’t share the data they collected. However, sharing data has recently become more common. For example, in one 2019 issue of the journal Psychological Science, all the papers published in that issue shared their data so it was publicly available. As a result, we decided to take all that data, and re-analyze it according to the descriptions in the journal articles, to see whether we could produce the same numbers.</p>
+<p>What did we find? In short, we found that of the 14 papers, we could only <strong>exactly reproduce</strong> the numbers in one of them. For an additional 3, we could get very close to the numbers reported (there were only small differences that didn’t change any of the conclusions). For the remainder, however, we found it impossible to reproduce the numbers. So what went wrong?</p>
+<p>There were a few things that went wrong. First, some of the researchers did not share the appropriate data. For example, some of the data they shared was missing key parts. Or some of the data they shared wasn’t adequately labeled. However, a major issue, was that the analyses <strong>were not adequately described</strong>. That is, the researchers didn’t give enough detail in how they analyzed the data for us to re-analyze it.</p>
+<p>But why was this detail lacking? It’s hard to know exactly why, but a likely explanation is that it can be difficult to give verbal descriptions in sufficient detail so that another researcher can follow them. But I did say that we could exactly reproduce the numbers in one of the papers. So what did these authors do differently?</p>
+<p>They wrote the entire paper using <code>R</code> and <code>Quarto</code> just like you’re learning about in the practical classes. For this paper, we didn’t need to sift through the verbal descriptions describing what analysis they did, how they kept some participants and rejected others, or what version of a particular statistical test they performed. We just needed to re-run their code! And we could also check their <code>R</code> code in detail to see <strong>exactly</strong> what they did, which would allow us, if we wanted to, to also assess whether what they did was correct.</p>
+<p>Making the code available helps to make sure the findings are <strong>reproducible</strong>. It allows reviewers to check for errors in the analysis. And it helps us be more certain of the soundness of the published literature. But sharing code isn’t common, because most psychology students, and psychological scientists, aren’t taught how to write code. But this is slowly changing. And we’re teaching you because we want you to be better than the generation that came before you.</p>
+</section>
+<section id="finding-out-more" class="level2">
+<h2 class="anchored" data-anchor-id="finding-out-more">Finding out more</h2>
+<p>The concepts and ideas that we learned about in this lecture are all part of the open science (or, more broadly, the open scholarship) movement. Open science and open scholarship are a big focus in the School of Psychology at Sussex. You can find out more about the School of Psychology’s involvement in Open Science at the <a href="https://www.sussex.ac.uk/schools/psychology/research/environment/open-methods/">Open Science Hub</a>.</p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="test-your-knowledge" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="test-your-knowledge">Test your knowledge</h2>
+<div class="cell page-columns page-full">
+<div class="cell-output-display column-body-outset">
+<div id="htmlwidget-7a5c547944a236c2d281" style="width:672px;height:100%;" class="quiz html-widget "></div>
+<script type="application/json" data-for="htmlwidget-7a5c547944a236c2d281">{"x":[{"question":"Which <strong>one<\/strong> of the following best describes a registered report?","answers":[["Writing a detailed plan for your study before doing it","false"],["Publishing a study that replicates another study","false"],["Submitting a completed study to a journal","false"],["Submitting a detailed plan for your research to a journal before you have collected the data","true"],["Conducting a study to overturn the results of an earlier study","false"]],"type":"standard"},{"question":"What are some <em>possible<\/em> causes of the replication crisis?","answers":[["Misuse of statistical procedures","true"],["Bias in the publishing industry","true"],["Lack of clearly defined theories in psychological science","true"]],"type":"standard"},{"question":"The <strong>replication crisis<\/strong> refers to…","answers":[["The fact that researchers don’t share their data with published papers","false"],["The fact that researchers don’t share their analysis code","false"],["The observation that redoing the analyses of other researchers doesn’t produce the same numbers","false"],["The observation that independent researchers don’t get the same findings when they re-run classic studies","true"]],"type":"standard"}],"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="ref-collingfischer" class="csl-entry" role="listitem">
+Colling, L. J., Szűcs, D., Marco, D. D., Cipora, K., Ulrich, R., Nuerk, H.-C., Soltanlou, M., Bryce, D., Chen, S.-C., Schroeder, P. A., Henare, D. T., Chrystall, C. K., Corballis, P. M., Ansari, D., Goffin, C., Sokolowski, H. M., Hancock, P. J., Millen, A. E., Langton, S. R., … McShane, B. B. (2020). Registered replication report on <span class="nocase">Fischer, Castel, Dodd, and Pratt (2003)</span>. <em>Advances in Methods and Practices in Psychological Science</em>, <em>3</em>(2), 143–162. <a href="https://doi.org/doi.org/10.1177/2515245920903079">https://doi.org/doi.org/10.1177/2515245920903079</a>
+</div>
+<div id="ref-cruwell" class="csl-entry" role="listitem">
+Crüwell, S., Apthorp, D., Baker, B. J., Colling, L., Elson, M., Geiger, S. J., Lobentanzer, S., Monéger, J., Patterson, A., Schwarzkopf, D. S., Zaneva, M., &amp; Brown, N. J. L. (in press). What’s in a badge? A computational reproducibility investigation of the open data badge policy in one issue of <span>Psychological Science</span>. <em>Psychological Science</em>. <a href="https://doi.org/10.31234/osf.io/729qt">https://doi.org/10.31234/osf.io/729qt</a>
+</div>
+<div id="ref-fischer" class="csl-entry" role="listitem">
+Fischer, M. H., Castel, A. D., Dodd, M. D., &amp; Pratt, J. (2003). Perceiving numbers causes spatial shifts of attention. <em>Nature Neuroscience</em>, <em>6</em>(6). <a href="https://doi.org/10.1038/nn1066">https://doi.org/10.1038/nn1066</a>
+</div>
+<div id="ref-open2" class="csl-entry" role="listitem">
+Open Science Collaboration. (2012). An open, large-scale, collaborative effort to estimate the reproducibility of psychological science. <em>Perspectives on Psychological Science</em>, <em>7</em>(6), 657–600. <a href="https://doi.org/10.1177/1745691612462588">https://doi.org/10.1177/1745691612462588</a>
+</div>
+<div id="ref-open1" class="csl-entry" role="listitem">
+Open Science Collaboration. (2015). Estimating the reproducibility of psychological science. <em>Science</em>, <em>349</em>(6251), acc5716. <a href="https://doi.org/10.1126/science.aac4716">https://doi.org/10.1126/science.aac4716</a>
+</div>
+<div id="ref-muchpos" class="csl-entry" role="listitem">
+Yong, E. (2012). Replication studies: <span class="nocase">Bad copy</span>. <em>Nature</em>, <em>485</em>, 298–300. <a href="https://doi.org/10.1038/485298a">https://doi.org/10.1038/485298a</a>
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

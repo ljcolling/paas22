@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr Lazaros Gonidis">
+
+<title>Psychology As A Science - Lecture 4: Introduction to study design</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../../../site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="../../../site_libs/niceQuiz-0.0.1/styles.css" rel="stylesheet">
+<script src="../../../site_libs/niceQuiz-0.0.1/lib.js"></script>
+<script src="../../../site_libs/quiz-binding-0.1.0/quiz.js"></script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Psychology As A Science</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../handouts.html" rel="" target="">
+ <span class="menu-text">Lecture handouts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../slides.html" rel="" target="">
+ <span class="menu-text">Lecture slides</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-how-of-quantitative-research" id="toc-the-how-of-quantitative-research" class="nav-link active" data-scroll-target="#the-how-of-quantitative-research">The “how” of quantitative research</a>
+  <ul class="collapse">
+  <li><a href="#research-design" id="toc-research-design" class="nav-link" data-scroll-target="#research-design">Research design</a></li>
+  </ul></li>
+  <li><a href="#an-example-ice-cream-and-murder" id="toc-an-example-ice-cream-and-murder" class="nav-link" data-scroll-target="#an-example-ice-cream-and-murder">An example: Ice cream and murder</a></li>
+  <li><a href="#features-of-good-study-design" id="toc-features-of-good-study-design" class="nav-link" data-scroll-target="#features-of-good-study-design">Features of good study design</a>
+  <ul class="collapse">
+  <li><a href="#controls" id="toc-controls" class="nav-link" data-scroll-target="#controls">Controls</a></li>
+  <li><a href="#randomisation" id="toc-randomisation" class="nav-link" data-scroll-target="#randomisation">Randomisation</a></li>
+  <li><a href="#blinding" id="toc-blinding" class="nav-link" data-scroll-target="#blinding">Blinding</a></li>
+  <li><a href="#theoretical-framework" id="toc-theoretical-framework" class="nav-link" data-scroll-target="#theoretical-framework">Theoretical framework</a></li>
+  </ul></li>
+  <li><a href="#types-of-experimental-studies" id="toc-types-of-experimental-studies" class="nav-link" data-scroll-target="#types-of-experimental-studies">Types of experimental studies</a>
+  <ul class="collapse">
+  <li><a href="#true-experiments" id="toc-true-experiments" class="nav-link" data-scroll-target="#true-experiments">(True) Experiments</a></li>
+  <li><a href="#quasi-experiments" id="toc-quasi-experiments" class="nav-link" data-scroll-target="#quasi-experiments">Quasi-experiments</a></li>
+  <li><a href="#natural-experiments" id="toc-natural-experiments" class="nav-link" data-scroll-target="#natural-experiments">Natural experiments</a></li>
+  </ul></li>
+  <li><a href="#aspects-of-study-design" id="toc-aspects-of-study-design" class="nav-link" data-scroll-target="#aspects-of-study-design">Aspects of study design</a>
+  <ul class="collapse">
+  <li><a href="#within-subjects-and-between-subjects-designs" id="toc-within-subjects-and-between-subjects-designs" class="nav-link" data-scroll-target="#within-subjects-and-between-subjects-designs">Within-subjects and between-subjects designs</a></li>
+  <li><a href="#time-frame" id="toc-time-frame" class="nav-link" data-scroll-target="#time-frame">Time frame</a></li>
+  </ul></li>
+  <li><a href="#issues-in-measurement" id="toc-issues-in-measurement" class="nav-link" data-scroll-target="#issues-in-measurement">Issues in measurement</a>
+  <ul class="collapse">
+  <li><a href="#construct-validity" id="toc-construct-validity" class="nav-link" data-scroll-target="#construct-validity">Construct validity</a></li>
+  <li><a href="#external-validity" id="toc-external-validity" class="nav-link" data-scroll-target="#external-validity">External validity</a></li>
+  <li><a href="#reliability" id="toc-reliability" class="nav-link" data-scroll-target="#reliability">Reliability</a></li>
+  </ul></li>
+  <li><a href="#levels-of-measurement" id="toc-levels-of-measurement" class="nav-link" data-scroll-target="#levels-of-measurement">Levels of Measurement</a></li>
+  <li><a href="#variabledata-types" id="toc-variabledata-types" class="nav-link" data-scroll-target="#variabledata-types">Variable/Data Types</a></li>
+  <li><a href="#test-your-knowledge" id="toc-test-your-knowledge" class="nav-link" data-scroll-target="#test-your-knowledge">Test your knowledge</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 4: Introduction to study design</h1>
+<p class="subtitle lead">Measurement and variables</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <a href="mailto:L.Gonidis@sussex.ac.uk">Dr Lazaros Gonidis</a> 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://profiles.sussex.ac.uk/p596170-lazaros-gonidis">
+            School of Psychology, University of Sussex
+            </a>
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">26 October, 2023</p>
+    </div>
+  </div>
+    
+  
+  </div>
+  
+
+</header>
+
+<!-- TODO: Add something about WEIRD if I haven't already -->
+<p>As I said in the previous lecture, the focus of this course, and most of the undergraduate research methods courses that you will take, will be on quantitative methods. Today will be the start of our journey of learning more about the specifics of <strong>study design</strong> for <em>quantitative</em> <em>research</em>.</p>
+<p><em>Quantitative research</em> is all about <strong>measurement</strong>, and the aim of <em>quantitative research</em> is to take a phenomenon and condense it down into a few <strong>variables</strong> that can be <strong>measured</strong> as <em>precisely</em> and <em>reliably</em> as possible. We also saw that <em>quantitative research</em> often made use of statistical methods, and that the aim of <em>quantitative</em> <em>research</em> was often to develop <strong>generalisations</strong> or <strong>generally applicable</strong> theories. In today’s lecture, we’re going to learn a bit about how to <strong>design</strong> quantitative studies so that <em>all these things are possible</em>.</p>
+<section id="the-how-of-quantitative-research" class="level2">
+<h2 class="anchored" data-anchor-id="the-how-of-quantitative-research">The “how” of quantitative research</h2>
+<p>The conclusions that we can draw from our research depends on how that knowledge was generated and the research design that was used. For any piece of research that we conduct (or piece of research that we read), we need to be able to answer several questions: 1) How do we actually test <strong>hypotheses</strong> appropriately? 2) How do we <strong>generalise</strong> our findings? 3) How do we <strong>quantify</strong> seemingly unquantifiable things? The answer to these questions lies in <strong>research design</strong>.</p>
+<section id="research-design" class="level3">
+<h3 class="anchored" data-anchor-id="research-design">Research design</h3>
+<p>We can use different types of research design to answer different <strong>research questions</strong> and to test different <strong>hypotheses</strong>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Study designs can vary along many dimensions. For example, study designs can differ on whether they include a <strong>manipulation</strong> or not. They can differ on whether they use a <strong>between-subjects</strong> or <strong>within-subjects</strong> measurement. And they can differ with respect to the <strong>time frame</strong> used for data collection.</p>
+<p>Study designs are usually broken into two broad categories: <em>Experimental</em> and <em>non-experimental</em> designs. The key feature of <strong>experimental designs</strong> is that there is some form of <strong>manipulation</strong>. By <strong>manipulation</strong>, we just mean some sort of change that is introduced that may have some impact on the thing our study is measuring. The <strong>manipulation</strong> might be something that is intentionally introduced by the experiment, or it might be some change that is naturally occurring. We’ll see that this will be the difference between <em>true experiments</em> and <em>natural experiments</em>.</p>
+<p>Not all possible designs include manipulations. Designs that don’t include manipulations are known as <strong>observational</strong> or <strong>correlational</strong> designs. In correlational designs we rely on <strong>observed data</strong> that are not subjected to any <strong>experimental manipulation</strong>. By <em>observational</em>, we don’t mean that we’re <em>just looking</em>. There is still measurement, whether this is through questionnaires, lab tasks, or similar.</p>
+<p><strong>Correlational</strong> designs have several <strong>practical</strong> advantages over <strong>experimental</strong> designs. These include the ability to collect data from far more people than would be practical for an experimental design. And they also allow us to study phenomena where experimental manipulations would be <em>unethical</em>. But correlational designs also have drawbacks when compared with experimental designs. In particular, while correlational designs can be used to investigate <strong>relationships</strong> between variables, but in order to make <strong>causal</strong> claims, experimental designs (whether true experiments or natural experiments) are needed.</p>
+</section>
+</section>
+<section id="an-example-ice-cream-and-murder" class="level2">
+<h2 class="anchored" data-anchor-id="an-example-ice-cream-and-murder">An example: Ice cream and murder</h2>
+<p>In <a href="#fig-murder">Figure&nbsp;1</a> we can see a plot of the relationship between the murder rate and the number of ice creams sold in New York City. We can see from the plot that when the murder rate is high then the number of ice cream sales is also high and when the murder rate is low then the number of ice creams sold is also low. But are they <em>just correlated</em> or does ice cream <em>cause</em> murder?</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-murder" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../../../images/IC.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: The relationship between the murder rate and ice cream sales in New York City</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>We might decide to conduct some research into this relationship between ice cream and murder to see whether there actually is some sort of causal relationship. Obviously, there are <strong>many</strong> ethical issues with conducting an experiment on this, but let’s put those aside for now and see what such an experiment might actually look like.</p>
+<p>The first step in our experiment would be to specify our <strong>research question</strong>. In this example, our research question might be something like: <em>Does eating ice cream make you more prone to murderous tendencies?</em> From this we can now formulate our <strong>hypothesis</strong>. In our <strong>hypothesis</strong> we will actually specify the outcome we expect. Our hypothesis might be something like: <em>Eating ice cream increases the desire to commit murder</em>.</p>
+<p>Testing our hypothesis with an experiment might involve something like the following steps: First, we might invite a group of people into the lab. Half these people will be given some ice cream to eat, and the other half will not be given ice cream. This is our <strong>manipulation</strong>. Next, we might get all of our participants to look at several images of people (our <em>stimuli</em>) while we get to rate how much they want to <strong>eliminate</strong> them on a scale of 0 (no desire) to 9 (all the desire possible).</p>
+<p>In this study, we have an <strong>independent variable</strong> (IV) or <em>predictor variable</em>. This is the thing that we’re manipulating. In our case, this is whether people ate ice cream or not. We manipulated our IV by assigning people to one of <strong>two groups</strong>: The <em>ice cream condition</em> or the <em>no ice cream condition</em>. We also have one <strong>dependent variable</strong> (DV) or <em>outcome variable</em>. In our case, this would be participants total score on our <em>desire to eliminate</em> measure.</p>
+<p>After we have all our data we could then compare the results between the <em>ice cream <strong>condition</strong></em> and the <em>no ice cream <strong>condition</strong></em> to see which group gave higher ratings for their <em>desire to eliminate people</em> (the <strong>outcome</strong> or <strong>DV</strong>).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Independent and Dependent Variables
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The terms <strong>independent</strong> and <strong>dependent</strong> variable are two pieces of jargon that are important to learn. You’ll come across them a lot in your research methods modules (and in other modules like <em>Cognition in Clinical Contexts</em>).</p>
+<p>The <strong>dependent variable</strong> is the variable that you analyse. Its value <em>depends</em> on the values of other variables.</p>
+<p>An <strong>independent variable</strong> is a variable that <em>influences the values</em> of your <strong>dependent variable</strong>.</p>
+<p>In our ice cream example, the variable we’re measuring is the total score on the <em>desire to eliminate</em> measure. This is our <strong>dependent variable</strong>. We expect this to be <em>influenced</em> by whether somebody was given ice cream or not. Because we expect ice cream to <em>influence</em> our dependent variable, the presence, or absence, of ice cream is our <em>independent variable</em>.</p>
+<p>Independent and dependent variables might be measured at any <a href="#levels-of-measurement">level of measurement</a>, and they might be <a href="#variabledata-types">continuous or discrete</a>.</p>
+<p>In the context of <strong>regression analyses</strong> (which you’ll learn about later) the DV is sometimes also called the <em>outcome</em>, and the IVs are sometimes also called the <em>predictors</em>.</p>
+</div>
+</div>
+</section>
+<section id="features-of-good-study-design" class="level2">
+<h2 class="anchored" data-anchor-id="features-of-good-study-design">Features of good study design</h2>
+<p>Our study of the relationship between murder and ice cream is an example of a very unethical study, but it is also a <em>poorly</em> designed study. In a well-designed experiment, we can be confident in saying our <strong>manipulation</strong> <em>caused</em> a change in our <strong>outcome variable</strong>. But this isn’t the case for our ice-cream study. Let’s take a look at some features of good study design to see why.</p>
+<section id="controls" class="level3">
+<h3 class="anchored" data-anchor-id="controls">Controls</h3>
+<p>Our imaginary study didn’t use <em>any</em> <strong>controls</strong>. We recruited all kinds of people without giving consideration to how different characteristics might affect our results. Let’s say, for example, that all the people that we recruited were actually lactose intolerant and that for these people eating ice-cream caused a great deal of discomfort. Perhaps it is actually this discomfort that caused their murderous rage and their murderous rage is not specific to ice cream <em>per se</em>. It could equally well be caused by drinking milkshakes.</p>
+<p>We might also not have had a standardised set of instructions that we gave to participants. Some participants might have arrived very hungry and other participants might have arrived very full. Maybe the differences that we observe are actually a result of some participants being <a href="https://www.oxfordlearnersdictionaries.com/definition/english/hangry">hangry</a>.</p>
+<p>Maybe we didn’t control our <strong>IV</strong> appropriately. We might have often changed the brand or the flavour of the ice cream. Some days we might have run out of ice cream and used <em>frozen yoghurt</em> instead. And some days we might have given a small amount of ice-cream and on other days we might have forced our participants to eat a large amount of ice cream. If we had so many changes from participant to participant then it would be difficult to know exactly what caused any changes in our <strong>outcome</strong>.</p>
+<p>We might also not have controlled the lab environment adequately. On some days the heating might have been up really high. And other days the air-conditioning might have been up really high instead. Maybe it’s just the heat that’s driving people into a murderous rage?</p>
+</section>
+<section id="randomisation" class="level3">
+<h3 class="anchored" data-anchor-id="randomisation">Randomisation</h3>
+<p>Another feature that might have been missing from our study is that we didn’t <strong>randomly assign</strong> people to groups: Maybe we did our participant recruitment first at a dentist’s office and then at a supermarket. And maybe all participants recruited first were assigned to the ice cream condition with the second batch of participants assigned to the no ice cream condition. Because of this, it might so happen to be the case that all the participants in the ice cream condition just so happened to have sensitive teeth. This would affect the results by giving us the impression that ice cream increases murderous tendencies when it doesn’t. To deal with these issues, participants should have been sorted into groups <strong>randomly</strong>. A well-designed experiment would randomise the <strong>participant allocation</strong> and the <strong>stimulus presentation order</strong> (in our experiment, this refers to the order in which the images of faces were rated).</p>
+</section>
+<section id="blinding" class="level3">
+<h3 class="anchored" data-anchor-id="blinding">Blinding</h3>
+<p>In our study, we might have told participants that we were interested in the effect of ice cream on murderous tendencies. And we might have also given participants the ice cream ourselves. Participants may have (consciously or not) modified their behaviour to either fit the hypothesis or to contradict the hypothesis. Because of this, it is crucial that participants are unaware of what the hypothesis was and also what condition they have been allocated to. If participants are naïve to group allocation then the study is to be <strong>single-blind</strong>. If neither the participants nor the researcher know which condition the participants are put in, then the study design is known as <strong>double-blind</strong>. In such a case allocation might be recorded but only revealed once the study is over and the data are being analysed.</p>
+</section>
+<section id="theoretical-framework" class="level3">
+<h3 class="anchored" data-anchor-id="theoretical-framework">Theoretical framework</h3>
+<p>The choice of <strong>predictor</strong> (<strong>IV</strong>) and <strong>outcome</strong> (<strong>DV</strong>) variables does not happen in a theoretical vacuum. Rather, these choices are based on theory. In our experiment, the decision to have ice cream as the <strong>IV</strong> and murderous tendencies as the <strong>DV</strong> was not based on any <strong>theory</strong>. It could be that committing murder causes people to eat ice cream. In which case, we should probably have swapped around our IV and DV. Or it might be that they’re completely unrelated. To have good reasons for running the experiment we did, we would probably have to be able to tell some kind of a plausible story about <strong>how</strong> eating ice cream a murder were related. Such a story would probably have to make reference to some kind of psychologically or biologically plausible mechanism that might explain the connection.</p>
+</section>
+</section>
+<section id="types-of-experimental-studies" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-experimental-studies">Types of experimental studies</h2>
+<p>We’ve already talked about experimental designs through our example. But it’s worth spending a little more time talking about different kinds of experimental studies.</p>
+<section id="true-experiments" class="level3">
+<h3 class="anchored" data-anchor-id="true-experiments">(True) Experiments</h3>
+<p>First, we have <strong><em>true</em></strong> <strong>experimental studies</strong>. True experiments usually have tight controls. As a result, they can be somewhat artificial, because they abstract away from reality. This means that they can sometimes lack something called <strong>ecological validity</strong>. Ecological validity refers to the ability to generalise the results of the study to <strong>real-life</strong> settings. That is, just because something is true in the lab, doesn’t necessarily mean that it will be true in “the real world”. Experimental designs do, however, provide the most rigorous methodology for investigating <strong>causal relationships</strong>.</p>
+<p>As we saw in our example, good experimental design requires randomisation, manipulation, and adequate controls. For many research questions there are methodological, logistical, and ethical obstacles that make it infeasible to conduct experiments. In these cases, we might want to use a <strong>quasi-experimental</strong> design or a <strong>natural experiment</strong>.</p>
+</section>
+<section id="quasi-experiments" class="level3">
+<h3 class="anchored" data-anchor-id="quasi-experiments">Quasi-experiments</h3>
+<p><strong>Quasi-experimental</strong> designs are similar to (true) experimental designs <strong>except</strong> for participant randomisation<strong>. As a result, they’re used in situations where it’s not possible to randomise the allocation of participants into groups. An example of a study using a </strong>quasi-experimental** design might be one looking at the effectiveness of attending summer school. If one school offers summer school, but another does not, then we can’t randomise students into the intervention. In situations like this, we should still try to <strong>match</strong> the participants so that the groups don’t differ on characteristics that might be relevant to our outcome, except, of course, for the characteristic we’re actually interested in—attending summer school.</p>
+</section>
+<section id="natural-experiments" class="level3">
+<h3 class="anchored" data-anchor-id="natural-experiments">Natural experiments</h3>
+<p><strong>Natural experiments</strong> are studies where randomisation and manipulation occur through <strong>natural</strong> or <strong>socio-political</strong> means. A good example of a <strong>natural experiment</strong> might be <em>twin studies</em>. Identical twins share 100% of their genes while fraternal twins only share on average 50% of their genes. However, both kinds of twins tend to share the same home environment (if they’re raised together). By comparing the degree of similarity (on some characteristic) between identical and fraternal twins we might be able to estimate the degree of variation in a characteristic that is due to genetic variation. Other examples of natural experiments might be made possible by differences or changes in government policy: For example, bans on cigarette advertising, or differences the in length of compulsory education. Natural events, or even natural disasters, might create the manipulations that natural experiments can be based on.</p>
+</section>
+</section>
+<section id="aspects-of-study-design" class="level2">
+<h2 class="anchored" data-anchor-id="aspects-of-study-design">Aspects of study design</h2>
+<p>In our ice cream example, we used a between-subjects design, but this isn’t the only option available to us. And we just collected our data at one point in time. And this too isn’t the only option available to us.</p>
+<section id="within-subjects-and-between-subjects-designs" class="level3">
+<h3 class="anchored" data-anchor-id="within-subjects-and-between-subjects-designs">Within-subjects and between-subjects designs</h3>
+<p>In a <strong>between-subjects</strong> or <strong>independent design</strong> we compare different <strong>groups</strong> of participants. For example, in our ice cream study, one <strong>group</strong> of participants ate ice cream while the other <strong>group</strong> of participants did not.</p>
+<p>Between-subjects designs can be contrasted with <strong>within-subjects</strong> or <strong>repeated measures</strong> designs. As the name suggests, this kind of design involves <em>repeatedly measuring</em> participants, but <strong>under different conditions</strong>. We can show the distinction by way of an example. Let’s say that I conduct a study where I’m interested in whether people are better at remembering long words or short words. A <em>between-subjects</em> design would involve getting one <em>group</em> of participants to remember long words and another <em>group</em> of participants to remember short words. With a <strong>within-subjects</strong> design, however, all participants would be asked to remember the words under both conditions (short words and long words). We’d measure their memory for words under both of these conditions.</p>
+<p>With <strong>within-subjects</strong> designs there are some additional things than we will need to consider. For example, if participants perform one condition first followed by the other condition, then we might need to consider whether there are order effects present. It might be that participants are fatigued by the time they get to the later condition and as a result they perform worse on it. Or it might be the case that by the time they get to the later condition they have already had some practise with the task and, therefore, they might perform better.</p>
+<p>Finally, we can mix <strong>within-subject</strong> manipulations with <strong>between-subject</strong> manipulations. This is what is known as a <strong>mixed-design</strong>. To use our memory example above, an example of a <strong>mixed-design</strong> might be as follows: First, we might split our participants into <strong>two groups</strong> and give one group some special memory training. All participants would then be asked to perform the task. We could then examine whether the influence of the memory training made a difference to whether people were better at remembering short words over long words.</p>
+</section>
+<section id="time-frame" class="level3">
+<h3 class="anchored" data-anchor-id="time-frame">Time frame</h3>
+<p>Studies can also vary in terms of whether participants are measured at one point in time or whether they are followed over time.</p>
+<p>In our ice cream example we took our measurements at one point in time. Designs where measurements are made at one point in time are called cross-sectional designs. Cross-sectional studies are logistically easier compared to other types of studies, but they’re not very useful in telling us how phenomena change over time. For that, we need another kind of design.</p>
+<p>An alternative to a <em>cross-sectional</em> design is a <strong>longitudinal design</strong>. This kind of design involves repeated measurement of the same characteristic of the same participants at multiple time points. A classic example of this would be studies that follow participants over time to understand the nature of developmental changes in, for example, language. The logistics involved in <strong>longitudinal designs</strong> can make them difficult to carry out. This is particularly true where studies carry on for several decades. They can also be time-consuming and expensive. And, finally, the risk of <strong>missing data</strong> (for example, from participants dropping out of the study) is high. Missing data can be difficult to deal with. Sometimes data can be missing at random. However, it’s also possible that data can be missing because participants with, for example, particular characteristics are more likely to drop out. Consider the case of a study looking at the effectiveness of online dating apps: If all the participants that find true love drop out of the study then your dataset would only consist of data from participants that were unlucky in love. As a result, the data would show a 0% success rate for online dating apps!</p>
+</section>
+</section>
+<section id="issues-in-measurement" class="level2">
+<h2 class="anchored" data-anchor-id="issues-in-measurement">Issues in measurement</h2>
+<section id="construct-validity" class="level3">
+<h3 class="anchored" data-anchor-id="construct-validity">Construct validity</h3>
+<p>A measure is <strong>valid</strong> if it measures what it’s supposed to measure. In psychology, we often want to measure things that may be difficult to observe directly, and difficult to <strong>quantify</strong>. For example, things like happiness, or cognitive ability, or personality. We attempt to measure these unobservable things using a range of different tools including questionnaires or experimental tasks. We design these tools by using the theoretical underpinnings behind the constructs we are trying to measure. <strong>Construct validity</strong> is the extent to which a tool can be justifiably trusted to actually measure the construct it is supposed to measure.</p>
+</section>
+<section id="external-validity" class="level3">
+<h3 class="anchored" data-anchor-id="external-validity">External validity</h3>
+<p>A study has <strong>external validity</strong> if its findings can be applied to the entire population of people with the relevant characteristics. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> For example, if a study uses a sample of white men in western cultures, the findings might only be true for white men in western cultures. They might not apply or <strong>generalise</strong> to <em>all</em> people. In psychology research we should probably be spending more time thinking about the <strong>samples</strong> we use and whether they’re representative of the <strong>populations</strong> we’d like to generalise our results to. For more on this see below.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+WEIRD samples
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Several researchers have noted that the samples used in the vast majority of psychology research tend to be rather <strong>WEIRD</strong>. That is, the samples used in most published psychological science are drawn from <strong>W</strong>estern, <strong>E</strong>ducated, <strong>I</strong>ndustrialized, <strong>R</strong>ich, and <strong>D</strong>emocratic (WEIRD) societies <span class="citation" data-cites="weird">(<a href="#ref-weird" role="doc-biblioref">Henrich et al., 2010</a>)</span>. The preponderance of WEIRD samples implies that researchers either assume that there is little variation across different population groups when it comes to the phenomena they’re studying, or that these samples are as representative of <strong>humans in general</strong> as any other group.</p>
+<p>But is this true? Answering this question is difficult because it would plausibly be conditional on the nature of the research question or phenomenon being studied. For example, it <em>seems</em> plausible that there would be little variation across human populations when it comes to phenomena like low-level auditory and visual processing. However, it also <em>seems</em> plausible to expect to see more variation when it comes to phenomena like moral reasoning, where cultural practices may play a more prominent role. However, it is an empirical question—that is, it is a question that can only be answered by looking at the actual data. Unfortunately, the data required to answer these questions are sparse. However, the data that does exist suggests that there is probably more variation than people would expect, even when it comes to <em>low-level</em> phenomena like visual perception <span class="citation" data-cites="weird">(<a href="#ref-weird" role="doc-biblioref">Henrich et al., 2010</a>)</span>. In the past few years, there has been some movement to try and make samples in psychological research more diverse, but there is still a long way to go and, therefore, this is an issue worth bearing in mind.</p>
+</div>
+</div>
+<p>We’ve already touched on <strong>ecological validity</strong> in discussing <em>experiments</em> (<a href="#true-experiments">see above</a>). <strong>Ecological validity</strong>, which is often an issue in experiments, refers to whether the findings of a study apply to the “<em>real world</em>”. Just because something is true in the lab doesn’t mean it’s going to be true in the real world.</p>
+<!-- FIXME: Add WEIRD BOX IN HERE -->
+</section>
+<section id="reliability" class="level3">
+<h3 class="anchored" data-anchor-id="reliability">Reliability</h3>
+<p>Finally, <strong>reliability</strong> refers to the <strong>consistency</strong> of a measure. A measure is <strong>reliable</strong> if it produces consistent results each time it’s used on the same participant. For example, we could measure someone’s maths anxiety with a questionnaire. Our questionnaire would be considered <strong>reliable</strong> if when we tested the same participant on different occasions they got similar scores each time. This stability over time is known as <strong>test-retest reliability</strong>.</p>
+</section>
+</section>
+<section id="levels-of-measurement" class="level2">
+<h2 class="anchored" data-anchor-id="levels-of-measurement">Levels of Measurement</h2>
+<p>The last couple of topics we’ll cover in this lecture are about the jargon we use to describe the nature of the measurements we’re taking. The first set of terms describe the kind of information we’re working with. We call this the <strong>level of measurement</strong>. There are four levels of measurement:</p>
+<ol type="1">
+<li><p>Nominal/categorical</p></li>
+<li><p>Ordinal</p></li>
+<li><p>Interval</p></li>
+<li><p>Ratio</p></li>
+</ol>
+<p>Sometimes a construct can fall into many of these levels, and it’s on the researcher to decide what measurement level is the most appropriate to use.</p>
+<p><strong>Nominal/categorical</strong>, refers to <strong>names</strong>, <strong>categories</strong>, <strong>labels</strong>, or <strong>group membership</strong>. Some examples include: 1) eye colour (e.g., green, brown, blue); occupation status (e.g., FT employed, PT employed, unemployed, student…); study condition (control, experimental); or marital status. Even age can be nominal if we wanted it to be (under 50s vs over 50s).</p>
+<p>When using nominal variables, we cannot compare the different groups in any quantifiable way. That is, it doesn’t make sense to say that green is more blue when it comes to eye colour.</p>
+<p>At the <strong>ordinal level</strong>, individual observations of the measured attribute can be <strong>ordered</strong> in a meaningful way. For example, we could order marathon runners ranked in order of who came 1st, 2nd, or 3rd. The ordinal level, however, doesn’t provide any information about the differences between individual points. For example, we don’t know how much faster the winner was compared to the runner-up. The distance between 1st and 2nd doesn’t have to be the same as the distance between 2nd and 3rd, or between any adjacent pair of runner. An example of this type of measure in psychology is the <strong>Likert scale</strong> (see <a href="#fig-likert">Figure&nbsp;2</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-likert" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../../../images/LS.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: An example of a Likert scale</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>These scales are classed as <strong>ordinal</strong> because we can’t say that the difference in agreement between “Agree” and “Neither agree nor disagree” is the same as the difference between “Disagree” and “Strongly disagree”.</p>
+<p>At the <strong>interval</strong> level of measurement, the differences (intervals) between pairs of adjacent values are the same. For example, the difference in temperature between 20°C and 21°C is the same as that between 35°C and 36°C.The intervals marked by the degrees are evenly spaced or equidistant. But there is not an absolute zero point, so we cannot say that 40°C is twice as hot as 20°C. A good example, of this type of measurement in psychology is IQ. Someone with an IQ of 200 is not twice as smart as someone with an IQ of 100, and there’s also no such thing as an IQ of zero.</p>
+<p>Finally, there is the <strong>ratio</strong> level. The ratio level is similar to the interval level, but with <strong>ratio</strong> data there is a <strong>meaningful 0 point</strong>. Some examples of the ratio level of measurement that you might encounter in psychology are: Reaction time, number of correct responses, score on an exam, and income.</p>
+</section>
+<section id="variabledata-types" class="level2">
+<h2 class="anchored" data-anchor-id="variabledata-types">Variable/Data Types</h2>
+<p>When using quantitative methods, we represent variables with a numerical value, but we can have different types depending on the type of data it represents. <strong>Continuous variables</strong> can contain any numerical value within a certain range. Some examples might include time, height, and weight.</p>
+<p><strong>Discrete variables</strong> can only contain some values: For example, the number of children. Hypothetically you can have any number of children, but it has to be a <strong>whole number</strong>. There’s no such thing as 2.4 children.</p>
+<p>Finally, <strong>binary variables</strong> can only take one of two possible values. They are a special case of <strong>discrete variables</strong>. Examples of this are <em>Yes or No</em> responses, <em>Heads or Tails</em>, and <em>Pass or Fail</em> scores.</p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="test-your-knowledge" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="test-your-knowledge">Test your knowledge</h2>
+<div class="cell page-columns page-full">
+<div class="cell-output-display column-body-outset">
+<div id="htmlwidget-720c0a226d1c26c1caf9" style="width:672px;height:100%;" class="quiz html-widget "></div>
+<script type="application/json" data-for="htmlwidget-720c0a226d1c26c1caf9">{"x":[{"question":"If you’re measuring eye color, the level of measurment for this is?","answers":[["Nominal","false"],["Ratio","false"],["Ordinal","false"],["Categorical","true"],["Interval","false"]],"type":"standard"},{"question":"If an experiment has high external validity, this means that:","answers":[["The changes in the dependent variable were likely to have been produced by the manipulation of the independent variable.","false"],["The findings can be generalised to other cultures and societies","true"],["The findings are important and the results are meaningful","false"],["The changes in the dependent variable were large and unlikely to have been produced by chance","false"]],"type":"standard"},{"question":"An experimenter wants to investigate the effects of office layouts (open-plan, cubicles, or separate offices) on the reported level of job satisfaction in a group of stressed office workers. In this study:","answers":[["Office layout is the independent variable and job satisfaction is the dependent variable","true"],["Office layout is the dependent variable and job satisfaction is the independent variable","false"],["Stress is the independent variable and office layout is the dependent variable","false"],["Stress and office layout are the dependent variables, and job satisfaction is the independent variable","false"],["Stress level is the dependent variable and office layout is the independent variable","false"]],"type":"standard"},{"question":"An experiment in which neither the experimenter not the participant knows which condition the participant has been allocated to is an example of a:","answers":[["Cross-section design","false"],["Longitudinal design","false"],["Single blind procedure","false"],["Double blind procedure","true"],["Counterbalanced design","false"]],"type":"standard"},{"question":"Which measuring scale has equal distances between adjacent points on the scale, but no true zero point?","answers":[["An interval scale","true"],["A ratio scale","false"],["A categorical scale","false"],["A nominal scale","false"],["A positive scale","false"]],"type":"standard"},{"question":"A researcher wants to study age-differences in how often people become depressed. Which <strong>one<\/strong> of the following designs uses a cross-sectional design to investigate this question?","answers":[["Each participant is asked to keep a diary in which they record every depressive episode they experience over a 6-month period","false"],["Each participant is asked about their depression and also provides details of their socio-economic status","false"],["Each participant records how often they have been depressed during the past week, and is assigned to one of five groups based on their age","true"],["Each participant records how often they were depressed in the first, second, third, and fourth weeks of a month long study","false"],["Each participant is assigned randomly to a “highly depressed”, “moderately depressed”, “highly depressed”, or “not depressed” group","false"]],"type":"standard"}],"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="ref-weird" class="csl-entry" role="listitem">
+Henrich, J., Heine, S. J., &amp; Norenzayan, A. (2010). The weirdest people in the world? <em>Behavioural and Brain Science</em>, <em>33</em>(2–3), 61–135. <a href="https://doi.org/10.1017/S0140525X0999152">https://doi.org/10.1017/S0140525X0999152</a>
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>If you’re not sure what the terms <strong>research question</strong> and <strong>hypothesis</strong> mean, then just keep them in your mind for now. Their meanings will become clearer when we get to the examples.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>We’ll talk more about <strong>populations</strong> in later lectures.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
