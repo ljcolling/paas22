@@ -703,14 +703,12 @@ just help to make you a better scientist.
 ## What's been left out
 
 There's so much more that I would've loved to have covered in this lecture, but
-unfortunately there simply isn't the time. To take just a few: I would've liked to
-have been able to cover feminist perspectives on science
-(see [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/feminist-science/)
-if you're interested). I would also have liked to cover the status of indigenous and non-western epistemology.
-For example, I grew up in Aotearoa New Zealand where Mātauranga Māori is
-currently having a renaissance [see @ref2;@ref1 if you're interested]. And I
-would have also have liked to cover work on Race, Racism, and Colonialism---for
-example, see the work of @ref3 if you're interested.
+unfortunately there simply isn't the time. To take just a few: I would've liked
+to have been able to cover feminist perspectives on science (see [Stanford
+Encyclopedia of
+Philosophy](https://plato.stanford.edu/entries/feminist-science/) if you're
+interested). And I would have also have liked to cover work on Race, Racism,
+and Colonialism---for example, see the work of @ref3 if you're interested.
 
 Finally, if you're interested in Philosophy of Science in general, then a good
 book to start with is "What is this thing called Science?" [@chalmers], from
@@ -760,20 +758,6 @@ require(niceQuiz)
  )
 ```
 
-::: {.content-hidden when-format="pdf"}
-
-## Leave a comment {.unnumbered .unlisted}
-
-```{r}
-#| echo: false
-form_url <- "https://docs.google.com/forms/d/e/1FAIpQLSdcA0B4oOoPXNQdkNCcu7wQHTlg1ynAbS5aqxjZbFtGqJqYnQ/formResponse"
-comment_id <- "entry.2112951534"
-label_id <- "entry.2046375008"
-lecture <- "lecture2"
-commentr::commentr(form_url = form_url, comment_id = comment_id, label_id = label_id, lecture = lecture)
-```
-
-:::
 
 
 :::{#refs}

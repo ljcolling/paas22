@@ -40,12 +40,13 @@ const print_week = (recordings, materials, week) => {
 
   const has_handout = Object.keys(materials[week]["handout"])[0] === "0" ? `<li><a href=${materials[week]["handout"][0].path}>Lecture handout</a></li>` : "Currently unavailable"
   const has_slides = Object.keys(materials[week]["slides"])[0] === "0" ? `<li><a href=${materials[week]["slides"][0].path}>Lecture slides</a></li>` : "Currently unavailable"
-  const has_recording = recordings.hasOwnProperty(week) ? `<li><a href=${recordings[week]}>Lecture Recording</a></li>` : "Currently unavailable"
-  if (has_handout === has_slides) {
-    return "Currently unavailable"
-  }
-
-  return `${has_handout}${has_slides}${has_recording}`
+// const has_recording = recordings.hasOwnProperty(week) ? `<li><a href=${recordings[week]}>Lecture Recording</a></li>` : "Currently unavailable"
+// if (has_handout === has_slides) {
+//   return "Currently unavailable"
+// }
+//
+return `${has_handout}${has_slides}`
+//  return `${has_handout}${has_slides}${has_recording}`
 
 
 }

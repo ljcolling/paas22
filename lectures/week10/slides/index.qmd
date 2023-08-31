@@ -1,6 +1,6 @@
 ---
 pagetitle: "Visual summaries of data"
-author-meta: "Dr Lincoln Colling"
+author-meta: "Dr Lazaros Gonidis"
 format: 
   sussex-revealjs:
     center-title-slide: false
@@ -20,9 +20,9 @@ type: slides
 <br>
 <br>
 
-<h3 style="color:black;font-weight:normal">Dr Lincoln Colling</h3>
+<h3 style="color:black;font-weight:normal">Dr Lazaros Gonidis</h3>
 
-<h3 style="color:black;font-weight:normal">28 Nov 2022</h3>
+<h3 style="color:black;font-weight:normal">07 Dec 2023</h3>
 
 <br>
 

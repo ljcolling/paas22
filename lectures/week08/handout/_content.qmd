@@ -1326,20 +1326,6 @@ answer("A distribution that is more skewed than the population distribution")
 
 ```
 
-## Leave a comment {.unnumbered .unlisted}
-
-If you'd like to leave a comment or ask a question about this week's lecture
-then you can use the comment box below. Note that comments will be accessible to
-the lecturer but won't be displayed until they have been approved.
-
-```{r}
-#| echo: false
-form_url <- "https://docs.google.com/forms/d/e/1FAIpQLSdcA0B4oOoPXNQdkNCcu7wQHTlg1ynAbS5aqxjZbFtGqJqYnQ/formResponse"
-comment_id <- "entry.2112951534"
-label_id <- "entry.2046375008"
-lecture <- "lecture8"
-commentr::commentr(form_url = form_url, comment_id = comment_id, label_id = label_id, lecture = lecture)
-```
 
 
 

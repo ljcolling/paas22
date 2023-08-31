@@ -2,10 +2,10 @@
 title: "Lecture 6: Describing measurements I"
 subtitle: Measures of central tendency
 author:
-  - name: "Dr Lincoln Colling"
-    url: mailto:l.colling@sussex.ac.uk
+  - name: "Dr Lazaros Gonidis"
+    url: mailto:L.Gonidis@sussex.ac.uk
     affiliation: School of Psychology, University of Sussex
-    affiliation-url: https://profiles.sussex.ac.uk/p488921-lincoln-colling
+    affiliation-url: https://profiles.sussex.ac.uk/p596170-lazaros-gonidis
 week: 6
 bibliography: refs.bib
 csl: apa.csl
@@ -16,15 +16,8 @@ format:
     page-layout: article
     toc: true
     toc-location: right
-    date: 31 Oct 2022
+    date: 09 Nov 2023
     date-format: "D MMMM, YYYY"
-reading-time: |
-  `r 
-  words <- system("pandoc --lua-filter wordcount.lua _content.qmd --from=markdown", intern = TRUE) |> as.numeric();
-  minutes <- ceiling(words / 180);
-  reading_time <- paste0("About ", minutes, " minutes");
-  reading_time
-  `
 type: handout
 crossref:
   exm-title: Explorable
